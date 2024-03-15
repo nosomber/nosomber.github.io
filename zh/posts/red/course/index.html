@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+<meta name="robots" content="index, follow" />
+<title>
+  course | E2C
+</title>
+
+<meta
+  name="keywords"
+  content="MIT, CS"
+/>
+<meta name="description" content="优秀的CS课程"> <meta name="author" content="kai"> <link
+rel="canonical" href="https://nosomber.github.io/zh/posts/red/course/" />
+<link
+  href="/assets/css/stylesheet.min.1c7eb2e064507931fda64ba0ac47b158f446a12d77623e0667f5c15e14833389.css"
+  integrity="sha256-HH6y4GRQeTH9pkugrEexWPRGoS13Yj4GZ/XBXhSDM4k="
+  rel="preload stylesheet"
+  as="style"
+/>
+
+<link rel="icon" href="https://nosomber.github.io/flower.png"> <link rel="icon" type="image/png" sizes="16x16" href="https://nosomber.github.io/flower.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nosomber.github.io/flower.png">
+<link rel="apple-touch-icon" href="https://nosomber.github.io/flower.png"> <link rel="mask-icon" href="https://nosomber.github.io/flower.png">
+<meta name="theme-color" content="#2e2e33" />
+<meta name="msapplication-TileColor" content="#2e2e33" />
+<meta name="generator" content="Hugo 0.119.0">
+<link rel="alternate" hreflang="zh" href="https://nosomber.github.io/zh/posts/red/course/" />
+
+
+
+<link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet" />
+<meta property="og:title" content="course" />
+<meta property="og:description" content="优秀的CS课程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nosomber.github.io/zh/posts/red/course/" />
+<meta property="og:image" content="https://nosomber.github.io/CS.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-15T00:00:00&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-15T20:30:12&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://nosomber.github.io/CS.png" />
+<meta name="twitter:title" content="course"/>
+<meta name="twitter:description" content="优秀的CS课程"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
+      "name": "course",
+      "item": "https://nosomber.github.io/zh/posts/red/course/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "course",
+  "name": "course",
+  "description": "优秀的CS课程",
+  "keywords": [
+    "MIT", "CS"
+  ],
+  "articleBody": "course MIT6.S081 Operating System Engineering MIT6.S081 参考 xiaofan 星遥见 b站lab讲解 知春路遇上八里桥 b站讲解 环境 实验工具: https://pdos.csail.mit.edu/6.828/2020/tools.html 课程安排: https://pdos.csail.mit.edu/6.S081/2021/schedule.html 打开xv6所在的目录 make clean make qemu ❌ user/sh.c: In function 'runcmd': user/sh.c:58:1: error: infinite recursion detected [-Werror=infinite-recursion] 58 | runcmd(struct cmd *cmd) | ^~~~~~ According to my expeience, you can solve this by adding `_attribute_((noreturn))` before line 56 in `user/sh.c` file 退出是 C a x 添加用户程序要在makefile的UPROGS标签里加上文件名 CS61C lab1 -o in gcc,which is used to specify the name of the executable file that gcc creates. gcc -o program program.c -s 和 -n 在gdb里的区别 他俩都是下一行的意思,但是当遇到函数调用的时候 -s 表示进入函数调用里,再一步一步执行.而 -n 直接step over. lab2 ➡ (x \u003e\u003e n) \u0026 1 用来返回x的第n个bit位,‘1’不要想成'111…’,实际上是'0000…1\" ➡ ‘%d’conversion to specify that an int argument should be printed in decimal notation ‘%s’ conversion to specify printing of a string argument conversions for printing an integer argument as an unsigned value in binary, octal, decimal, or hexadecimal radix (‘%b’, ‘%o’, ‘%u’, or ‘%x’, respectively).or as a character value (‘%c’). formatted-output ➡ xor (eXclusive or) 相同时为0 不同时为1 Book 重构 如果你想知道重构是什么，请阅读第1章，其中的示例会让你弄清楚重构的过程。 如果你想知道为什么应该重构，请阅读前两章，它们会告诉你重构是什么以及为什么应该重构。 如果你想知道该在什么地方重构，请阅读第3章，它会告诉你一些代码特征，这些特征指出“这里需要重构”。 如果你想着手进行重构，请完整阅读前四章，然后选择性地阅读重构名录。一开始只需概略浏览列表，看看其中有些什么，不必理解所有细节。一旦真正需要实施某个重构手法，再详细阅读它，从中获取帮助。列表部分是供查阅的参考性内容，你不必一次就把它全部读完。 SICP We are about to study the idea of computational process Processes manipulate other abstruct things called data The evolution of a process is directed by a pattern of rules called program People create programs to direct processes Why lisp? The most significant of these features is the fact that Lisp descriptions of processes,called procedures,can themselves be represented and manipulated as Lisp data.It has the ability to blur the tradional distinction between “passive” data and “active” processes.Programming in Lisp is great fun. Every powerful languages has three mechanisms for accomplishing this primitive expressions,which represent the simplest entities the language is concerned with means of combination,by which compound elements are built from simpler ones means of abstruction, by which compound elements can be named and manipulated as units. In programming,we deal with two konds of elements:procedures and data Expressions that formed by delimiting a list of expressions within parentheses in oredr to denote procedure application,are called combinations e.g. (+ 2 7) the leftmost element in the list is called the operator,and the other elements are called operands,the value of a combination is obtained by applying the procedure specified by the operator to the arguments that are the values of the operands. A critical aspect of a programming language is the means it provides fo using namnes to refer to computational objects.We say that the name identifies a variable whose value is the object. In Lisp,use define e.g. (define size 2) It should be clear that the possiblity of associating values with symbols and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs.The memory is called the environment We have identified in Lisp some of the elements that must appear in any powerful programming language: Numbers and arithmetic operations are primitive data and procedures Nesting of combinations provides a means of combing operations Defintions that associate names with values provide a limited means of abstraction For compound procedures,the application process is as follows: To apply a compound procedure to arguments,evaluate the body of the procedure with each formal parameter replaced by the corresponding argument.The process is called the substitution model for procedure application.In practice,the “substitution” is accomplished by using a local environment for the formal parameters. We need to have a way to make tests and to perform different operations depending on the result of a test.This construct is called a case analysis,and in Lisp,called *cond*(which stands for “conditional”) e.g. (cond (⟨p1⟩ ⟨e1⟩) (⟨p2⟩ ⟨e2⟩) . . . (⟨pn⟩ ⟨en⟩)) (define (abs x) (cond ((\u003e x 0) x) ((= x 0) 0) ((\u003c x 0) (- x)))) (⟨p⟩ ⟨e⟩) called clauses,⟨p⟩ is a predicate In Scheme,there are two distinguished values that are denoted by the constants #t and #f.When the interpreter checks a predicate’s value,it interprets #f as false. there are logical composition operations,which enable us to construct compound predicates.such as (and …) (or … ) (not ) 注意要点 如果结果出现分数,试试将运算的数换成小数 可以将函数在后面定义,即可以先用后定义 ",
+  "wordCount" : "1211",
+  "inLanguage": "zh",
+  "image":"https://nosomber.github.io/CS.png","datePublished": "2024-03-15T00:00:00+08:00",
+  "dateModified": "2024-03-15T20:30:12+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "kai"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nosomber.github.io/zh/posts/red/course/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "E2C",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nosomber.github.io/flower.png"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nosomber.github.io/zh/" accesskey="h" title="kai&#39;s blog (Alt + H)">
+                <img src="/flower.png" alt="logo" aria-label="logo"
+                    height="35">kai&#39;s blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://nosomber.github.io/es/" title="Español🇵🇪"
+                            aria-label="Español🇵🇪">Español🇵🇪</a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nosomber.github.io/zh/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/" title="主页">
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/posts" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nosomber.github.io/zh/">Home</a>
+</div>
+
+    <h1 class="post-title">
+      course
+    </h1>
+    <div class="post-meta">
+
+2024-03-15&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;kai
+
+
+</div>
+  </header> 
+
+  <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#course" aria-label="course">course</a><ul>
+                            
+                    <li>
+                        <a href="#mit6-dot-s081" aria-label="MIT6.S081">MIT6.S081</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%8f%82%e8%80%83" aria-label="参考">参考</a></li>
+                    <li>
+                        <a href="#%e7%8e%af%e5%a2%83" aria-label="环境">环境</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#cs61c" aria-label="CS61C">CS61C</a><ul>
+                            
+                    <li>
+                        <a href="#lab1" aria-label="lab1">lab1</a></li>
+                    <li>
+                        <a href="#lab2" aria-label="lab2">lab2</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#book" aria-label="Book">Book</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%87%8d%e6%9e%84" aria-label="重构">重构</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#sicp" aria-label="SICP">SICP</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%b3%a8%e6%84%8f%e8%a6%81%e7%82%b9" aria-label="注意要点">注意要点</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content">
+<h2 id="course">course<a hidden class="anchor" aria-hidden="true" href="#course">#</a></h2>
+<h3 id="mit6-dot-s081">MIT6.S081<a hidden class="anchor" aria-hidden="true" href="#mit6-dot-s081">#</a></h3>
+<p>Operating System Engineering <!-- raw HTML omitted -->
+MIT6.S081 <!-- raw HTML omitted --></p>
+<h4 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h4>
+<p><a href="https://fanxiao.tech/posts/2021-03-02-mit-6s081-notes/">xiaofan</a> <!-- raw HTML omitted -->
+<a href="https://www.cnblogs.com/weijunji/p/XV6-study-01.html">星遥见</a> <!-- raw HTML omitted -->
+<a href="https://www.bilibili.com/video/BV1TL4y1s7zb/?spm_id_from=333.999.0.0&amp;vd_source=89ee4513b8ea1748f5dcb287a71a5041">b站lab讲解</a> <!-- raw HTML omitted -->
+<a href="https://space.bilibili.com/1969478249/channel/collectiondetail?sid=1837431">知春路遇上八里桥</a> <!-- raw HTML omitted -->
+<a href="https://space.bilibili.com/527080131/channel/collectiondetail?sid=2282142&amp;ctype=0">b站讲解</a> <!-- raw HTML omitted --></p>
+<h4 id="环境">环境<a hidden class="anchor" aria-hidden="true" href="#环境">#</a></h4>
+<p>实验工具: <a href="https://pdos.csail.mit.edu/6.828/2020/tools.html">https://pdos.csail.mit.edu/6.828/2020/tools.html</a> <!-- raw HTML omitted --></p>
+<p>课程安排: <a href="https://pdos.csail.mit.edu/6.S081/2021/schedule.html">https://pdos.csail.mit.edu/6.S081/2021/schedule.html</a> <!-- raw HTML omitted --></p>
+<p>打开xv6所在的目录 <!-- raw HTML omitted -->
+make clean make qemu <!-- raw HTML omitted --></p>
+<p>❌ <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>user/sh.c: In <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;runcmd&#39;</span>:
+</span></span><span style="display:flex;"><span>user/sh.c:58:1: error: infinite recursion detected <span style="color:#f92672">[</span>-Werror<span style="color:#f92672">=</span>infinite-recursion<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">58</span> | runcmd<span style="color:#f92672">(</span>struct cmd *cmd<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>      | ^~~~~~
+</span></span></code></pre></div><p>According to my expeience, you can solve this by adding `_<em>attribute</em>_((noreturn))` before line 56 in `user/sh.c` file <!-- raw HTML omitted -->
+退出是 C a x <!-- raw HTML omitted --></p>
+<p>添加用户程序要在makefile的UPROGS标签里加上文件名 <!-- raw HTML omitted --></p>
+<h3 id="cs61c">CS61C<a hidden class="anchor" aria-hidden="true" href="#cs61c">#</a></h3>
+<h4 id="lab1">lab1<a hidden class="anchor" aria-hidden="true" href="#lab1">#</a></h4>
+<p><code>-o</code> in gcc,which is used to specify the name of the executable file that <code>gcc</code> creates. <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gcc -o program program.c
+</span></span></code></pre></div><p><code>-s</code> 和 <code>-n</code> 在gdb里的区别 <!-- raw HTML omitted -->
+他俩都是下一行的意思,但是当遇到函数调用的时候 <code>-s</code> 表示进入函数调用里,再一步一步执行.而 <code>-n</code> 直接step over. <!-- raw HTML omitted --></p>
+<h4 id="lab2">lab2<a hidden class="anchor" aria-hidden="true" href="#lab2">#</a></h4>
+<p>➡ (x &gt;&gt; n) &amp; 1 <!-- raw HTML omitted -->
+用来返回x的第n个bit位,&lsquo;1&rsquo;不要想成'111&hellip;&rsquo;,实际上是'0000&hellip;1&quot; <!-- raw HTML omitted -->
+➡ &lsquo;%d&rsquo;conversion to specify that an int argument should be printed in decimal notation <!-- raw HTML omitted -->
+&lsquo;%s&rsquo; conversion to specify printing of a string argument <!-- raw HTML omitted -->
+conversions for printing an integer argument as an <strong>unsigned</strong> value in binary, octal, decimal, or hexadecimal radix (‘%b’, ‘%o’, ‘%u’, or ‘%x’, respectively).or as a character value (‘%c’). <!-- raw HTML omitted -->
+<a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html">formatted-output</a> <!-- raw HTML omitted -->
+➡ xor (eXclusive or) <!-- raw HTML omitted -->
+相同时为0 <!-- raw HTML omitted -->
+不同时为1 <!-- raw HTML omitted --></p>
+<h2 id="book">Book<a hidden class="anchor" aria-hidden="true" href="#book">#</a></h2>
+<h3 id="重构">重构<a hidden class="anchor" aria-hidden="true" href="#重构">#</a></h3>
+<ul>
+<li>如果你想知道重构是什么，请阅读第1章，其中的示例会让你弄清楚重构的过程。 <!-- raw HTML omitted --></li>
+<li>如果你想知道为什么应该重构，请阅读前两章，它们会告诉你重构是什么以及为什么应该重构。 <!-- raw HTML omitted --></li>
+<li>如果你想知道该在什么地方重构，请阅读第3章，它会告诉你一些代码特征，这些特征指出“这里需要重构”。 <!-- raw HTML omitted --></li>
+<li>如果你想着手进行重构，请完整阅读前四章，然后选择性地阅读重构名录。一开始只需概略浏览列表，看看其中有些什么，不必理解所有细节。一旦真正需要实施某个重构手法，再详细阅读它，从中获取帮助。列表部分是供查阅的参考性内容，你不必一次就把它全部读完。 <!-- raw HTML omitted --></li>
+</ul>
+<h2 id="sicp">SICP<a hidden class="anchor" aria-hidden="true" href="#sicp">#</a></h2>
+<p>We are about to study the idea of <strong>computational process</strong> <!-- raw HTML omitted -->
+Processes manipulate other abstruct things called <strong>data</strong> <!-- raw HTML omitted -->
+The evolution of a process is directed by a pattern of rules called <strong>program</strong> <!-- raw HTML omitted -->
+People create programs to direct processes <!-- raw HTML omitted -->
+Why lisp? <!-- raw HTML omitted -->
+The most significant of these features is the fact that Lisp descriptions of processes,called <strong>procedures</strong>,can themselves be represented and manipulated as Lisp data.It has the ability to <strong>blur</strong> the tradional distinction between &ldquo;passive&rdquo; data and &ldquo;active&rdquo; processes.Programming in Lisp is great fun. <!-- raw HTML omitted -->
+Every powerful languages has <strong>three</strong> mechanisms for accomplishing this <!-- raw HTML omitted --></p>
+<ul>
+<li>primitive expressions,which represent the simplest entities the language is concerned with <!-- raw HTML omitted --></li>
+<li>means of combination,by which compound elements are built from simpler ones <!-- raw HTML omitted --></li>
+<li>means of abstruction, by which compound elements can be named and manipulated as units. <!-- raw HTML omitted --></li>
+</ul>
+<p>In programming,we deal with <strong>two konds of elements</strong>:procedures and data <!-- raw HTML omitted --></p>
+<p>Expressions that formed by delimiting a list of expressions within parentheses in oredr to denote procedure application,are called <strong>combinations</strong> e.g. (+ 2 7) <!-- raw HTML omitted -->
+the leftmost element in the list is called the <strong>operator</strong>,and the other elements are called <strong>operands</strong>,the value of a combination is obtained by applying the procedure specified by the operator to the <strong>arguments</strong> that are the values of the operands. <!-- raw HTML omitted -->
+A critical aspect of a programming language is the means it provides fo using namnes to refer to computational objects.We say that the name identifies a <strong>variable</strong> whose value is the object. In Lisp,use <strong>define</strong> e.g. (define size 2)    It should be clear that the possiblity of associating values with symbols and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs.The memory is called the <strong>environment</strong> <!-- raw HTML omitted -->
+We have identified in Lisp some of the elements that must appear in any powerful programming language: <!-- raw HTML omitted --></p>
+<ul>
+<li>Numbers and arithmetic operations are primitive data and procedures <!-- raw HTML omitted --></li>
+<li>Nesting of combinations provides a means of combing operations <!-- raw HTML omitted --></li>
+<li>Defintions that associate names with values provide a limited means of abstraction <!-- raw HTML omitted --></li>
+</ul>
+<p>For compound procedures,the application process is as follows: <!-- raw HTML omitted -->
+To apply a compound procedure to arguments,evaluate the body of the procedure with each formal parameter <strong>replaced</strong> by the corresponding argument.The process is called the <strong>substitution model</strong> for procedure application.In practice,the &ldquo;substitution&rdquo; is accomplished by using a local environment for the formal parameters. <!-- raw HTML omitted -->
+We need to have a way to make tests and to perform different operations depending on the result of a test.This construct is called a <strong>case analysis</strong>,and in Lisp,called *cond*(which stands for &ldquo;conditional&rdquo;) e.g. <!-- raw HTML omitted --></p>
+<blockquote>
+<p>(cond (⟨p1⟩ ⟨e1⟩) <!-- raw HTML omitted -->
+(⟨p2⟩ ⟨e2⟩) <!-- raw HTML omitted -->
+. . . <!-- raw HTML omitted -->
+(⟨pn⟩ ⟨en⟩)) <!-- raw HTML omitted --></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(define (<span style="color:#a6e22e">abs</span> x)
+</span></span><span style="display:flex;"><span>        (cond ((<span style="color:#a6e22e">&gt;</span> x <span style="color:#ae81ff">0</span>) x)
+</span></span><span style="display:flex;"><span>              ((<span style="color:#a6e22e">=</span> x <span style="color:#ae81ff">0</span>) <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>              ((<span style="color:#a6e22e">&lt;</span> x <span style="color:#ae81ff">0</span>) (<span style="color:#a6e22e">-</span> x))))
+</span></span></code></pre></div><p>(⟨p⟩ ⟨e⟩) called <em>clauses</em>,⟨p⟩ is a <em>predicate</em> <!-- raw HTML omitted -->
+In Scheme,there are two distinguished values that are denoted by the constants #t and #f.When the interpreter checks a predicate&rsquo;s value,it interprets #f as false. <!-- raw HTML omitted -->
+there are logical composition operations,which enable us to construct compound predicates.such as <!-- raw HTML omitted --></p>
+<ul>
+<li>(and &lt;e1&gt; &hellip;) <!-- raw HTML omitted --></li>
+<li>(or  &lt;e1&gt; &hellip; ) <!-- raw HTML omitted --></li>
+<li>(not &lt;e&gt;) <!-- raw HTML omitted --></li>
+</ul>
+<h3 id="注意要点">注意要点<a hidden class="anchor" aria-hidden="true" href="#注意要点">#</a></h3>
+<p>如果结果出现分数,试试将运算的数换成小数 <!-- raw HTML omitted -->
+可以将函数在后面定义,即可以先用后定义 <!-- raw HTML omitted --></p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nosomber.github.io/zh/tags/mit/">MIT</a></li>
+      <li><a href="https://nosomber.github.io/zh/tags/cs/">CS</a></li>
+    </ul>
+    <nav class="paginav">
+      <a class="next" href="https://nosomber.github.io/zh/posts/rosa/">
+        <span class="title">下一页 »</span>
+        <br>
+        <span>致远方的你</span>
+      </a>
+    </nav>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2024 <a href="https://nosomber.github.io/zh/">E2C</a></span>
+
+    
+
+    
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+
+
+<script defer src="/assets/js/highlight.min.0d99f523475f82b0da65047fcc687e1cb5a6f935b1a0e75c9a1f2f84c53b748a.js" integrity="sha256-DZn1I0dfgrDaZQR/zGh&#43;HLWm&#43;TWxoOdcmh8vhMU7dIo="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

@@ -2,11 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://nosomber.github.io/zh/posts/code/</loc>
-    <lastmod>2024-03-14T17:06:39+08:00</lastmod>
+    <loc>https://nosomber.github.io/zh/categories/</loc>
+    <lastmod>2024-03-15T20:30:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/categories/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/zh/posts/red/course/</loc>
+    <lastmod>2024-03-15T20:30:12+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/tags/cs/</loc>
+    <lastmod>2024-03-15T20:30:12+08:00</lastmod>
   </url><url>
     <loc>https://nosomber.github.io/zh/</loc>
-    <lastmod>2024-03-15T12:47:45+08:00</lastmod>
+    <lastmod>2024-03-15T20:45:37+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -18,11 +34,23 @@
                 href="https://nosomber.github.io/zh/"
                 />
   </url><url>
-    <loc>https://nosomber.github.io/zh/posts/tech/makin/</loc>
-    <lastmod>2024-03-15T12:47:45+08:00</lastmod>
+    <loc>https://nosomber.github.io/zh/tags/ey/</loc>
+    <lastmod>2024-03-15T20:20:35+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/categories/ey/</loc>
+    <lastmod>2024-03-15T20:20:35+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/categories/lecture/</loc>
+    <lastmod>2024-03-15T20:30:12+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/tags/mit/</loc>
+    <lastmod>2024-03-15T20:30:12+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/posts/red/</loc>
+    <lastmod>2024-03-15T20:30:12+08:00</lastmod>
   </url><url>
     <loc>https://nosomber.github.io/zh/tags/</loc>
-    <lastmod>2024-03-15T12:47:45+08:00</lastmod>
+    <lastmod>2024-03-15T20:45:37+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -34,14 +62,8 @@
                 href="https://nosomber.github.io/zh/tags/"
                 />
   </url><url>
-    <loc>https://nosomber.github.io/zh/tags/tech/</loc>
-    <lastmod>2024-03-15T12:47:45+08:00</lastmod>
-  </url><url>
-    <loc>https://nosomber.github.io/zh/posts/tech/</loc>
-    <lastmod>2024-03-15T12:47:45+08:00</lastmod>
-  </url><url>
     <loc>https://nosomber.github.io/zh/posts/</loc>
-    <lastmod>2024-03-15T12:47:45+08:00</lastmod>
+    <lastmod>2024-03-15T20:45:37+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
@@ -53,17 +75,17 @@
                 href="https://nosomber.github.io/zh/posts/"
                 />
   </url><url>
-    <loc>https://nosomber.github.io/zh/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nosomber.github.io/es/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://nosomber.github.io/zh/categories/"
-                />
+    <loc>https://nosomber.github.io/zh/posts/rosa/</loc>
+    <lastmod>2024-03-15T20:20:35+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/posts/tech/makin/</loc>
+    <lastmod>2024-03-15T20:45:37+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/tags/tech/</loc>
+    <lastmod>2024-03-15T20:45:37+08:00</lastmod>
+  </url><url>
+    <loc>https://nosomber.github.io/zh/posts/tech/</loc>
+    <lastmod>2024-03-15T20:45:37+08:00</lastmod>
   </url><url>
     <loc>https://nosomber.github.io/zh/search/</loc>
     <xhtml:link

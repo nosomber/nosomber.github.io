@@ -6,14 +6,23 @@
     <description>Recent content on E2C</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 13 Mar 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Mar 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>code</title>
-      <link>https://nosomber.github.io/zh/posts/code/</link>
-      <pubDate>Wed, 13 Mar 2024 00:00:00 +0800</pubDate>
+      <title>course</title>
+      <link>https://nosomber.github.io/zh/posts/red/course/</link>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 +0800</pubDate>
       
-      <guid>https://nosomber.github.io/zh/posts/code/</guid>
-      <description>try code</description>
+      <guid>https://nosomber.github.io/zh/posts/red/course/</guid>
+      <description>优秀的CS课程</description>
+    </item>
+    
+    <item>
+      <title>致远方的你</title>
+      <link>https://nosomber.github.io/zh/posts/rosa/</link>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 +0800</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/posts/rosa/</guid>
+      <description>雨水中倒影,是我们在起舞</description>
     </item>
     
     <item>
