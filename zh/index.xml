@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>E2C</title>
+    <link>https://nosomber.github.io/zh/</link>
+    <description>Recent content on E2C</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 13 Mar 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>code</title>
+      <link>https://nosomber.github.io/zh/posts/code/</link>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0800</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/posts/code/</guid>
+      <description>try code</description>
+    </item>
+    
+    <item>
+      <title>makin</title>
+      <link>https://nosomber.github.io/zh/posts/tech/makin/</link>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0800</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/posts/tech/makin/</guid>
+      <description>About Emacs and Linux</description>
+    </item>
+    
+    
+    <item>
+      <title>关于</title>
+      <link>https://nosomber.github.io/zh/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/about/</guid>
+      <description>热爱生活,充满希望!</description>
+    </item>
+    
+    
+  </channel>
+</rss>
