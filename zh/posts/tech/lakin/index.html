@@ -41,7 +41,7 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nosomber.github.io/zh/posts/tech/lakin/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-03-15T00:00:00&#43;08:00" />
-<meta property="article:modified_time" content="2024-03-16T08:07:36&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-16T22:45:15&#43;08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="lakin"/>
@@ -72,11 +72,11 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
   "keywords": [
     "工具"
   ],
-  "articleBody": "工具学习 git 删除远程仓库的内容 先要pull下来 删除文件或文件夹 预览要删除的文件 git rm -r -n –cached 文件/文件夹名称 确认无误后删除文件 git rm -r -cached 文件/文件夹名称 清空远程仓库 git rm -rf * git commit -m ‘Empty the repository’ 然后 push 本地删除文件 将删除的文件从git跟踪列表移除 git rm file git rm -r folder git rm –cached file # –cached 表示只从git跟踪列表中删除文件,而不删除本地文件 git push # 如果是第一次删除可能需要设置删除标记 git push –set-upstream origin 分支名 与远程仓库关联与取消 git remote add origin git@github.com:git_username/repository_name.git # 关联 git remote remove origin # 取消 vim build frome source 和外部剪贴板进行交互 这篇博客 make makefile 核心是对依赖的管理,通过列出目标文件的依赖,整理出一个依赖关系.当执行make的是时候,会从目标文件开始向上,依次检查依赖关系,如果依赖更新,则重新执行一遍对应的流程 hello: echo \"Hello World!\" 这个只有目标,没有依赖,所以每次执行make的时候,都会重新构建 hello 这个目标文件 hello: echo \"Hello World!\" \u003c hello 第二次执行make的时候,会发现目标文件已经存在,且没有依赖,因此不会重新构建 搭建网站 初始构建 用org写,hugo搭建,github发布 参考这篇博客,尽量下载 hugo-extended 然后将主题里的 config.toml 复制过来之后,最好删除原有的 hugo.toml(不知道是有冲突还是什么) gitee搭建 成功 https://simumis.com/posts/deploy-to-github/ + https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ org-mode + hugo -\u003e 博客 优化 关于 loveit 主题的美化 参考loveit的官方文档 一篇知乎文章 -\u003e blog 1\n导航栏名称可以添加,也可以添加图标(图标同样放在 assets/images 文件夹下) 图标使用 .png 格式,但是位置上会有一点奇怪,故将其转换成 .ico 格式,再将后缀改成 .png 图片背景变透明 png to ico PaperMod White’s Blog 导出的目录有序号是因为,papermod导出目录默认使用的是Hugo的导出方式 hugo的方式不会clutter the Markdown. 我选择emacs的导出方式,便于自定义 全局设定的话,修改 org-hugo-export-with-toc 不为nil就行 在org头部 OPTIONS 分别设置 num:nil toc:nil 参考链接\nexample config from PaperMode itself ariables in papermod features|mods(和上面那个是同一位作者) ox-hugo TOC overview of papermod(很详细的介绍) ",
-  "wordCount" : "774",
+  "articleBody": "工具学习 git 删除远程仓库的内容 先要pull下来 删除文件或文件夹 预览要删除的文件 git rm -r -n –cached 文件/文件夹名称 确认无误后删除文件 git rm -r -cached 文件/文件夹名称 清空远程仓库 git rm -rf * git commit -m ‘Empty the repository’ 然后 push 本地删除文件 将删除的文件从git跟踪列表移除 git rm file git rm -r folder git rm –cached file # –cached 表示只从git跟踪列表中删除文件,而不删除本地文件 git push # 如果是第一次删除可能需要设置删除标记 git push –set-upstream origin 分支名 与远程仓库关联与取消 git remote add origin git@github.com:git_username/repository_name.git # 关联 git remote remove origin # 取消 vim build frome source 和外部剪贴板进行交互 这篇博客 make makefile 核心是对依赖的管理,通过列出目标文件的依赖,整理出一个依赖关系.当执行make的是时候,会从目标文件开始向上,依次检查依赖关系,如果依赖更新,则重新执行一遍对应的流程 hello: echo \"Hello World!\" 这个只有目标,没有依赖,所以每次执行make的时候,都会重新构建 hello 这个目标文件 hello: echo \"Hello World!\" \u003c hello 第二次执行make的时候,会发现目标文件已经存在,且没有依赖,因此不会重新构建 搭建网站 初始构建 用org写,hugo搭建,github发布 参考这篇博客,尽量下载 hugo-extended 然后将主题里的 config.toml 复制过来之后,最好删除原有的 hugo.toml(不知道是有冲突还是什么) gitee搭建 成功 https://simumis.com/posts/deploy-to-github/ + https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ org-mode + hugo -\u003e 博客 优化 关于 loveit 主题的美化 参考loveit的官方文档 一篇知乎文章 -\u003e blog 1\n导航栏名称可以添加,也可以添加图标(图标同样放在 assets/images 文件夹下) 图标使用 .png 格式,但是位置上会有一点奇怪,故将其转换成 .ico 格式,再将后缀改成 .png 图片背景变透明 png to ico PaperMod White’s Blog 导出的目录有序号是因为,papermod导出目录默认使用的是Hugo的导出方式 hugo的方式不会clutter the Markdown. 我选择emacs的导出方式,便于自定义 全局设定的话,修改 org-hugo-export-with-toc 不为nil就行 在org头部 OPTIONS 分别设置 num:nil toc:nil 参考链接\n五芒星的博客(很详细的介绍,还没看完,学到了怎么将markdown里面的\n标签不被html所忽略) example config from PaperMode itself ariables in papermod features|mods(和上面那个是同一位作者) ox-hugo TOC overview of papermod(很详细的介绍) ",
+  "wordCount" : "832",
   "inLanguage": "zh",
   "datePublished": "2024-03-15T00:00:00+08:00",
-  "dateModified": "2024-03-16T08:07:36+08:00",
+  "dateModified": "2024-03-16T22:45:15+08:00",
   "author":{
     "@type": "Person",
     "name": "kai"
@@ -351,7 +351,7 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
 <h2 id="工具学习">工具学习<a hidden class="anchor" aria-hidden="true" href="#工具学习">#</a></h2>
 <h3 id="git">git<a hidden class="anchor" aria-hidden="true" href="#git">#</a></h3>
 <h4 id="删除远程仓库的内容">删除远程仓库的内容<a hidden class="anchor" aria-hidden="true" href="#删除远程仓库的内容">#</a></h4>
-<p>先要pull下来 <!-- raw HTML omitted -->
+<p>先要pull下来 <!-- raw HTML omitted --><br>
 删除文件或文件夹 <!-- raw HTML omitted --></p>
 <ul>
 <li>预览要删除的文件 git rm -r -n &ndash;cached 文件/文件夹名称 <!-- raw HTML omitted --></li>
@@ -377,7 +377,7 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
 <li>git remote remove origin                                                # 取消 <!-- raw HTML omitted --></li>
 </ul>
 <h3 id="vim">vim<a hidden class="anchor" aria-hidden="true" href="#vim">#</a></h3>
-<p>build frome source <!-- raw HTML omitted -->
+<p>build frome source <!-- raw HTML omitted --><br>
 和外部剪贴板进行交互 <a href="https://www.cnblogs.com/gmpy/p/11177719.html">这篇博客</a>  <!-- raw HTML omitted --></p>
 <h3 id="make">make<a hidden class="anchor" aria-hidden="true" href="#make">#</a></h3>
 <p>makefile 核心是对依赖的管理,通过列出目标文件的依赖,整理出一个依赖关系.当执行make的是时候,会从目标文件开始向上,依次检查依赖关系,如果依赖更新,则重新执行一遍对应的流程 <!-- raw HTML omitted --></p>
@@ -389,11 +389,11 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
 </span></span></code></pre></div><p>第二次执行make的时候,会发现目标文件已经存在,且没有依赖,因此不会重新构建 <!-- raw HTML omitted --></p>
 <h2 id="搭建网站">搭建网站<a hidden class="anchor" aria-hidden="true" href="#搭建网站">#</a></h2>
 <h4 id="初始构建">初始构建<a hidden class="anchor" aria-hidden="true" href="#初始构建">#</a></h4>
-<p>用org写,hugo搭建,github发布 <!-- raw HTML omitted -->
-参考<a href="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/">这篇博客</a>,尽量下载 hugo-extended <!-- raw HTML omitted -->
-然后将主题里的 config.toml 复制过来之后,最好删除原有的 hugo.toml(不知道是有冲突还是什么) <!-- raw HTML omitted -->
+<p>用org写,hugo搭建,github发布 <!-- raw HTML omitted --><br>
+参考<a href="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/">这篇博客</a>,尽量下载 hugo-extended <!-- raw HTML omitted --><br>
+然后将主题里的 config.toml 复制过来之后,最好删除原有的 hugo.toml(不知道是有冲突还是什么) <!-- raw HTML omitted --><br>
 <a href="https://yinshuaiguo.gitee.io/blog/post/%E4%BD%BF%E7%94%A8hugo-+-gitee-pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">gitee搭建</a> <!-- raw HTML omitted --></p>
-<p>成功 <!-- raw HTML omitted -->
+<p>成功 <!-- raw HTML omitted --><br>
 <a href="https://simumis.com/posts/deploy-to-github/">https://simumis.com/posts/deploy-to-github/</a> + <a href="https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/">https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/</a> <!-- raw HTML omitted --></p>
 <p>org-mode + hugo  -&gt; <a href="https://wowow005.github.io/posts/2022/04/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E5%92%8Corg-mode%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">博客</a> <!-- raw HTML omitted --></p>
 <h4 id="优化">优化<a hidden class="anchor" aria-hidden="true" href="#优化">#</a></h4>
@@ -406,7 +406,7 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
 <ul>
 <li>
 <p>1</p>
-<p>导航栏名称可以添加,也可以添加图标(图标同样放在 assets/images 文件夹下) <!-- raw HTML omitted -->
+<p>导航栏名称可以添加,也可以添加图标(图标同样放在 assets/images 文件夹下) <!-- raw HTML omitted --><br>
 图标使用 .png 格式,但是位置上会有一点奇怪,故将其转换成 .ico 格式,再将后缀改成 .png <!-- raw HTML omitted --></p>
 <ul>
 <li><a href="https://www.remove.bg/zh">图片背景变透明</a> <!-- raw HTML omitted --></li>
@@ -415,17 +415,18 @@ rel="canonical" href="https://nosomber.github.io/zh/posts/tech/lakin/" />
 </li>
 </ul>
 <h4 id="papermod">PaperMod<a hidden class="anchor" aria-hidden="true" href="#papermod">#</a></h4>
-<p><a href="https://kyxie.github.io/zh/">White&rsquo;s Blog</a> <!-- raw HTML omitted -->
-导出的目录有序号是因为,papermod导出目录默认使用的是Hugo的导出方式 <!-- raw HTML omitted -->
-hugo的方式不会clutter the Markdown. <!-- raw HTML omitted -->
-我选择emacs的导出方式,便于自定义 <!-- raw HTML omitted -->
-全局设定的话,修改 <code>org-hugo-export-with-toc</code> 不为nil就行 <!-- raw HTML omitted -->
+<p><a href="https://kyxie.github.io/zh/">White&rsquo;s Blog</a> <!-- raw HTML omitted --><br>
+导出的目录有序号是因为,papermod导出目录默认使用的是Hugo的导出方式 <!-- raw HTML omitted --><br>
+hugo的方式不会clutter the Markdown. <!-- raw HTML omitted --><br>
+我选择emacs的导出方式,便于自定义 <!-- raw HTML omitted --><br>
+全局设定的话,修改 <code>org-hugo-export-with-toc</code> 不为nil就行 <!-- raw HTML omitted --><br>
 在org头部 OPTIONS 分别设置 num:nil toc:nil <!-- raw HTML omitted --></p>
 <!-- raw HTML omitted -->
 <ul>
 <li>
 <p>参考链接</p>
 <ul>
+<li><a href="https://www.wmxliu.cn/archives/hugo/#markdown-%E6%A0%87%E8%AE%B0%E9%85%8D%E7%BD%AE">五芒星的博客</a>(很详细的介绍,还没看完,学到了怎么将markdown里面的&lt;br&gt;标签不被html所忽略) <!-- raw HTML omitted --></li>
 <li><a href="https://github.com/adityatelange/hugo-PaperMod/blob/exampleSite/config.yml">example config from PaperMode itself</a> <!-- raw HTML omitted --></li>
 <li><a href="https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-variables/">ariables in papermod</a> <!-- raw HTML omitted --></li>
 <li><a href="https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/">features|mods</a>(和上面那个是同一位作者) <!-- raw HTML omitted --></li>
