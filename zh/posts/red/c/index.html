@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/>
+<meta name="robots" content="index, follow" />
+<title>
+  C | E2C
+</title>
+
+<meta
+  name="keywords"
+  content="c"
+/>
+<meta name="description" content="C Programming Language"> <meta name="author" content="kai"> <link
+rel="canonical" href="https://nosomber.github.io/zh/posts/red/c/" />
+<link
+  href="/assets/css/stylesheet.min.1c7eb2e064507931fda64ba0ac47b158f446a12d77623e0667f5c15e14833389.css"
+  integrity="sha256-HH6y4GRQeTH9pkugrEexWPRGoS13Yj4GZ/XBXhSDM4k="
+  rel="preload stylesheet"
+  as="style"
+/>
+
+<link rel="icon" href="https://nosomber.github.io/flower.png"> <link rel="icon" type="image/png" sizes="16x16" href="https://nosomber.github.io/flower.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nosomber.github.io/flower.png">
+<link rel="apple-touch-icon" href="https://nosomber.github.io/flower.png"> <link rel="mask-icon" href="https://nosomber.github.io/flower.png">
+<meta name="theme-color" content="#2e2e33" />
+<meta name="msapplication-TileColor" content="#2e2e33" />
+<meta name="generator" content="Hugo 0.119.0">
+<link rel="alternate" hreflang="zh" href="https://nosomber.github.io/zh/posts/red/c/" />
+
+
+
+<link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet" />
+<meta property="og:title" content="C" />
+<meta property="og:description" content="C Programming Language" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nosomber.github.io/zh/posts/red/c/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-16T00:00:00&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-16T08:36:58&#43;08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C"/>
+<meta name="twitter:description" content="C Programming Language"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
+      "name": "C",
+      "item": "https://nosomber.github.io/zh/posts/red/c/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "C",
+  "name": "C",
+  "description": "C Programming Language",
+  "keywords": [
+    "c"
+  ],
+  "articleBody": "C 指针 如果你这样使用指针 int* p = 23; printf(\"%d\\n\", *p); 会有点问题 🔴warning: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion] 因为你把一个整型变量23赋给了一个指针变量a 🟢 *p 不是一个实际的值,是指向那个值.也就是指针 int a = 23; int* p = \u0026a; printf(\"%d\", *p); 注意看这个 char *p = \"123\"; 这个不会报错,因为字符串实际上是数组,而数组的名字实际上是指向数组首dfvgdsftgr元素的指针 关于数组 char* name = \"kai\"; name[0] = 'c'; 这样写编译的时候不会报错,但是在执行的时候会有这样的报错 🔴 segmentation fault (core dumped) String literals are ‘read-only’,they cannot be modified.Modifying the string literal may result in a crash or other undefined behavior. When you create string literals,it’s a better choice to as ‘const char*’,so your compiler can help you find any dangerous modification attempts to a string literal. 🟢 The reason that string literals are noet nodifiable,is because the C compiler will generate assembly code(and eventually a binary from the assembly),which stores the ‘string literal’ in a read-only region of the executable binary. 函数指针 A function signature consists of the function return type and it’s arguments at the very least.When we declare a function,we also provide it a name for us to reference the function by. Observe that while the program is running,anywhere we have ‘pfn’ we can reassign the pointer,thus changing the behavior of our program.This is very common in event-driven programming.Function pointers can also be passed as arguments into functions as well. e.g. int (*pfn)(int, int); int → return type (*pfn) → name (int, int) → arguments 概念解释 什么是 size_t size_t is an unsigned data type defined by several C/C++ standards, e.g. the C99 ISO/IEC 9899 standard, that is defined in stddef.h1. It can be further imported by inclusion of stdlib.h as this file internally sub includes stddef.h. This type is used to represent the size of an object. Library functions that take or return sizes expect them to be of type or have the return type of size_t. Further, the most frequently used compiler-based operator sizeof should evaluate to a constant value that is compatible with size_t. As an implication, size_t is a type guaranteed to hold any array index. ",
+  "wordCount" : "489",
+  "inLanguage": "zh",
+  "datePublished": "2024-03-16T00:00:00+08:00",
+  "dateModified": "2024-03-16T08:36:58+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "kai"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nosomber.github.io/zh/posts/red/c/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "E2C",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nosomber.github.io/flower.png"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nosomber.github.io/zh/" accesskey="h" title="kai&#39;s blog (Alt + H)">
+                <img src="/flower.png" alt="logo" aria-label="logo"
+                    height="35">kai&#39;s blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://nosomber.github.io/es/" title="Español🇵🇪"
+                            aria-label="Español🇵🇪">Español🇵🇪</a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nosomber.github.io/zh/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/" title="主页">
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/posts" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nosomber.github.io/zh/">Home</a>
+</div>
+
+    <h1 class="post-title">
+      C
+    </h1>
+    <div class="post-meta">
+
+2024-03-16&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;kai
+
+
+</div>
+  </header> 
+
+  <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#c" aria-label="C">C</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%8c%87%e9%92%88" aria-label="指针">指针</a></li>
+                    <li>
+                        <a href="#%e5%85%b3%e4%ba%8e%e6%95%b0%e7%bb%84" aria-label="关于数组">关于数组</a></li>
+                    <li>
+                        <a href="#%e5%87%bd%e6%95%b0%e6%8c%87%e9%92%88" aria-label="函数指针">函数指针</a></li>
+                    <li>
+                        <a href="#%e6%a6%82%e5%bf%b5%e8%a7%a3%e9%87%8a" aria-label="概念解释">概念解释</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af-size-t" aria-label="什么是 size_t">什么是 <strong>size_t</strong></a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content">
+<h2 id="c">C<a hidden class="anchor" aria-hidden="true" href="#c">#</a></h2>
+<h3 id="指针">指针<a hidden class="anchor" aria-hidden="true" href="#指针">#</a></h3>
+<p>如果你这样使用指针 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>p);
+</span></span></code></pre></div><p>会有点问题 <!-- raw HTML omitted -->
+🔴warning: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion] <!-- raw HTML omitted -->
+因为你把一个整型变量23赋给了一个指针变量a <!-- raw HTML omitted -->
+🟢 *p 不是一个实际的值,是指向那个值.也就是指针 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">23</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d&#34;</span>, <span style="color:#f92672">*</span>p);
+</span></span></code></pre></div><p>注意看这个 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;123&#34;</span>;
+</span></span></code></pre></div><p>这个不会报错,因为字符串实际上是数组,而数组的名字实际上是指向数组首dfvgdsftgr元素的指针 <!-- raw HTML omitted --></p>
+<h3 id="关于数组">关于数组<a hidden class="anchor" aria-hidden="true" href="#关于数组">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;kai&#34;</span>;
+</span></span><span style="display:flex;"><span>name[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;c&#39;</span>;
+</span></span></code></pre></div><p>这样写编译的时候不会报错,但是在执行的时候会有这样的报错 <!-- raw HTML omitted -->
+🔴 segmentation fault (core dumped) <!-- raw HTML omitted --></p>
+<p>String literals are &lsquo;read-only&rsquo;,they cannot be modified.Modifying the string literal may result in a crash or other undefined behavior. <!-- raw HTML omitted -->
+When you create string literals,it&rsquo;s a better choice to as &lsquo;const char*&rsquo;,so your compiler can help you find any dangerous modification attempts to a string literal. <!-- raw HTML omitted -->
+🟢 The reason that string literals are noet nodifiable,is because the C compiler will generate assembly code(and eventually a binary from the assembly),which stores the &lsquo;string literal&rsquo; in a read-only region of the executable binary. <!-- raw HTML omitted --></p>
+<h3 id="函数指针">函数指针<a hidden class="anchor" aria-hidden="true" href="#函数指针">#</a></h3>
+<p>A function signature consists of the function return type and it&rsquo;s arguments at the very least.When we declare a function,we also provide it a name for us to reference the function by. <!-- raw HTML omitted --></p>
+<p>Observe that while the program is running,anywhere we have &lsquo;pfn&rsquo; we can reassign the pointer,thus changing the behavior of our program.This is very common in event-driven programming.Function pointers can also be passed as arguments into functions as well. <!-- raw HTML omitted --></p>
+<p>e.g. <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>pfn)(<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>);
+</span></span></code></pre></div><p>int          → return type <!-- raw HTML omitted -->
+(*pfn)       → name <!-- raw HTML omitted -->
+(int, int)   → arguments <!-- raw HTML omitted --></p>
+<h3 id="概念解释">概念解释<a hidden class="anchor" aria-hidden="true" href="#概念解释">#</a></h3>
+<h4 id="什么是-size-t">什么是 <strong>size_t</strong><a hidden class="anchor" aria-hidden="true" href="#什么是-size-t">#</a></h4>
+<blockquote>
+<p>size_t is an <strong>unsigned data type</strong> defined by several C/C++ standards, e.g. the C99 ISO/IEC 9899 standard, that is defined in stddef.h1. It can be further imported by inclusion of stdlib.h as this file internally sub includes stddef.h. <!-- raw HTML omitted --></p>
+<p>This type is used to represent the size of an object. Library functions that take or return sizes expect them to be of type or have the return type of size_t. Further, the most frequently used compiler-based operator sizeof should evaluate to a constant value that is compatible with size_t. <!-- raw HTML omitted --></p>
+</blockquote>
+<p><strong>As an implication, size_t is a type guaranteed to hold any array index.</strong> <!-- raw HTML omitted --></p>
+
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nosomber.github.io/zh/tags/c/">c</a></li>
+    </ul>
+    <nav class="paginav">
+      <a class="next" href="https://nosomber.github.io/zh/posts/reco/">
+        <span class="title">下一页 »</span>
+        <br>
+        <span>reco</span>
+      </a>
+    </nav>
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2024 <a href="https://nosomber.github.io/zh/">E2C</a></span>
+
+    
+
+    
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+
+
+<script defer src="/assets/js/highlight.min.0d99f523475f82b0da65047fcc687e1cb5a6f935b1a0e75c9a1f2f84c53b748a.js" integrity="sha256-DZn1I0dfgrDaZQR/zGh&#43;HLWm&#43;TWxoOdcmh8vhMU7dIo="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js on E2C</title>
+    <link>https://nosomber.github.io/zh/tags/js/</link>
+    <description>Recent content in js on E2C</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>website</title>
+      <link>https://nosomber.github.io/zh/posts/red/web/</link>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 +0800</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/posts/red/web/</guid>
+      <description>swimming in the InterNet</description>
+    </item>
+    
+  </channel>
+</rss>

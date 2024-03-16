@@ -2,19 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://nosomber.github.io/es/about/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://nosomber.github.io/zh/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nosomber.github.io/es/about/"
-                />
-  </url><url>
     <loc>https://nosomber.github.io/es/posts/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -26,19 +15,8 @@
                 href="https://nosomber.github.io/es/posts/"
                 />
   </url><url>
-    <loc>https://nosomber.github.io/es/search/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://nosomber.github.io/zh/search/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nosomber.github.io/es/search/"
-                />
-  </url><url>
     <loc>https://nosomber.github.io/es/categories/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -51,6 +29,7 @@
                 />
   </url><url>
     <loc>https://nosomber.github.io/es/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -60,6 +39,82 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://nosomber.github.io/es/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/es/tags/ey/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/tags/ey/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/tags/ey/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/es/categories/ey/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/categories/ey/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/categories/ey/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/es/posts/rosa/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/posts/rosa/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/posts/rosa/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/es/tags/</loc>
+    <lastmod>2024-03-16T13:40:13+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/tags/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/es/about/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/about/"
+                />
+  </url><url>
+    <loc>https://nosomber.github.io/es/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://nosomber.github.io/zh/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://nosomber.github.io/es/search/"
                 />
   </url><url>
     <loc>https://nosomber.github.io/es/archives/</loc>
@@ -84,18 +139,6 @@
                 rel="alternate"
                 hreflang="es"
                 href="https://nosomber.github.io/es/series/"
-                />
-  </url><url>
-    <loc>https://nosomber.github.io/es/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://nosomber.github.io/zh/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="https://nosomber.github.io/es/tags/"
                 />
   </url>
 </urlset>
