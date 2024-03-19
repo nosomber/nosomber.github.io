@@ -10,7 +10,7 @@
 <meta name="description" content="About Emacs and Linux">
 <meta name="author" content="kai">
 <link rel="canonical" href="https://nosomber.github.io/zh/posts/tech/makin/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.cee4c408f2607f344b8d804d6a25a0ed3dbaf49bb7b81cfa78dcf77d2d00e814.css" integrity="sha256-zuTECPJgfzRLjYBNaiWg7T269Ju3uBz6eNz3fS0A6BQ=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.c9737c7ccbc6da22717dd572c8926624fc2712803c7e35c987de50fef89b6f4a.css" integrity="sha256-yXN8fMvG2iJxfdVyyJJmJPwnEoA8fjXJh95Q/vibb0o=" rel="preload stylesheet" as="style">
 <link rel="preload" href="/pic/flower.png" as="image">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.5fe39521a47502185a0112b26908c4e9e2e5c0d37a83f2d085136e48c95e1cde.js" integrity="sha256-X&#43;OVIaR1AhhaARKyaQjE6eLlwNN6g/LQhRNuSMleHN4="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -36,12 +36,12 @@
 <meta property="og:description" content="About Emacs and Linux" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nosomber.github.io/zh/posts/tech/makin/" />
-<meta property="og:image" content="https://nosomber.github.io/ea.jpg" /><meta property="article:section" content="posts" />
+<meta property="og:image" content="https://nosomber.github.io/pic/ea.jpg" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-09-24T00:00:00&#43;08:00" />
-<meta property="article:modified_time" content="2024-03-19T12:39:08&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-19T23:30:12&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://nosomber.github.io/ea.jpg" />
+<meta name="twitter:image" content="https://nosomber.github.io/pic/ea.jpg" />
 <meta name="twitter:title" content="makin"/>
 <meta name="twitter:description" content="About Emacs and Linux"/>
 
@@ -70,11 +70,11 @@
   "keywords": [
     "tech"
   ],
-  "articleBody": "Emacs #include int main() { int n = 7; for (int i = 0; i \u003c n; i++) { printf(\"%d\\n\"), i } return 0; } youtube 快捷键 从光标所在处删除到行首 There is C-0 C-k or C-u 0 C-k (setq debug-on-error t) follow links without using mouse C c C o 或者设置 ;; RETURN will follow links in org-mode files (setq org-return-follows-link t) 基本使用 Dired模式 修改文件名\nC x C q (wdired-change-to-wdired-mode) 然后 C x C s 保存 书签 C x r m 设置标签 C x r b 跳转到书签 C x r l 列出书签 register 跳转 类似于书签，但是重启 emacs 会丢失，特点是可以精细保存到光标所在位 C x r space 设置 C x r j 跳转 以只读方式打开文件 C x C r 新的窗口打开 C x 4 r 当前窗口打开 批量替换 在dired模式下,可以标记要查找替换的文件,然后执行 dired-do-query-replace-regexp 输入被替换的文字和替换文字,确认的时候有以下情况 y 替换当前 !替换所有 n忽略当前 C-g取消操作 窗口管理 C x 2 类似划分窗口，同时打开当前的文件，向下分身 C x 3 向右边分身 C x 4 f 打开新的窗口 (find-file-other-window) 关于打开的窗口是水平还是垂直划分的，参考这里1 C x 4 C o 在新的窗口打开文件，但光标还在当前文件 C x 4 b 同上，但光标位置切换到新开的文件上 C x 1 删除其他窗口 恢复窗口布局，类似于 undo 和 redo 在窗口上的应用 使用一个包 winner-mode (use-package winner-mode :straight nil :hook (after-init . winner-mode)) 移动 M g g 移动到指定行 M v 向上滚动 C v 向下滚动 C M v 其他buffer向上滚动 C M S v 其他buffer向下滚动 C s 向下搜索 C r 向上搜索 文本操作 缩写替换\nC-x a i g (mnemonic add inverse global) and enter the expansion 記憶術 (Mnemonic forms) abbrev 的介绍 输入 hw 后，使用 C-x a ' 会扩展为 hello world 另外 M / 可以根据 buffer 里已有的补全 矩形编辑\nC x SPC 将 range 转换成矩形 \u0026 一矩形方式选择 但是若想编辑，即整体添加，需要 C x r t 替换文本 org heading\nC RET 向下插入同级 heading M RET 向上插入… M 和方向键 调整层级大小 M S 方向键 连带子集一起调节 M 上下键 移动 heading list\n有序列表 1. or 1) 无须列表 - or + 向下插入一个列表,快速插入 M RET block\n快速插入块 C c C , e.g. src quote example org里的搜索\nC c / 可以根据不同的属性进行搜索 将列表转换成 heading\nC c * 对列表排序是 C c ^ he is i want to you Todo\n将 heading 转换成 TODO 和切换 TODO 的状态可以用 C c C t 和 S 方向键 快速插入一个 TODO M S RET TODO 状态关键字可以自定义 全局设定(在配置文件里添加以下代码)用竖线分隔已完成状态和未完成状态 (setq org-todo-keywords '((sequence \"TODO\" \"FEEDBACK\" \"VERIFY\" \"|\" \"DONE\" \"DELEGATED\"))) 单独文件设定 在文件头添加这样的属性,同样用 | 隔开 #+TODO: TOPLAY PLAYING | CLEAR NEWGANEPLUS 设定关键字的样式 (setq org-tode-keyword-faces '((\"TODO\" . \"#ff9977\") (\"DONE\" . \"#44bc44\"))) 优先级 C c , 设置优先级 S 方向键 调整 子任务 在主任务后添加 [],在方括号里可以用 / 或者 % 两种方式表示进度 时间\n时间戳: \u003c2006-11-01 Wed 19:11\u003e \u003c2007-05-16 Wed 15:23 +1w\u003e \u003c2004-08-23 Mon\u003e-\u003c2004-08-26 Thu\u003e [2006-11-01 Wed] 插入时间戳: C c . (org-time-stamp) C c ! (org-time-stamp-inactive) C u C c ! 插入带有当前时间的时间戳 (org-insert-time-stamp (current-time) t) ;; 插入时间戳(active)时默认带上当前时间 修改时间戳用 S 方向键 开始时间和结束时间 C c C s (org-schedule) C c C d (org-deadline) Agenda\nAgenda 就是将你的安排或者TODO给整理在一起 C c a 是调出视图的快捷键 标签\n给一件事情打标签, 可以用 C c C q 在文件头也可以预设标签 e.g. #+TAGS: @音乐 @电影 插件 yasnippet\n参考视频 创建新的模板 -\u003e yas-new-snippet C-c \u0026 C-n 用的时候,写下 key 里的东西 then TAB question code treesitter 代码高亮的级别\n调节这个变量 treesit-font-lock-level 代码补全与分析\n在编程模式下开启 eglot (add-hook 'prog-mode-hook 'eglot-ensure) eglot 关闭hint,也可以理解为disable一个mode (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))) org 导出org时没有换行\norg中每空一行表示一个段落,要想在段落里换行有以下方法 在文件头部加上 #+OPTIONS: \\n:t 或者在配置文件加上 (setq org-export-preserve-breaks t) 在换行处加上 \\\\ 刚打开是默认显示的标题级数\n两种方法 在配置文件加上钩子(直接copy过来的,我没有定义快捷键,默认开启) (defun org-show-two-levels () (interactive) (org-content 2)) (add-hook 'org-mode-hook (lambda () (define-key org-mode-map \"\\C-cm\" 'org-show-two-levels))) 在 org 头上可以加入下列指定语句(不过要注意,配置文件的优先级要高于此) #+STARTUP show2levels (貌似可以指定到五级) #+STARTUP content (以目录形式显示,即所有标题) 还有 overview 和 showeverything 但每试过有啥用 normal 输入法\n使用 emacs-rime 作为输入法 共享資料夾,包含預設輸入方案的源文件。 這些文件屬於 Rime 所發行軟件的一部份，在訪問權限控制較嚴格的系統上對用戶是只讀的，因此謝絕軟件版本更新以外的任何修改—— 一旦用戶修改這裏的文件，很可能影響後續的軟件升級或在升級時丟失數據。在 emacs 里是在 ~/.config/ibus/rime/ 用戶資料夾,則包含爲用戶準備的內容 将配置内容放在这里面就对了 对于同步 在 installation.yaml 里，添加 installation_id: “linux-rime” 和 sync_dir: “home/mi/OneDrive/rime” okay, enjoy 😊 重新加载此页面\n一般当外界文件变动的时候emacs不能很好地实时变动 需要用到 revert-buffer 这个函数 每次执行的时候还需要确认,sf上有人提供了修改版的 ;; Source: https://www.emacswiki.org/emacs/misc-cmds.el (defun revert-buffer-no-confirm () \"Revert buffer without confirmation.\" (interactive) (revert-buffer :ignore-auto :noconfirm)) Arch 基础 安装 参考 ArchLinuxStudio 这个中文的文档，文档挺详细的 另外参考 kaiza-hikaru-del 的关于 arch 的配置 以及 cc 的教程 实践 Time:9/24/2023 扩大字体 setfont ter-122b (132b) 确保目前是 UEFI 模式 ls /sys/firmware/efi/efivars 连接网络 before this *禁用 reflector*(可选) systemctl stop reflector.service 这里直接略过，有线网络可以直接使用。无线网络需要配置 iwctl # 用这个工具配置 device list # 列出设备名，比如无线网卡看到叫 wlan0 station wlan0 scan # 扫描网络 station wlan0 get-networks # 列出网络 比如想连接YOUR-WIRELESS-NAME这个无线 station wlan0 connect YOUR-WIRELESS-NAME # 进行连接 输入密码即可 exit 硬盘分区 先将硬盘转换成 gpt 类型 （不过大部分的硬盘已经是 gpt 类型的了） 可忽略 利用“fdisk -l”命令，若显示结果中的“Disk label type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt (还未验证其可行性) fdisk -l # 查看电脑磁盘的划分情况及盘符号 cfdisk 你自己电脑的盘符号 # 使用 cfdisk 对磁盘进行分区 接下来用 cfdisk 工具对目标磁盘进行分区 boot \u0026 root \u0026 swap boot 分区 type efi 550M root 分区 type linux filesystem swap 分区 type swap 4G(可以多但必要不大) 分好区的磁盘进行格式化，以及开启 swap mkfs.fat -F32 /dev/nvme0n1p1 #格式化 boot 分区 mkfs.ext4 /dev/nvme0n1p2 #格式化 root/home 分区 # 这是格式化和开启交换分区的，如果前面没有创建交换分区，可忽略 mkswap /dev/nvme0n1p3 swapon /dev/nvme0n1p3 挂载 先挂载根分区，再挂载 EFI 分区 mount /dev/sdax（盘符号根据自己电脑而定） /mnt #挂载根目录 mkdir /mnt/boot #创建boot目录（在根目录下） # 挂载 boot 分区 mount /dev/sdax /mnt/boot 镜像源 处于这个文件当中 /etc/pacman.d/mirrorlist 中国源 –放在最上方即可 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中科大 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学 一些国际源 Server = https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch #东亚地区:中华民国 Server = https://mirror.0xem.ma/arch/$repo/os/$arch #北美洲地区:加拿大 Server = https://mirror.aktkn.sg/archlinux/$repo/os/$arch #东南亚地区:新加坡 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch #欧洲地区:英国 Server = https://mirrors.cat.net/archlinux/$repo/os/$arch #东亚地区:日本 必须的包\n\u003e pacman -Sy archlinux-keyring # 安装这个可解决证书问题 pacstrap /mnt base base-devel linux linux-headers linux-firmware #base-devel在AUR包的安装是必须的 一些工具性的包 pacstrap /mnt vim bash-completion # vim 和 bash 的补全 #单写出来 networkmanager 需要安装，不然安装完成后，会连接不上网络（当然需要开启这个服务，稍后再说。） pacstrap /mnt networkmanager 生成fstab文件 fstab 用来定义磁盘分区 genfstab -U /mnt \u003e\u003e /mnt/etc/fstab 复查一下 /mnt/etc/fstab 确保没有错误 不必要 cat /mnt/etc/fstab Change root 把环境切换到新系统的/mnt 下 arch-chroot /mnt 设置时区，在/etc/localtime 下用/usr 中合适的时区创建符号连接。如下设置上海时区。 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 随后进行硬件时间设置，将当前的正确 UTC 时间写入硬件时间。 hwclock --systohc 设置Locale进行本地化 编辑 /etc/locale.gen 去掉 en_US.UTF-8 所在行 以及 zh_CN.UTF-8 所在行的注释符号（#）。 然后使用如下命令生成 locale。 locale-gen 最后向 /etc/locale.conf 导入内容 echo 'LANG=en_US.UTF-8' \u003e /etc/locale.conf 设置主机名 首先在=/etc/hostname=设置主机名 vim /etc/hostname 加入你想为主机取的主机名，这里比如叫 apple 接下来在=/etc/hosts=设置与其匹配的条目。 vim /etc/hosts 加入如下内容 127.0.0.1 localhost ::1 localhost 127.0.1.1 apple（刚才设置的主机名） 为root设置密码 passwd root 制作Grub引导 pacman -S grub efibootmgr amd-ucode # 如果是intel就装intel-ucode mkdir /boot/grub grub-install --target=x86_64-efi --efi-directory=/boot grub-mkconfig \u003e /boot/grub/grub.cfg 事后可设置 /etc/default/grub 中 可提升启动速度 GRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 nowatchdog\" 完成 exit # 退回安装环境# umount -R /mnt # 卸载新分区 reboot # 重启 重启后别急着 sudo pacman -Syyu 一步一步来 先来连接网络，开启 networkmanager 服务 sudo systemctl enable --now NetworkManager 若有冲突，可以试着关闭 iwd stop or disable 在装完系统进入 tty 的时候，字体同样会很小。可以先下载一个终端使用的字体 pacman -S terminus-font 然后 setfont ter-u22b 立即生效, 使用配置文件 /etc/vconsole.conf 可以固化配置。 创建非 root 用户 useradd -m -G wheel -s /bin/bash welcome #wheel附加组可sudo，以root用户执行命令 -m同时创建用户家目录 为新用户创建密码，用 passwd + 用户名 这个方法 编辑 sudoers 配置文件 EDITOR=vim visudo # 需要以 root 用户运行 visudo 命令 # 去掉下面这行的注释 #%wheel ALL=(ALL:ALL) ALL yay yay 是比pacman更便捷的包管理工具，推荐使用 vim /etc/pacman.conf 尾部添加 [archlinuxcn] SigLevel = Never Server = https://mirrors.ustc.edu.cn/$repo/$arch # （可选）顺便开启 # 是将pacman使用的源添加到yay里，如果在执行下面更新命令的时候报错，可能是因为源配置有冲突，是因为源重复添加，删除一个即可 [multilib] Include = /etc/pacman.d/mirrorlist sudo pacman -Syyu # 更新一下 （更新配置） sudo pacman -S yay # 安装 yay DWM 安装前件 yay -S git xorg xorg-xinit 安装字体 yay -S nerd-fonts-jetbrains-mono # 注这个jetbrains 的字体，目前的包名不叫这个但是新的包在我使用起来会出现错误，字体显示不全 yay -S ttf-material-design-icons # 图标 yay -S ttf-joypixels yay -S wqy-microhei # 中文字体（文泉驿） 安装软件 （不必须，但建议） 在终端使劲敲 yay -S lxappearance # gui设置 yay -S paper-gtk-theme-git # gtk主题 yay -S pavucontrol # 音频设置 yay -S breeze-icons # 图标 yay -S rofi # 菜单 yay -S flameshot # 截图软件 yay -S google-chrome wyeb-git # 浏览器 yay -S byzanz # gif截图依赖 yay -S wps-office-cn # wps yay -S libnotify dunst # 通知 可使用 dunst -b 命令 启动通知服务 yay -S xorg-xsetroot # dwm设置状态栏 yay -S xf86-input-synaptics # 触控板 yay -S network-manager-applet # 网络托盘 yay -S amf-amdgpu-pro # amd gpu 驱动 yay -S obs-studio-amf # obs for amd_gpu yay -S mpc mpd ncmpcpp # tui music player 开始 clone dwm和 st 吧 本人习惯创建 .rec 文件夹 cp -r DEF/* . sudo make clean install 运行 dwm 在 ~/.xinitrc 文件里写入 export DWM=~/.rec/dwm exec dwm 然后就可以愉快的使用 startx 启动了 当然如果你想进入 tty 的时候自动执行 startx 的话可以在 bash 的配置里加上 [ $(tty) = \"/dev/tty1\" ] \u0026\u0026 cd ~ \u0026\u0026 startx 别忘了为 c 先生 的 scripts 里的脚本和*给脚本加权限* 其他杂项 触控板生效 yay -S xf86-input-synaptics # 触控板 /etc/X11/xorg.conf.d/30-touchpad.conf Section \"InputClass\" Identifier \"touchpad\" Driver \"libinput\" MatchIsTouchpad \"on\" Option \"Tapping\" \"on\" Option \"TappingButtonMap\" \"lrm\" EndSection tty 免登录 (感觉有点不对，需要深入研究) vim /etc/systemd/system/getty.target.wants/getty@tty1.service # 这一步貌似有错误 update ExecStart=-/sbin/agetty -o '-p -f [用户名]' -n -a chenyc --noclear %I $TERM # sudo免密 加到 visudo 添加到尾部 即 EDITOR=vim visudo [用户名] ALL=(ALL:ALL) NOPASSWD: ALL #用户提权 yay -S polkit 去除蜂鸣器声音 sudo su mkdir -p /etc/rc.d echo \"rmmod pcspkr\" \u003e\u003e /etc/rc.d/rc.local chmod +x /etc/rc.d/rc.local 然后开梯子🪜，更换 zsh c 先生也有一篇关于 zsh 的分享 可以直接拿来用 omz 下载 sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" 配置可以放在 .rec 里 需要的依赖\u0026软件 fzf fd bat exa ueberzug(可在x11终端下预览图片) z.lua extract zsh-autosuggestions zsh-syntax-highlighting fzf-tab 但是这些git下来的就有 😄 然后在 .zshrc 里加入这样的一句话 source ~/.rec/omz/omz.zsh 之后 source 一下 zshrc 就 okay 了。 好吧就到这吧，以后也许还会修改和添加。关于 dwm\u0026arch 的配置和问题不在这里描述 25 Nov,23 优化 输入法\n首先是安装Rime sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-config-qt fcitx5-material-color fcitx5-im fcitx5-rime sudo echo ' GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_IM_MODULE=fcitx GLFW_IM_MODULE=ibus' \u003e\u003e /etc/environment 其次配置文件是在 ~/.local/share/fcitx5/rime 配置文件*是这位老哥的 关于*默认输入英文还是中文*这个是在以 schema.yaml 为结尾的文件里将 reset 从 0 改为 1. 关于*皮肤 这位老哥弄了一个工具，可以将搜狗的皮肤转换成 fcitx5 的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 music\ncc关于mpd 和 ncmpcpp的配置 在安装好mpd后还需要两个依赖包 yay -S timidity wildmidi scripts脚本文件夹里有一个关于音乐的脚本 command + m 可以调出两个音乐的窗口。不过位置的显示需要微调。 WiFi（nmcli）\n使用 nmcli 对 wifi进行连接和管理 nmcli radio wifi on # 开启wifi nmcli dev wifi list # 列出可用的wifi sudo nmcli dev wifi connect SSID password xxx # 连接wifi,xxx为密码 #如果不想在屏幕上写出密码,可以用下面的命令 sudo ncmli --ask dev wifi connect SSID # 🟣 # 使用 nmcli 管理网络 # 如果连接到一个网络,但是想切换到其他的网络,可以用down/up指令加上对应的SSID nmcli con up/down SSID 屏幕亮度\n第一种方法 使用的是acpi This friend has given a nice solution This is the file place where to control the backlight on my cp 我的arch里控制背光的文件 /sys/class/backlight/amdgpu_bl1/brightness By the way, the max_brightness is 255 ,jaja Scripts are here /etc/acpi/actions corresponding files are here /etc/acpi/events 第二种方法 (better) Up #!/bin/sh bl_device=/sys/class/backlight/amdgpu_bl1/brightness echo $(($(cat $bl_device)+2)) | sudo tee $bl_device Down #!/bin/sh # bl_device=/sys/class/backlight/amdgpu_bl1/brightness echo $(($(cat $bl_device)-2)) | sudo tee $bl_device 使用的是 xbindkeys, 方法和下面音量的调节一样 音量调节\nThis is very good 用 xbindkeys 这个软件将脚本绑定到对应的按键上 用 xev 或者 xbindkeys -k=来显示按键对应的名称 将脚本和按键对应的关系按照一定的语法写入到 =~/.xbindkeysrc 文件夹中 自动激活可以在 ~/.xinitrc 文件中写入 xbindkeys 静音和调大调小之间的不协调 首先是在调节音量之前判断一下系统现在是否处在静音的状态. 如果是的话，那么将其解除静音. 代码实现如下 #!/bin/sh # NAME # volume.sh - Increase/decrease/mute volume using PulseAudio pactl # SYNOPSIS # volume.sh # Suggested location: ~/scripts/volume.sh step=2 # number of percentage points to increase/decrease volume max=50 # do not increase volume above this percentage # Prints current volume percentage, e.g. `60`, `95`, `20`, etc. function get_current_volume() { pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' '{print $2}' | grep -o '[0-9]\\+' } mute_or_not=`pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'` # 查看是否静音 if [ $1 == \"raise\" ]; then # Modification: only increase volume if current volume is less than `max` if [ `get_current_volume` -lt ${max} ]; then if [ $mute_or_not == \"yes\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle fi pactl set-sink-volume @DEFAULT_SINK@ \"+${step}%\" fi # The rest of the script is identical to the original `volume.sh` elif [ $1 == \"lower\" ]; then if [ $mute_or_not == \"yes\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle fi pactl set-sink-volume @DEFAULT_SINK@ \"-${step}%\" elif [ $1 == \"mute\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle else echo \"Unrecognized parameter: ${1}\" echo \"Usage should be: volume.sh \" fi grub中 Win丟失\nLost Windows in Grub 查看uuid的命令是 blkid menuentry 'Win' { insmod part_gpt insmod fat insmod chain search --fs-uuid --no-floppy --set=root EAD2-8212 chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi } /boot/grub/grub.cfg custom 40 注意那里 –set=root xxx 是定义了一个变量下面一行里会调用这个变量 这里建议修改我视频里的文件 /etc/grub.d/40_custom Figure 1: image-20231119094353767\n补充一点，Windows 里如果 efi 分区没有独立出来，即和 c盘在一起，新建一个独立的 efi 分区的步骤如下 list partition select partition {index} # 选择一个分区 shrink desired=100 # 从这个分区里压缩出 100M 的空间 create partition efi size=100 # 创建 efi 分区 format quick fs=fat32 # 格式化 assign letter=s # 设置盘符 list volume # 列出磁盘的全部卷 exit # 然后以管理员权限运行 Cmd bcdboot C:\\windows /s S: #复制 efi 文件到新建的分区 开机启动脚本\n将脚本写好后，添加权限，然后将脚本加入到 cc 的 dwm 配置 autostart.sh 里面， 注意在结尾要用 \u0026 隔开与下一个命令 前面命令为假时，后面命令才会执行 \u0026\u0026 前面命令为真时，后面命令才会执行 \u0026 用 \u0026 连接的命令会同时执行，不管命令是否成功 停止一个脚本进程\n起因：为 clash 设置开机启动脚本之后，不知道该怎么关闭 解决：用 ps -ef | grep clash 来列出 clash 的进程 再用 kill -9 *进程号* 来关闭， 一般是 ./clash…. 这个进程，而不是脚本文件 给 Arch 添加 Swap 文件\n参考：TimothyQiu’s Blog 起因：之前按照 cc 和 archstory 的步骤，给 arch 开机的时候发现 arch 显示/找不到/swapfile/，因此在网上有找了一些其他的方法（感觉 cc 的有些省略） 📍创建 Swap 文件 创建 Swap 文件有很多种方法，但最可移植的方法是使用 dd=。比如创建 1G 的 =/swapfile ： dd if=/dev/zero of=/swapfile bs=1M count=1024 status=progress chmod 0600 /swapfile mkswap -U clear /swapfile 这里的 chmod 是为了安全，所有人都可读写的 Swap 文件是巨大隐患。 mkswap 的 -U 参数用于设置 swap 的 UUID。但是因为 swap 文件必须使用文件系统路径去指定，所以这里使用特殊的 clear 作为参数去清空它（实际效果是设置了全零的 UUID）。 📍打开与关闭 创建好 swap 文件后，就可以直接启用了： swapon /swapfile 最后把它放进 /etc/fstab 里，这样每次启动就会直接启用： /swapfile none swap defaults 0 0 如果是要关闭，顾名思义就： swapoff /swapfile 关闭以后它就是个普通文件，想删除就可以直接删除了。 📍使用 Swap 文件进行休眠 需要设置=resume=和=resume_offset=参数 resume 参数是 swap 文件所在的分区（例如 =/dev/nvme0n1p2=，或者 =UUID=4209c845-f495-4c43-8a03-5363dd433153=）有两种表示方法 =UUID=的获取方法是 findmnt -no UUID -T /swapfile =resume_offset=获取方法 filefrag -v /swapfile | awk '{ if($1==\"0:\"){print substr($4, 1, length($4)-2)} }' 编辑=/etc/default/grub=，将以上两个参数写进=/etc/default/grub=中 像这样 GRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 nowatchdog resume=UUID=db7c6671-e10c-4486-9077-87692688cdcc resume_offset=3733504\" 最后重新生成一下`=grub.cfg= grub-mkconfig -o /boot/grub/grub.cfg 📍initramfs 如果你的 initramfs 没有使用 systemd 钩子（使用的是 base），那么就还需要添加一个 resume 钩子才会尝试从休眠中恢复： 编辑 /etc/mkinitcpio.conf 文件，在 HOOKS=(...) 里的 udev 之后的任何位置加入 =resume=。最后重新生成 initramfs 即可： mkinitcpio -p linux 和 Win 时间不同\n原因 少数派的一篇文章 GMT: Greenwhich Mean Time (格林尼治标准时间)，也就是世界时间。以地球自转为基础的时间计量系统。但是GMT不够准确（相比较而言） *UTC*：Universal Time Coordinated (协调世界时)，以=原子时=的秒长为基础。现在作为时间标准时间使用 *RTC*：Real-Time Clock 实时时钟 ，在计算机领域称为硬件时间 e.g 北京位于东八区， 其时间即为 UTC+8 Windows把硬件时钟设为=本地时间= Linu把硬件时间设为=UTC= 那么Linux显示的时间就是UTC时间➕时区 解决方法 Windows 管理员打开=powershell= Reg add HKLM\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1 或者打开「注册表编辑器」，定位到 计算机\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation 目录下，新建一个 DWORD 类型，名称为 RealTimeIsUniversal 的键，并修改键值为 1 即可。 Linux timedatectl set-local-rtc 1 --adjust-system-clock onedrive 同步\n博客 可以直接在 AUR 里找到 onedrive-abraunegg 然后运行 onedrive 复制链接，浏览器打开，再将输出的网址复制下来，完成账号授权。 可以在配置文件夹目录下创建 sync_list,可以在这个文件里写入你想要同步的文件夹，每行一个。写完注意执行一下这个命令 onedrive --synchronize --resync 详情见此 如果不想把文件同步在默认的路径下可以在配置文件夹下，新建一个=config=文件，把此处给的 configuration examples 全部复制进去，找到 sync_dir 把前面的注释删掉，改成自己喜欢的路径 然后 onedrive --synchronize 愉快同步。 访问 windows 文件\n如果有 unknown filesystem type 'ntfs' 这种错误，需要安装=yay -S ntfs-3g=这个包 ArchLinux忽略某个包的升级\n咋做的呢？往 /etc/pacman.conf 里，有这么一行： #IgnorePkg = ，给它取消注释，改成：=IgnorePkg = linux=， 然后就可以了。 keyring 签名错误\n❌ signature from “xxx” is unknown 解决方法 rm -rf /etc/pacman.d/gnupg pacman-key --init pacman-key --populate 虚拟机 参考这篇博客 🔴 在 arch 里用 virtual box 使用 Windows7 virtual 会报错 sudo pacman -S virtualbox-host-modules-arch sudo modprobe vboxdrv # 不行的话再用这个 sudo /sbin/rcvboxdrv setup 2️⃣ win7 下载在此 https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006 Hash: 36ae90defbad9d9539e649b193ae573b77a71c83 序列号: V77DJ-CT8WB-Y3GXT-X3FBP-6F987 3️⃣ VBoxGuestAdditions 下载地址在此 把它下载到 arch 里，然后在虚拟机这边挂在这个 .iso 文件，然后安装 🔴 但是会报错 Windows cannot verify the digital signature ….. 管理员权限 cmd 运行后重启 bcdedit /set testsigning on bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS 4️⃣ VirtualBox Extension Pack 需要用 sudo 权限，原因在此 然后在 USB 外设里找到相应的添加到虚拟机中，⚠️ 对于 arch 用命令行安装的 Virtual-box 需要以下命令才能 sudo groupadd usbfs # 把当前用户添加到 usbfs 和 vboxusers 用户组 sudo usermod -aG usbfs $USER sudo usermod -aG vboxusers $USER rofi If you have not created a config file, there is none, and rofi uses its default settings. You can create a config file with those settings by running rofi -dump-config rofi 的自定义配置比如修改字体 mkdir -p ~/.config/rofi rofi -dump-config \u003e ~/.config/rofi/config.rasi 修改后把注释去掉即可 设置行号 set numbet grub 修改grub显示主题 在github上找到了一个傻瓜式一键安装的主题,也是我正在使用的[2024-03-15 Fri],可以更换壁纸样式 磁盘管理 du -sh -h human-readable -s summarize display only a total for each argument 在home下的 .local 文件夹里有回收站 Normally this action is performed by the function split-window-sensibly, and controlled by two variables, split-height-threshold and split-width-threshold. Per the documentation If ‘split-height-threshold’ specifies an integer, WINDOW is at least ‘split-height-threshold’ lines tall and can be split vertically, split WINDOW into two windows one above the other and return the lower window. Otherwise, if ‘split-width-threshold’ specifies an integer, WINDOW is at least ‘split-width-threshold’ columns wide and can be split horizontally, split WINDOW into two windows side by side and return the window on the right. If this can’t be done either and WINDOW is the only window on its frame, try to split WINDOW vertically disregarding any value specified by ‘split-height-threshold’. If that succeeds, return the lower window. Return nil otherwise. On my system the default value for split-height-threshold is 80 and split-width-threshold is 160. I think you could get the effect you want by setting split-width-threshold to something lower. Alternatively you could set split-height-threshold to nil, preventing it from ever splitting vertically, or set the variable split-window-preferred-function to a different function. Any of these would affect, not just find-file-in-other-window, but all the functions that split the screen. ↩︎\n",
-  "wordCount" : "7195",
+  "articleBody": "Emacs #include int main() { int n = 7; for (int i = 0; i \u003c n; i++) { printf(\"%d\\n\"), i } return 0; } youtube 快捷键 从光标所在处删除到行首 ˛ There isC-0 C-korC-u 0 C-k follow links without using mouse C c C o ;; RETURN will follow links in org-mode files (setq org-return-follows-link t) 基本使用 Dired模式 修改文件名 C x C q(wdired-change-to-wdired-mode) 然后C x C s保存 书签 C x r m 设置标签 C x r b 跳转到书签 C x r l 列出书签 register 跳转 类似于书签，但是重启 emacs 会丢失，特点是可以精细保存到光标所在位 C x r space 设置 C x r j 跳转 以只读方式打开文件 C x C r 新的窗口打开 C x 4 r 当前窗口打开 批量替换 在dired模式下,可以标记要查找替换的文件,然后执行dired-do-query-replace-regexp 输入被替换的文字和替换文字,确认的时候有以下情况 y 替换当前 !替换所有 n忽略当前 C-g取消操作 窗口管理 C x 2 类似划分窗口，同时打开当前的文件，向下分身 C x 3 向右边分身 C x 4 f 打开新的窗口 (find-file-other-window) 关于打开的窗口是水平还是垂直划分的，参考这里1 C x 4 C o 在新的窗口打开文件，但光标还在当前文件 C x 4 b 同上，但光标位置切换到新开的文件上 C x 1 删除其他窗口 恢复窗口布局，类似于 undo 和 redo 在窗口上的应用 使用一个包 winner-mode (use-package winner-mode :straight nil :hook (after-init . winner-mode)) 移动 M g g 移动到指定行 M v 向上滚动 C v 向下滚动 C M v 其他buffer向上滚动 C M S v 其他buffer向下滚动 C s 向下搜索 C r 向上搜索 文本操作 缩写替换 C-x a i g(mnemonic add inverse global) and enter the expansion 記憶術 (Mnemonic forms) abbrev 的介绍 输入_hw_后，使用C-x a '会扩展为 hello world 另外M /可以根据 buffer 里已有的补全 矩形编辑 C x SPC将 range 转换成矩形(以矩形方式选择) 但是若想编辑,即整体添加，需要C x r t替换文本 org heading C RET 向下插入同级 heading M RET 向上插入… M 和方向键 调整层级大小 M S 方向键 连带子集一起调节 M 上下键 移动 heading list 有序列表 1. or 1) 无须列表 - or + 向下插入一个列表,快速插入M RET block 快速插入块 C c C , 例如 src quote example org里的搜索 C c /可以根据不同的属性进行搜索 将列表转换成 heading C c * 对列表排序是 C c ^ he is i want to you Todo 将 heading 转换成 TODO 和切换 TODO 的状态可以用C c C t和S 方向键 快速插入一个 TODOM S RET TODO状态关键字可以自定义 全局设定(在配置文件里添加以下代码)用竖线分隔已完成状态和未完成状态 (setq org-todo-keywords '((sequence \"TODO\" \"FEEDBACK\" \"VERIFY\" \"|\" \"DONE\" \"DELEGATED\"))) 单独文件设定 在文件头添加这样的属性,同样用 | 隔开 #+TODO: TOPLAY PLAYING | CLEAR NEWGANEPLUS 设定关键字的样式 (setq org-tode-keyword-faces '((\"TODO\" . \"#ff9977\") (\"DONE\" . \"#44bc44\"))) 优先级 C c , 设置优先级 S 方向键 调整 _子任务_在主任务后添加[],在方括号里可以用 / 或者 % 两种方式表示进度 时间 时间戳: \u003c2006-11-01 Wed 19:11\u003e \u003c2007-05-16 Wed 15:23 +1w\u003e \u003c2004-08-23 Mon\u003e-\u003c2004-08-26 Thu\u003e [2006-11-01 Wed] 插入时间戳: C c . (org-time-stamp) C c ! (org-time-stamp-inactive) C u C c ! 插入带有当前时间的时间戳 (org-insert-time-stamp (current-time) t) ;; 插入时间戳(active)时默认带上当前时间 修改时间戳用 S 方向键 开始时间和结束时间 C c C s (org-schedule) C c C d (org-deadline) Agenda _Agenda_就是将你的安排或者TODO给整理在一起 C c a 是调出视图的快捷键 标签 给一件事情打标签, 可以用C c C q 在文件头也可以预设标签 e.g. #+TAGS: @音乐 @电影 插件 yasnippet 参考视频 创建新的模板 -\u003e yas-new-snippetC-c \u0026 C-n 用的时候,写下 key 里的东西 then TAB question code treesitter 代码高亮的级别 调节这个变量treesit-font-lock-level 代码补全与分析 在编程模式下开启_eglot_ (add-hook 'prog-mode-hook 'eglot-ensure) eglot关闭_hint_,也可以理解为disable一个mode (add-hook 'eglot-managed-mode-hook (lambda () (eglot-inlay-hints-mode -1))) org 导出org时没有换行 org中每空一行表示一个段落,要想在段落里换行有以下方法 在文件头部加上#+OPTIONS: \\n:t 或者在配置文件加上 (setq org-export-preserve-breaks t) 在换行处加上\\\\ 刚打开是默认显示的标题级数 两种方法 在配置文件加上钩子(直接copy过来的,我没有定义快捷键,默认开启) (defun org-show-two-levels () (interactive) (org-content 2)) (add-hook 'org-mode-hook (lambda () (define-key org-mode-map \"\\C-cm\" 'org-show-two-levels))) 在 org 头上可以加入下列指定语句(不过要注意,配置文件的优先级要高于此) #+STARTUP show2levels (貌似可以指定到五级) #+STARTUP content (以目录形式显示,即所有标题) 还有 overview 和 showeverything 但每试过有啥用 normal 输入法 使用 emacs-rime 作为输入法 共享資料夾,包含預設輸入方案的源文件。 這些文件屬於 Rime 所發行軟件的一部份，在訪問權限控制較嚴格的系統上對用戶是只讀的，因此謝絕軟件版本更新以外的任何修改—— 一旦用戶修改這裏的文件，很可能影響後續的軟件升級或在升級時丟失數據。在 emacs 里是在 ~/.config/ibus/rime/ 用戶資料夾,則包含爲用戶準備的內容 将配置内容放在这里面就对了 对于同步 在 installation.yaml 里，添加 installation_id: “linux-rime” 和 sync_dir: “home/mi/OneDrive/rime” okay, enjoy 😊 重新加载此页面 一般当外界文件变动的时候emacs不能很好地实时变动 需要用到revert-buffer这个函数 每次执行的时候还需要确认,sf上有人提供了修改版的 ;; Source: https://www.emacswiki.org/emacs/misc-cmds.el (defun revert-buffer-no-confirm () \"Revert buffer without confirmation.\" (interactive) (revert-buffer :ignore-auto :noconfirm)) Arch 基础 安装 参考ArchLinuxStudio这个中文的文档，文档挺详细的 另外参考kaiza-hikaru-del的关于 arch 的配置,以及 cc 的教程 实践 Time:9/24/2023 扩大字体 setfont ter-122b (132b) 确保目前是 UEFI 模式 ls /sys/firmware/efi/efivars 连接网络 before this *禁用 reflector*(可选) systemctl stop reflector.service 这里直接略过，有线网络可以直接使用。无线网络需要配置 iwctl # 用这个工具配置 device list # 列出设备名，比如无线网卡看到叫 wlan0 station wlan0 scan # 扫描网络 station wlan0 get-networks # 列出网络 比如想连接YOUR-WIRELESS-NAME这个无线 station wlan0 connect YOUR-WIRELESS-NAME # 进行连接 输入密码即可 exit 硬盘分区 先将硬盘转换成 gpt 类型 （不过大部分的硬盘已经是 gpt 类型的了） 可忽略 利用“fdisk -l”命令，若显示结果中的“Disk label type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt (还未验证其可行性) fdisk -l # 查看电脑磁盘的划分情况及盘符号 cfdisk 你自己电脑的盘符号 # 使用 cfdisk 对磁盘进行分区 接下来用 cfdisk 工具对目标磁盘进行分区 boot \u0026 root \u0026 swap boot 分区 type efi 550M root 分区 type linux filesystem swap 分区 type swap 4G(可以多但必要不大) 分好区的磁盘进行格式化，以及开启 swap mkfs.fat -F32 /dev/nvme0n1p1 #格式化 boot 分区 mkfs.ext4 /dev/nvme0n1p2 #格式化 root/home 分区 # 这是格式化和开启交换分区的，如果前面没有创建交换分区，可忽略 mkswap /dev/nvme0n1p3 swapon /dev/nvme0n1p3 挂载 先挂载根分区，再挂载 EFI 分区 mount /dev/sdax（盘符号根据自己电脑而定） /mnt #挂载根目录 mkdir /mnt/boot #创建boot目录（在根目录下） # 挂载 boot 分区 mount /dev/sdax /mnt/boot 镜像源 处于这个文件当中 /etc/pacman.d/mirrorlist 中国源 –放在最上方即可 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中科大 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学 一些国际源 Server = https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch #东亚地区:中华民国 Server = https://mirror.0xem.ma/arch/$repo/os/$arch #北美洲地区:加拿大 Server = https://mirror.aktkn.sg/archlinux/$repo/os/$arch #东南亚地区:新加坡 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch #欧洲地区:英国 Server = https://mirrors.cat.net/archlinux/$repo/os/$arch #东亚地区:日本 必须的包\npacman -Sy archlinux-keyring 安装这个可解决证书问题 pacstrap /mnt base base-devel linux linux-headers linux-firmware #base-devel在AUR包的安装是必须的 一些工具性的包 pacstrap /mnt vim bash-completion # vim 和 bash 的补全 #单写出来 networkmanager 需要安装，不然安装完成后，会连接不上网络（当然需要开启这个服务，稍后再说。） pacstrap /mnt networkmanager 生成fstab文件 fstab 用来定义磁盘分区 genfstab -U /mnt \u003e\u003e /mnt/etc/fstab 复查一下 /mnt/etc/fstab 确保没有错误 不必要 cat /mnt/etc/fstab Change root 把环境切换到新系统的/mnt 下 arch-chroot /mnt 设置时区，在/etc/localtime 下用/usr 中合适的时区创建符号连接。如下设置上海时区。 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 随后进行硬件时间设置，将当前的正确 UTC 时间写入硬件时间。 hwclock --systohc 设置Locale进行本地化 编辑 /etc/locale.gen 去掉 en_US.UTF-8 所在行 以及 zh_CN.UTF-8 所在行的注释符号（#） 然后使用如下命令生成 locale locale-gen 最后向 /etc/locale.conf 导入内容 echo 'LANG=en_US.UTF-8' \u003e /etc/locale.conf 设置主机名 首先在=/etc/hostname=设置主机名 vim /etc/hostname 加入你想为主机取的主机名，这里比如叫 apple 接下来在=/etc/hosts=设置与其匹配的条目。 vim /etc/hosts 加入如下内容 127.0.0.1 localhost ::1 localhost 127.0.1.1 apple（刚才设置的主机名） 为root设置密码 passwd root 制作Grub引导 pacman -S grub efibootmgr amd-ucode # 如果是intel就装intel-ucode mkdir /boot/grub grub-install --target=x86_64-efi --efi-directory=/boot grub-mkconfig \u003e /boot/grub/grub.cfg 事后可设置 /etc/default/grub 中 可提升启动速度 GRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 nowatchdog\" 完成 exit # 退回安装环境# umount -R /mnt # 卸载新分区 reboot # 重启 重启后别急着 sudo pacman -Syyu 一步一步来 先来连接网络，开启 networkmanager 服务 sudo systemctl enable --now NetworkManager 若有冲突，可以试着关闭 iwd stop or disable 在装完系统进入 tty 的时候，字体同样会很小。可以先下载一个终端使用的字体 pacman -S terminus-font 然后 setfont ter-u22b 立即生效, 使用配置文件 /etc/vconsole.conf 可以固化配置。 创建非 root 用户 useradd -m -G wheel -s /bin/bash welcome #wheel附加组可sudo，以root用户执行命令 -m同时创建用户家目录 为新用户创建密码，用 passwd + 用户名 这个方法 编辑 sudoers 配置文件 EDITOR=vim visudo # 需要以 root 用户运行 visudo 命令 # 去掉下面这行的注释 #%wheel ALL=(ALL:ALL) ALL yay yay 是比pacman更便捷的包管理工具，推荐使用 vim /etc/pacman.conf 尾部添加 [archlinuxcn] SigLevel = Never Server = https://mirrors.ustc.edu.cn/$repo/$arch # （可选）顺便开启 # 是将pacman使用的源添加到yay里，如果在执行下面更新命令的时候报错，可能是因为源配置有冲突，是因为源重复添加，删除一个即可 [multilib] Include = /etc/pacman.d/mirrorlist sudo pacman -Syyu # 更新一下 （更新配置） sudo pacman -S yay # 安装 yay DWM 安装前件 yay -S git xorg xorg-xinit 安装字体 yay -S nerd-fonts-jetbrains-mono # 注这个jetbrains 的字体，目前的包名不叫这个但是新的包在我使用起来会出现错误，字体显示不全 yay -S ttf-material-design-icons # 图标 yay -S ttf-joypixels yay -S wqy-microhei # 中文字体（文泉驿） 安装软件 （不必须，但建议） 在终端使劲敲 yay -S lxappearance # gui设置 yay -S paper-gtk-theme-git # gtk主题 yay -S pavucontrol # 音频设置 yay -S breeze-icons # 图标 yay -S rofi # 菜单 yay -S flameshot # 截图软件 yay -S google-chrome wyeb-git # 浏览器 yay -S byzanz # gif截图依赖 yay -S wps-office-cn # wps yay -S libnotify dunst # 通知 可使用 dunst -b 命令 启动通知服务 yay -S xorg-xsetroot # dwm设置状态栏 yay -S xf86-input-synaptics # 触控板 yay -S network-manager-applet # 网络托盘 yay -S amf-amdgpu-pro # amd gpu 驱动 yay -S obs-studio-amf # obs for amd_gpu yay -S mpc mpd ncmpcpp # tui music player 开始 clone dwm和 st 吧 本人习惯创建 .rec 文件夹 cp -r DEF/* . sudo make clean install 运行 dwm 在 ~/.xinitrc 文件里写入 export DWM=~/.rec/dwm exec dwm 然后就可以愉快的使用 startx 启动了 当然如果你想进入 tty 的时候自动执行 startx 的话可以在 bash 的配置里加上 [ $(tty) = \"/dev/tty1\" ] \u0026\u0026 cd ~ \u0026\u0026 startx 别忘了为 c 先生 的 scripts 里的脚本和*给脚本加权限* 其他杂项 触控板生效 yay -S xf86-input-synaptics # 触控板 /etc/X11/xorg.conf.d/30-touchpad.conf Section \"InputClass\" Identifier \"touchpad\" Driver \"libinput\" MatchIsTouchpad \"on\" Option \"Tapping\" \"on\" Option \"TappingButtonMap\" \"lrm\" EndSection tty 免登录 (感觉有点不对，需要深入研究) vim /etc/systemd/system/getty.target.wants/getty@tty1.service # 这一步貌似有错误 update ExecStart=-/sbin/agetty -o '-p -f [用户名]' -n -a chenyc --noclear %I $TERM # sudo免密 加到 visudo 添加到尾部 即 EDITOR=vim visudo [用户名] ALL=(ALL:ALL) NOPASSWD: ALL #用户提权 yay -S polkit 去除蜂鸣器声音 sudo su mkdir -p /etc/rc.d echo \"rmmod pcspkr\" \u003e\u003e /etc/rc.d/rc.local chmod +x /etc/rc.d/rc.local 然后开梯子🪜，更换 zsh c 先生也有一篇关于 zsh 的分享可以直接拿来用 omz下载 sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" 配置可以放在 .rec 里 需要的依赖\u0026软件 fzf fd bat exa ueberzug(可在x11终端下预览图片) z.lua extract zsh-autosuggestions zsh-syntax-highlighting fzf-tab 但是这些git下来的就有 😄 然后在 .zshrc 里加入这样的一句话 source ~/.rec/omz/omz.zsh 之后 source 一下 zshrc 就 okay 了。 好吧就到这吧，以后也许还会修改和添加。关于 dwm\u0026arch 的配置和问题不在这里描述 25 Nov,23 优化 输入法 首先是安装Rime sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-config-qt fcitx5-material-color fcitx5-im fcitx5-rime sudo echo ' GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_IM_MODULE=fcitx GLFW_IM_MODULE=ibus' \u003e\u003e /etc/environment 其次配置文件是在~/.local/share/fcitx5/rime 配置文件是这位老哥的 关于默认输入英文还是中文这个是在以schema.yaml为结尾的文件里将reset从 0 改为 1. 关于皮肤 这位老哥弄了一个工具，可以将搜狗的皮肤转换成_fcitx5_的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 music cc关于mpd 和 ncmpcpp的配置 在安装好mpd后还需要两个依赖包 yay -S timidity wildmidi scripts脚本文件夹里有一个关于音乐的脚本command + m 可以调出两个音乐的窗口。不过位置的显示需要微调。 WiFi（nmcli） 使用 nmcli 对 wifi进行连接和管理 nmcli radio wifi on # 开启wifi nmcli dev wifi list # 列出可用的wifi sudo nmcli dev wifi connect SSID password xxx # 连接wifi,xxx为密码 #如果不想在屏幕上写出密码,可以用下面的命令 sudo ncmli --ask dev wifi connect SSID # 🟣 # 使用 nmcli 管理网络 # 如果连接到一个网络,但是想切换到其他的网络,可以用down/up指令加上对应的SSID nmcli con up/down SSID 屏幕亮度 1. 第一种方法 使用的是acpi This friend has given a nice solution This is the file place where to control the backlight on my cp 我的arch里控制背光的文件 /sys/class/backlight/amdgpu_bl1/brightness By the way, the max_brightness is 255 ,jaja Scripts are here /etc/acpi/actions corresponding files are here /etc/acpi/events 2. 第二种方法 (better) Up #!/bin/sh bl_device=/sys/class/backlight/amdgpu_bl1/brightness echo $(($(cat $bl_device)+2)) | sudo tee $bl_device Down #!/bin/sh # bl_device=/sys/class/backlight/amdgpu_bl1/brightness echo $(($(cat $bl_device)-2)) | sudo tee $bl_device 使用的是 xbindkeys, 方法和下面音量的调节一样 音量调节 This is very good 用 xbindkeys 这个软件将脚本绑定到对应的按键上 用xev或者xbindkeys -k来显示按键对应的名称 将脚本和按键对应的关系按照一定的语法写入到~/.xbindkeysrc文件夹中自动激活可以在~/.xinitrc文件中写入 xbindkeys 静音和调大调小之间的不协调 首先是在调节音量之前判断一下系统现在是否处在静音的状态. 如果是的话，那么将其解除静音. 代码实现如下 #!/bin/sh # NAME # volume.sh - Increase/decrease/mute volume using PulseAudio pactl # SYNOPSIS # volume.sh # Suggested location: ~/scripts/volume.sh step=2 # number of percentage points to increase/decrease volume max=50 # do not increase volume above this percentage # Prints current volume percentage, e.g. `60`, `95`, `20`, etc. function get_current_volume() { pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' '{print $2}' | grep -o '[0-9]\\+' } mute_or_not=`pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'` # 查看是否静音 if [ $1 == \"raise\" ]; then # Modification: only increase volume if current volume is less than `max` if [ `get_current_volume` -lt ${max} ]; then if [ $mute_or_not == \"yes\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle fi pactl set-sink-volume @DEFAULT_SINK@ \"+${step}%\" fi # The rest of the script is identical to the original `volume.sh` elif [ $1 == \"lower\" ]; then if [ $mute_or_not == \"yes\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle fi pactl set-sink-volume @DEFAULT_SINK@ \"-${step}%\" elif [ $1 == \"mute\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle else echo \"Unrecognized parameter: ${1}\" echo \"Usage should be: volume.sh \" fi grub中 Win丟失 Lost Windows in Grub 查看uuid的命令是 blkid menuentry 'Win' { insmod part_gpt insmod fat insmod chain search --fs-uuid --no-floppy --set=root EAD2-8212 chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi } /boot/grub/grub.cfgcustom 40 注意那里 –set=root xxx 是定义了一个变量下面一行里会调用这个变量 这里建议修改我视频里的文件 /etc/grub.d/40_custom 补充一点，Windows 里如果 efi 分区没有独立出来，即和 c盘在一起，新建一个独立的 efi 分区的步骤如下 list partition select partition {index} # 选择一个分区 shrink desired=100 # 从这个分区里压缩出 100M 的空间 create partition efi size=100 # 创建 efi 分区 format quick fs=fat32 # 格式化 assign letter=s # 设置盘符 list volume # 列出磁盘的全部卷 exit # 然后以管理员权限运行 Cmd bcdboot C:\\windows /s S: #复制 efi 文件到新建的分区 开机启动脚本 将脚本写好后，添加权限，然后将脚本加入到 cc 的dwm配置autostart.sh里面,注意在结尾要用\u0026隔开与下一个命令 前面命令为假时，后面命令才会执行 \u0026\u0026 前面命令为真时，后面命令才会执行 \u0026 用 \u0026 连接的命令会同时执行，不管命令是否成功 停止一个脚本进程 起因：为 clash 设置开机启动脚本之后,不知道该怎么关闭 解决:用ps -ef | grep clash来列出 clash 的进程 再用kill -9 *进程号*来关闭,一般是 ./clash…. 这个进程，而不是脚本文件 给 Arch 添加 Swap 文件 参考：TimothyQiu’s Blog 起因：之前按照 cc 和 archstory 的步骤，给 arch 开机的时候发现 arch 显示/找不到/swapfile/，因此在网上有找了一些其他的方法（感觉 cc 的有些省略） 📍创建 Swap 文件 创建 Swap 文件有很多种方法，但最可移植的方法是使用dd比如创建1G的/swapfile ： dd if=/dev/zero of=/swapfile bs=1M count=1024 status=progress chmod 0600 /swapfile mkswap -U clear /swapfile 这里的chmod是为了安全，所有人都可读写的 Swap 文件是巨大隐患.mkswap的-U参数用于设置 swap 的 UUID。但是因为 swap文件必须使用文件系统路径去指定，所以这里使用特殊的clear 作为参数去清空它（实际效果是设置了全零的 UUID）。 📍打开与关闭 创建好 swap 文件后，就可以直接启用了： swapon /swapfile 最后把它放进/etc/fstab里，这样每次启动就会直接启用： /swapfile none swap defaults 0 0 如果是要关闭，顾名思义就： swapoff /swapfile 关闭以后它就是个普通文件，想删除就可以直接删除了。 📍使用 Swap 文件进行休眠 需要设置=resume=和=resume_offset=参数 resume参数是 swap 文件所在的分区（例如/dev/nvme0n1p2,或者UUID=4209c845-f495-4c43-8a03-5363dd433153）有两种表示方法UUID的获取方法是 findmnt -no UUID -T /swapfile resume_offset获取方法 filefrag -v /swapfile | awk '{ if($1==\"0:\"){print substr($4, 1, length($4)-2)} }' 编辑etc/default/grub,将以上两个参数写进/etc/default/grub中_像这样_ GRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 nowatchdog resume=UUID=db7c6671-e10c-4486-9077-87692688cdcc resume_offset=3733504\" 最后重新生成一下grub.cfg grub-mkconfig -o /boot/grub/grub.cfg 📍initramfs 如果你的 initramfs 没有使用 systemd 钩子（使用的是 base），那么就还需要添加一个 resume 钩子才会尝试从休眠中恢复:编辑/etc/mkinitcpio.conf文件,在HOOKS=(...)里的udev之后的任何位置加入resume最后重新生成 initramfs即可： mkinitcpio -p linux 和 Win 时间不同 原因 少数派的一篇文章 GMT: Greenwhich Mean Time (格林尼治标准时间)，也就是世界时间。以地球自转为基础的时间计量系统。但是GMT不够准确（相比较而言） UTC:Universal Time Coordinated (协调世界时)，以=原子时=的秒长为基础。现在作为时间标准时间使用 RTC:Real-Time Clock 实时时钟 ，在计算机领域称为硬件时间 e.g 北京位于东八区， 其时间即为 UTC+8 Windows把硬件时钟设为=本地时间= Linu把硬件时间设为UTC 那么Linux显示的时间就是UTC时间➕时区 解决方法 Windows 管理员打开=powershell= Reg add HKLM\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1 或者打开「注册表编辑器」，定位到计算机\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation目录下，新建一个DWORD类型，名称为RealTimeIsUniversal的键，并修改键值为1即可。 Linux timedatectl set-local-rtc 1 --adjust-system-clock onedrive 同步 博客 可以直接在 AUR 里找到 onedrive-abraunegg 然后运行 onedrive 复制链接，浏览器打开，再将输出的网址复制下来，完成账号授权。 可以在配置文件夹目录下创建 sync_list,可以在这个文件里写入你想要同步的文件夹，每行一个。写完注意执行一下这个命令onedrive --synchronize --resync 详情见此 如果不想把文件同步在默认的路径下可以在配置文件夹下，新建一个=config=文件，把此处给的examples全部复制进去，找到sync_dir把前面的注释删掉，改成自己喜欢的路径 然后onedrive --synchronize愉快同步 访问 windows 文件 如果有unknown filesystem type 'ntfs' 这种错误，需要安装yay -S ntfs-3g这个包 ArchLinux忽略某个包的升级 咋做的呢？往/etc/pacman.conf里，有这么一行#IgnorePkg =,给它取消注释,改成: IgnorePkg = linux 然后就可以了 keyring 签名错误 signature from “xxx” is unknown 解决方法 rm -rf /etc/pacman.d/gnupg pacman-key --init pacman-key --populate 虚拟机 参考这篇博客 在 arch 里用 virtual box 使用 Windows7 virtual 会报错 sudo pacman -S virtualbox-host-modules-arch sudo modprobe vboxdrv # 不行的话再用这个 sudo /sbin/rcvboxdrv setup win7 下载在此 https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006 Hash: 36ae90defbad9d9539e649b193ae573b77a71c83 序列号: V77DJ-CT8WB-Y3GXT-X3FBP-6F987 VBoxGuestAdditions 下载地址在此 把它下载到 arch 里，然后在虚拟机这边挂在这个 .iso 文件，然后安装 但是会报错 Windows cannot verify the digital signature ….. 管理员权限 cmd 运行后重启 bcdedit /set testsigning on bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS VirtualBox Extension Pack 需要用 sudo 权限，原因在此 然后在 USB 外设里找到相应的添加到虚拟机中，⚠️ 对于 arch 用命令行安装的 Virtual-box 需要以下命令才能 sudo groupadd usbfs # 把当前用户添加到 usbfs 和 vboxusers 用户组 sudo usermod -aG usbfs $USER sudo usermod -aG vboxusers $USER rofi If you have not created a config file, there is none, and rofi uses its default settings. You can create a config file with those settings by runningrofi -dump-config _rofi_的自定义配置比如修改字体 mkdir -p ~/.config/rofi rofi -dump-config \u003e ~/.config/rofi/config.rasi 修改后把注释去掉即可 设置行号set numbet grub 修改grub显示主题 在github上找到了一个傻瓜式一键安装的主题,也是我正在使用的[2024-03-15 Fri],可以更换壁纸样式 磁盘管理 du -sh -h human-readable -s summarize display only a total for each argument 在home下的 .local 文件夹里有回收站 Normally this action is performed by the function split-window-sensibly, and controlled by two variables, split-height-threshold and split-width-threshold. Per the documentation If ‘split-height-threshold’ specifies an integer, WINDOW is at least ‘split-height-threshold’ lines tall and can be split vertically, split WINDOW into two windows one above the other and return the lower window. Otherwise, if ‘split-width-threshold’ specifies an integer, WINDOW is at least ‘split-width-threshold’ columns wide and can be split horizontally, split WINDOW into two windows side by side and return the window on the right. If this can’t be done either and WINDOW is the only window on its frame, try to split WINDOW vertically disregarding any value specified by ‘split-height-threshold’. If that succeeds, return the lower window. Return nil otherwise. On my system the default value for split-height-threshold is 80 and split-width-threshold is 160. I think you could get the effect you want by setting split-width-threshold to something lower. Alternatively you could set split-height-threshold to nil, preventing it from ever splitting vertically, or set the variable split-window-preferred-function to a different function. Any of these would affect, not just find-file-in-other-window, but all the functions that split the screen. ↩︎\n",
+  "wordCount" : "7508",
   "inLanguage": "zh",
-  "image":"https://nosomber.github.io/ea.jpg","datePublished": "2023-09-24T00:00:00+08:00",
-  "dateModified": "2024-03-19T12:39:08+08:00",
+  "image":"https://nosomber.github.io/pic/ea.jpg","datePublished": "2023-09-24T00:00:00+08:00",
+  "dateModified": "2024-03-19T23:30:12+08:00",
   "author":{
     "@type": "Person",
     "name": "kai"
@@ -106,9 +106,9 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://nosomber.github.io/zh/" accesskey="h" title="kai&#39;s blog (Alt + H)">
+            <a href="https://nosomber.github.io/zh/" accesskey="h" title="E2C (Alt + H)">
                 <img src="https://nosomber.github.io/pic/flower.png" alt="logo" aria-label="logo"
-                    height="35">kai&#39;s blog</a>
+                    height="35">E2C</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -200,7 +200,7 @@
                         <a href="#%e5%bf%ab%e6%8d%b7%e9%94%ae" aria-label="快捷键">快捷键</a><ul>
                             
                     <li>
-                        <a href="#%e4%bb%8e%e5%85%89%e6%a0%87%e6%89%80%e5%9c%a8%e5%a4%84%e5%88%a0%e9%99%a4%e5%88%b0%e8%a1%8c%e9%a6%96" aria-label="从光标所在处删除到行首">从光标所在处删除到行首</a></li>
+                        <a href="#%e4%bb%8e%e5%85%89%e6%a0%87%e6%89%80%e5%9c%a8%e5%a4%84%e5%88%a0%e9%99%a4%e5%88%b0%e8%a1%8c%e9%a6%96" aria-label="从光标所在处删除到行首 ˛">从光标所在处删除到行首 ˛</a></li>
                     <li>
                         <a href="#follow-links-without-using-mouse" aria-label="follow links without using mouse">follow links without using mouse</a></li></ul>
                     </li>
@@ -208,7 +208,11 @@
                         <a href="#%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" aria-label="基本使用">基本使用</a><ul>
                             
                     <li>
-                        <a href="#dired%e6%a8%a1%e5%bc%8f" aria-label="Dired模式">Dired模式</a></li>
+                        <a href="#dired%e6%a8%a1%e5%bc%8f" aria-label="Dired模式">Dired模式</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bf%ae%e6%94%b9%e6%96%87%e4%bb%b6%e5%90%8d" aria-label="修改文件名">修改文件名</a></li></ul>
+                    </li>
                     <li>
                         <a href="#%e4%b9%a6%e7%ad%be" aria-label="书签">书签</a></li>
                     <li>
@@ -222,21 +226,69 @@
                     <li>
                         <a href="#%e7%a7%bb%e5%8a%a8" aria-label="移动">移动</a></li>
                     <li>
-                        <a href="#%e6%96%87%e6%9c%ac%e6%93%8d%e4%bd%9c" aria-label="文本操作">文本操作</a></li>
+                        <a href="#%e6%96%87%e6%9c%ac%e6%93%8d%e4%bd%9c" aria-label="文本操作">文本操作</a><ul>
+                            
                     <li>
-                        <a href="#org" aria-label="org">org</a></li>
+                        <a href="#%e7%bc%a9%e5%86%99%e6%9b%bf%e6%8d%a2" aria-label="缩写替换">缩写替换</a></li>
                     <li>
-                        <a href="#%e6%8f%92%e4%bb%b6" aria-label="插件">插件</a></li></ul>
+                        <a href="#%e7%9f%a9%e5%bd%a2%e7%bc%96%e8%be%91" aria-label="矩形编辑">矩形编辑</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#org" aria-label="org">org</a><ul>
+                            
+                    <li>
+                        <a href="#heading" aria-label="heading">heading</a></li>
+                    <li>
+                        <a href="#list" aria-label="list">list</a></li>
+                    <li>
+                        <a href="#block" aria-label="block">block</a></li>
+                    <li>
+                        <a href="#org%e9%87%8c%e7%9a%84%e6%90%9c%e7%b4%a2" aria-label="org里的搜索">org里的搜索</a></li>
+                    <li>
+                        <a href="#%e5%b0%86%e5%88%97%e8%a1%a8%e8%bd%ac%e6%8d%a2%e6%88%90-heading" aria-label="将列表转换成 heading">将列表转换成 heading</a></li>
+                    <li>
+                        <a href="#todo" aria-label="Todo">Todo</a></li>
+                    <li>
+                        <a href="#%e6%97%b6%e9%97%b4" aria-label="时间">时间</a></li>
+                    <li>
+                        <a href="#agenda" aria-label="Agenda">Agenda</a></li>
+                    <li>
+                        <a href="#%e6%a0%87%e7%ad%be" aria-label="标签">标签</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%8f%92%e4%bb%b6" aria-label="插件">插件</a><ul>
+                            
+                    <li>
+                        <a href="#yasnippet" aria-label="yasnippet">yasnippet</a></li></ul>
+                    </li></ul>
                     </li>
                     <li>
                         <a href="#question" aria-label="question">question</a><ul>
                             
                     <li>
-                        <a href="#code" aria-label="code">code</a></li>
+                        <a href="#code" aria-label="code">code</a><ul>
+                            
                     <li>
-                        <a href="#org" aria-label="org">org</a></li>
+                        <a href="#treesitter-%e4%bb%a3%e7%a0%81%e9%ab%98%e4%ba%ae%e7%9a%84%e7%ba%a7%e5%88%ab" aria-label="treesitter 代码高亮的级别">treesitter 代码高亮的级别</a></li>
                     <li>
-                        <a href="#normal" aria-label="normal">normal</a></li></ul>
+                        <a href="#%e4%bb%a3%e7%a0%81%e8%a1%a5%e5%85%a8%e4%b8%8e%e5%88%86%e6%9e%90" aria-label="代码补全与分析">代码补全与分析</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#org" aria-label="org">org</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%af%bc%e5%87%baorg%e6%97%b6%e6%b2%a1%e6%9c%89%e6%8d%a2%e8%a1%8c" aria-label="导出org时没有换行">导出org时没有换行</a></li>
+                    <li>
+                        <a href="#%e5%88%9a%e6%89%93%e5%bc%80%e6%98%af%e9%bb%98%e8%ae%a4%e6%98%be%e7%a4%ba%e7%9a%84%e6%a0%87%e9%a2%98%e7%ba%a7%e6%95%b0" aria-label="刚打开是默认显示的标题级数">刚打开是默认显示的标题级数</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#normal" aria-label="normal">normal</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%be%93%e5%85%a5%e6%b3%95" aria-label="输入法">输入法</a></li>
+                    <li>
+                        <a href="#%e9%87%8d%e6%96%b0%e5%8a%a0%e8%bd%bd%e6%ad%a4%e9%a1%b5%e9%9d%a2" aria-label="重新加载此页面">重新加载此页面</a></li></ul>
+                    </li></ul>
                     </li></ul>
                     </li>
                     <li>
@@ -248,7 +300,43 @@
                     <li>
                         <a href="#%e5%ae%89%e8%a3%85" aria-label="安装">安装</a></li>
                     <li>
-                        <a href="#%e4%bc%98%e5%8c%96" aria-label="优化">优化</a></li></ul>
+                        <a href="#%e4%bc%98%e5%8c%96" aria-label="优化">优化</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%be%93%e5%85%a5%e6%b3%95" aria-label="输入法">输入法</a></li>
+                    <li>
+                        <a href="#music" aria-label="music">music</a></li>
+                    <li>
+                        <a href="#wifi-nmcli" aria-label="WiFi（nmcli）">WiFi（nmcli）</a></li>
+                    <li>
+                        <a href="#%e5%b1%8f%e5%b9%95%e4%ba%ae%e5%ba%a6" aria-label="屏幕亮度">屏幕亮度</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%ac%ac%e4%b8%80%e7%a7%8d%e6%96%b9%e6%b3%95" aria-label="1. 第一种方法">1. 第一种方法</a></li>
+                    <li>
+                        <a href="#2-dot-%e7%ac%ac%e4%ba%8c%e7%a7%8d%e6%96%b9%e6%b3%95--better" aria-label="2. 第二种方法 (better)">2. 第二种方法 (better)</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e9%9f%b3%e9%87%8f%e8%b0%83%e8%8a%82" aria-label="音量调节">音量调节</a></li>
+                    <li>
+                        <a href="#grub%e4%b8%ad-win%e4%b8%9f%e5%a4%b1" aria-label="grub中 Win丟失">grub中 Win丟失</a></li>
+                    <li>
+                        <a href="#%e5%bc%80%e6%9c%ba%e5%90%af%e5%8a%a8%e8%84%9a%e6%9c%ac" aria-label="开机启动脚本">开机启动脚本</a></li>
+                    <li>
+                        <a href="#%e5%81%9c%e6%ad%a2%e4%b8%80%e4%b8%aa%e8%84%9a%e6%9c%ac%e8%bf%9b%e7%a8%8b" aria-label="停止一个脚本进程">停止一个脚本进程</a></li>
+                    <li>
+                        <a href="#%e7%bb%99-arch-%e6%b7%bb%e5%8a%a0-swap-%e6%96%87%e4%bb%b6" aria-label="给 Arch 添加 Swap 文件">给 Arch 添加 Swap 文件</a></li>
+                    <li>
+                        <a href="#%e5%92%8c-win-%e6%97%b6%e9%97%b4%e4%b8%8d%e5%90%8c" aria-label="和 Win 时间不同">和 Win 时间不同</a></li>
+                    <li>
+                        <a href="#onedrive-%e5%90%8c%e6%ad%a5" aria-label="onedrive 同步">onedrive 同步</a></li>
+                    <li>
+                        <a href="#%e8%ae%bf%e9%97%ae-windows-%e6%96%87%e4%bb%b6" aria-label="访问 windows 文件">访问 windows 文件</a></li>
+                    <li>
+                        <a href="#archlinux%e5%bf%bd%e7%95%a5%e6%9f%90%e4%b8%aa%e5%8c%85%e7%9a%84%e5%8d%87%e7%ba%a7" aria-label="ArchLinux忽略某个包的升级">ArchLinux忽略某个包的升级</a></li>
+                    <li>
+                        <a href="#keyring-%e7%ad%be%e5%90%8d%e9%94%99%e8%af%af" aria-label="keyring 签名错误">keyring 签名错误</a></li></ul>
+                    </li></ul>
                     </li>
                     <li>
                         <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="虚拟机">虚拟机</a></li>
@@ -416,36 +504,35 @@
      
  </script> <!-- raw HTML omitted --></p>
 <h3 id="快捷键">快捷键<a hidden class="anchor" aria-hidden="true" href="#快捷键">#</a></h3>
-<h4 id="从光标所在处删除到行首">从光标所在处删除到行首<a hidden class="anchor" aria-hidden="true" href="#从光标所在处删除到行首">#</a></h4>
-<p>There is <code>C-0 C-k</code> or <code>C-u 0 C-k</code> <!-- raw HTML omitted --><br>
-(setq debug-on-error t) <!-- raw HTML omitted --></p>
+<h4 id="从光标所在处删除到行首">从光标所在处删除到行首 ˛<a hidden class="anchor" aria-hidden="true" href="#从光标所在处删除到行首">#</a></h4>
+<p>There is<code>C-0 C-k</code>or<code>C-u 0 C-k</code> <!-- raw HTML omitted --></p>
 <h4 id="follow-links-without-using-mouse">follow links without using mouse<a hidden class="anchor" aria-hidden="true" href="#follow-links-without-using-mouse">#</a></h4>
-<p><code>C c C o</code> <!-- raw HTML omitted --><br>
-或者设置 <!-- raw HTML omitted --></p>
+<p><code>C c C o</code> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#75715e">;; RETURN will follow links in org-mode files</span>
 </span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> org-return-follows-link  <span style="color:#66d9ef">t</span>)
 </span></span></code></pre></div><h3 id="基本使用">基本使用<a hidden class="anchor" aria-hidden="true" href="#基本使用">#</a></h3>
 <h4 id="dired模式">Dired模式<a hidden class="anchor" aria-hidden="true" href="#dired模式">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>修改文件名</p>
-<p><code>C x C q</code> (wdired-change-to-wdired-mode) 然后 <code>C x C s</code> 保存 <!-- raw HTML omitted --></p>
-</li>
-</ul>
+<h5 id="修改文件名">修改文件名<a hidden class="anchor" aria-hidden="true" href="#修改文件名">#</a></h5>
+<p><code>C x C q</code>(wdired-change-to-wdired-mode) 然后<code>C x C s</code>保存 <!-- raw HTML omitted --></p>
 <h4 id="书签">书签<a hidden class="anchor" aria-hidden="true" href="#书签">#</a></h4>
-<p><code>C x r m</code>         设置标签 <!-- raw HTML omitted --><br>
-<code>C x r b</code>         跳转到书签 <!-- raw HTML omitted --><br>
-<code>C x r l</code>         列出书签 <!-- raw HTML omitted --></p>
+<ul>
+<li><code>C x r m</code>         设置标签 <!-- raw HTML omitted --></li>
+<li><code>C x r b</code>         跳转到书签 <!-- raw HTML omitted --></li>
+<li><code>C x r l</code>         列出书签 <!-- raw HTML omitted --></li>
+</ul>
 <h4 id="register-跳转">register 跳转<a hidden class="anchor" aria-hidden="true" href="#register-跳转">#</a></h4>
-<p>类似于书签，但是重启 emacs 会丢失，特点是可以精细保存到光标所在位 <!-- raw HTML omitted --><br>
-<code>C x r space</code>    设置 <!-- raw HTML omitted --><br>
-<code>C x r j</code>        跳转 <!-- raw HTML omitted --></p>
+<p>类似于书签，但是重启 emacs 会丢失，特点是可以精细保存到光标所在位 <!-- raw HTML omitted --></p>
+<ul>
+<li><code>C x r space</code>    设置 <!-- raw HTML omitted --></li>
+<li><code>C x r j</code>        跳转 <!-- raw HTML omitted --></li>
+</ul>
 <h4 id="以只读方式打开文件">以只读方式打开文件<a hidden class="anchor" aria-hidden="true" href="#以只读方式打开文件">#</a></h4>
-<p><code>C x C r</code>        新的窗口打开 <!-- raw HTML omitted --><br>
-<code>C x 4 r</code>        当前窗口打开 <!-- raw HTML omitted --></p>
+<ul>
+<li><code>C x C r</code>        <em>新的窗口打开</em> <!-- raw HTML omitted --></li>
+<li><code>C x 4 r</code>        <em>当前窗口打开</em> <!-- raw HTML omitted --></li>
+</ul>
 <h4 id="批量替换">批量替换<a hidden class="anchor" aria-hidden="true" href="#批量替换">#</a></h4>
-<p>在dired模式下,可以标记要查找替换的文件,然后执行 <code>dired-do-query-replace-regexp</code> <!-- raw HTML omitted --><br>
+<p>在dired模式下,可以标记要查找替换的文件,然后执行<code>dired-do-query-replace-regexp</code> <!-- raw HTML omitted --><br>
 输入被替换的文字和替换文字,确认的时候有以下情况 <!-- raw HTML omitted --></p>
 <ul>
 <li>y 替换当前 <!-- raw HTML omitted --></li>
@@ -454,91 +541,64 @@
 <li>C-g取消操作 <!-- raw HTML omitted --></li>
 </ul>
 <h4 id="窗口管理">窗口管理<a hidden class="anchor" aria-hidden="true" href="#窗口管理">#</a></h4>
-<p><code>C x 2</code>           类似划分窗口，同时打开当前的文件，向下分身 <!-- raw HTML omitted --><br>
-<code>C x 3</code>           向右边分身 <!-- raw HTML omitted --><br>
-<code>C x 4 f</code>         打开新的窗口 (find-file-other-window) 关于打开的窗口是水平还是垂直划分的，参考这里<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <!-- raw HTML omitted --><br>
-<code>C x 4 C o</code>       在新的窗口打开文件，但光标还在当前文件 <!-- raw HTML omitted --><br>
-<code>C x 4 b</code>         同上，但光标位置切换到新开的文件上 <!-- raw HTML omitted --><br>
-<code>C x 1</code>           删除其他窗口 <!-- raw HTML omitted --><br>
-恢复窗口布局，类似于 undo 和 redo 在窗口上的应用 <!-- raw HTML omitted --><br>
+<ul>
+<li><code>C x 2</code>           类似划分窗口，同时打开当前的文件，向下分身 <!-- raw HTML omitted --></li>
+<li><code>C x 3</code>           向右边分身 <!-- raw HTML omitted --></li>
+<li><code>C x 4 f</code>         打开新的窗口 (find-file-other-window) 关于打开的窗口是水平还是垂直划分的，参考这里<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> <!-- raw HTML omitted --></li>
+<li><code>C x 4 C o</code>       在新的窗口打开文件，但光标还在当前文件 <!-- raw HTML omitted --></li>
+<li><code>C x 4 b</code>         同上，但光标位置切换到新开的文件上 <!-- raw HTML omitted --></li>
+<li><code>C x 1</code>           删除其他窗口 <!-- raw HTML omitted --></li>
+</ul>
+<p>恢复窗口布局，类似于 undo 和 redo 在窗口上的应用 <!-- raw HTML omitted --><br>
 使用一个包 winner-mode <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#a6e22e">use-package</span> winner-mode
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">:straight</span> <span style="color:#66d9ef">nil</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">:hook</span> (after-init <span style="color:#f92672">.</span> winner-mode))
 </span></span></code></pre></div><h4 id="移动">移动<a hidden class="anchor" aria-hidden="true" href="#移动">#</a></h4>
-<p><code>M g g</code>         移动到指定行 <!-- raw HTML omitted --><br>
-<code>M v</code>           向上滚动 <!-- raw HTML omitted --><br>
-<code>C v</code>           向下滚动 <!-- raw HTML omitted --><br>
-<code>C M v</code>         其他buffer向上滚动 <!-- raw HTML omitted --><br>
-<code>C M S v</code>       其他buffer向下滚动 <!-- raw HTML omitted --><br>
-<code>C s</code>           向下搜索 <!-- raw HTML omitted --><br>
-<code>C r</code>           向上搜索 <!-- raw HTML omitted --></p>
+<ul>
+<li><code>M g g</code>         移动到指定行 <!-- raw HTML omitted --></li>
+<li><code>M v</code>           向上滚动 <!-- raw HTML omitted --></li>
+<li><code>C v</code>           向下滚动 <!-- raw HTML omitted --></li>
+<li><code>C M v</code>         其他buffer向上滚动 <!-- raw HTML omitted --></li>
+<li><code>C M S v</code>       其他buffer向下滚动 <!-- raw HTML omitted --></li>
+<li><code>C s</code>           向下搜索 <!-- raw HTML omitted --></li>
+<li><code>C r</code>           向上搜索 <!-- raw HTML omitted --></li>
+</ul>
 <h4 id="文本操作">文本操作<a hidden class="anchor" aria-hidden="true" href="#文本操作">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>缩写替换</p>
-<p><code>C-x a i g</code> (mnemonic add inverse global) and enter the expansion  <em>記憶術 (Mnemonic forms)</em> <!-- raw HTML omitted --><br>
+<h5 id="缩写替换">缩写替换<a hidden class="anchor" aria-hidden="true" href="#缩写替换">#</a></h5>
+<p><code>C-x a i g</code>(mnemonic add inverse global) and enter the expansion <em>記憶術 (Mnemonic forms)</em> <!-- raw HTML omitted --><br>
 <a href="https://www.emacswiki.org/emacs/AbbrevMode">abbrev 的介绍</a>       <!-- raw HTML omitted --><br>
-输入 hw 后，使用 <code>C-x a '</code> 会扩展为 hello world <!-- raw HTML omitted --><br>
-<strong>另外 <code>M /</code> 可以根据 buffer 里已有的补全</strong> <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>矩形编辑</p>
-<p><code>C x SPC</code> 将 range 转换成矩形 &amp; 一矩形方式选择 <!-- raw HTML omitted --><br>
-但是若想编辑，即整体添加，需要 <code>C x r t</code> 替换文本 <!-- raw HTML omitted --></p>
-</li>
-</ul>
+输入_hw_后，使用<code>C-x a '</code>会扩展为 hello world <!-- raw HTML omitted --><br>
+<strong>另外<code>M /</code>可以根据 buffer 里已有的补全</strong> <!-- raw HTML omitted --></p>
+<h5 id="矩形编辑">矩形编辑<a hidden class="anchor" aria-hidden="true" href="#矩形编辑">#</a></h5>
+<p><code>C x SPC</code>将 range 转换成矩形(以矩形方式选择) <!-- raw HTML omitted --><br>
+但是若想编辑,即整体添加，需要<code>C x r t</code>替换文本 <!-- raw HTML omitted --></p>
 <h4 id="org">org<a hidden class="anchor" aria-hidden="true" href="#org">#</a></h4>
-<!-- raw HTML omitted -->
+<h5 id="heading">heading<a hidden class="anchor" aria-hidden="true" href="#heading">#</a></h5>
 <ul>
-<li>
-<p>heading</p>
-<p><code>C RET</code>         向下插入同级 heading <!-- raw HTML omitted --><br>
-<code>M RET</code>         向上插入&hellip; <!-- raw HTML omitted --><br>
-<code>M 和方向键</code>     调整层级大小 <!-- raw HTML omitted --><br>
-<code>M S 方向键</code>     连带子集一起调节 <!-- raw HTML omitted --><br>
-<code>M 上下键</code>       移动 heading <!-- raw HTML omitted --></p>
-</li>
+<li><code>C RET</code>         向下插入同级 heading <!-- raw HTML omitted --></li>
+<li><code>M RET</code>         向上插入&hellip; <!-- raw HTML omitted --></li>
+<li><code>M 和方向键</code>     调整层级大小 <!-- raw HTML omitted --></li>
+<li><code>M S 方向键</code>     连带子集一起调节 <!-- raw HTML omitted --></li>
+<li><code>M 上下键</code>       移动 heading <!-- raw HTML omitted --></li>
 </ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>list</p>
+<h5 id="list">list<a hidden class="anchor" aria-hidden="true" href="#list">#</a></h5>
 <ul>
 <li>有序列表 1. or 1) <!-- raw HTML omitted --></li>
 <li>无须列表 - or + <!-- raw HTML omitted --></li>
 </ul>
-<p>向下插入一个列表,快速插入 <code>M RET</code> <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>block</p>
+<p>向下插入一个列表,快速插入<code>M RET</code> <!-- raw HTML omitted --></p>
+<h5 id="block">block<a hidden class="anchor" aria-hidden="true" href="#block">#</a></h5>
 <p>快速插入块 <code>C c C ,</code> <!-- raw HTML omitted --><br>
-e.g. <!-- raw HTML omitted --></p>
+例如 <!-- raw HTML omitted --></p>
 <ul>
 <li>src <!-- raw HTML omitted --></li>
 <li>quote <!-- raw HTML omitted --></li>
 <li>example <!-- raw HTML omitted --></li>
 </ul>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>org里的搜索</p>
-<p><code>C c /</code> 可以根据不同的属性进行搜索 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>将列表转换成 heading</p>
+<h5 id="org里的搜索">org里的搜索<a hidden class="anchor" aria-hidden="true" href="#org里的搜索">#</a></h5>
+<p><code>C c /</code>可以根据不同的属性进行搜索 <!-- raw HTML omitted --></p>
+<h5 id="将列表转换成-heading">将列表转换成 heading<a hidden class="anchor" aria-hidden="true" href="#将列表转换成-heading">#</a></h5>
 <p><code>C c *</code> <!-- raw HTML omitted --><br>
 对列表排序是 <code>C c ^</code> <!-- raw HTML omitted --></p>
 <ul>
@@ -546,15 +606,10 @@ e.g. <!-- raw HTML omitted --></p>
 <li>i want to <!-- raw HTML omitted --></li>
 <li>you <!-- raw HTML omitted --></li>
 </ul>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>Todo</p>
-<p>将 heading 转换成 TODO 和切换 TODO 的状态可以用 <code>C c C t</code> 和 <code>S 方向键</code> <!-- raw HTML omitted --><br>
-快速插入一个 TODO <code>M S RET</code> <!-- raw HTML omitted --><br>
-TODO 状态关键字可以自定义 <!-- raw HTML omitted --></p>
+<h5 id="todo">Todo<a hidden class="anchor" aria-hidden="true" href="#todo">#</a></h5>
+<p>将 heading 转换成 TODO 和切换 TODO 的状态可以用<code>C c C t</code>和<code>S 方向键</code> <!-- raw HTML omitted --><br>
+快速插入一个 TODO<code>M S RET</code> <!-- raw HTML omitted --><br>
+TODO状态关键字可以自定义 <!-- raw HTML omitted --></p>
 <ul>
 <li>全局设定(在配置文件里添加以下代码)用竖线分隔已完成状态和未完成状态 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> org-todo-keywords
@@ -569,17 +624,13 @@ TODO 状态关键字可以自定义 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> org-tode-keyword-faces
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#39;</span>((<span style="color:#e6db74">&#34;TODO&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;#ff9977&#34;</span>)
 </span></span><span style="display:flex;"><span>  (<span style="color:#e6db74">&#34;DONE&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;#44bc44&#34;</span>)))
-</span></span></code></pre></div><p>优先级 <!-- raw HTML omitted --><br>
-<code>C c ,</code>       设置优先级 <!-- raw HTML omitted --><br>
-<code>S 方向键</code>    调整 <!-- raw HTML omitted --><br>
-子任务 <!-- raw HTML omitted --><br>
-在主任务后添加 [],在方括号里可以用 / 或者 % 两种方式表示进度 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
+</span></span></code></pre></div><p>优先级 <!-- raw HTML omitted --></p>
 <ul>
-<li>
-<p>时间</p>
+<li><code>C c ,</code>       设置优先级 <!-- raw HTML omitted --></li>
+<li><code>S 方向键</code>    调整 <!-- raw HTML omitted --></li>
+</ul>
+<p>_子任务_在主任务后添加<code>[]</code>,在方括号里可以用 / 或者 % 两种方式表示进度 <!-- raw HTML omitted --></p>
+<h5 id="时间">时间<a hidden class="anchor" aria-hidden="true" href="#时间">#</a></h5>
 <p>时间戳: <!-- raw HTML omitted --></p>
 <ul>
 <li><!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;2006-11-01 Wed 19:11&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --> <!-- raw HTML omitted --></li>
@@ -596,80 +647,46 @@ TODO 状态关键字可以自定义 <!-- raw HTML omitted --></p>
 </span></span></code></pre></div></li>
 </ul>
 <p>修改时间戳用 <code>S 方向键</code> <!-- raw HTML omitted --><br>
-开始时间和结束时间 <!-- raw HTML omitted --><br>
-<code>C c C s</code>     (org-schedule) <!-- raw HTML omitted --><br>
-<code>C c C d</code>     (org-deadline) <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
+开始时间和结束时间 <!-- raw HTML omitted --></p>
 <ul>
-<li>
-<p>Agenda</p>
-<p>Agenda 就是将你的安排或者TODO给整理在一起 <!-- raw HTML omitted --><br>
+<li><code>C c C s</code>     (org-schedule) <!-- raw HTML omitted --></li>
+<li><code>C c C d</code>     (org-deadline) <!-- raw HTML omitted --></li>
+</ul>
+<h5 id="agenda">Agenda<a hidden class="anchor" aria-hidden="true" href="#agenda">#</a></h5>
+<p>_Agenda_就是将你的安排或者TODO给整理在一起 <!-- raw HTML omitted --><br>
 <code>C c a</code> 是调出视图的快捷键 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>标签</p>
-<p>给一件事情打标签, 可以用 <code>C c C q</code> <!-- raw HTML omitted --><br>
+<h5 id="标签">标签<a hidden class="anchor" aria-hidden="true" href="#标签">#</a></h5>
+<p>给一件事情打标签, 可以用<code>C c C q</code> <!-- raw HTML omitted --><br>
 在文件头也可以预设标签 <!-- raw HTML omitted --><br>
 e.g. <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#75715e">#+TAGS</span><span style="color:#75715e">: @音乐 @电影</span>
-</span></span></code></pre></div></li>
-</ul>
-<h4 id="插件">插件<a hidden class="anchor" aria-hidden="true" href="#插件">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>yasnippet</p>
+</span></span></code></pre></div><h4 id="插件">插件<a hidden class="anchor" aria-hidden="true" href="#插件">#</a></h4>
+<h5 id="yasnippet">yasnippet<a hidden class="anchor" aria-hidden="true" href="#yasnippet">#</a></h5>
 <p><a href="https://www.reddit.com/r/emacs/comments/o282fq/yasnippet_snippetstemplating_introductiontutorial/">参考视频</a> <!-- raw HTML omitted --><br>
-创建新的模板 -&gt; yas-new-snippet <code>C-c &amp; C-n</code> <!-- raw HTML omitted --><br>
+创建新的模板 -&gt; yas-new-snippet<code>C-c &amp; C-n</code> <!-- raw HTML omitted --><br>
 用的时候,写下 <strong><strong>key</strong></strong> 里的东西 then TAB <!-- raw HTML omitted --></p>
-</li>
-</ul>
 <h3 id="question">question<a hidden class="anchor" aria-hidden="true" href="#question">#</a></h3>
 <h4 id="code">code<a hidden class="anchor" aria-hidden="true" href="#code">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>treesitter 代码高亮的级别</p>
-<p>调节这个变量 <code>treesit-font-lock-level</code> <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>代码补全与分析</p>
-<p>在编程模式下开启 eglot <!-- raw HTML omitted --></p>
+<h5 id="treesitter-代码高亮的级别">treesitter 代码高亮的级别<a hidden class="anchor" aria-hidden="true" href="#treesitter-代码高亮的级别">#</a></h5>
+<p>调节这个变量<code>treesit-font-lock-level</code> <!-- raw HTML omitted --></p>
+<h5 id="代码补全与分析">代码补全与分析<a hidden class="anchor" aria-hidden="true" href="#代码补全与分析">#</a></h5>
+<p>在编程模式下开启_eglot_ <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(add-hook <span style="color:#e6db74">&#39;prog-mode-hook</span> <span style="color:#e6db74">&#39;eglot-ensure</span>)
-</span></span></code></pre></div><p>eglot 关闭hint,也可以理解为disable一个mode <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>eglot关闭_hint_,也可以理解为disable一个mode <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(add-hook <span style="color:#e6db74">&#39;eglot-managed-mode-hook</span> (lambda () (eglot-inlay-hints-mode <span style="color:#ae81ff">-1</span>)))
-</span></span></code></pre></div></li>
-</ul>
-<h4 id="org">org<a hidden class="anchor" aria-hidden="true" href="#org">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>导出org时没有换行</p>
+</span></span></code></pre></div><h4 id="org">org<a hidden class="anchor" aria-hidden="true" href="#org">#</a></h4>
+<h5 id="导出org时没有换行">导出org时没有换行<a hidden class="anchor" aria-hidden="true" href="#导出org时没有换行">#</a></h5>
 <p>org中每空一行表示一个段落,要想在段落里换行有以下方法 <!-- raw HTML omitted --></p>
 <ul>
-<li>在文件头部加上 <!-- raw HTML omitted --><br>
-<code>#+OPTIONS: \n:t</code> <!-- raw HTML omitted --></li>
+<li>在文件头部加上<code>#+OPTIONS: \n:t</code> <!-- raw HTML omitted --></li>
 <li>或者在配置文件加上 <!-- raw HTML omitted --></li>
 </ul>
 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> org-export-preserve-breaks <span style="color:#66d9ef">t</span>)
 </span></span></code></pre></div><ul>
-<li>在换行处加上 <code>\\</code> <!-- raw HTML omitted --></li>
+<li>在换行处加上<code>\\</code> <!-- raw HTML omitted --></li>
 </ul>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>刚打开是默认显示的标题级数</p>
+<h5 id="刚打开是默认显示的标题级数">刚打开是默认显示的标题级数<a hidden class="anchor" aria-hidden="true" href="#刚打开是默认显示的标题级数">#</a></h5>
 <p>两种方法 <!-- raw HTML omitted --></p>
 <ul>
 <li>在配置文件加上钩子(直接copy过来的,我没有定义快捷键,默认开启) <!-- raw HTML omitted -->
@@ -689,13 +706,8 @@ e.g. <!-- raw HTML omitted --></p>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 <h4 id="normal">normal<a hidden class="anchor" aria-hidden="true" href="#normal">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>输入法</p>
+<h5 id="输入法">输入法<a hidden class="anchor" aria-hidden="true" href="#输入法">#</a></h5>
 <p>使用 emacs-rime 作为输入法 <!-- raw HTML omitted --></p>
 <blockquote>
 <p><strong><strong>共享資料夾</strong></strong>,包含預設輸入方案的源文件。 這些文件屬於 Rime 所發行軟件的一部份，在訪問權限控制較嚴格的系統上對用戶是只讀的，因此謝絕軟件版本更新以外的任何修改—— 一旦用戶修改這裏的文件，很可能影響後續的軟件升級或在升級時丟失數據。在 emacs 里是在 ~/.config/ibus/rime/ <!-- raw HTML omitted --><br>
@@ -703,38 +715,26 @@ e.g. <!-- raw HTML omitted --></p>
 </blockquote>
 <p>对于同步 在 installation.yaml 里，添加 installation_id: &ldquo;linux-rime&rdquo; 和 sync_dir: &ldquo;<em>home/mi/OneDrive/rime</em>&rdquo; <!-- raw HTML omitted --><br>
 okay, enjoy 😊 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>重新加载此页面</p>
+<h5 id="重新加载此页面">重新加载此页面<a hidden class="anchor" aria-hidden="true" href="#重新加载此页面">#</a></h5>
 <p>一般当外界文件变动的时候emacs不能很好地实时变动 <!-- raw HTML omitted --><br>
-需要用到 <code>revert-buffer</code> 这个函数 <!-- raw HTML omitted --><br>
+需要用到<code>revert-buffer</code>这个函数 <!-- raw HTML omitted --><br>
 每次执行的时候还需要确认,sf上有人提供了修改版的 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#75715e">;; Source: https://www.emacswiki.org/emacs/misc-cmds.el</span>
 </span></span><span style="display:flex;"><span>(defun revert-buffer-no-confirm ()
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Revert buffer without confirmation.&#34;</span>
 </span></span><span style="display:flex;"><span>    (interactive)
 </span></span><span style="display:flex;"><span>    (revert-buffer <span style="color:#e6db74">:ignore-auto</span> <span style="color:#e6db74">:noconfirm</span>))
-</span></span></code></pre></div></li>
-</ul>
-<h2 id="arch">Arch<a hidden class="anchor" aria-hidden="true" href="#arch">#</a></h2>
+</span></span></code></pre></div><h2 id="arch">Arch<a hidden class="anchor" aria-hidden="true" href="#arch">#</a></h2>
 <h3 id="基础">基础<a hidden class="anchor" aria-hidden="true" href="#基础">#</a></h3>
 <h4 id="安装">安装<a hidden class="anchor" aria-hidden="true" href="#安装">#</a></h4>
-<p>参考 <!-- raw HTML omitted --><br>
-<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/basic_install">ArchLinuxStudio</a> <!-- raw HTML omitted --><br>
-这个中文的文档，文档挺详细的<img loading="lazy" src="https://raw.githubusercontent.com/eyck0102/pics/master/typora-images/image-20230922172719279.png" alt=""  />
- <!-- raw HTML omitted --></p>
-<p>另外参考 <!-- raw HTML omitted --><br>
-<a href="https://github.com/kaiza-hikaru-del/my_arch_experience/tree/master/docs/arch">kaiza-hikaru-del</a> <!-- raw HTML omitted --><br>
-的关于 arch 的配置 <!-- raw HTML omitted --><br>
-以及 cc 的教程 <!-- raw HTML omitted --></p>
+<p>参考<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/basic_install">ArchLinuxStudio</a>这个中文的文档，文档挺详细的 <!-- raw HTML omitted --><br>
+<img loading="lazy" src="https://raw.githubusercontent.com/eyck0102/pics/master/typora-images/image-20230922172719279.png" alt=""  />
+ <!-- raw HTML omitted --><br>
+另外参考<a href="https://github.com/kaiza-hikaru-del/my_arch_experience/tree/master/docs/arch">kaiza-hikaru-del</a>的关于 arch 的配置,以及 cc 的教程 <!-- raw HTML omitted --></p>
 <blockquote>
-<p>实践 <!-- raw HTML omitted --></p>
+<p>实践 <em>Time:9/24/2023</em> <!-- raw HTML omitted --></p>
 </blockquote>
-<p>Time:9/24/2023 <!-- raw HTML omitted --><br>
-扩大字体 <code>setfont ter-122b</code> (132b) <!-- raw HTML omitted --></p>
+<p>扩大字体 <code>setfont ter-122b</code> (132b) <!-- raw HTML omitted --></p>
 <ol>
 <li>
 <p>确保目前是 UEFI 模式 <!-- raw HTML omitted --></p>
@@ -757,25 +757,22 @@ before this *禁用 reflector*(可选) <!-- raw HTML omitted --></p>
 <li>
 <p>硬盘分区 <!-- raw HTML omitted --></p>
 <ul>
-<li>
-<p>先将硬盘转换成 gpt 类型 （不过大部分的硬盘已经是 gpt 类型的了） <!-- raw HTML omitted --><br>
+<li>先将硬盘转换成 gpt 类型 （不过大部分的硬盘已经是 gpt 类型的了） <!-- raw HTML omitted --><br>
 <strong>可忽略</strong> <!-- raw HTML omitted --><br>
 <em>利用“fdisk -l”命令，若显示结果中的“Disk label <!-- raw HTML omitted --><br>
 type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em> <!-- raw HTML omitted --><br>
-(还未验证其可行性) <!-- raw HTML omitted --></p>
+(还未验证其可行性) <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>fdisk -l                   <span style="color:#75715e"># 查看电脑磁盘的划分情况及盘符号</span>
 </span></span><span style="display:flex;"><span>cfdisk 你自己电脑的盘符号     <span style="color:#75715e"># 使用 cfdisk 对磁盘进行分区</span>
 </span></span></code></pre></div></li>
-<li>
-<p>接下来用 <em>cfdisk</em> 工具对目标磁盘进行分区 boot &amp; root &amp; swap <!-- raw HTML omitted --></p>
+<li>接下来用 <em>cfdisk</em> 工具对目标磁盘进行分区 boot &amp; root &amp; swap <!-- raw HTML omitted -->
 <ul>
 <li>boot 分区 type efi 550M <!-- raw HTML omitted --></li>
 <li>root 分区 type linux filesystem <!-- raw HTML omitted --></li>
 <li>swap 分区 type swap 4G(可以多但必要不大) <!-- raw HTML omitted --></li>
 </ul>
 </li>
-<li>
-<p>分好区的磁盘进行格式化，以及开启 swap <!-- raw HTML omitted --></p>
+<li>分好区的磁盘进行格式化，以及开启 swap <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkfs.fat -F32 /dev/nvme0n1p1   <span style="color:#75715e">#格式化 boot 分区</span>
 </span></span><span style="display:flex;"><span>mkfs.ext4 /dev/nvme0n1p2       <span style="color:#75715e">#格式化 root/home 分区</span>
 </span></span><span style="display:flex;"><span>
@@ -794,8 +791,8 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span><span style="display:flex;"><span>mount /dev/sdax /mnt/boot
 </span></span></code></pre></div></li>
 <li>
-<p>镜像源 <!-- raw HTML omitted --></p>
-<p>处于这个文件当中 <!-- raw HTML omitted --></p>
+<p>镜像源 <!-- raw HTML omitted --><br>
+处于这个文件当中 <!-- raw HTML omitted --></p>
 <blockquote>
 <p>/etc/pacman.d/mirrorlist <!-- raw HTML omitted --></p>
 </blockquote>
@@ -811,7 +808,7 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span></code></pre></div></li>
 <li>
 <p>必须的包<!-- raw HTML omitted --><br>
-&gt; pacman -Sy archlinux-keyring # 安装这个可解决证书问题 <!-- raw HTML omitted --></p>
+<code>pacman -Sy archlinux-keyring</code> 安装这个可解决证书问题 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pacstrap /mnt base base-devel linux linux-headers linux-firmware  <span style="color:#75715e">#base-devel在AUR包的安装是必须的</span>
 </span></span></code></pre></div><p>一些工具性的包 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pacstrap /mnt vim bash-completion   <span style="color:#75715e"># vim 和 bash 的补全</span>
@@ -819,15 +816,15 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span><span style="display:flex;"><span>pacstrap /mnt networkmanager
 </span></span></code></pre></div></li>
 <li>
-<p>生成fstab文件 <!-- raw HTML omitted --></p>
-<p>fstab 用来定义磁盘分区 <!-- raw HTML omitted --></p>
+<p>生成fstab文件 <!-- raw HTML omitted --><br>
+fstab 用来定义磁盘分区 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </span></span></code></pre></div><p>复查一下 /mnt/etc/fstab 确保没有错误 <strong>不必要</strong> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cat /mnt/etc/fstab
 </span></span></code></pre></div></li>
 <li>
-<p>Change root <!-- raw HTML omitted --></p>
-<p>把环境切换到新系统的/mnt 下 <!-- raw HTML omitted --></p>
+<p>Change root <!-- raw HTML omitted --><br>
+把环境切换到新系统的/mnt 下 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>arch-chroot /mnt
 </span></span></code></pre></div><p>设置时区，在/etc/localtime 下用/usr <!-- raw HTML omitted --><br>
 中合适的时区创建符号连接。如下设置上海时区。 <!-- raw HTML omitted --></p>
@@ -836,23 +833,23 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hwclock --systohc
 </span></span></code></pre></div></li>
 <li>
-<p>设置Locale进行本地化 <!-- raw HTML omitted --></p>
-<p>编辑 /etc/locale.gen <!-- raw HTML omitted --></p>
+<p>设置Locale进行本地化 <!-- raw HTML omitted --><br>
+编辑 /etc/locale.gen <!-- raw HTML omitted --></p>
 <ul>
 <li>去掉 en_US.UTF-8 所在行 <!-- raw HTML omitted --></li>
-<li>以及 zh_CN.UTF-8 所在行的注释符号（#）。 <!-- raw HTML omitted --></li>
+<li>以及 zh_CN.UTF-8 所在行的注释符号（#） <!-- raw HTML omitted --></li>
 </ul>
-<p>然后使用如下命令生成 locale。 <!-- raw HTML omitted --></p>
+<p>然后使用如下命令生成 locale <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>locale-gen
 </span></span></code></pre></div><p>最后向 /etc/locale.conf 导入内容 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;LANG=en_US.UTF-8&#39;</span>  &gt; /etc/locale.conf
 </span></span></code></pre></div></li>
 <li>
-<p>设置主机名 <!-- raw HTML omitted --></p>
-<p>首先在=/etc/hostname=设置主机名 <!-- raw HTML omitted --></p>
+<p>设置主机名 <!-- raw HTML omitted --><br>
+首先在=/etc/hostname=设置主机名 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vim /etc/hostname
-</span></span></code></pre></div><p>加入你想为主机取的主机名，这里比如叫 apple <!-- raw HTML omitted --></p>
-<p>接下来在=/etc/hosts=设置与其匹配的条目。 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>加入你想为主机取的主机名，这里比如叫 apple <!-- raw HTML omitted --><br>
+接下来在=/etc/hosts=设置与其匹配的条目。 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>vim /etc/hosts
 </span></span></code></pre></div><p>加入如下内容 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>127.0.0.1   localhost
@@ -883,11 +880,9 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </ol>
 <p>重启后别急着 <code>sudo pacman -Syyu</code> 一步一步来 <!-- raw HTML omitted --></p>
 <ol start="15">
-<li>
-<p>先来连接网络，开启 networkmanager 服务 <!-- raw HTML omitted --><br>
-<code>sudo systemctl enable --now NetworkManager</code>  <!-- raw HTML omitted --></p>
-<p>若有冲突，可以试着关闭 iwd stop or disable <!-- raw HTML omitted --></p>
-</li>
+<li>先来连接网络，开启 networkmanager 服务 <!-- raw HTML omitted --><br>
+<code>sudo systemctl enable --now NetworkManager</code>  <!-- raw HTML omitted --><br>
+若有冲突，可以试着关闭 iwd stop or disable <!-- raw HTML omitted --></li>
 </ol>
 <blockquote>
 <p>在装完系统进入 <code>tty</code> <!-- raw HTML omitted --><br>
@@ -899,8 +894,8 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 <li>
 <p>创建非 root 用户 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>useradd -m -G wheel -s /bin/bash welcome  <span style="color:#75715e">#wheel附加组可sudo，以root用户执行命令 -m同时创建用户家目录</span>
-</span></span></code></pre></div><p>为新用户创建密码，用 <code>passwd + 用户名</code> 这个方法 <!-- raw HTML omitted --></p>
-<p>编辑 sudoers 配置文件 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>为新用户创建密码，用 <code>passwd + 用户名</code> 这个方法 <!-- raw HTML omitted --><br>
+编辑 sudoers 配置文件 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>EDITOR<span style="color:#f92672">=</span>vim visudo  <span style="color:#75715e"># 需要以 root 用户运行 visudo 命令</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 去掉下面这行的注释</span>
@@ -908,8 +903,8 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#%wheel ALL=(ALL:ALL) ALL</span>
 </span></span></code></pre></div></li>
 <li>
-<p>yay <!-- raw HTML omitted --></p>
-<p>yay 是比pacman更便捷的包管理工具，推荐使用 <!-- raw HTML omitted --></p>
+<p>yay <!-- raw HTML omitted --><br>
+yay 是比pacman更便捷的包管理工具，推荐使用 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/pacman.conf 尾部添加
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>archlinuxcn<span style="color:#f92672">]</span>
@@ -927,19 +922,16 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 <li>
 <p>DWM <!-- raw HTML omitted --></p>
 <ul>
-<li>
-<p>安装前件 <!-- raw HTML omitted --></p>
+<li>安装前件 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S git xorg xorg-xinit 
 </span></span></code></pre></div></li>
-<li>
-<p>安装字体 <!-- raw HTML omitted --></p>
+<li>安装字体 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S nerd-fonts-jetbrains-mono  <span style="color:#75715e"># 注这个jetbrains 的字体，目前的包名不叫这个但是新的包在我使用起来会出现错误，字体显示不全</span>
 </span></span><span style="display:flex;"><span>yay -S ttf-material-design-icons    <span style="color:#75715e"># 图标</span>
 </span></span><span style="display:flex;"><span>yay -S ttf-joypixels
 </span></span><span style="display:flex;"><span>yay -S wqy-microhei                 <span style="color:#75715e"># 中文字体（文泉驿）</span>
 </span></span></code></pre></div></li>
-<li>
-<p>安装软件 （不必须，但建议） <del>在终端使劲敲</del> <!-- raw HTML omitted --></p>
+<li>安装软件 （不必须，但建议） <del>在终端使劲敲</del> <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S lxappearance              <span style="color:#75715e"># gui设置</span>
 </span></span><span style="display:flex;"><span>yay -S paper-gtk-theme-git       <span style="color:#75715e"># gtk主题</span>
 </span></span><span style="display:flex;"><span>yay -S pavucontrol               <span style="color:#75715e"># 音频设置</span>
@@ -957,30 +949,25 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span><span style="display:flex;"><span>yay -S obs-studio-amf            <span style="color:#75715e"># obs for amd_gpu</span>
 </span></span><span style="display:flex;"><span>yay -S mpc mpd ncmpcpp           <span style="color:#75715e"># tui music player</span>
 </span></span></code></pre></div></li>
-<li>
-<p>开始 clone dwm和 st 吧 <del>本人习惯创建 .rec 文件夹</del> <!-- raw HTML omitted --></p>
+<li>开始 clone dwm和 st 吧 <del>本人习惯创建 .rec 文件夹</del> <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cp -r DEF/* .
 </span></span><span style="display:flex;"><span>sudo make clean install
 </span></span></code></pre></div></li>
-<li>
-<p>运行 dwm <!-- raw HTML omitted --></p>
-<p>在 <code>~/.xinitrc</code> 文件里写入 <!-- raw HTML omitted --></p>
+<li>运行 dwm <!-- raw HTML omitted --><br>
+在 <code>~/.xinitrc</code> 文件里写入 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export DWM<span style="color:#f92672">=</span>~/.rec/dwm
 </span></span><span style="display:flex;"><span>exec dwm
-</span></span></code></pre></div><p>然后就可以愉快的使用 <code>startx</code> 启动了 当然如果你想进入 tty <!-- raw HTML omitted --><br>
-的时候自动执行 startx 的话可以在 bash 的配置里加上 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div>然后就可以愉快的使用 <code>startx</code> 启动了 当然如果你想进入 tty <!-- raw HTML omitted --><br>
+的时候自动执行 startx 的话可以在 bash 的配置里加上 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>tty<span style="color:#66d9ef">)</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/dev/tty1&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> cd ~ <span style="color:#f92672">&amp;&amp;</span> startx
 </span></span></code></pre></div></li>
-<li>
-<p>别忘了为 c 先生 的 scripts 里的脚本和*给脚本加权限* <!-- raw HTML omitted --></p>
-</li>
+<li>别忘了为 c 先生 的 scripts 里的脚本和*给脚本加权限* <!-- raw HTML omitted --></li>
 </ul>
 </li>
 <li>
 <p>其他杂项 <!-- raw HTML omitted --></p>
 <ul>
-<li>
-<p>触控板生效 <!-- raw HTML omitted --></p>
+<li>触控板生效 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S xf86-input-synaptics      <span style="color:#75715e"># 触控板</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>/etc/X11/xorg.conf.d/30-touchpad.conf
@@ -993,8 +980,7 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span><span style="display:flex;"><span>    Option <span style="color:#e6db74">&#34;TappingButtonMap&#34;</span> <span style="color:#e6db74">&#34;lrm&#34;</span>
 </span></span><span style="display:flex;"><span>EndSection
 </span></span></code></pre></div></li>
-<li>
-<p>tty 免登录 (感觉有点不对，需要深入研究) <!-- raw HTML omitted --></p>
+<li>tty 免登录 (感觉有点不对，需要深入研究) <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/systemd/system/getty.target.wants/getty@tty1.service
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 这一步貌似有错误</span>
@@ -1007,8 +993,7 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#用户提权</span>
 </span></span><span style="display:flex;"><span>yay -S polkit
 </span></span></code></pre></div></li>
-<li>
-<p>去除蜂鸣器声音 <!-- raw HTML omitted --></p>
+<li>去除蜂鸣器声音 <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo su
 </span></span><span style="display:flex;"><span>mkdir -p /etc/rc.d
 </span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;rmmod pcspkr&#34;</span> &gt;&gt; /etc/rc.d/rc.local
@@ -1017,11 +1002,11 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </ul>
 </li>
 <li>
-<p>然后开梯子🪜，更换 zsh c 先生也有一篇关于 zsh 的分享 <!-- raw HTML omitted --><br>
-<del>可以直接拿来用</del> omz 下载 <!-- raw HTML omitted --></p>
+<p>然后开梯子🪜，更换 zsh c 先生也有一篇关于 zsh 的分享<del>可以直接拿来用</del> <!-- raw HTML omitted --><br>
+omz下载 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><p><a href="https://github.com/yaocccc/omz">配置</a>可以放在 .rec 里 <!-- raw HTML omitted --></p>
-<p>需要的依赖&amp;软件 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p><a href="https://github.com/yaocccc/omz">配置</a>可以放在 .rec 里 <!-- raw HTML omitted --><br>
+需要的依赖&amp;软件 <!-- raw HTML omitted --></p>
 <ul>
 <li>fzf fd bat exa ueberzug(可在x11终端下预览图片) <!-- raw HTML omitted --></li>
 <li>z.lua extract zsh-autosuggestions zsh-syntax-highlighting fzf-tab <!-- raw HTML omitted --><br>
@@ -1029,16 +1014,13 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </ul>
 <p>然后在 .zshrc 里加入这样的一句话 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>source ~/.rec/omz/omz.zsh
-</span></span></code></pre></div><p>之后 source 一下 zshrc 就 okay 了。 <!-- raw HTML omitted --></p>
-<p><em>好吧就到这吧，以后也许还会修改和添加。关于 dwm&amp;arch <!-- raw HTML omitted --><br>
-的配置和问题不在这里描述</em> 25 Nov,23 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>之后 source 一下 zshrc 就 okay 了。 <!-- raw HTML omitted --><br>
+<em>好吧就到这吧，以后也许还会修改和添加。关于 dwm&amp;arch <!-- raw HTML omitted --><br>
+的配置和问题不在这里描述</em>   25 Nov,23 <!-- raw HTML omitted --></p>
 </li>
 </ol>
 <h4 id="优化">优化<a hidden class="anchor" aria-hidden="true" href="#优化">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>输入法</p>
+<h5 id="输入法">输入法<a hidden class="anchor" aria-hidden="true" href="#输入法">#</a></h5>
 <p>首先是安装Rime <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-config-qt fcitx5-material-color fcitx5-im fcitx5-rime
 </span></span><span style="display:flex;"><span>sudo echo <span style="color:#e6db74">&#39;
@@ -1047,29 +1029,17 @@ type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">XMODIFIERS=@im=fcitx
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">SDL_IM_MODULE=fcitx
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GLFW_IM_MODULE=ibus&#39;</span> &gt;&gt; /etc/environment
-</span></span></code></pre></div><p>其次配置文件是在 <code>~/.local/share/fcitx5/rime</code> <!-- raw HTML omitted --><br>
-<strong>配置文件*是<a href="https://github.com/Mintimate/oh-my-rime">这位老哥</a>的 <!-- raw HTML omitted --><br>
-关于*默认输入英文还是中文*这个是在以 <code>schema.yaml</code> 为结尾的文件里将 <!-- raw HTML omitted --><br>
-<code>reset</code> 从 0 改为 1. 关于*皮肤</strong> <!-- raw HTML omitted --><br>
-<a href="https://github.com/fkxxyz/ssfconv">这位老哥</a>弄了一个工具，可以将搜狗的皮肤转换成 <!-- raw HTML omitted --><br>
-fcitx5 的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>music</p>
-<p><a href="https://yaocc.cc/ncmpcpp/">cc关于mpd 和 ncmpcpp的配置</a> <!-- raw HTML omitted --></p>
-<p>在安装好mpd后还需要两个依赖包 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>其次配置文件是在<code>~/.local/share/fcitx5/rime</code> <!-- raw HTML omitted --><br>
+<strong>配置文件</strong>是<a href="https://github.com/Mintimate/oh-my-rime">这位老哥</a>的 <!-- raw HTML omitted --><br>
+关于<strong>默认输入英文还是中文</strong>这个是在以<code>schema.yaml</code>为结尾的文件里将<code>reset</code>从 0 改为 1. 关于<strong>皮肤</strong> <!-- raw HTML omitted --><br>
+<a href="https://github.com/fkxxyz/ssfconv">这位老哥</a>弄了一个工具，可以将搜狗的皮肤转换成_fcitx5_的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 <!-- raw HTML omitted --></p>
+<h5 id="music">music<a hidden class="anchor" aria-hidden="true" href="#music">#</a></h5>
+<p><a href="https://yaocc.cc/ncmpcpp/">cc关于mpd 和 ncmpcpp的配置</a> <!-- raw HTML omitted --><br>
+在安装好mpd后还需要两个依赖包 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>yay -S timidity wildmidi
-</span></span></code></pre></div><p>scripts脚本文件夹里有一个关于音乐的脚本 <strong>command + m</strong> <!-- raw HTML omitted --><br>
+</span></span></code></pre></div><p>scripts脚本文件夹里有一个关于音乐的脚本<strong>command + m</strong> <!-- raw HTML omitted --><br>
 可以调出两个音乐的窗口。不过位置的显示需要微调。 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>WiFi（nmcli）</p>
+<h5 id="wifi-nmcli">WiFi（nmcli）<a hidden class="anchor" aria-hidden="true" href="#wifi-nmcli">#</a></h5>
 <p>使用 nmcli 对 wifi进行连接和管理 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nmcli radio wifi on                                  <span style="color:#75715e"># 开启wifi</span>
 </span></span><span style="display:flex;"><span>nmcli dev wifi list                                  <span style="color:#75715e"># 列出可用的wifi</span>
@@ -1080,28 +1050,18 @@ fcitx5 的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 <
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用 nmcli 管理网络</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果连接到一个网络,但是想切换到其他的网络,可以用down/up指令加上对应的SSID</span>
 </span></span><span style="display:flex;"><span>nmcli con up/down SSID
-</span></span></code></pre></div></li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>屏幕亮度</p>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<ol>
-<li>第一种方法</li>
-</ol>
+</span></span></code></pre></div><h5 id="屏幕亮度">屏幕亮度<a hidden class="anchor" aria-hidden="true" href="#屏幕亮度">#</a></h5>
+<h6 id="第一种方法">1. 第一种方法<a hidden class="anchor" aria-hidden="true" href="#第一种方法">#</a></h6>
 <p><strong>使用的是acpi</strong> <!-- raw HTML omitted --><br>
 <a href="https://bbs.archlinux.org/viewtopic.php?pid=1449243#p1449243">This <!-- raw HTML omitted --><br>
-friend has given a nice solution</a> <!-- raw HTML omitted --></p>
-<p><em>This is the file place where to control the backlight on my cp</em> <!-- raw HTML omitted --><br>
+friend has given a nice solution</a> <!-- raw HTML omitted --><br>
+<em>This is the file place where to control the backlight on my cp</em> <!-- raw HTML omitted --><br>
 我的arch里控制背光的文件 <!-- raw HTML omitted --></p>
 <blockquote>
 <p>/sys/class/backlight/amdgpu_bl1/brightness <!-- raw HTML omitted --></p>
 </blockquote>
-<p>By the way, the max_brightness is 255 ,jaja <!-- raw HTML omitted --></p>
-<p><strong>Scripts</strong> are here <!-- raw HTML omitted --></p>
+<p>By the way, the max_brightness is 255 ,jaja <!-- raw HTML omitted --><br>
+<strong>Scripts</strong> are here <!-- raw HTML omitted --></p>
 <blockquote>
 <p>/etc/acpi/actions <!-- raw HTML omitted --></p>
 </blockquote>
@@ -1109,18 +1069,10 @@ friend has given a nice solution</a> <!-- raw HTML omitted --></p>
 <blockquote>
 <p>/etc/acpi/events <!-- raw HTML omitted --></p>
 </blockquote>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<ol start="2">
-<li>第二种方法 (better)</li>
-</ol>
+<h6 id="2-dot-第二种方法--better">2. 第二种方法 (better)<a hidden class="anchor" aria-hidden="true" href="#2-dot-第二种方法--better">#</a></h6>
 <p><strong>Up</strong> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>bl_device<span style="color:#f92672">=</span>/sys/class/backlight/amdgpu_bl1/brightness
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>bl_device<span style="color:#f92672">=</span>/sys/class/backlight/amdgpu_bl1/brightness
 </span></span><span style="display:flex;"><span>echo <span style="color:#66d9ef">$(($(</span>cat $bl_device<span style="color:#66d9ef">)</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> | sudo tee $bl_device
 </span></span></code></pre></div><p><strong>Down</strong> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
@@ -1128,22 +1080,14 @@ friend has given a nice solution</a> <!-- raw HTML omitted --></p>
 </span></span><span style="display:flex;"><span>bl_device<span style="color:#f92672">=</span>/sys/class/backlight/amdgpu_bl1/brightness
 </span></span><span style="display:flex;"><span>echo <span style="color:#66d9ef">$(($(</span>cat $bl_device<span style="color:#66d9ef">)</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> | sudo tee $bl_device
 </span></span></code></pre></div><p><strong>使用的是 xbindkeys</strong>, 方法和下面音量的调节一样 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>音量调节</p>
-<p><a href="https://www.ejmastnak.com/tutorials/arch/volume/">This is very good</a> <!-- raw HTML omitted --></p>
-<p>用 <code>xbindkeys</code> 这个软件将脚本绑定到对应的按键上 用 <code>xev</code> 或者 <!-- raw HTML omitted --><br>
-<code>xbindkeys -k=来显示按键对应的名称 将脚本和按键对应的关系按照一定的语法写入到 =~/.xbindkeysrc</code> 文件夹中 <!-- raw HTML omitted --><br>
-自动激活可以在 <code>~/.xinitrc</code> 文件中写入 <strong>xbindkeys</strong> <!-- raw HTML omitted --></p>
-<p><strong>静音和调大调小之间的不协调</strong> <!-- raw HTML omitted --><br>
+<h5 id="音量调节">音量调节<a hidden class="anchor" aria-hidden="true" href="#音量调节">#</a></h5>
+<p><a href="https://www.ejmastnak.com/tutorials/arch/volume/">This is very good</a> <!-- raw HTML omitted --><br>
+用 <code>xbindkeys</code> 这个软件将脚本绑定到对应的按键上 用<code>xev</code>或者<code>xbindkeys -k</code>来显示按键对应的名称 <!-- raw HTML omitted --><br>
+将脚本和按键对应的关系按照一定的语法写入到<code>~/.xbindkeysrc文件夹中</code>自动激活可以在<code>~/.xinitrc</code>文件中写入 <strong>xbindkeys</strong> <!-- raw HTML omitted --><br>
+<strong>静音和调大调小之间的不协调</strong> <!-- raw HTML omitted --><br>
 首先是在调节音量之前判断一下系统现在是否处在静音的状态. <!-- raw HTML omitted --><br>
-如果是的话，那么将其解除静音. <!-- raw HTML omitted --></p>
-<p><strong>代码实现如下</strong> <!-- raw HTML omitted --></p>
+如果是的话，那么将其解除静音. <!-- raw HTML omitted --><br>
+<strong>代码实现如下</strong> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># NAME</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#     volume.sh - Increase/decrease/mute volume using PulseAudio pactl</span>
@@ -1184,14 +1128,9 @@ friend has given a nice solution</a> <!-- raw HTML omitted --></p>
 </span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Unrecognized parameter: </span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage should be: volume.sh &lt;raise|lower|mute&gt;&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span></code></pre></div></li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>grub中 Win丟失</p>
-<p>Lost Windows in Grub <!-- raw HTML omitted --></p>
-<p>查看uuid的命令是 <code>blkid</code> <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><h5 id="grub中-win丟失">grub中 Win丟失<a hidden class="anchor" aria-hidden="true" href="#grub中-win丟失">#</a></h5>
+<p>Lost Windows in Grub <!-- raw HTML omitted --><br>
+查看uuid的命令是 <code>blkid</code> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>menuentry <span style="color:#e6db74">&#39;Win&#39;</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    insmod part_gpt
 </span></span><span style="display:flex;"><span>    insmod fat
@@ -1199,16 +1138,11 @@ friend has given a nice solution</a> <!-- raw HTML omitted --></p>
 </span></span><span style="display:flex;"><span>    search --fs-uuid --no-floppy --set<span style="color:#f92672">=</span>root EAD2-8212
 </span></span><span style="display:flex;"><span>    chainloader <span style="color:#f92672">(</span><span style="color:#e6db74">${</span>root<span style="color:#e6db74">}</span><span style="color:#f92672">)</span>/EFI/Microsoft/Boot/bootmgfw.efi
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p><code>/boot/grub/grub.cfg</code> <em>custom 40</em>  注意那里 &ndash;set=root xxx 是定义了一个变量下面一行里会调用这个变量 <!-- raw HTML omitted --><br>
+</span></span></code></pre></div><p><code>/boot/grub/grub.cfg</code><em>custom 40</em>  注意那里 &ndash;set=root xxx 是定义了一个变量下面一行里会调用这个变量 <!-- raw HTML omitted --><br>
 <strong><strong>这里建议修改我视频里的文件</strong></strong> <code>/etc/grub.d/40_custom</code> <!-- raw HTML omitted --></p>
-<p><figure>
-        <img loading="lazy" src="https://raw.githubusercontent.com/eyck0102/pics/master/grub_windows%20%E4%BD%8D%E7%BD%AE.png"
-             alt="Figure 1: image-20231119094353767"/> <figcaption>
-                <p><!-- raw HTML omitted -->Figure 1: <!-- raw HTML omitted -->image-20231119094353767</p>
-            </figcaption>
-    </figure>
- <!-- raw HTML omitted --></p>
-<p>补充一点，Windows 里如果 efi 分区没有独立出来，即和 <!-- raw HTML omitted --><br>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/eyck0102/pics/master/grub_windows%20%E4%BD%8D%E7%BD%AE.png" alt=""  />
+ <!-- raw HTML omitted --><br>
+补充一点，Windows 里如果 efi 分区没有独立出来，即和 <!-- raw HTML omitted --><br>
 c盘在一起，新建一个独立的 efi 分区的步骤如下 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>list partition 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> partition <span style="color:#f92672">{</span>index<span style="color:#f92672">}</span>      <span style="color:#75715e"># 选择一个分区</span>
@@ -1220,14 +1154,8 @@ c盘在一起，新建一个独立的 efi 分区的步骤如下 <!-- raw HTML om
 </span></span><span style="display:flex;"><span>exit
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 然后以管理员权限运行 Cmd</span>
 </span></span><span style="display:flex;"><span>bcdboot C:<span style="color:#ae81ff">\w</span>indows /s S:   <span style="color:#75715e">#复制 efi 文件到新建的分区</span>
-</span></span></code></pre></div></li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>开机启动脚本</p>
-<p>将脚本写好后，添加权限，然后将脚本加入到 cc 的 dwm 配置 <code>autostart.sh</code> <!-- raw HTML omitted --><br>
-里面， 注意在结尾要用 <code>&amp;</code> 隔开与下一个命令 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><h5 id="开机启动脚本">开机启动脚本<a hidden class="anchor" aria-hidden="true" href="#开机启动脚本">#</a></h5>
+<p>将脚本写好后，添加权限，然后将脚本加入到 cc 的dwm配置<code>autostart.sh</code>里面,注意在结尾要用<code>&amp;</code>隔开与下一个命令 <!-- raw HTML omitted --></p>
 <table>
 <thead>
 <tr>
@@ -1252,162 +1180,111 @@ c盘在一起，新建一个独立的 efi 分区的步骤如下 <!-- raw HTML om
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>停止一个脚本进程</p>
-<p>起因：为 clash 设置开机启动脚本之后，不知道该怎么关闭 解决：用 <!-- raw HTML omitted --><br>
-<code>ps -ef | grep clash</code> 来列出 clash 的进程 再用 <code>kill -9 *进程号*</code> <!-- raw HTML omitted --><br>
-来关闭， 一般是 ./clash&hellip;. 这个进程，而不是脚本文件 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>给 Arch 添加 Swap 文件</p>
-<p>参考：<a href="https://timothyqiu.com/archives/104/">TimothyQiu&rsquo;s Blog</a> <!-- raw HTML omitted --></p>
-<p>起因：之前按照 cc 和 archstory 的步骤，给 arch 开机的时候发现 arch <!-- raw HTML omitted --><br>
+<h5 id="停止一个脚本进程">停止一个脚本进程<a hidden class="anchor" aria-hidden="true" href="#停止一个脚本进程">#</a></h5>
+<p>起因：为 clash 设置开机启动脚本之后,不知道该怎么关闭 解决:用<code>ps -ef | grep clash</code>来列出 clash 的进程 再用<code>kill -9 *进程号*</code>来关闭,一般是 ./clash&hellip;. 这个进程，而不是脚本文件 <!-- raw HTML omitted --></p>
+<h5 id="给-arch-添加-swap-文件">给 Arch 添加 Swap 文件<a hidden class="anchor" aria-hidden="true" href="#给-arch-添加-swap-文件">#</a></h5>
+<p>参考：<a href="https://timothyqiu.com/archives/104/">TimothyQiu&rsquo;s Blog</a> <!-- raw HTML omitted --><br>
+起因：之前按照 cc 和 archstory 的步骤，给 arch 开机的时候发现 arch <!-- raw HTML omitted --><br>
 显示/找不到/swapfile/，因此在网上有找了一些其他的方法（感觉 cc <!-- raw HTML omitted --><br>
-的有些省略） 📍创建 Swap 文件 <!-- raw HTML omitted --></p>
-<p>创建 Swap 文件有很多种方法，但最可移植的方法是使用 <code>dd=。比如创建 1G 的 =/swapfile</code> ： <!-- raw HTML omitted --></p>
+的有些省略） 📍创建 Swap 文件 <!-- raw HTML omitted --><br>
+创建 Swap 文件有很多种方法，但最可移植的方法是使用<code>dd</code>比如创建1G的/swapfile ： <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>/swapfile bs<span style="color:#f92672">=</span>1M count<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span> status<span style="color:#f92672">=</span>progress
 </span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">0600</span> /swapfile
 </span></span><span style="display:flex;"><span>mkswap -U clear /swapfile
-</span></span></code></pre></div><p>这里的 <code>chmod</code> 是为了安全，所有人都可读写的 Swap 文件是巨大隐患。 <!-- raw HTML omitted --><br>
-<code>mkswap</code> 的 <code>-U</code> 参数用于设置 swap 的 UUID。但是因为 swap <!-- raw HTML omitted --><br>
-文件必须使用文件系统路径去指定，所以这里使用特殊的 <code>clear</code> <!-- raw HTML omitted --><br>
-作为参数去清空它（实际效果是设置了全零的 UUID）。 <!-- raw HTML omitted --></p>
-<p>📍打开与关闭 <!-- raw HTML omitted --></p>
-<p>创建好 swap 文件后，就可以直接启用了： <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>这里的<code>chmod</code>是为了安全，所有人都可读写的 Swap 文件是巨大隐患.<code>mkswap</code>的<code>-U</code>参数用于设置 swap 的 UUID。但是因为 swap文件必须使用文件系统路径去指定，所以这里使用特殊的<code>clear</code> <!-- raw HTML omitted --><br>
+作为参数去清空它（实际效果是设置了全零的 UUID）。 <!-- raw HTML omitted --><br>
+📍打开与关闭 <!-- raw HTML omitted --><br>
+创建好 swap 文件后，就可以直接启用了： <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>swapon /swapfile
-</span></span></code></pre></div><p>最后把它放进 <code>/etc/fstab</code> 里，这样每次启动就会直接启用： <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>最后把它放进<code>/etc/fstab</code>里，这样每次启动就会直接启用： <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/swapfile none swap defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
 </span></span></code></pre></div><p>如果是要关闭，顾名思义就： <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>swapoff /swapfile
-</span></span></code></pre></div><p>关闭以后它就是个普通文件，想删除就可以直接删除了。 <!-- raw HTML omitted --></p>
-<p>📍使用 Swap 文件进行休眠 <!-- raw HTML omitted --></p>
-<p>需要设置=resume=和=resume_offset=参数 <!-- raw HTML omitted --></p>
-<p><code>resume</code> 参数是 swap 文件所在的分区（例如 =/dev/nvme0n1p2=，或者 <!-- raw HTML omitted --><br>
-=UUID=4209c845-f495-4c43-8a03-5363dd433153=）有两种表示方法 <!-- raw HTML omitted --><br>
-=UUID=的获取方法是 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>关闭以后它就是个普通文件，想删除就可以直接删除了。 <!-- raw HTML omitted --><br>
+📍使用 Swap 文件进行休眠 <!-- raw HTML omitted --><br>
+需要设置=resume=和=resume_offset=参数 <!-- raw HTML omitted --><br>
+<code>resume</code>参数是 swap 文件所在的分区（例如<code>/dev/nvme0n1p2</code>,或者<code>UUID=4209c845-f495-4c43-8a03-5363dd433153</code>）有两种表示方法<code>UUID</code>的获取方法是 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>findmnt -no UUID -T /swapfile
-</span></span></code></pre></div><p>=resume_offset=获取方法 <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p><code>resume_offset</code>获取方法 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>filefrag -v /swapfile | awk <span style="color:#e6db74">&#39;{ if($1==&#34;0:&#34;){print substr($4, 1, length($4)-2)} }&#39;</span>
-</span></span></code></pre></div><p>编辑=/etc/default/grub=，将以上两个参数写进=/etc/default/grub=中 <!-- raw HTML omitted --><br>
-<em>像这样</em> <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>编辑<code>etc/default/grub</code>,将以上两个参数写进<code>/etc/default/grub</code>中_像这样_ <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;loglevel=3 nowatchdog resume=UUID=db7c6671-e10c-4486-9077-87692688cdcc resume_offset=3733504&#34;</span>
-</span></span></code></pre></div><p>最后重新生成一下`=grub.cfg= <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>最后重新生成一下<code>grub.cfg</code> <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grub-mkconfig -o /boot/grub/grub.cfg
-</span></span></code></pre></div><p>📍initramfs <!-- raw HTML omitted --></p>
-<p>如果你的 initramfs 没有使用 systemd 钩子（使用的是 <!-- raw HTML omitted --><br>
-base），那么就还需要添加一个 resume 钩子才会尝试从休眠中恢复： <!-- raw HTML omitted --></p>
-<p>编辑 <code>/etc/mkinitcpio.conf</code> 文件，在 <code>HOOKS=(...)</code> 里的 <code>udev</code> <!-- raw HTML omitted --><br>
-之后的任何位置加入 =resume=。最后重新生成 initramfs 即可： <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>📍initramfs <!-- raw HTML omitted --><br>
+如果你的 initramfs 没有使用 systemd 钩子（使用的是 <!-- raw HTML omitted --><br>
+base），那么就还需要添加一个 resume 钩子才会尝试从休眠中恢复:编辑<code>/etc/mkinitcpio.conf</code>文件,在<code>HOOKS=(...)</code>里的<code>udev</code>之后的任何位置加入<code>resume</code>最后重新生成 initramfs即可： <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkinitcpio -p linux
-</span></span></code></pre></div></li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>和 Win 时间不同</p>
-<p><strong>原因</strong> <!-- raw HTML omitted --></p>
-<p><a href="https://sspai.com/post/55983">少数派的一篇文章</a> <!-- raw HTML omitted --></p>
-<p><strong>GMT</strong>: Greenwhich Mean Time <!-- raw HTML omitted --><br>
-(格林尼治标准时间)，也就是世界时间。以地球自转为基础的时间计量系统。但是GMT不够准确（相比较而言） <!-- raw HTML omitted --></p>
-<p>*UTC*：Universal Time Coordinated <!-- raw HTML omitted --><br>
-(协调世界时)，以=原子时=的秒长为基础。现在作为时间标准时间使用 <!-- raw HTML omitted --></p>
-<p>*RTC*：Real-Time Clock 实时时钟 ，在计算机领域称为硬件时间 <!-- raw HTML omitted --></p>
-<p>e.g 北京位于东八区， 其时间即为 UTC+8 <!-- raw HTML omitted --></p>
-<p>Windows把硬件时钟设为=本地时间= Linu把硬件时间设为=UTC= <!-- raw HTML omitted --></p>
-<p>那么Linux显示的时间就是UTC时间➕时区 <!-- raw HTML omitted --></p>
-<p><strong>解决方法</strong> <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><h5 id="和-win-时间不同">和 Win 时间不同<a hidden class="anchor" aria-hidden="true" href="#和-win-时间不同">#</a></h5>
+<p><strong>原因</strong> <!-- raw HTML omitted --><br>
+<a href="https://sspai.com/post/55983">少数派的一篇文章</a> <!-- raw HTML omitted --><br>
+<strong>GMT</strong>: Greenwhich Mean Time <!-- raw HTML omitted --><br>
+(格林尼治标准时间)，也就是世界时间。以地球自转为基础的时间计量系统。但是GMT不够准确（相比较而言） <!-- raw HTML omitted --><br>
+<strong>UTC</strong>:Universal Time Coordinated <!-- raw HTML omitted --><br>
+(协调世界时)，以=原子时=的秒长为基础。现在作为时间标准时间使用 <!-- raw HTML omitted --><br>
+<strong>RTC</strong>:Real-Time Clock 实时时钟 ，在计算机领域称为硬件时间 <!-- raw HTML omitted --><br>
+e.g 北京位于东八区， 其时间即为 UTC+8 <!-- raw HTML omitted --><br>
+Windows把硬件时钟设为=本地时间= Linu把硬件时间设为<code>UTC</code> <!-- raw HTML omitted --><br>
+那么Linux显示的时间就是UTC时间➕时区 <!-- raw HTML omitted --><br>
+<strong>解决方法</strong> <!-- raw HTML omitted --></p>
 <ol>
-<li>
-<p>Windows <!-- raw HTML omitted --></p>
-<p>管理员打开=powershell= <!-- raw HTML omitted --></p>
+<li>Windows <!-- raw HTML omitted --><br>
+管理员打开=powershell= <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Reg add HKLM<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\C</span>ontrol<span style="color:#ae81ff">\T</span>imeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d <span style="color:#ae81ff">1</span>
-</span></span></code></pre></div><p>或者打开「注册表编辑器」，定位到 <!-- raw HTML omitted --><br>
-<code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code> <!-- raw HTML omitted --><br>
-目录下，新建一个 <code>DWORD</code> 类型，名称为 <code>RealTimeIsUniversal</code> <!-- raw HTML omitted --><br>
-的键，并修改键值为 <code>1</code> 即可。 <!-- raw HTML omitted --></p>
-</li>
-<li>
-<p>Linux <!-- raw HTML omitted --></p>
+</span></span></code></pre></div>或者打开「注册表编辑器」，定位到<code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code>目录下，新建一个<code>DWORD</code>类型，名称为<code>RealTimeIsUniversal</code>的键，并修改键值为<code>1</code>即可。 <!-- raw HTML omitted --></li>
+<li>Linux <!-- raw HTML omitted -->
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>timedatectl set-local-rtc <span style="color:#ae81ff">1</span> --adjust-system-clock
 </span></span></code></pre></div></li>
 </ol>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>onedrive 同步</p>
-<p><a href="https://zhul.in/2022/12/24/onedrive-abraunegg-recommendation/">博客</a> <!-- raw HTML omitted --></p>
-<p>可以直接在 AUR 里找到 <!-- raw HTML omitted --><br>
-<a href="https://github.com/abraunegg/onedrive">onedrive-abraunegg</a> <!-- raw HTML omitted --></p>
-<p>然后运行 <code>onedrive</code> <!-- raw HTML omitted --><br>
+<h5 id="onedrive-同步">onedrive 同步<a hidden class="anchor" aria-hidden="true" href="#onedrive-同步">#</a></h5>
+<p><a href="https://zhul.in/2022/12/24/onedrive-abraunegg-recommendation/">博客</a> <!-- raw HTML omitted --><br>
+可以直接在 AUR 里找到 <!-- raw HTML omitted --><br>
+<a href="https://github.com/abraunegg/onedrive">onedrive-abraunegg</a> <!-- raw HTML omitted --><br>
+然后运行 <code>onedrive</code> <!-- raw HTML omitted --><br>
 复制链接，浏览器打开，再将输出的网址复制下来，完成账号授权。 <!-- raw HTML omitted --><br>
 可以在<a href="/home/mi/.config/onedrive">配置文件夹目录</a>下创建 <!-- raw HTML omitted --><br>
-<code>sync_list</code>,可以在这个文件里写入你想要同步的文件夹，每行一个。写完注意执行一下这个命令 <!-- raw HTML omitted --><br>
-<code>onedrive --synchronize --resync</code> <!-- raw HTML omitted --><br>
+<code>sync_list</code>,可以在这个文件里写入你想要同步的文件夹，每行一个。写完注意执行一下这个命令<code>onedrive --synchronize --resync</code> <!-- raw HTML omitted --><br>
 <a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#performing-a-selective-sync-via-sync_list-file">详情见此</a> <!-- raw HTML omitted --><br>
-如果不想把文件同步在默认的路径下可以在配置文件夹下，新建一个=config=文件，把此处给的 <!-- raw HTML omitted --><br>
-<a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#the-default-configuration-file-is-listed-below">configuration <!-- raw HTML omitted --><br>
-examples</a> 全部复制进去，找到 <code>sync_dir</code> <!-- raw HTML omitted --><br>
-把前面的注释删掉，改成自己喜欢的路径 <!-- raw HTML omitted --></p>
-<p>然后 <code>onedrive --synchronize</code> 愉快同步。 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>访问 windows 文件</p>
-<p>如果有 <code>unknown filesystem type 'ntfs'</code> <!-- raw HTML omitted --><br>
-这种错误，需要安装=yay -S ntfs-3g=这个包 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>ArchLinux忽略某个包的升级</p>
-<p>咋做的呢？往 <code>/etc/pacman.conf</code> 里，有这么一行： <code>#IgnorePkg =</code> <!-- raw HTML omitted --><br>
-，给它取消注释，改成：=IgnorePkg = linux=， 然后就可以了。 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>keyring 签名错误</p>
-<p>❌ signature from &ldquo;xxx&rdquo; is unknown <!-- raw HTML omitted --></p>
-<p>解决方法 <!-- raw HTML omitted --></p>
+如果不想把文件同步在默认的路径下可以在配置文件夹下，新建一个=config=文件，把此处给的<a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#the-default-configuration-file-is-listed-below">examples</a>全部复制进去，找到<code>sync_dir</code>把前面的注释删掉，改成自己喜欢的路径 <!-- raw HTML omitted --><br>
+然后<code>onedrive --synchronize</code>愉快同步 <!-- raw HTML omitted --></p>
+<h5 id="访问-windows-文件">访问 windows 文件<a hidden class="anchor" aria-hidden="true" href="#访问-windows-文件">#</a></h5>
+<p>如果有<code>unknown filesystem type 'ntfs'</code> <!-- raw HTML omitted --><br>
+这种错误，需要安装<code>yay -S ntfs-3g</code>这个包 <!-- raw HTML omitted --></p>
+<h5 id="archlinux忽略某个包的升级">ArchLinux忽略某个包的升级<a hidden class="anchor" aria-hidden="true" href="#archlinux忽略某个包的升级">#</a></h5>
+<p>咋做的呢？往<code>/etc/pacman.conf</code>里，有这么一行<code>#IgnorePkg =</code>,给它取消注释,改成: <code>IgnorePkg = linux</code> 然后就可以了 <!-- raw HTML omitted --></p>
+<h5 id="keyring-签名错误">keyring 签名错误<a hidden class="anchor" aria-hidden="true" href="#keyring-签名错误">#</a></h5>
+<p>signature from &ldquo;xxx&rdquo; is unknown <!-- raw HTML omitted --><br>
+解决方法 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf /etc/pacman.d/gnupg
 </span></span><span style="display:flex;"><span>pacman-key --init
 </span></span><span style="display:flex;"><span>pacman-key --populate
-</span></span></code></pre></div></li>
-</ul>
-<h3 id="虚拟机">虚拟机<a hidden class="anchor" aria-hidden="true" href="#虚拟机">#</a></h3>
+</span></span></code></pre></div><h3 id="虚拟机">虚拟机<a hidden class="anchor" aria-hidden="true" href="#虚拟机">#</a></h3>
 <p>参考这篇<a href="https://www.zzxworld.com/posts/install-virtualbox-and-usage-tutorial">博客</a> <!-- raw HTML omitted --><br>
-🔴 在 arch 里用 <strong><strong>virtual box</strong></strong> 使用 Windows7 <!-- raw HTML omitted --><br>
+在 arch 里用 <strong><strong>virtual box</strong></strong> 使用 Windows7 <!-- raw HTML omitted --><br>
 virtual 会报错 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo pacman -S virtualbox-host-modules-arch
 </span></span><span style="display:flex;"><span>sudo modprobe vboxdrv
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 不行的话再用这个</span>
 </span></span><span style="display:flex;"><span>sudo /sbin/rcvboxdrv setup
-</span></span></code></pre></div><p>2️⃣ win7 下载在此 <!-- raw HTML omitted --><br>
-<a href="https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006">https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006</a> <!-- raw HTML omitted --><br>
+</span></span></code></pre></div><ul>
+<li>win7 下载在此 <!-- raw HTML omitted --></li>
+</ul>
+<p><a href="https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006">https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006</a> <!-- raw HTML omitted --><br>
 Hash:  36ae90defbad9d9539e649b193ae573b77a71c83 <!-- raw HTML omitted --><br>
 序列号: V77DJ-CT8WB-Y3GXT-X3FBP-6F987 <!-- raw HTML omitted --></p>
-<p>3️⃣ VBoxGuestAdditions <!-- raw HTML omitted --><br>
-<a href="https://w0.dk/~chlor/vboxguestadditions/">下载地址在此</a> <!-- raw HTML omitted --><br>
+<ul>
+<li>VBoxGuestAdditions <!-- raw HTML omitted --></li>
+</ul>
+<p><a href="https://w0.dk/~chlor/vboxguestadditions/">下载地址在此</a> <!-- raw HTML omitted --><br>
 把它下载到 arch 里，然后在虚拟机这边挂在这个 .iso 文件，然后安装 <!-- raw HTML omitted --><br>
-🔴 但是会报错 Windows cannot verify the digital signature &hellip;.. <!-- raw HTML omitted --><br>
+但是会报错 Windows cannot verify the digital signature &hellip;.. <!-- raw HTML omitted --><br>
 管理员权限 cmd 运行后重启 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bcdedit /set testsigning on
 </span></span><span style="display:flex;"><span>bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS
-</span></span></code></pre></div><p>4️⃣ VirtualBox Extension Pack <!-- raw HTML omitted --><br>
-需要用 sudo 权限，<a href="https://www.virtualbox.org/ticket/8473">原因在此</a> <!-- raw HTML omitted --><br>
+</span></span></code></pre></div><ul>
+<li>VirtualBox Extension Pack <!-- raw HTML omitted --></li>
+</ul>
+<p>需要用 sudo 权限，<a href="https://www.virtualbox.org/ticket/8473">原因在此</a> <!-- raw HTML omitted --><br>
 然后在 USB 外设里找到相应的添加到虚拟机中，⚠️ 对于 arch 用命令行安装的 Virtual-box 需要以下命令才能 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo groupadd usbfs 
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 把当前用户添加到 usbfs 和 vboxusers 用户组</span>
@@ -1415,12 +1292,12 @@ Hash:  36ae90defbad9d9539e649b193ae573b77a71c83 <!-- raw HTML omitted --><br>
 </span></span><span style="display:flex;"><span>sudo usermod -aG vboxusers $USER
 </span></span></code></pre></div><h3 id="rofi">rofi<a hidden class="anchor" aria-hidden="true" href="#rofi">#</a></h3>
 <p>If you have not created a config file, there is none, and rofi uses its default settings. <!-- raw HTML omitted --><br>
-You can create a config file with those settings by running <code>rofi -dump-config</code> <!-- raw HTML omitted --><br>
-rofi 的自定义配置比如修改字体 <!-- raw HTML omitted --></p>
+You can create a config file with those settings by running<code>rofi -dump-config</code> <!-- raw HTML omitted --><br>
+_rofi_的自定义配置比如修改字体 <!-- raw HTML omitted --></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p ~/.config/rofi
 </span></span><span style="display:flex;"><span>rofi -dump-config &gt; ~/.config/rofi/config.rasi
-</span></span></code></pre></div><p>修改后把注释去掉即可 <!-- raw HTML omitted --></p>
-<p>设置行号 <code>set numbet</code> <!-- raw HTML omitted --></p>
+</span></span></code></pre></div><p>修改后把注释去掉即可 <!-- raw HTML omitted --><br>
+设置行号<code>set numbet</code> <!-- raw HTML omitted --></p>
 <h3 id="grub">grub<a hidden class="anchor" aria-hidden="true" href="#grub">#</a></h3>
 <h4 id="修改grub显示主题">修改grub显示主题<a hidden class="anchor" aria-hidden="true" href="#修改grub显示主题">#</a></h4>
 <p>在<a href="https://github.com/vinceliuice/grub2-themes">github</a>上找到了一个傻瓜式一键安装的主题,也是我正在使用的<!-- raw HTML omitted --><!-- raw HTML omitted -->[2024-03-15 Fri]<!-- raw HTML omitted --><!-- raw HTML omitted -->,可以更换壁纸样式 <!-- raw HTML omitted --></p>
