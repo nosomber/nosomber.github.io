@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>文章 on E2C</title>
     <link>https://nosomber.github.io/zh/posts/</link>
@@ -7,15 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>journal</title>
-      <link>https://nosomber.github.io/zh/posts/%E6%97%A5%E8%AE%B0/</link>
-      <pubDate>Sat, 16 Mar 2024 00:00:00 +0800</pubDate>
-      
-      <guid>https://nosomber.github.io/zh/posts/%E6%97%A5%E8%AE%B0/</guid>
-      <description>置身于一个人的世界</description>
-    </item>
-    
     <item>
       <title>reco</title>
       <link>https://nosomber.github.io/zh/posts/reco/</link>
@@ -41,6 +32,15 @@
       
       <guid>https://nosomber.github.io/zh/posts/rosa/</guid>
       <description>雨水中的倒影,是我们在起舞</description>
+    </item>
+    
+    <item>
+      <title>journal</title>
+      <link>https://nosomber.github.io/zh/posts/%E6%97%A5%E8%AE%B0/</link>
+      <pubDate>Sun, 11 Feb 2024 00:00:00 +0800</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/posts/%E6%97%A5%E8%AE%B0/</guid>
+      <description>置身于一个人的世界</description>
     </item>
     
   </channel>

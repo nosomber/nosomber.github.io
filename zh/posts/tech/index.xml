@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>探索 on E2C</title>
     <link>https://nosomber.github.io/zh/posts/tech/</link>
@@ -19,7 +19,7 @@
     <item>
       <title>makin</title>
       <link>https://nosomber.github.io/zh/posts/tech/makin/</link>
-      <pubDate>Wed, 13 Mar 2024 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 24 Sep 2023 00:00:00 +0800</pubDate>
       
       <guid>https://nosomber.github.io/zh/posts/tech/makin/</guid>
       <description>About Emacs and Linux</description>
