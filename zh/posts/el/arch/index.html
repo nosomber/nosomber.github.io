@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>arch | e2c</title>
+<meta name="keywords" content="arch" />
+<meta name="description" content="about arch">
+<meta name="author" content="kai">
+<link rel="canonical" href="https://nosomber.github.io/zh/posts/el/arch/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.6eb803bcb5fd7f15d8fbf7f08975aad2076fdfd39d5ae28be886d9768675a01c.css" integrity="sha256-brgDvLX9fxXY&#43;/fwiXWq0gdv39OdWuKL6IbZdoZ1oBw=" rel="preload stylesheet" as="style">
+<link rel="preload" href="/pic/flower.png" as="image">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.9d3ca3f2768426ff9075a63898ce60f5b7406284f22ef337a118522c8508d8a1.js" integrity="sha256-nTyj8naEJv&#43;QdaY4mM5g9bdAYoTyLvM3oRhSLIUI2KE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://nosomber.github.io/pic/flower.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nosomber.github.io/pic/flower.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nosomber.github.io/pic/flower.png">
+<link rel="apple-touch-icon" href="https://nosomber.github.io/pic/flower.png">
+<link rel="mask-icon" href="https://nosomber.github.io/pic/flower.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.119.0">
+<link rel="alternate" hreflang="zh" href="https://nosomber.github.io/zh/posts/el/arch/" />
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/edu-vic-wa-nt-beginner" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" />
+<link href="https://fonts.cdnfonts.com/css/great-journal-four" rel="stylesheet">
+                
+                                <meta property="og:title" content="arch" />
+<meta property="og:description" content="about arch" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nosomber.github.io/zh/posts/el/arch/" />
+<meta property="og:image" content="https://nosomber.github.io/pic/arch.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-09-24T00:00:00&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-22T11:18:03&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://nosomber.github.io/pic/arch.png" />
+<meta name="twitter:title" content="arch"/>
+<meta name="twitter:description" content="about arch"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
+      "name": "arch",
+      "item": "https://nosomber.github.io/zh/posts/el/arch/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "arch",
+  "name": "arch",
+  "description": "about arch",
+  "keywords": [
+    "arch"
+  ],
+  "articleBody": "Arch 基础 安装 参考ArchLinuxStudio这个中文的文档，文档挺详细的 另外参考kaiza-hikaru-del的关于 arch 的配置,以及 cc 的教程 实践 Time:9/24/2023 扩大字体 setfont ter-122b (132b) 确保目前是 UEFI 模式 ls /sys/firmware/efi/efivars 连接网络 before this *禁用 reflector*(可选) systemctl stop reflector.service 这里直接略过，有线网络可以直接使用。无线网络需要配置 iwctl # 用这个工具配置 device list # 列出设备名，比如无线网卡看到叫 wlan0 station wlan0 scan # 扫描网络 station wlan0 get-networks # 列出网络 比如想连接YOUR-WIRELESS-NAME这个无线 station wlan0 connect YOUR-WIRELESS-NAME # 进行连接 输入密码即可 exit 硬盘分区 先将硬盘转换成 gpt 类型 （不过大部分的硬盘已经是 gpt 类型的了） 可忽略 利用“fdisk -l”命令，若显示结果中的“Disk label type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt (还未验证其可行性) fdisk -l # 查看电脑磁盘的划分情况及盘符号 cfdisk 你自己电脑的盘符号 # 使用 cfdisk 对磁盘进行分区 接下来用 cfdisk 工具对目标磁盘进行分区 boot \u0026 root \u0026 swap boot 分区 type efi 550M root 分区 type linux filesystem swap 分区 type swap 4G(可以多但必要不大) 分好区的磁盘进行格式化，以及开启 swap mkfs.fat -F32 /dev/nvme0n1p1 #格式化 boot 分区 mkfs.ext4 /dev/nvme0n1p2 #格式化 root/home 分区 # 这是格式化和开启交换分区的，如果前面没有创建交换分区，可忽略 mkswap /dev/nvme0n1p3 swapon /dev/nvme0n1p3 挂载 先挂载根分区，再挂载 EFI 分区 mount /dev/sdax（盘符号根据自己电脑而定） /mnt #挂载根目录 mkdir /mnt/boot #创建boot目录（在根目录下） # 挂载 boot 分区 mount /dev/sdax /mnt/boot 镜像源 处于这个文件当中 /etc/pacman.d/mirrorlist 中国源 –放在最上方即可 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中科大 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学 一些国际源 Server = https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch #东亚地区:中华民国 Server = https://mirror.0xem.ma/arch/$repo/os/$arch #北美洲地区:加拿大 Server = https://mirror.aktkn.sg/archlinux/$repo/os/$arch #东南亚地区:新加坡 Server = https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch #欧洲地区:英国 Server = https://mirrors.cat.net/archlinux/$repo/os/$arch #东亚地区:日本 必须的包\npacman -Sy archlinux-keyring 安装这个可解决证书问题 pacstrap /mnt base base-devel linux linux-headers linux-firmware #base-devel在AUR包的安装是必须的 一些工具性的包 pacstrap /mnt vim bash-completion # vim 和 bash 的补全 #单写出来 networkmanager 需要安装，不然安装完成后，会连接不上网络（当然需要开启这个服务，稍后再说。） pacstrap /mnt networkmanager 生成fstab文件 fstab 用来定义磁盘分区 genfstab -U /mnt \u003e\u003e /mnt/etc/fstab 复查一下 /mnt/etc/fstab 确保没有错误 不必要 cat /mnt/etc/fstab Change root 把环境切换到新系统的/mnt 下 arch-chroot /mnt 设置时区，在/etc/localtime 下用/usr 中合适的时区创建符号连接。如下设置上海时区。 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 随后进行硬件时间设置，将当前的正确 UTC 时间写入硬件时间。 hwclock --systohc 设置Locale进行本地化 编辑 /etc/locale.gen 去掉 en_US.UTF-8 所在行 以及 zh_CN.UTF-8 所在行的注释符号（#） 然后使用如下命令生成 locale locale-gen 最后向 /etc/locale.conf 导入内容 echo 'LANG=en_US.UTF-8' \u003e /etc/locale.conf 设置主机名 首先在=/etc/hostname=设置主机名 vim /etc/hostname 加入你想为主机取的主机名，这里比如叫 apple 接下来在=/etc/hosts=设置与其匹配的条目。 vim /etc/hosts 加入如下内容 127.0.0.1 localhost ::1 localhost 127.0.1.1 apple（刚才设置的主机名） 为root设置密码 passwd root 制作Grub引导 pacman -S grub efibootmgr amd-ucode # 如果是intel就装intel-ucode mkdir /boot/grub grub-install --target=x86_64-efi --efi-directory=/boot grub-mkconfig \u003e /boot/grub/grub.cfg 事后可设置 /etc/default/grub 中 可提升启动速度 GRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 nowatchdog\" 完成 exit # 退回安装环境# umount -R /mnt # 卸载新分区 reboot # 重启 重启后别急着 sudo pacman -Syyu 一步一步来 先来连接网络，开启 networkmanager 服务 sudo systemctl enable --now NetworkManager 若有冲突，可以试着关闭 iwd stop or disable 在装完系统进入 tty 的时候，字体同样会很小。可以先下载一个终端使用的字体 pacman -S terminus-font 然后 setfont ter-u22b 立即生效, 使用配置文件 /etc/vconsole.conf 可以固化配置。 创建非 root 用户 useradd -m -G wheel -s /bin/bash welcome #wheel附加组可sudo，以root用户执行命令 -m同时创建用户家目录 为新用户创建密码，用 passwd + 用户名 这个方法 编辑 sudoers 配置文件 EDITOR=vim visudo # 需要以 root 用户运行 visudo 命令 # 去掉下面这行的注释 #%wheel ALL=(ALL:ALL) ALL yay yay 是比pacman更便捷的包管理工具，推荐使用 vim /etc/pacman.conf 尾部添加 [archlinuxcn] SigLevel = Never Server = https://mirrors.ustc.edu.cn/$repo/$arch # （可选）顺便开启 # 是将pacman使用的源添加到yay里，如果在执行下面更新命令的时候报错，可能是因为源配置有冲突，是因为源重复添加，删除一个即可 [multilib] Include = /etc/pacman.d/mirrorlist sudo pacman -Syyu # 更新一下 （更新配置） sudo pacman -S yay # 安装 yay DWM 安装前件 yay -S git xorg xorg-xinit 安装字体 yay -S nerd-fonts-jetbrains-mono # 注这个jetbrains 的字体，目前的包名不叫这个但是新的包在我使用起来会出现错误，字体显示不全 yay -S ttf-material-design-icons # 图标 yay -S ttf-joypixels yay -S wqy-microhei # 中文字体（文泉驿） 安装软件 （不必须，但建议） 在终端使劲敲 yay -S lxappearance # gui设置 yay -S paper-gtk-theme-git # gtk主题 yay -S pavucontrol # 音频设置 yay -S breeze-icons # 图标 yay -S rofi # 菜单 yay -S flameshot # 截图软件 yay -S google-chrome wyeb-git # 浏览器 yay -S byzanz # gif截图依赖 yay -S wps-office-cn # wps yay -S libnotify dunst # 通知 可使用 dunst -b 命令 启动通知服务 yay -S xorg-xsetroot # dwm设置状态栏 yay -S xf86-input-synaptics # 触控板 yay -S network-manager-applet # 网络托盘 yay -S amf-amdgpu-pro # amd gpu 驱动 yay -S obs-studio-amf # obs for amd_gpu yay -S mpc mpd ncmpcpp # tui music player 开始 clone dwm和 st 吧 本人习惯创建 .rec 文件夹 cp -r DEF/* . sudo make clean install 运行 dwm 在 ~/.xinitrc 文件里写入 export DWM=~/.rec/dwm exec dwm 然后就可以愉快的使用 startx 启动了 当然如果你想进入 tty 的时候自动执行 startx 的话可以在 bash 的配置里加上 [ $(tty) = \"/dev/tty1\" ] \u0026\u0026 cd ~ \u0026\u0026 startx 别忘了为 c 先生 的 scripts 里的脚本和*给脚本加权限* 其他杂项 触控板生效 yay -S xf86-input-synaptics # 触控板 /etc/X11/xorg.conf.d/30-touchpad.conf Section \"InputClass\" Identifier \"touchpad\" Driver \"libinput\" MatchIsTouchpad \"on\" Option \"Tapping\" \"on\" Option \"TappingButtonMap\" \"lrm\" EndSection tty 免登录 (感觉有点不对，需要深入研究) vim /etc/systemd/system/getty.target.wants/getty@tty1.service # 这一步貌似有错误 update ExecStart=-/sbin/agetty -o '-p -f [用户名]' -n -a chenyc --noclear %I $TERM # sudo免密 加到 visudo 添加到尾部 即 EDITOR=vim visudo [用户名] ALL=(ALL:ALL) NOPASSWD: ALL #用户提权 yay -S polkit 去除蜂鸣器声音 sudo su mkdir -p /etc/rc.d echo \"rmmod pcspkr\" \u003e\u003e /etc/rc.d/rc.local chmod +x /etc/rc.d/rc.local 然后开梯子🪜，更换 zsh c 先生也有一篇关于 zsh 的分享可以直接拿来用 omz下载 sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" 配置可以放在 .rec 里 需要的依赖\u0026软件 fzf fd bat exa ueberzug(可在x11终端下预览图片) z.lua extract zsh-autosuggestions zsh-syntax-highlighting fzf-tab 但是这些git下来的就有 😄 然后在 .zshrc 里加入这样的一句话 source ~/.rec/omz/omz.zsh 之后 source 一下 zshrc 就 okay 了。 好吧就到这吧，以后也许还会修改和添加。关于 dwm\u0026arch 的配置和问题不在这里描述 25 Nov,23 优化 输入法\n首先是安装Rime sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-config-qt fcitx5-material-color fcitx5-im fcitx5-rime sudo echo ' GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx SDL_IM_MODULE=fcitx GLFW_IM_MODULE=ibus' \u003e\u003e /etc/environment 其次配置文件是在~/.local/share/fcitx5/rime 配置文件是这位老哥的 关于默认输入英文还是中文这个是在以schema.yaml为结尾的文件里将reset从 0 改为 1. 关于皮肤 这位老哥弄了一个工具，可以将搜狗的皮肤转换成_fcitx5_的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 music\ncc关于mpd 和 ncmpcpp的配置 在安装好mpd后还需要两个依赖包 yay -S timidity wildmidi scripts脚本文件夹里有一个关于音乐的脚本command + m 可以调出两个音乐的窗口。不过位置的显示需要微调。 WiFi（nmcli）\n使用 nmcli 对 wifi进行连接和管理 nmcli radio wifi on # 开启wifi nmcli dev wifi list # 列出可用的wifi sudo nmcli dev wifi connect SSID password xxx # 连接wifi,xxx为密码 #如果不想在屏幕上写出密码,可以用下面的命令 sudo ncmli --ask dev wifi connect SSID # 🟣 # 使用 nmcli 管理网络 # 如果连接到一个网络,但是想切换到其他的网络,可以用down/up指令加上对应的SSID nmcli con up/down SSID 屏幕亮度\n第一种方法 使用的是acpi This friend has given a nice solution This is the file place where to control the backlight on my cp 我的arch里控制背光的文件 /sys/class/backlight/amdgpu_bl1/brightness By the way, the max_brightness is 255 ,jaja Scripts are here /etc/acpi/actions corresponding files are here /etc/acpi/events 第二种方法 (better) Up #!/bin/sh bl_device=/sys/class/backlight/amdgpu_bl1/brightness echo $(($(cat $bl_device)+2)) | sudo tee $bl_device Down #!/bin/sh # bl_device=/sys/class/backlight/amdgpu_bl1/brightness echo $(($(cat $bl_device)-2)) | sudo tee $bl_device 使用的是 xbindkeys, 方法和下面音量的调节一样 音量调节\nThis is very good 用 xbindkeys 这个软件将脚本绑定到对应的按键上 用xev或者xbindkeys -k来显示按键对应的名称 将脚本和按键对应的关系按照一定的语法写入到~/.xbindkeysrc文件夹中自动激活可以在~/.xinitrc文件中写入 xbindkeys 静音和调大调小之间的不协调 首先是在调节音量之前判断一下系统现在是否处在静音的状态. 如果是的话，那么将其解除静音. 代码实现如下 #!/bin/sh # NAME # volume.sh - Increase/decrease/mute volume using PulseAudio pactl # SYNOPSIS # volume.sh # Suggested location: ~/scripts/volume.sh step=2 # number of percentage points to increase/decrease volume max=50 # do not increase volume above this percentage # Prints current volume percentage, e.g. `60`, `95`, `20`, etc. function get_current_volume() { pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' '{print $2}' | grep -o '[0-9]\\+' } mute_or_not=`pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'` # 查看是否静音 if [ $1 == \"raise\" ]; then # Modification: only increase volume if current volume is less than `max` if [ `get_current_volume` -lt ${max} ]; then if [ $mute_or_not == \"yes\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle fi pactl set-sink-volume @DEFAULT_SINK@ \"+${step}%\" fi # The rest of the script is identical to the original `volume.sh` elif [ $1 == \"lower\" ]; then if [ $mute_or_not == \"yes\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle fi pactl set-sink-volume @DEFAULT_SINK@ \"-${step}%\" elif [ $1 == \"mute\" ]; then pactl set-sink-mute @DEFAULT_SINK@ toggle else echo \"Unrecognized parameter: ${1}\" echo \"Usage should be: volume.sh \" fi grub中 Win丟失\nLost Windows in Grub 查看uuid的命令是 blkid menuentry 'Win' { insmod part_gpt insmod fat insmod chain search --fs-uuid --no-floppy --set=root EAD2-8212 chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi } /boot/grub/grub.cfgcustom 40 注意那里 –set=root xxx 是定义了一个变量下面一行里会调用这个变量 这里建议修改我视频里的文件 /etc/grub.d/40_custom 补充一点，Windows 里如果 efi 分区没有独立出来，即和 c盘在一起，新建一个独立的 efi 分区的步骤如下 list partition select partition {index} # 选择一个分区 shrink desired=100 # 从这个分区里压缩出 100M 的空间 create partition efi size=100 # 创建 efi 分区 format quick fs=fat32 # 格式化 assign letter=s # 设置盘符 list volume # 列出磁盘的全部卷 exit # 然后以管理员权限运行 Cmd bcdboot C:\\windows /s S: #复制 efi 文件到新建的分区 开机启动脚本\n将脚本写好后，添加权限，然后将脚本加入到 cc 的dwm配置autostart.sh里面,注意在结尾要用\u0026隔开与下一个命令 前面命令为假时，后面命令才会执行 \u0026\u0026 前面命令为真时，后面命令才会执行 \u0026 用 \u0026 连接的命令会同时执行，不管命令是否成功 停止一个脚本进程\n起因：为 clash 设置开机启动脚本之后,不知道该怎么关闭 解决:用ps -ef | grep clash来列出 clash 的进程 再用kill -9 *进程号*来关闭,一般是 ./clash…. 这个进程，而不是脚本文件 给 Arch 添加 Swap 文件\n参考：TimothyQiu’s Blog 起因：之前按照 cc 和 archstory 的步骤，给 arch 开机的时候发现 arch 显示/找不到/swapfile/，因此在网上有找了一些其他的方法（感觉 cc 的有些省略） 📍创建 Swap 文件 创建 Swap 文件有很多种方法，但最可移植的方法是使用dd比如创建1G的/swapfile ： dd if=/dev/zero of=/swapfile bs=1M count=1024 status=progress chmod 0600 /swapfile mkswap -U clear /swapfile 这里的chmod是为了安全，所有人都可读写的 Swap 文件是巨大隐患.mkswap的-U参数用于设置 swap 的 UUID。但是因为 swap文件必须使用文件系统路径去指定，所以这里使用特殊的clear 作为参数去清空它（实际效果是设置了全零的 UUID）。 📍打开与关闭 创建好 swap 文件后，就可以直接启用了： swapon /swapfile 最后把它放进/etc/fstab里，这样每次启动就会直接启用： /swapfile none swap defaults 0 0 如果是要关闭，顾名思义就： swapoff /swapfile 关闭以后它就是个普通文件，想删除就可以直接删除了。 📍使用 Swap 文件进行休眠 需要设置=resume=和=resume_offset=参数 resume参数是 swap 文件所在的分区（例如/dev/nvme0n1p2,或者UUID=4209c845-f495-4c43-8a03-5363dd433153）有两种表示方法UUID的获取方法是 findmnt -no UUID -T /swapfile resume_offset获取方法 filefrag -v /swapfile | awk '{ if($1==\"0:\"){print substr($4, 1, length($4)-2)} }' 编辑etc/default/grub,将以上两个参数写进/etc/default/grub中_像这样_ GRUB_CMDLINE_LINUX_DEFAULT=\"loglevel=3 nowatchdog resume=UUID=db7c6671-e10c-4486-9077-87692688cdcc resume_offset=3733504\" 最后重新生成一下grub.cfg grub-mkconfig -o /boot/grub/grub.cfg 📍initramfs 如果你的 initramfs 没有使用 systemd 钩子（使用的是 base），那么就还需要添加一个 resume 钩子才会尝试从休眠中恢复:编辑/etc/mkinitcpio.conf文件,在HOOKS=(...)里的udev之后的任何位置加入resume最后重新生成 initramfs即可： mkinitcpio -p linux 和 Win 时间不同\n原因 少数派的一篇文章 GMT: Greenwhich Mean Time (格林尼治标准时间)，也就是世界时间。以地球自转为基础的时间计量系统。但是GMT不够准确（相比较而言） UTC:Universal Time Coordinated (协调世界时)，以=原子时=的秒长为基础。现在作为时间标准时间使用 RTC:Real-Time Clock 实时时钟 ，在计算机领域称为硬件时间 e.g 北京位于东八区， 其时间即为 UTC+8 Windows把硬件时钟设为=本地时间= Linu把硬件时间设为UTC 那么Linux显示的时间就是UTC时间➕时区 解决方法 Windows 管理员打开=powershell= Reg add HKLM\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1 或者打开「注册表编辑器」，定位到计算机\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation目录下，新建一个DWORD类型，名称为RealTimeIsUniversal的键，并修改键值为1即可。 Linux timedatectl set-local-rtc 1 --adjust-system-clock onedrive 同步\n博客 可以直接在 AUR 里找到 onedrive-abraunegg 然后运行 onedrive 复制链接，浏览器打开，再将输出的网址复制下来，完成账号授权。 可以在配置文件夹目录下创建 sync_list,可以在这个文件里写入你想要同步的文件夹，每行一个。写完注意执行一下这个命令onedrive --synchronize --resync 详情见此 如果不想把文件同步在默认的路径下可以在配置文件夹下，新建一个=config=文件，把此处给的examples全部复制进去，找到sync_dir把前面的注释删掉，改成自己喜欢的路径 然后onedrive --synchronize愉快同步 访问 windows 文件\n如果有unknown filesystem type 'ntfs' 这种错误，需要安装yay -S ntfs-3g这个包 ArchLinux忽略某个包的升级\n咋做的呢？往/etc/pacman.conf里，有这么一行#IgnorePkg =,给它取消注释,改成: IgnorePkg = linux 然后就可以了 keyring 签名错误\nsignature from “xxx” is unknown 解决方法 rm -rf /etc/pacman.d/gnupg pacman-key --init pacman-key --populate 虚拟机 参考这篇博客 在 arch 里用 virtual box 使用 Windows7 virtual 会报错 sudo pacman -S virtualbox-host-modules-arch sudo modprobe vboxdrv # 不行的话再用这个 sudo /sbin/rcvboxdrv setup win7 下载在此 https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006 Hash: 36ae90defbad9d9539e649b193ae573b77a71c83 序列号: V77DJ-CT8WB-Y3GXT-X3FBP-6F987 VBoxGuestAdditions 下载地址在此 把它下载到 arch 里，然后在虚拟机这边挂在这个 .iso 文件，然后安装 但是会报错 Windows cannot verify the digital signature ….. 管理员权限 cmd 运行后重启 bcdedit /set testsigning on bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS VirtualBox Extension Pack 需要用 sudo 权限，原因在此 然后在 USB 外设里找到相应的添加到虚拟机中，⚠️ 对于 arch 用命令行安装的 Virtual-box 需要以下命令才能 sudo groupadd usbfs # 把当前用户添加到 usbfs 和 vboxusers 用户组 sudo usermod -aG usbfs $USER sudo usermod -aG vboxusers $USER rofi If you have not created a config file, there is none, and rofi uses its default settings. You can create a config file with those settings by runningrofi -dump-config _rofi_的自定义配置比如修改字体 mkdir -p ~/.config/rofi rofi -dump-config \u003e ~/.config/rofi/config.rasi 修改后把注释去掉即可 设置行号set numbet grub 修改grub显示主题 在github上找到了一个傻瓜式一键安装的主题,也是我正在使用的[2024-03-15 Fri],可以更换壁纸样式 磁盘管理 du -sh -h human-readable -s summarize display only a total for each argument 在home下的 .local 文件夹里有回收站 ",
+  "wordCount" : "5420",
+  "inLanguage": "zh",
+  "image":"https://nosomber.github.io/pic/arch.png","datePublished": "2023-09-24T00:00:00+08:00",
+  "dateModified": "2024-03-22T11:18:03+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "kai"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nosomber.github.io/zh/posts/el/arch/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "e2c",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nosomber.github.io/pic/flower.png"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nosomber.github.io/zh/" accesskey="h" title="e2c (Alt + H)">
+                <img src="https://nosomber.github.io/pic/flower.png" alt="logo" aria-label="logo"
+                    height="37">e2c</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://nosomber.github.io/es/" title="Español🇵🇪"
+                            aria-label="Español🇵🇪">Español🇵🇪</a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://nosomber.github.io/zh/search" title="搜索 (Alt &#43; /)" accesskey=/>
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/" title="主页">
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/posts" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nosomber.github.io/zh/about" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://nosomber.github.io/zh/">主页</a></div>
+    <h1 class="post-title">
+      arch
+    </h1>
+    <div class="post-meta"><span title='2023-09-24 00:00:00 +0800 CST'>2023-09-24</span>&nbsp;·&nbsp;<span title='2024-03-22 11:18:03 +0800 CST'>(updated: 2024-03-22)</span>&nbsp;·&nbsp;11 分钟&nbsp;·&nbsp;kai
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#arch" aria-label="Arch">Arch</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%9f%ba%e7%a1%80" aria-label="基础">基础</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%ae%89%e8%a3%85" aria-label="安装">安装</a></li>
+                    <li>
+                        <a href="#%e4%bc%98%e5%8c%96" aria-label="优化">优化</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e8%99%9a%e6%8b%9f%e6%9c%ba" aria-label="虚拟机">虚拟机</a></li>
+                    <li>
+                        <a href="#rofi" aria-label="rofi">rofi</a></li>
+                    <li>
+                        <a href="#grub" aria-label="grub">grub</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bf%ae%e6%94%b9grub%e6%98%be%e7%a4%ba%e4%b8%bb%e9%a2%98" aria-label="修改grub显示主题">修改grub显示主题</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e7%a3%81%e7%9b%98%e7%ae%a1%e7%90%86" aria-label="磁盘管理">磁盘管理</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+  <div class="post-content"><h2 id="arch">Arch<a hidden class="anchor" aria-hidden="true" href="#arch">#</a></h2>
+<h3 id="基础">基础<a hidden class="anchor" aria-hidden="true" href="#基础">#</a></h3>
+<h4 id="安装">安装<a hidden class="anchor" aria-hidden="true" href="#安装">#</a></h4>
+<p>参考<a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/rookie/basic_install">ArchLinuxStudio</a>这个中文的文档，文档挺详细的 <!-- raw HTML omitted --><br>
+<img loading="lazy" src="https://raw.githubusercontent.com/eyck0102/pics/master/typora-images/image-20230922172719279.png" alt=""  />
+ <!-- raw HTML omitted --><br>
+另外参考<a href="https://github.com/kaiza-hikaru-del/my_arch_experience/tree/master/docs/arch">kaiza-hikaru-del</a>的关于 arch 的配置,以及 cc 的教程 <!-- raw HTML omitted --></p>
+<blockquote>
+<p>实践 <em>Time:9/24/2023</em> <!-- raw HTML omitted --></p>
+</blockquote>
+<p>扩大字体 <code>setfont ter-122b</code> (132b) <!-- raw HTML omitted --></p>
+<ol>
+<li>
+<p>确保目前是 UEFI 模式 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ls /sys/firmware/efi/efivars
+</span></span></code></pre></div></li>
+<li>
+<p>连接网络 <!-- raw HTML omitted --><br>
+before this *禁用 reflector*(可选) <!-- raw HTML omitted --></p>
+<blockquote>
+<p>systemctl stop reflector.service <!-- raw HTML omitted --></p>
+</blockquote>
+<p>这里直接略过，有线网络可以直接使用。无线网络需要配置 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>iwctl                           <span style="color:#75715e"># 用这个工具配置</span>
+</span></span><span style="display:flex;"><span>device list                     <span style="color:#75715e"># 列出设备名，比如无线网卡看到叫 wlan0</span>
+</span></span><span style="display:flex;"><span>station wlan0 scan              <span style="color:#75715e"># 扫描网络</span>
+</span></span><span style="display:flex;"><span>station wlan0 get-networks      <span style="color:#75715e"># 列出网络 比如想连接YOUR-WIRELESS-NAME这个无线</span>
+</span></span><span style="display:flex;"><span>station wlan0 connect YOUR-WIRELESS-NAME <span style="color:#75715e"># 进行连接 输入密码即可</span>
+</span></span><span style="display:flex;"><span>exit                           
+</span></span></code></pre></div></li>
+<li>
+<p>硬盘分区 <!-- raw HTML omitted --></p>
+<ul>
+<li>先将硬盘转换成 gpt 类型 （不过大部分的硬盘已经是 gpt 类型的了） <!-- raw HTML omitted --><br>
+<strong>可忽略</strong> <!-- raw HTML omitted --><br>
+<em>利用“fdisk -l”命令，若显示结果中的“Disk label <!-- raw HTML omitted --><br>
+type”的值为dos则分区是mbr，若该结果的值为gpt则分区是gpt</em> <!-- raw HTML omitted --><br>
+(还未验证其可行性) <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>fdisk -l                   <span style="color:#75715e"># 查看电脑磁盘的划分情况及盘符号</span>
+</span></span><span style="display:flex;"><span>cfdisk 你自己电脑的盘符号     <span style="color:#75715e"># 使用 cfdisk 对磁盘进行分区</span>
+</span></span></code></pre></div></li>
+<li>接下来用 <em>cfdisk</em> 工具对目标磁盘进行分区 boot &amp; root &amp; swap <!-- raw HTML omitted -->
+<ul>
+<li>boot 分区 type efi 550M <!-- raw HTML omitted --></li>
+<li>root 分区 type linux filesystem <!-- raw HTML omitted --></li>
+<li>swap 分区 type swap 4G(可以多但必要不大) <!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li>分好区的磁盘进行格式化，以及开启 swap <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkfs.fat -F32 /dev/nvme0n1p1   <span style="color:#75715e">#格式化 boot 分区</span>
+</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/nvme0n1p2       <span style="color:#75715e">#格式化 root/home 分区</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#75715e"># 这是格式化和开启交换分区的，如果前面没有创建交换分区，可忽略</span>
+</span></span><span style="display:flex;"><span>mkswap /dev/nvme0n1p3       
+</span></span><span style="display:flex;"><span>swapon /dev/nvme0n1p3 
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>挂载 <!-- raw HTML omitted --><br>
+<em>先挂载根分区，再挂载 EFI 分区</em> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mount /dev/sdax（盘符号根据自己电脑而定）  /mnt  <span style="color:#75715e">#挂载根目录</span>
+</span></span><span style="display:flex;"><span>mkdir /mnt/boot     <span style="color:#75715e">#创建boot目录（在根目录下）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 挂载 boot 分区</span>
+</span></span><span style="display:flex;"><span>mount /dev/sdax /mnt/boot
+</span></span></code></pre></div></li>
+<li>
+<p>镜像源 <!-- raw HTML omitted --><br>
+处于这个文件当中 <!-- raw HTML omitted --></p>
+<blockquote>
+<p>/etc/pacman.d/mirrorlist <!-- raw HTML omitted --></p>
+</blockquote>
+<p>中国源 &ndash;放在最上方即可 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch             <span style="color:#75715e"># 中科大</span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch    <span style="color:#75715e"># 清华大学</span>
+</span></span></code></pre></div><p>一些国际源 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch   <span style="color:#75715e">#东亚地区:中华民国</span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirror.0xem.ma/arch/$repo/os/$arch    <span style="color:#75715e">#北美洲地区:加拿大</span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirror.aktkn.sg/archlinux/$repo/os/$arch    <span style="color:#75715e">#东南亚地区:新加坡</span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://archlinux.uk.mirror.allworldit.com/archlinux/$repo/os/$arch    <span style="color:#75715e">#欧洲地区:英国</span>
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.cat.net/archlinux/$repo/os/$arch    <span style="color:#75715e">#东亚地区:日本</span>
+</span></span></code></pre></div></li>
+<li>
+<p>必须的包<!-- raw HTML omitted --><br>
+<code>pacman -Sy archlinux-keyring</code> 安装这个可解决证书问题 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pacstrap /mnt base base-devel linux linux-headers linux-firmware  <span style="color:#75715e">#base-devel在AUR包的安装是必须的</span>
+</span></span></code></pre></div><p>一些工具性的包 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pacstrap /mnt vim bash-completion   <span style="color:#75715e"># vim 和 bash 的补全</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#单写出来 networkmanager 需要安装，不然安装完成后，会连接不上网络（当然需要开启这个服务，稍后再说。）</span>
+</span></span><span style="display:flex;"><span>pacstrap /mnt networkmanager
+</span></span></code></pre></div></li>
+<li>
+<p>生成fstab文件 <!-- raw HTML omitted --><br>
+fstab 用来定义磁盘分区 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</span></span></code></pre></div><p>复查一下 /mnt/etc/fstab 确保没有错误 <strong>不必要</strong> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cat /mnt/etc/fstab
+</span></span></code></pre></div></li>
+<li>
+<p>Change root <!-- raw HTML omitted --><br>
+把环境切换到新系统的/mnt 下 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>arch-chroot /mnt
+</span></span></code></pre></div><p>设置时区，在/etc/localtime 下用/usr <!-- raw HTML omitted --><br>
+中合适的时区创建符号连接。如下设置上海时区。 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</span></span></code></pre></div><p>随后进行硬件时间设置，将当前的正确 UTC 时间写入硬件时间。 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>hwclock --systohc
+</span></span></code></pre></div></li>
+<li>
+<p>设置Locale进行本地化 <!-- raw HTML omitted --><br>
+编辑 /etc/locale.gen <!-- raw HTML omitted --></p>
+<ul>
+<li>去掉 en_US.UTF-8 所在行 <!-- raw HTML omitted --></li>
+<li>以及 zh_CN.UTF-8 所在行的注释符号（#） <!-- raw HTML omitted --></li>
+</ul>
+<p>然后使用如下命令生成 locale <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>locale-gen
+</span></span></code></pre></div><p>最后向 /etc/locale.conf 导入内容 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;LANG=en_US.UTF-8&#39;</span>  &gt; /etc/locale.conf
+</span></span></code></pre></div></li>
+<li>
+<p>设置主机名 <!-- raw HTML omitted --><br>
+首先在=/etc/hostname=设置主机名 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>vim /etc/hostname
+</span></span></code></pre></div><p>加入你想为主机取的主机名，这里比如叫 apple <!-- raw HTML omitted --><br>
+接下来在=/etc/hosts=设置与其匹配的条目。 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>vim /etc/hosts
+</span></span></code></pre></div><p>加入如下内容 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>127.0.0.1   localhost
+</span></span><span style="display:flex;"><span>::1         localhost
+</span></span><span style="display:flex;"><span>127.0.1.1   apple（刚才设置的主机名）
+</span></span></code></pre></div></li>
+<li>
+<p>为root设置密码 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>passwd root
+</span></span></code></pre></div></li>
+<li>
+<p>制作Grub引导 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pacman -S grub efibootmgr amd-ucode    <span style="color:#75715e"># 如果是intel就装intel-ucode</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir /boot/grub
+</span></span><span style="display:flex;"><span>grub-install --target<span style="color:#f92672">=</span>x86_64-efi --efi-directory<span style="color:#f92672">=</span>/boot
+</span></span><span style="display:flex;"><span>grub-mkconfig &gt; /boot/grub/grub.cfg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>事后可设置 /etc/default/grub 中 可提升启动速度
+</span></span><span style="display:flex;"><span>GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;loglevel=3 nowatchdog&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>完成 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>exit                <span style="color:#75715e"># 退回安装环境#</span>
+</span></span><span style="display:flex;"><span>umount -R  /mnt     <span style="color:#75715e"># 卸载新分区</span>
+</span></span><span style="display:flex;"><span>reboot              <span style="color:#75715e"># 重启</span>
+</span></span></code></pre></div></li>
+</ol>
+<p>重启后别急着 <code>sudo pacman -Syyu</code> 一步一步来 <!-- raw HTML omitted --></p>
+<ol start="15">
+<li>先来连接网络，开启 networkmanager 服务 <!-- raw HTML omitted --><br>
+<code>sudo systemctl enable --now NetworkManager</code>  <!-- raw HTML omitted --><br>
+若有冲突，可以试着关闭 iwd stop or disable <!-- raw HTML omitted --></li>
+</ol>
+<blockquote>
+<p>在装完系统进入 <code>tty</code> <!-- raw HTML omitted --><br>
+的时候，字体同样会很小。可以先下载一个终端使用的字体 <!-- raw HTML omitted --><br>
+<code>pacman -S terminus-font</code> 然后 <code>setfont ter-u22b</code> 立即生效, 使用配置文件 <!-- raw HTML omitted --><br>
+<code>/etc/vconsole.conf</code> 可以固化配置。 <!-- raw HTML omitted --></p>
+</blockquote>
+<ol start="16">
+<li>
+<p>创建非 root 用户 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>useradd -m -G wheel -s /bin/bash welcome  <span style="color:#75715e">#wheel附加组可sudo，以root用户执行命令 -m同时创建用户家目录</span>
+</span></span></code></pre></div><p>为新用户创建密码，用 <code>passwd + 用户名</code> 这个方法 <!-- raw HTML omitted --><br>
+编辑 sudoers 配置文件 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>EDITOR<span style="color:#f92672">=</span>vim visudo  <span style="color:#75715e"># 需要以 root 用户运行 visudo 命令</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 去掉下面这行的注释</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#%wheel ALL=(ALL:ALL) ALL</span>
+</span></span></code></pre></div></li>
+<li>
+<p>yay <!-- raw HTML omitted --><br>
+yay 是比pacman更便捷的包管理工具，推荐使用 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/pacman.conf 尾部添加
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>archlinuxcn<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>SigLevel <span style="color:#f92672">=</span> Never
+</span></span><span style="display:flex;"><span>Server <span style="color:#f92672">=</span> https://mirrors.ustc.edu.cn/$repo/$arch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># （可选）顺便开启 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 是将pacman使用的源添加到yay里，如果在执行下面更新命令的时候报错，可能是因为源配置有冲突，是因为源重复添加，删除一个即可</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>multilib<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo pacman -Syyu        <span style="color:#75715e"># 更新一下 （更新配置）</span>
+</span></span><span style="display:flex;"><span>sudo pacman -S yay       <span style="color:#75715e"># 安装 yay</span>
+</span></span></code></pre></div></li>
+<li>
+<p>DWM <!-- raw HTML omitted --></p>
+<ul>
+<li>安装前件 <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S git xorg xorg-xinit 
+</span></span></code></pre></div></li>
+<li>安装字体 <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S nerd-fonts-jetbrains-mono  <span style="color:#75715e"># 注这个jetbrains 的字体，目前的包名不叫这个但是新的包在我使用起来会出现错误，字体显示不全</span>
+</span></span><span style="display:flex;"><span>yay -S ttf-material-design-icons    <span style="color:#75715e"># 图标</span>
+</span></span><span style="display:flex;"><span>yay -S ttf-joypixels
+</span></span><span style="display:flex;"><span>yay -S wqy-microhei                 <span style="color:#75715e"># 中文字体（文泉驿）</span>
+</span></span></code></pre></div></li>
+<li>安装软件 （不必须，但建议） <del>在终端使劲敲</del> <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S lxappearance              <span style="color:#75715e"># gui设置</span>
+</span></span><span style="display:flex;"><span>yay -S paper-gtk-theme-git       <span style="color:#75715e"># gtk主题</span>
+</span></span><span style="display:flex;"><span>yay -S pavucontrol               <span style="color:#75715e"># 音频设置</span>
+</span></span><span style="display:flex;"><span>yay -S breeze-icons              <span style="color:#75715e"># 图标</span>
+</span></span><span style="display:flex;"><span>yay -S rofi                      <span style="color:#75715e"># 菜单</span>
+</span></span><span style="display:flex;"><span>yay -S flameshot                 <span style="color:#75715e"># 截图软件</span>
+</span></span><span style="display:flex;"><span>yay -S google-chrome wyeb-git    <span style="color:#75715e"># 浏览器             </span>
+</span></span><span style="display:flex;"><span>yay -S byzanz                    <span style="color:#75715e"># gif截图依赖</span>
+</span></span><span style="display:flex;"><span>yay -S wps-office-cn             <span style="color:#75715e"># wps</span>
+</span></span><span style="display:flex;"><span>yay -S libnotify dunst           <span style="color:#75715e"># 通知 可使用 dunst -b 命令 启动通知服务</span>
+</span></span><span style="display:flex;"><span>yay -S xorg-xsetroot             <span style="color:#75715e"># dwm设置状态栏</span>
+</span></span><span style="display:flex;"><span>yay -S xf86-input-synaptics      <span style="color:#75715e"># 触控板</span>
+</span></span><span style="display:flex;"><span>yay -S network-manager-applet    <span style="color:#75715e"># 网络托盘</span>
+</span></span><span style="display:flex;"><span>yay -S amf-amdgpu-pro            <span style="color:#75715e"># amd gpu 驱动</span>
+</span></span><span style="display:flex;"><span>yay -S obs-studio-amf            <span style="color:#75715e"># obs for amd_gpu</span>
+</span></span><span style="display:flex;"><span>yay -S mpc mpd ncmpcpp           <span style="color:#75715e"># tui music player</span>
+</span></span></code></pre></div></li>
+<li>开始 clone dwm和 st 吧 <del>本人习惯创建 .rec 文件夹</del> <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cp -r DEF/* .
+</span></span><span style="display:flex;"><span>sudo make clean install
+</span></span></code></pre></div></li>
+<li>运行 dwm <!-- raw HTML omitted --><br>
+在 <code>~/.xinitrc</code> 文件里写入 <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export DWM<span style="color:#f92672">=</span>~/.rec/dwm
+</span></span><span style="display:flex;"><span>exec dwm
+</span></span></code></pre></div>然后就可以愉快的使用 <code>startx</code> 启动了 当然如果你想进入 tty <!-- raw HTML omitted --><br>
+的时候自动执行 startx 的话可以在 bash 的配置里加上 <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span> <span style="color:#66d9ef">$(</span>tty<span style="color:#66d9ef">)</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/dev/tty1&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> cd ~ <span style="color:#f92672">&amp;&amp;</span> startx
+</span></span></code></pre></div></li>
+<li>别忘了为 c 先生 的 scripts 里的脚本和*给脚本加权限* <!-- raw HTML omitted --></li>
+</ul>
+</li>
+<li>
+<p>其他杂项 <!-- raw HTML omitted --></p>
+<ul>
+<li>触控板生效 <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yay -S xf86-input-synaptics      <span style="color:#75715e"># 触控板</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/etc/X11/xorg.conf.d/30-touchpad.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Section <span style="color:#e6db74">&#34;InputClass&#34;</span>
+</span></span><span style="display:flex;"><span>    Identifier <span style="color:#e6db74">&#34;touchpad&#34;</span>
+</span></span><span style="display:flex;"><span>    Driver <span style="color:#e6db74">&#34;libinput&#34;</span>
+</span></span><span style="display:flex;"><span>    MatchIsTouchpad <span style="color:#e6db74">&#34;on&#34;</span>
+</span></span><span style="display:flex;"><span>    Option <span style="color:#e6db74">&#34;Tapping&#34;</span> <span style="color:#e6db74">&#34;on&#34;</span>
+</span></span><span style="display:flex;"><span>    Option <span style="color:#e6db74">&#34;TappingButtonMap&#34;</span> <span style="color:#e6db74">&#34;lrm&#34;</span>
+</span></span><span style="display:flex;"><span>EndSection
+</span></span></code></pre></div></li>
+<li>tty 免登录 (感觉有点不对，需要深入研究) <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/systemd/system/getty.target.wants/getty@tty1.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 这一步貌似有错误</span>
+</span></span><span style="display:flex;"><span>update
+</span></span><span style="display:flex;"><span>  ExecStart<span style="color:#f92672">=</span>-/sbin/agetty -o <span style="color:#e6db74">&#39;-p -f [用户名]&#39;</span> -n -a chenyc --noclear %I $TERM
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sudo免密 加到 visudo 添加到尾部  即 EDITOR=vim visudo </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>用户名<span style="color:#f92672">]</span> ALL<span style="color:#f92672">=(</span>ALL:ALL<span style="color:#f92672">)</span> NOPASSWD: ALL
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#用户提权</span>
+</span></span><span style="display:flex;"><span>yay -S polkit
+</span></span></code></pre></div></li>
+<li>去除蜂鸣器声音 <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo su
+</span></span><span style="display:flex;"><span>mkdir -p /etc/rc.d
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;rmmod pcspkr&#34;</span> &gt;&gt; /etc/rc.d/rc.local
+</span></span><span style="display:flex;"><span>chmod  +x /etc/rc.d/rc.local
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>然后开梯子🪜，更换 zsh c 先生也有一篇关于 zsh 的分享<del>可以直接拿来用</del> <!-- raw HTML omitted --><br>
+omz下载 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p><a href="https://github.com/yaocccc/omz">配置</a>可以放在 .rec 里 <!-- raw HTML omitted --><br>
+需要的依赖&amp;软件 <!-- raw HTML omitted --></p>
+<ul>
+<li>fzf fd bat exa ueberzug(可在x11终端下预览图片) <!-- raw HTML omitted --></li>
+<li>z.lua extract zsh-autosuggestions zsh-syntax-highlighting fzf-tab <!-- raw HTML omitted --><br>
+<strong>但是这些git下来的就有</strong> 😄 <!-- raw HTML omitted --></li>
+</ul>
+<p>然后在 .zshrc 里加入这样的一句话 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>source ~/.rec/omz/omz.zsh
+</span></span></code></pre></div><p>之后 source 一下 zshrc 就 okay 了。 <!-- raw HTML omitted --><br>
+<em>好吧就到这吧，以后也许还会修改和添加。关于 dwm&amp;arch <!-- raw HTML omitted --><br>
+的配置和问题不在这里描述</em>   25 Nov,23 <!-- raw HTML omitted --></p>
+</li>
+</ol>
+<h4 id="优化">优化<a hidden class="anchor" aria-hidden="true" href="#优化">#</a></h4>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>输入法</p>
+<p>首先是安装Rime <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-config-qt fcitx5-material-color fcitx5-im fcitx5-rime
+</span></span><span style="display:flex;"><span>sudo echo <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GTK_IM_MODULE=fcitx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">QT_IM_MODULE=fcitx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">XMODIFIERS=@im=fcitx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">SDL_IM_MODULE=fcitx
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GLFW_IM_MODULE=ibus&#39;</span> &gt;&gt; /etc/environment
+</span></span></code></pre></div><p>其次配置文件是在<code>~/.local/share/fcitx5/rime</code> <!-- raw HTML omitted --><br>
+<strong>配置文件</strong>是<a href="https://github.com/Mintimate/oh-my-rime">这位老哥</a>的 <!-- raw HTML omitted --><br>
+关于<strong>默认输入英文还是中文</strong>这个是在以<code>schema.yaml</code>为结尾的文件里将<code>reset</code>从 0 改为 1. 关于<strong>皮肤</strong> <!-- raw HTML omitted --><br>
+<a href="https://github.com/fkxxyz/ssfconv">这位老哥</a>弄了一个工具，可以将搜狗的皮肤转换成_fcitx5_的皮肤使用. Tiffany-one 的皮肤挺好看的，不过是暗色的 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>music</p>
+<p><a href="https://yaocc.cc/ncmpcpp/">cc关于mpd 和 ncmpcpp的配置</a> <!-- raw HTML omitted --><br>
+在安装好mpd后还需要两个依赖包 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>yay -S timidity wildmidi
+</span></span></code></pre></div><p>scripts脚本文件夹里有一个关于音乐的脚本<strong>command + m</strong> <!-- raw HTML omitted --><br>
+可以调出两个音乐的窗口。不过位置的显示需要微调。 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>WiFi（nmcli）</p>
+<p>使用 nmcli 对 wifi进行连接和管理 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nmcli radio wifi on                                  <span style="color:#75715e"># 开启wifi</span>
+</span></span><span style="display:flex;"><span>nmcli dev wifi list                                  <span style="color:#75715e"># 列出可用的wifi</span>
+</span></span><span style="display:flex;"><span>sudo nmcli dev wifi connect SSID password xxx        <span style="color:#75715e"># 连接wifi,xxx为密码</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#如果不想在屏幕上写出密码,可以用下面的命令</span>
+</span></span><span style="display:flex;"><span>sudo ncmli --ask dev wifi connect SSID  <span style="color:#75715e"># 🟣</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用 nmcli 管理网络</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果连接到一个网络,但是想切换到其他的网络,可以用down/up指令加上对应的SSID</span>
+</span></span><span style="display:flex;"><span>nmcli con up/down SSID
+</span></span></code></pre></div></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>屏幕亮度</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<ol>
+<li>第一种方法</li>
+</ol>
+<p><strong>使用的是acpi</strong> <!-- raw HTML omitted --><br>
+<a href="https://bbs.archlinux.org/viewtopic.php?pid=1449243#p1449243">This <!-- raw HTML omitted --><br>
+friend has given a nice solution</a> <!-- raw HTML omitted --><br>
+<em>This is the file place where to control the backlight on my cp</em> <!-- raw HTML omitted --><br>
+我的arch里控制背光的文件 <!-- raw HTML omitted --></p>
+<blockquote>
+<p>/sys/class/backlight/amdgpu_bl1/brightness <!-- raw HTML omitted --></p>
+</blockquote>
+<p>By the way, the max_brightness is 255 ,jaja <!-- raw HTML omitted --><br>
+<strong>Scripts</strong> are here <!-- raw HTML omitted --></p>
+<blockquote>
+<p>/etc/acpi/actions <!-- raw HTML omitted --></p>
+</blockquote>
+<p><strong>corresponding files</strong> are here <!-- raw HTML omitted --></p>
+<blockquote>
+<p>/etc/acpi/events <!-- raw HTML omitted --></p>
+</blockquote>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<ol start="2">
+<li>第二种方法 (better)</li>
+</ol>
+<p><strong>Up</strong> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>bl_device<span style="color:#f92672">=</span>/sys/class/backlight/amdgpu_bl1/brightness
+</span></span><span style="display:flex;"><span>echo <span style="color:#66d9ef">$(($(</span>cat $bl_device<span style="color:#66d9ef">)</span><span style="color:#f92672">+</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> | sudo tee $bl_device
+</span></span></code></pre></div><p><strong>Down</strong> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span>bl_device<span style="color:#f92672">=</span>/sys/class/backlight/amdgpu_bl1/brightness
+</span></span><span style="display:flex;"><span>echo <span style="color:#66d9ef">$(($(</span>cat $bl_device<span style="color:#66d9ef">)</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> | sudo tee $bl_device
+</span></span></code></pre></div><p><strong>使用的是 xbindkeys</strong>, 方法和下面音量的调节一样 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>音量调节</p>
+<p><a href="https://www.ejmastnak.com/tutorials/arch/volume/">This is very good</a> <!-- raw HTML omitted --><br>
+用 <code>xbindkeys</code> 这个软件将脚本绑定到对应的按键上 用<code>xev</code>或者<code>xbindkeys -k</code>来显示按键对应的名称 <!-- raw HTML omitted --><br>
+将脚本和按键对应的关系按照一定的语法写入到<code>~/.xbindkeysrc文件夹中</code>自动激活可以在<code>~/.xinitrc</code>文件中写入 <strong>xbindkeys</strong> <!-- raw HTML omitted --><br>
+<strong>静音和调大调小之间的不协调</strong> <!-- raw HTML omitted --><br>
+首先是在调节音量之前判断一下系统现在是否处在静音的状态. <!-- raw HTML omitted --><br>
+如果是的话，那么将其解除静音. <!-- raw HTML omitted --><br>
+<strong>代码实现如下</strong> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># NAME</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     volume.sh - Increase/decrease/mute volume using PulseAudio pactl</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># SYNOPSIS </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#     volume.sh &lt;raise|lower|mute&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Suggested location: ~/scripts/volume.sh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>step<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># number of percentage points to increase/decrease volume</span>
+</span></span><span style="display:flex;"><span>max<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>  <span style="color:#75715e"># do not increase volume above this percentage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Prints current volume percentage, e.g. `60`, `95`, `20`, etc.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> get_current_volume<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  pactl get-sink-volume @DEFAULT_SINK@ | awk -F <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#e6db74">&#39;{print $2}&#39;</span> | grep -o <span style="color:#e6db74">&#39;[0-9]\+&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mute_or_not<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>pactl get-sink-mute @DEFAULT_SINK@ | awk <span style="color:#e6db74">&#39;{print $2}&#39;</span><span style="color:#e6db74">`</span>  <span style="color:#75715e"># 查看是否静音</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;raise&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Modification: only increase volume if current volume is less than `max`</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">`</span>get_current_volume<span style="color:#e6db74">`</span> -lt <span style="color:#e6db74">${</span>max<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $mute_or_not <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>        pactl set-sink-mute @DEFAULT_SINK@ toggle
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>        pactl set-sink-volume @DEFAULT_SINK@ <span style="color:#e6db74">&#34;+</span><span style="color:#e6db74">${</span>step<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The rest of the script is identical to the original `volume.sh`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> $1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;lower&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $mute_or_not <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;yes&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> 
+</span></span><span style="display:flex;"><span>        pactl set-sink-mute @DEFAULT_SINK@ toggle
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>    pactl set-sink-volume @DEFAULT_SINK@ <span style="color:#e6db74">&#34;-</span><span style="color:#e6db74">${</span>step<span style="color:#e6db74">}</span><span style="color:#e6db74">%&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> <span style="color:#f92672">[</span> $1 <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;mute&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    pactl set-sink-mute @DEFAULT_SINK@ toggle
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Unrecognized parameter: </span><span style="color:#e6db74">${</span>1<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage should be: volume.sh &lt;raise|lower|mute&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>grub中 Win丟失</p>
+<p>Lost Windows in Grub <!-- raw HTML omitted --><br>
+查看uuid的命令是 <code>blkid</code> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>menuentry <span style="color:#e6db74">&#39;Win&#39;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    insmod part_gpt
+</span></span><span style="display:flex;"><span>    insmod fat
+</span></span><span style="display:flex;"><span>    insmod chain
+</span></span><span style="display:flex;"><span>    search --fs-uuid --no-floppy --set<span style="color:#f92672">=</span>root EAD2-8212
+</span></span><span style="display:flex;"><span>    chainloader <span style="color:#f92672">(</span><span style="color:#e6db74">${</span>root<span style="color:#e6db74">}</span><span style="color:#f92672">)</span>/EFI/Microsoft/Boot/bootmgfw.efi
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><code>/boot/grub/grub.cfg</code><em>custom 40</em>  注意那里 &ndash;set=root xxx 是定义了一个变量下面一行里会调用这个变量 <!-- raw HTML omitted --><br>
+<strong><strong>这里建议修改我视频里的文件</strong></strong> <code>/etc/grub.d/40_custom</code> <!-- raw HTML omitted --></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/eyck0102/pics/master/grub_windows%20%E4%BD%8D%E7%BD%AE.png" alt=""  />
+ <!-- raw HTML omitted --><br>
+补充一点，Windows 里如果 efi 分区没有独立出来，即和 <!-- raw HTML omitted --><br>
+c盘在一起，新建一个独立的 efi 分区的步骤如下 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>list partition 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> partition <span style="color:#f92672">{</span>index<span style="color:#f92672">}</span>      <span style="color:#75715e"># 选择一个分区</span>
+</span></span><span style="display:flex;"><span>shrink desired<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>            <span style="color:#75715e"># 从这个分区里压缩出 100M 的空间</span>
+</span></span><span style="display:flex;"><span>create partition efi size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> <span style="color:#75715e"># 创建 efi 分区</span>
+</span></span><span style="display:flex;"><span>format quick fs<span style="color:#f92672">=</span>fat32         <span style="color:#75715e"># 格式化</span>
+</span></span><span style="display:flex;"><span>assign letter<span style="color:#f92672">=</span>s               <span style="color:#75715e"># 设置盘符   </span>
+</span></span><span style="display:flex;"><span>list volume                   <span style="color:#75715e"># 列出磁盘的全部卷</span>
+</span></span><span style="display:flex;"><span>exit
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 然后以管理员权限运行 Cmd</span>
+</span></span><span style="display:flex;"><span>bcdboot C:<span style="color:#ae81ff">\w</span>indows /s S:   <span style="color:#75715e">#复制 efi 文件到新建的分区</span>
+</span></span></code></pre></div></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>开机启动脚本</p>
+<p>将脚本写好后，添加权限，然后将脚本加入到 cc 的dwm配置<code>autostart.sh</code>里面,注意在结尾要用<code>&amp;</code>隔开与下一个命令 <!-- raw HTML omitted --></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>前面命令为假时，后面命令才会执行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>前面命令为真时，后面命令才会执行</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>用 &amp; 连接的命令会同时执行，不管命令是否成功</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>停止一个脚本进程</p>
+<p>起因：为 clash 设置开机启动脚本之后,不知道该怎么关闭 解决:用<code>ps -ef | grep clash</code>来列出 clash 的进程 再用<code>kill -9 *进程号*</code>来关闭,一般是 ./clash&hellip;. 这个进程，而不是脚本文件 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>给 Arch 添加 Swap 文件</p>
+<p>参考：<a href="https://timothyqiu.com/archives/104/">TimothyQiu&rsquo;s Blog</a> <!-- raw HTML omitted --><br>
+起因：之前按照 cc 和 archstory 的步骤，给 arch 开机的时候发现 arch <!-- raw HTML omitted --><br>
+显示/找不到/swapfile/，因此在网上有找了一些其他的方法（感觉 cc <!-- raw HTML omitted --><br>
+的有些省略） 📍创建 Swap 文件 <!-- raw HTML omitted --><br>
+创建 Swap 文件有很多种方法，但最可移植的方法是使用<code>dd</code>比如创建1G的/swapfile ： <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/zero of<span style="color:#f92672">=</span>/swapfile bs<span style="color:#f92672">=</span>1M count<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span> status<span style="color:#f92672">=</span>progress
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">0600</span> /swapfile
+</span></span><span style="display:flex;"><span>mkswap -U clear /swapfile
+</span></span></code></pre></div><p>这里的<code>chmod</code>是为了安全，所有人都可读写的 Swap 文件是巨大隐患.<code>mkswap</code>的<code>-U</code>参数用于设置 swap 的 UUID。但是因为 swap文件必须使用文件系统路径去指定，所以这里使用特殊的<code>clear</code> <!-- raw HTML omitted --><br>
+作为参数去清空它（实际效果是设置了全零的 UUID）。 <!-- raw HTML omitted --><br>
+📍打开与关闭 <!-- raw HTML omitted --><br>
+创建好 swap 文件后，就可以直接启用了： <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>swapon /swapfile
+</span></span></code></pre></div><p>最后把它放进<code>/etc/fstab</code>里，这样每次启动就会直接启用： <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/swapfile none swap defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>如果是要关闭，顾名思义就： <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>swapoff /swapfile
+</span></span></code></pre></div><p>关闭以后它就是个普通文件，想删除就可以直接删除了。 <!-- raw HTML omitted --><br>
+📍使用 Swap 文件进行休眠 <!-- raw HTML omitted --><br>
+需要设置=resume=和=resume_offset=参数 <!-- raw HTML omitted --><br>
+<code>resume</code>参数是 swap 文件所在的分区（例如<code>/dev/nvme0n1p2</code>,或者<code>UUID=4209c845-f495-4c43-8a03-5363dd433153</code>）有两种表示方法<code>UUID</code>的获取方法是 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>findmnt -no UUID -T /swapfile
+</span></span></code></pre></div><p><code>resume_offset</code>获取方法 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>filefrag -v /swapfile | awk <span style="color:#e6db74">&#39;{ if($1==&#34;0:&#34;){print substr($4, 1, length($4)-2)} }&#39;</span>
+</span></span></code></pre></div><p>编辑<code>etc/default/grub</code>,将以上两个参数写进<code>/etc/default/grub</code>中_像这样_ <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;loglevel=3 nowatchdog resume=UUID=db7c6671-e10c-4486-9077-87692688cdcc resume_offset=3733504&#34;</span>
+</span></span></code></pre></div><p>最后重新生成一下<code>grub.cfg</code> <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></div><p>📍initramfs <!-- raw HTML omitted --><br>
+如果你的 initramfs 没有使用 systemd 钩子（使用的是 <!-- raw HTML omitted --><br>
+base），那么就还需要添加一个 resume 钩子才会尝试从休眠中恢复:编辑<code>/etc/mkinitcpio.conf</code>文件,在<code>HOOKS=(...)</code>里的<code>udev</code>之后的任何位置加入<code>resume</code>最后重新生成 initramfs即可： <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkinitcpio -p linux
+</span></span></code></pre></div></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>和 Win 时间不同</p>
+<p><strong>原因</strong> <!-- raw HTML omitted --><br>
+<a href="https://sspai.com/post/55983">少数派的一篇文章</a> <!-- raw HTML omitted --><br>
+<strong>GMT</strong>: Greenwhich Mean Time <!-- raw HTML omitted --><br>
+(格林尼治标准时间)，也就是世界时间。以地球自转为基础的时间计量系统。但是GMT不够准确（相比较而言） <!-- raw HTML omitted --><br>
+<strong>UTC</strong>:Universal Time Coordinated <!-- raw HTML omitted --><br>
+(协调世界时)，以=原子时=的秒长为基础。现在作为时间标准时间使用 <!-- raw HTML omitted --><br>
+<strong>RTC</strong>:Real-Time Clock 实时时钟 ，在计算机领域称为硬件时间 <!-- raw HTML omitted --><br>
+e.g 北京位于东八区， 其时间即为 UTC+8 <!-- raw HTML omitted --><br>
+Windows把硬件时钟设为=本地时间= Linu把硬件时间设为<code>UTC</code> <!-- raw HTML omitted --><br>
+那么Linux显示的时间就是UTC时间➕时区 <!-- raw HTML omitted --><br>
+<strong>解决方法</strong> <!-- raw HTML omitted --></p>
+<ol>
+<li>Windows <!-- raw HTML omitted --><br>
+管理员打开=powershell= <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Reg add HKLM<span style="color:#ae81ff">\S</span>YSTEM<span style="color:#ae81ff">\C</span>urrentControlSet<span style="color:#ae81ff">\C</span>ontrol<span style="color:#ae81ff">\T</span>imeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div>或者打开「注册表编辑器」，定位到<code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation</code>目录下，新建一个<code>DWORD</code>类型，名称为<code>RealTimeIsUniversal</code>的键，并修改键值为<code>1</code>即可。 <!-- raw HTML omitted --></li>
+<li>Linux <!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>timedatectl set-local-rtc <span style="color:#ae81ff">1</span> --adjust-system-clock
+</span></span></code></pre></div></li>
+</ol>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>onedrive 同步</p>
+<p><a href="https://zhul.in/2022/12/24/onedrive-abraunegg-recommendation/">博客</a> <!-- raw HTML omitted --><br>
+可以直接在 AUR 里找到 <!-- raw HTML omitted --><br>
+<a href="https://github.com/abraunegg/onedrive">onedrive-abraunegg</a> <!-- raw HTML omitted --><br>
+然后运行 <code>onedrive</code> <!-- raw HTML omitted --><br>
+复制链接，浏览器打开，再将输出的网址复制下来，完成账号授权。 <!-- raw HTML omitted --><br>
+可以在<a href="/home/mi/.config/onedrive">配置文件夹目录</a>下创建 <!-- raw HTML omitted --><br>
+<code>sync_list</code>,可以在这个文件里写入你想要同步的文件夹，每行一个。写完注意执行一下这个命令<code>onedrive --synchronize --resync</code> <!-- raw HTML omitted --><br>
+<a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#performing-a-selective-sync-via-sync_list-file">详情见此</a> <!-- raw HTML omitted --><br>
+如果不想把文件同步在默认的路径下可以在配置文件夹下，新建一个=config=文件，把此处给的<a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md#the-default-configuration-file-is-listed-below">examples</a>全部复制进去，找到<code>sync_dir</code>把前面的注释删掉，改成自己喜欢的路径 <!-- raw HTML omitted --><br>
+然后<code>onedrive --synchronize</code>愉快同步 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>访问 windows 文件</p>
+<p>如果有<code>unknown filesystem type 'ntfs'</code> <!-- raw HTML omitted --><br>
+这种错误，需要安装<code>yay -S ntfs-3g</code>这个包 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>ArchLinux忽略某个包的升级</p>
+<p>咋做的呢？往<code>/etc/pacman.conf</code>里，有这么一行<code>#IgnorePkg =</code>,给它取消注释,改成: <code>IgnorePkg = linux</code> 然后就可以了 <!-- raw HTML omitted --></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>keyring 签名错误</p>
+<p>signature from &ldquo;xxx&rdquo; is unknown <!-- raw HTML omitted --><br>
+解决方法 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf /etc/pacman.d/gnupg
+</span></span><span style="display:flex;"><span>pacman-key --init
+</span></span><span style="display:flex;"><span>pacman-key --populate
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="虚拟机">虚拟机<a hidden class="anchor" aria-hidden="true" href="#虚拟机">#</a></h3>
+<p>参考这篇<a href="https://www.zzxworld.com/posts/install-virtualbox-and-usage-tutorial">博客</a> <!-- raw HTML omitted --><br>
+在 arch 里用 <strong><strong>virtual box</strong></strong> 使用 Windows7 <!-- raw HTML omitted --><br>
+virtual 会报错 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo pacman -S virtualbox-host-modules-arch
+</span></span><span style="display:flex;"><span>sudo modprobe vboxdrv
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 不行的话再用这个</span>
+</span></span><span style="display:flex;"><span>sudo /sbin/rcvboxdrv setup
+</span></span></code></pre></div><ul>
+<li>win7 下载在此 <!-- raw HTML omitted --></li>
+</ul>
+<p><a href="https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006">https://archive.org/details/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332_202006</a> <!-- raw HTML omitted --><br>
+Hash:  36ae90defbad9d9539e649b193ae573b77a71c83 <!-- raw HTML omitted --><br>
+序列号: V77DJ-CT8WB-Y3GXT-X3FBP-6F987 <!-- raw HTML omitted --></p>
+<ul>
+<li>VBoxGuestAdditions <!-- raw HTML omitted --></li>
+</ul>
+<p><a href="https://w0.dk/~chlor/vboxguestadditions/">下载地址在此</a> <!-- raw HTML omitted --><br>
+把它下载到 arch 里，然后在虚拟机这边挂在这个 .iso 文件，然后安装 <!-- raw HTML omitted --><br>
+但是会报错 Windows cannot verify the digital signature &hellip;.. <!-- raw HTML omitted --><br>
+管理员权限 cmd 运行后重启 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bcdedit /set testsigning on
+</span></span><span style="display:flex;"><span>bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS
+</span></span></code></pre></div><ul>
+<li>VirtualBox Extension Pack <!-- raw HTML omitted --></li>
+</ul>
+<p>需要用 sudo 权限，<a href="https://www.virtualbox.org/ticket/8473">原因在此</a> <!-- raw HTML omitted --><br>
+然后在 USB 外设里找到相应的添加到虚拟机中，⚠️ 对于 arch 用命令行安装的 Virtual-box 需要以下命令才能 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo groupadd usbfs 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 把当前用户添加到 usbfs 和 vboxusers 用户组</span>
+</span></span><span style="display:flex;"><span>sudo usermod -aG usbfs $USER
+</span></span><span style="display:flex;"><span>sudo usermod -aG vboxusers $USER
+</span></span></code></pre></div><h3 id="rofi">rofi<a hidden class="anchor" aria-hidden="true" href="#rofi">#</a></h3>
+<p>If you have not created a config file, there is none, and rofi uses its default settings. <!-- raw HTML omitted --><br>
+You can create a config file with those settings by running<code>rofi -dump-config</code> <!-- raw HTML omitted --><br>
+_rofi_的自定义配置比如修改字体 <!-- raw HTML omitted --></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p ~/.config/rofi
+</span></span><span style="display:flex;"><span>rofi -dump-config &gt; ~/.config/rofi/config.rasi
+</span></span></code></pre></div><p>修改后把注释去掉即可 <!-- raw HTML omitted --><br>
+设置行号<code>set numbet</code> <!-- raw HTML omitted --></p>
+<h3 id="grub">grub<a hidden class="anchor" aria-hidden="true" href="#grub">#</a></h3>
+<h4 id="修改grub显示主题">修改grub显示主题<a hidden class="anchor" aria-hidden="true" href="#修改grub显示主题">#</a></h4>
+<p>在<a href="https://github.com/vinceliuice/grub2-themes">github</a>上找到了一个傻瓜式一键安装的主题,也是我正在使用的<!-- raw HTML omitted --><!-- raw HTML omitted -->[2024-03-15 Fri]<!-- raw HTML omitted --><!-- raw HTML omitted -->,可以更换壁纸样式 <!-- raw HTML omitted --></p>
+<h3 id="磁盘管理">磁盘管理<a hidden class="anchor" aria-hidden="true" href="#磁盘管理">#</a></h3>
+<p>du -sh <!-- raw HTML omitted --><br>
+-h human-readable <!-- raw HTML omitted --><br>
+-s summarize display only a total for each argument <!-- raw HTML omitted --><br>
+在home下的 .local 文件夹里有回收站 <!-- raw HTML omitted --></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nosomber.github.io/zh/tags/arch/">arch</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://nosomber.github.io/zh/posts/%E6%97%A5%E8%AE%B0/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>journal</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="https://nosomber.github.io/zh/">e2c</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

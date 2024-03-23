@@ -6,7 +6,16 @@
     <description>Recent content in Tags on e2c</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Mar 2024 00:00:16 +0800</lastBuildDate><atom:link href="https://nosomber.github.io/zh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tech</title>
+      <link>https://nosomber.github.io/zh/tags/tech/</link>
+      <pubDate>Sat, 23 Mar 2024 00:00:16 +0800</pubDate>
+      
+      <guid>https://nosomber.github.io/zh/tags/tech/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>lek</title>
       <link>https://nosomber.github.io/zh/tags/lek/</link>
@@ -107,11 +116,11 @@
     </item>
     
     <item>
-      <title>tech</title>
-      <link>https://nosomber.github.io/zh/tags/tech/</link>
+      <title>arch</title>
+      <link>https://nosomber.github.io/zh/tags/arch/</link>
       <pubDate>Sun, 24 Sep 2023 00:00:00 +0800</pubDate>
       
-      <guid>https://nosomber.github.io/zh/tags/tech/</guid>
+      <guid>https://nosomber.github.io/zh/tags/arch/</guid>
       <description></description>
     </item>
     
