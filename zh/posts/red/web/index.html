@@ -41,7 +41,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nosomber.github.io/zh/posts/red/web/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-25T00:00:00&#43;08:00" />
-<meta property="article:modified_time" content="2024-03-20T23:15:16&#43;08:00" />
+<meta property="article:modified_time" content="2024-03-24T22:32:56&#43;08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="website"/>
@@ -72,11 +72,11 @@
   "keywords": [
     "html", "js"
   ],
-  "articleBody": "Web lecture css里指定宽度的时候,用 width: 100% 可以自适应屏幕的宽度(即占满全屏) html 记录 在段落\n里,不管有多少个空格都只算一个 粗体目前是一个比较older的用法,使用更好,因为并没有语义(‘b’ 只是一个元素没有其他的意思) b ➡ strong i ➡ em(emphasize) 有序列表用**ol**,无序列表用**ul**. 再用**li**元素将项目包裹起来 插入图片,元素,其中’src’,‘alt’等是用来描述image元素的属性 插入超链接 anchor ➡ 描述 ‘a’是标签,‘href’和’target’都是属性,’_blank’链接在新的标签页打开 介绍 span\n通用行内容器,没有特殊语义,和类似,但是/块元素/,是行内元素 css 记录 css的结构如下 有三种方式 inline CSS internal CSS 在head里, external CSS 需要在head里指定 可以指定的属性 color font-size(such as 24px) font-family[serif,sans-serif] text-transform[capitalize,lowercase,none,uppercase,inherit,initial,unset] font-style[italic,normal,oblique,inherit,initial,unset] Oblique characters follow the structure of the upright styles, while italics have a different structure, informed by cursive writing line-height: 1.5 (行高是字体的1.5倍) text-align[center,end,justify,left,right,start,inherit,initial,unset] 对于选择器有相同属性的,可以创建一个选择器列表 pusedo-class /* 所有 li 标签里的第一个元素 */ li:first-chile { } /* 奇数元素 */ li:nth-child(odd) { } /* 与链接有关的伪类 */ a:link {} a:visited {} a:hover {} a:active {} /* 当鼠标点击到链接时 */ text-decoration 可以将链接的下划线去掉 The CSS BOX MODEL content: text,images,etc border: a line around the element,still inside of the element padding: invisible space around the content, inside of the element margin: space outside of the element,between elements fill area: area that gets filled with background color or background image Final element width = left border + left padding + width + right padding + right border 介绍 clear\n作用是清除元素的浮动问题 none 元素不会被向下移动以清除浮动 left 元素向下移动以清除右浮动 right 元素向下移动以清除左浮动 both 元素向下移动以清除左右浮动 行级内容\n在CSS中，参与行内布局的内容被称为行级内容（inline-levelcontent）。默认情况下，大多数文本、替换元素以及生成的内容都是行级的。 在行内布局中，通常将文本、替换元素以及其它的行级盒分段为一堆按顺序排列的盒子来进行布局。在每个行盒中，行级盒子相互垂直或者水平对齐，具体取决于书写模式。通常，它们与文本的基线进行对齐。这可以使用 CSS 进行更改。 透明度\nopacity: 背景上的文字的透明度也一起改变 rgba: RGB+ALPHA, rgba(xx,xx,xx,0,2) trick 边框圆角\nborder-radius: 10px; /* 圆角半径 */ 使用语言属性设置样式\n参考 :lang(ta) ",
+  "articleBody": "Web lecture css里指定宽度的时候,用 width: 100% 可以自适应屏幕的宽度(即占满全屏) html 记录 在段落\n里,不管有多少个空格都只算一个 粗体目前是一个比较older的用法,使用更好,因为并没有语义(‘b’ 只是一个元素没有其他的意思) b ➡ strong i ➡ em(emphasize) 有序列表用**ol**,无序列表用**ul**. 再用**li**元素将项目包裹起来 插入图片,元素,其中’src’,‘alt’等是用来描述image元素的属性 插入超链接 anchor ➡ 描述 ‘a’是标签,‘href’和’target’都是属性,’_blank’链接在新的标签页打开 介绍 span 通用行内容器,没有特殊语义,和类似,但是/块元素/,是行内元素 css 记录 css的结构如下 有三种方式 inline CSS internal CSS 在head里, external CSS 需要在head里指定 可以指定的属性 color font-size(such as 24px) font-family[serif,sans-serif] text-transform[capitalize,lowercase,none,uppercase,inherit,initial,unset] font-style[italic,normal,oblique,inherit,initial,unset] Oblique characters follow the structure of the upright styles, while italics have a different structure, informed by cursive writing line-height: 1.5 (行高是字体的1.5倍) text-align[center,end,justify,left,right,start,inherit,initial,unset] 对于选择器有相同属性的,可以创建一个选择器列表 pusedo-class /* 所有 li 标签里的第一个元素 */ li:first-chile { } /* 奇数元素 */ li:nth-child(odd) { } /* 与链接有关的伪类 */ a:link {} a:visited {} a:hover {} a:active {} /* 当鼠标点击到链接时 */ text-decoration 可以将链接的下划线去掉 The CSS BOX MODEL content: text,images,etc border: a line around the element,still inside of the element padding: invisible space around the content, inside of the element margin: space outside of the element,between elements fill area: area that gets filled with background color or background image Final element width = left border + left padding + width + right padding + right border 介绍 clear 作用是清除元素的浮动问题 none 元素不会被向下移动以清除浮动 left 元素向下移动以清除右浮动 right 元素向下移动以清除左浮动 both 元素向下移动以清除左右浮动 行级内容 在CSS中，参与行内布局的内容被称为行级内容（inline-levelcontent）。默认情况下，大多数文本、替换元素以及生成的内容都是行级的。 在行内布局中，通常将文本、替换元素以及其它的行级盒分段为一堆按顺序排列的盒子来进行布局。在每个行盒中，行级盒子相互垂直或者水平对齐，具体取决于书写模式。通常，它们与文本的基线进行对齐。这可以使用 CSS 进行更改。 透明度 opacity: 背景上的文字的透明度也一起改变 rgba: RGB+ALPHA, rgba(xx,xx,xx,0,2) trick 边框圆角 border-radius: 10px; /* 圆角半径 */ 使用语言属性设置样式 参考 :lang(ta) ",
   "wordCount" : "1094",
   "inLanguage": "zh",
   "datePublished": "2024-02-25T00:00:00+08:00",
-  "dateModified": "2024-03-20T23:15:16+08:00",
+  "dateModified": "2024-03-24T22:32:56+08:00",
   "author":{
     "@type": "Person",
     "name": "kai"
@@ -182,7 +182,7 @@
     <h1 class="post-title">
       website
     </h1>
-    <div class="post-meta"><span title='2024-02-25 00:00:00 +0800 CST'>2024-02-25</span>&nbsp;·&nbsp;<span title='2024-03-20 23:15:16 +0800 CST'>(updated: 2024-03-20)</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;kai
+    <div class="post-meta"><span title='2024-02-25 00:00:00 +0800 CST'>2024-02-25</span>&nbsp;·&nbsp;<span title='2024-03-24 22:32:56 +0800 CST'>(updated: 2024-03-24)</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;kai
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -204,7 +204,11 @@
                     <li>
                         <a href="#%e8%ae%b0%e5%bd%95" aria-label="记录">记录</a></li>
                     <li>
-                        <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a></li></ul>
+                        <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a><ul>
+                            
+                    <li>
+                        <a href="#span" aria-label="span">span</a></li></ul>
+                    </li></ul>
                     </li>
                     <li>
                         <a href="#css" aria-label="css">css</a><ul>
@@ -212,10 +216,25 @@
                     <li>
                         <a href="#%e8%ae%b0%e5%bd%95" aria-label="记录">记录</a></li>
                     <li>
-                        <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a></li>
+                        <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a><ul>
+                            
                     <li>
-                        <a href="#trick" aria-label="trick">trick</a>
+                        <a href="#clear" aria-label="clear">clear</a></li>
+                    <li>
+                        <a href="#%e8%a1%8c%e7%ba%a7%e5%86%85%e5%ae%b9" aria-label="行级内容">行级内容</a></li>
+                    <li>
+                        <a href="#%e9%80%8f%e6%98%8e%e5%ba%a6" aria-label="透明度">透明度</a></li></ul>
                     </li>
+                    <li>
+                        <a href="#trick" aria-label="trick">trick</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%be%b9%e6%a1%86%e5%9c%86%e8%a7%92" aria-label="边框圆角">边框圆角</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8%e8%af%ad%e8%a8%80%e5%b1%9e%e6%80%a7%e8%ae%be%e7%bd%ae%e6%a0%b7%e5%bc%8f" aria-label="使用语言属性设置样式">使用语言属性设置样式</a>
+                    </li>
+                </ul>
+                </li>
                 </ul>
                 </li>
                 </ul>
@@ -299,13 +318,8 @@
 插入图片,&lt;image src=&ldquo;xx&rdquo; alt=&ldquo;xx&rdquo; &hellip; /&gt;元素,其中&rsquo;src&rsquo;,&lsquo;alt&rsquo;等是用来描述image元素的属性 <!-- raw HTML omitted --><br>
 插入超链接 anchor ➡ &lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;描述&lt;/a&gt;  &lsquo;a&rsquo;是标签,&lsquo;href&rsquo;和&rsquo;target&rsquo;都是属性,&rsquo;_blank&rsquo;链接在新的标签页打开 <!-- raw HTML omitted --></p>
 <h4 id="介绍">介绍<a hidden class="anchor" aria-hidden="true" href="#介绍">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>span</p>
+<h5 id="span">span<a hidden class="anchor" aria-hidden="true" href="#span">#</a></h5>
 <p>通用行内容器,没有特殊语义,&lt;span&gt;和&lt;div&gt;类似,但&lt;div&gt;是/块元素/,&lt;span&gt;是行内元素 <!-- raw HTML omitted --></p>
-</li>
-</ul>
 <h3 id="css">css<a hidden class="anchor" aria-hidden="true" href="#css">#</a></h3>
 <h4 id="记录">记录<a hidden class="anchor" aria-hidden="true" href="#记录">#</a></h4>
 <p>css的结构如下 <!-- raw HTML omitted --><br>
@@ -363,10 +377,7 @@
  <!-- raw HTML omitted --><br>
 <strong>Final element width</strong> = left border + left padding + width + right padding + right border <!-- raw HTML omitted --></p>
 <h4 id="介绍">介绍<a hidden class="anchor" aria-hidden="true" href="#介绍">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>clear</p>
+<h5 id="clear">clear<a hidden class="anchor" aria-hidden="true" href="#clear">#</a></h5>
 <p>作用是清除元素的浮动问题 <!-- raw HTML omitted --></p>
 <ul>
 <li><code>none</code> 元素不会被向下移动以清除浮动 <!-- raw HTML omitted --></li>
@@ -374,41 +385,19 @@
 <li><code>right</code> 元素向下移动以清除左浮动 <!-- raw HTML omitted --></li>
 <li><code>both</code> 元素向下移动以清除左右浮动 <!-- raw HTML omitted --></li>
 </ul>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>行级内容</p>
+<h5 id="行级内容">行级内容<a hidden class="anchor" aria-hidden="true" href="#行级内容">#</a></h5>
 <p>在CSS中，参与行内布局的内容被称为行级内容（inline-levelcontent）。默认情况下，大多数文本、替换元素以及生成的内容都是行级的。 <!-- raw HTML omitted --><br>
 在行内布局中，通常将文本、替换元素以及其它的行级盒分段为一堆按顺序排列的盒子来进行布局。在每个行盒中，行级盒子相互垂直或者水平对齐，具体取决于书写模式。通常，它们与文本的基线进行对齐。这可以使用 CSS 进行更改。 <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>透明度</p>
+<h5 id="透明度">透明度<a hidden class="anchor" aria-hidden="true" href="#透明度">#</a></h5>
 <ul>
 <li><code>opacity</code>: 背景上的文字的透明度也一起改变 <!-- raw HTML omitted --></li>
 <li><code>rgba</code>: RGB+ALPHA, rgba(xx,xx,xx,0,2) <!-- raw HTML omitted --></li>
 </ul>
-</li>
-</ul>
 <h4 id="trick">trick<a hidden class="anchor" aria-hidden="true" href="#trick">#</a></h4>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>边框圆角</p>
+<h5 id="边框圆角">边框圆角<a hidden class="anchor" aria-hidden="true" href="#边框圆角">#</a></h5>
 <p><code>border-radius: 10px; /* 圆角半径 */</code> <!-- raw HTML omitted --></p>
-</li>
-</ul>
-<!-- raw HTML omitted -->
-<ul>
-<li>
-<p>使用语言属性设置样式</p>
+<h5 id="使用语言属性设置样式">使用语言属性设置样式<a hidden class="anchor" aria-hidden="true" href="#使用语言属性设置样式">#</a></h5>
 <p><a href="https://www.w3.org/International/questions/qa-css-lang.zh-hans.html">参考</a> <code>:lang(ta)</code> <!-- raw HTML omitted --></p>
-</li>
-</ul>
 
 
   </div>
