@@ -9,6 +9,11 @@
 }
 
 @font-face {
+    font-family: palluyFont;
+    src: url("../fonts/palluy.otf") format("OpenType")
+}
+
+@font-face {
     font-family: jinkaiFont;
     src: url("../fonts/jinkai.ttf") format("TrueType");
 }

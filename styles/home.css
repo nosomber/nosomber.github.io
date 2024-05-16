@@ -90,15 +90,15 @@ a:hover {
     font-weight: bold;
     color: #333;
     flex: 1;
-    font-family: angelinaFont;
+    font-family: palluyFont;
 }
 
 .topbar-button {
     margin-left: 0px;
     margin-right: 20px;
     color: #888;
-    font-size: 28px;
-    font-family: angelinaFont;
+    font-size: 20px;
+    font-family: palluyFont;
 }
 
 .slogan {
