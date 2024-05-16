@@ -1,13 +1,353 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2024-05-16T14:46:33+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">try</title><link href="//nosomber.github.io/2024/05/16/try/" rel="alternate" type="text/html" title="try" /><published>2024-05-16T00:00:00+08:00</published><updated>2024-05-16T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/16/try</id><content type="html" xml:base="//nosomber.github.io/2024/05/16/try/"><![CDATA[<p>c 代码</p>
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">"haha</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2024-05-16T15:09:16+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">快捷键</title><link href="//nosomber.github.io/2024/05/16/try/" rel="alternate" type="text/html" title="快捷键" /><published>2024-05-16T00:00:00+08:00</published><updated>2024-05-16T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/16/try</id><content type="html" xml:base="//nosomber.github.io/2024/05/16/try/"><![CDATA[<h3 id="the-keybinding-of-eaf-file-manager">The keybinding of EAF File Manager.</h3>
+<p>| Key   | Event   |
+| :—- | :—— |
+| <code class="language-plaintext highlighter-rouge">&lt;f12&gt;</code> | open_devtools |
+| <code class="language-plaintext highlighter-rouge">h</code> | js_up_directory |
+| <code class="language-plaintext highlighter-rouge">j</code> | js_select_next_file |
+| <code class="language-plaintext highlighter-rouge">C-n</code> | js_select_next_file |
+| <code class="language-plaintext highlighter-rouge">k</code> | js_select_prev_file |
+| <code class="language-plaintext highlighter-rouge">C-p</code> | js_select_prev_file |
+| <code class="language-plaintext highlighter-rouge">l</code> | open_select_files |
+| <code class="language-plaintext highlighter-rouge">J</code> | js_select_last_file |
+| <code class="language-plaintext highlighter-rouge">K</code> | js_select_first_file |
+| <code class="language-plaintext highlighter-rouge">r</code> | js_rename_file |
+| <code class="language-plaintext highlighter-rouge">e</code> | batch_rename |
+| <code class="language-plaintext highlighter-rouge">y</code> | change_path |
+| <code class="language-plaintext highlighter-rouge">Y</code> | open_path |
+| <code class="language-plaintext highlighter-rouge">&lt;left&gt;</code> | js_up_directory |
+| <code class="language-plaintext highlighter-rouge">&lt;down&gt;</code> | js_select_next_file |
+| <code class="language-plaintext highlighter-rouge">&lt;up&gt;</code> | js_select_prev_file |
+| <code class="language-plaintext highlighter-rouge">&lt;right&gt;</code> | open_select_files |
+| <code class="language-plaintext highlighter-rouge">f</code> | open_select_files |
+| <code class="language-plaintext highlighter-rouge">C-m</code> | open_select_files |
+| <code class="language-plaintext highlighter-rouge">F</code> | open_link |
+| <code class="language-plaintext highlighter-rouge">T</code> | open_current_file_in_new_tab |
+| <code class="language-plaintext highlighter-rouge">H</code> | open_file_with_external_app |
+| <code class="language-plaintext highlighter-rouge">SPC</code> | js_scroll_up_select_file |
+| <code class="language-plaintext highlighter-rouge">b</code> | js_scroll_down_select_file |
+| <code class="language-plaintext highlighter-rouge">&lt;return&gt;</code> | open_select_files |
+| <code class="language-plaintext highlighter-rouge">w</code> | js_copy_file_name |
+| <code class="language-plaintext highlighter-rouge">W</code> | js_copy_file_path |
+| <code class="language-plaintext highlighter-rouge">/</code> | copy_file_path |
+| <code class="language-plaintext highlighter-rouge">?</code> | copy_dir_path |
+| <code class="language-plaintext highlighter-rouge">n</code> | new_file |
+| <code class="language-plaintext highlighter-rouge">N</code> | new_directory |
+| <code class="language-plaintext highlighter-rouge">R</code> | move_current_or_mark_file |
+| <code class="language-plaintext highlighter-rouge">C</code> | copy_current_or_mark_file |
+| <code class="language-plaintext highlighter-rouge">^</code> | js_up_directory |
+| <code class="language-plaintext highlighter-rouge">'</code> | js_up_directory |
+| <code class="language-plaintext highlighter-rouge">m</code> | js_mark_file |
+| <code class="language-plaintext highlighter-rouge">u</code> | js_unmark_file |
+| <code class="language-plaintext highlighter-rouge">t</code> | js_toggle_mark_file |
+| <code class="language-plaintext highlighter-rouge">U</code> | js_unmark_all_files |
+| <code class="language-plaintext highlighter-rouge">x</code> | delete_selected_files |
+| <code class="language-plaintext highlighter-rouge">X</code> | delete_current_file |
+| <code class="language-plaintext highlighter-rouge">o</code> | toggle_hidden_file |
+| <code class="language-plaintext highlighter-rouge">O</code> | toggle_preview |
+| <code class="language-plaintext highlighter-rouge">a</code> | filter_file_with_regex |
+| <code class="language-plaintext highlighter-rouge">q</code> | bury-buffer |
+| <code class="language-plaintext highlighter-rouge">Q</code> | close_buffer |
+| <code class="language-plaintext highlighter-rouge">g</code> | refresh_dir |
+| <code class="language-plaintext highlighter-rouge">G</code> | find_files |
+| <code class="language-plaintext highlighter-rouge">*</code> | mark_file_by_extension |
+| <code class="language-plaintext highlighter-rouge">;</code> | convert_cr2_files |
+| <code class="language-plaintext highlighter-rouge">&amp;</code> | narrow_file |
+| <code class="language-plaintext highlighter-rouge">v</code> | js_preview_toggle |
+| <code class="language-plaintext highlighter-rouge">,</code> | js_preview_scroll_up_line |
+| <code class="language-plaintext highlighter-rouge">.</code> | js_preview_scroll_down_line |
+| <code class="language-plaintext highlighter-rouge">&lt;</code> | js_preview_scroll_up |
+| <code class="language-plaintext highlighter-rouge">&gt;</code> | js_preview_scroll_down |
+| <code class="language-plaintext highlighter-rouge">1</code> | sort_by_name |
+| <code class="language-plaintext highlighter-rouge">2</code> | sort_by_type |
+| <code class="language-plaintext highlighter-rouge">3</code> | sort_by_size |
+| <code class="language-plaintext highlighter-rouge">4</code> | sort_by_modified_time |
+| <code class="language-plaintext highlighter-rouge">5</code> | sort_by_created_time |
+| <code class="language-plaintext highlighter-rouge">6</code> | sort_by_access_time |
+| <code class="language-plaintext highlighter-rouge">!</code> | eaf-file-manager-run-command-for-mark-files |
+| <code class="language-plaintext highlighter-rouge">B</code> | eaf-file-manager-byte-compile-file |
+| <code class="language-plaintext highlighter-rouge">z</code> | compressed_file |
+| <code class="language-plaintext highlighter-rouge">Z</code> | decompressed_file |
+| <code class="language-plaintext highlighter-rouge">C-s</code> | search_file |</p>]]></content><author><name></name></author><category term="emacs" /><summary type="html"><![CDATA[The keybinding of EAF File Manager. | Key | Event | | :—- | :—— | | &lt;f12&gt; | open_devtools | | h | js_up_directory | | j | js_select_next_file | | C-n | js_select_next_file | | k | js_select_prev_file | | C-p | js_select_prev_file | | l | open_select_files | | J | js_select_last_file | | K | js_select_first_file | | r | js_rename_file | | e | batch_rename | | y | change_path | | Y | open_path | | &lt;left&gt; | js_up_directory | | &lt;down&gt; | js_select_next_file | | &lt;up&gt; | js_select_prev_file | | &lt;right&gt; | open_select_files | | f | open_select_files | | C-m | open_select_files | | F | open_link | | T | open_current_file_in_new_tab | | H | open_file_with_external_app | | SPC | js_scroll_up_select_file | | b | js_scroll_down_select_file | | &lt;return&gt; | open_select_files | | w | js_copy_file_name | | W | js_copy_file_path | | / | copy_file_path | | ? | copy_dir_path | | n | new_file | | N | new_directory | | R | move_current_or_mark_file | | C | copy_current_or_mark_file | | ^ | js_up_directory | | ' | js_up_directory | | m | js_mark_file | | u | js_unmark_file | | t | js_toggle_mark_file | | U | js_unmark_all_files | | x | delete_selected_files | | X | delete_current_file | | o | toggle_hidden_file | | O | toggle_preview | | a | filter_file_with_regex | | q | bury-buffer | | Q | close_buffer | | g | refresh_dir | | G | find_files | | * | mark_file_by_extension | | ; | convert_cr2_files | | &amp; | narrow_file | | v | js_preview_toggle | | , | js_preview_scroll_up_line | | . | js_preview_scroll_down_line | | &lt; | js_preview_scroll_up | | &gt; | js_preview_scroll_down | | 1 | sort_by_name | | 2 | sort_by_type | | 3 | sort_by_size | | 4 | sort_by_modified_time | | 5 | sort_by_created_time | | 6 | sort_by_access_time | | ! | eaf-file-manager-run-command-for-mark-files | | B | eaf-file-manager-byte-compile-file | | z | compressed_file | | Z | decompressed_file | | C-s | search_file |]]></summary></entry><entry><title type="html">快捷键</title><link href="//nosomber.github.io/2024/05/16/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="alternate" type="text/html" title="快捷键" /><published>2024-05-16T00:00:00+08:00</published><updated>2024-05-16T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/16/%E5%BF%AB%E6%8D%B7%E9%94%AE</id><content type="html" xml:base="//nosomber.github.io/2024/05/16/%E5%BF%AB%E6%8D%B7%E9%94%AE/"><![CDATA[<h3 id="file-manager">file manager</h3>
+<h3 id="the-keybinding-of-eaf-file-manager">The keybinding of EAF File Manager.</h3>
 
-<p>图片
-<img src="//nosomber.github.io/pics/try.png" alt="try" /></p>]]></content><author><name></name></author><category term="emacs" /><summary type="html"><![CDATA[c 代码 #include&lt;stdio.h&gt; int main() { printf("haha\n"); return 0; }]]></summary></entry><entry><title type="html">初识 jekyll</title><link href="//nosomber.github.io/2024/05/10/jekyll/" rel="alternate" type="text/html" title="初识 jekyll" /><published>2024-05-10T00:00:00+08:00</published><updated>2024-05-10T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/10/jekyll</id><content type="html" xml:base="//nosomber.github.io/2024/05/10/jekyll/"><![CDATA[<h1 id="there-is-no-something-special">There is no something special</h1>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Key</th>
+      <th style="text-align: left">Event</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;f12&gt;</code></td>
+      <td style="text-align: left">open_devtools</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">h</code></td>
+      <td style="text-align: left">js_up_directory</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">j</code></td>
+      <td style="text-align: left">js_select_next_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C-n</code></td>
+      <td style="text-align: left">js_select_next_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">k</code></td>
+      <td style="text-align: left">js_select_prev_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C-p</code></td>
+      <td style="text-align: left">js_select_prev_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">l</code></td>
+      <td style="text-align: left">open_select_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">J</code></td>
+      <td style="text-align: left">js_select_last_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">K</code></td>
+      <td style="text-align: left">js_select_first_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">r</code></td>
+      <td style="text-align: left">js_rename_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">e</code></td>
+      <td style="text-align: left">batch_rename</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">y</code></td>
+      <td style="text-align: left">change_path</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Y</code></td>
+      <td style="text-align: left">open_path</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;left&gt;</code></td>
+      <td style="text-align: left">js_up_directory</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;down&gt;</code></td>
+      <td style="text-align: left">js_select_next_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;up&gt;</code></td>
+      <td style="text-align: left">js_select_prev_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;right&gt;</code></td>
+      <td style="text-align: left">open_select_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">f</code></td>
+      <td style="text-align: left">open_select_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C-m</code></td>
+      <td style="text-align: left">open_select_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">F</code></td>
+      <td style="text-align: left">open_link</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">T</code></td>
+      <td style="text-align: left">open_current_file_in_new_tab</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H</code></td>
+      <td style="text-align: left">open_file_with_external_app</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SPC</code></td>
+      <td style="text-align: left">js_scroll_up_select_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">b</code></td>
+      <td style="text-align: left">js_scroll_down_select_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;return&gt;</code></td>
+      <td style="text-align: left">open_select_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">w</code></td>
+      <td style="text-align: left">js_copy_file_name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left">js_copy_file_path</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td style="text-align: left">copy_file_path</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">?</code></td>
+      <td style="text-align: left">copy_dir_path</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">n</code></td>
+      <td style="text-align: left">new_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">new_directory</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">move_current_or_mark_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C</code></td>
+      <td style="text-align: left">copy_current_or_mark_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">^</code></td>
+      <td style="text-align: left">js_up_directory</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">'</code></td>
+      <td style="text-align: left">js_up_directory</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">m</code></td>
+      <td style="text-align: left">js_mark_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">u</code></td>
+      <td style="text-align: left">js_unmark_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">t</code></td>
+      <td style="text-align: left">js_toggle_mark_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">U</code></td>
+      <td style="text-align: left">js_unmark_all_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">x</code></td>
+      <td style="text-align: left">delete_selected_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">X</code></td>
+      <td style="text-align: left">delete_current_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">o</code></td>
+      <td style="text-align: left">toggle_hidden_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">O</code></td>
+      <td style="text-align: left">toggle_preview</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">a</code></td>
+      <td style="text-align: left">filter_file_with_regex</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">q</code></td>
+      <td style="text-align: left">bury-buffer</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Q</code></td>
+      <td style="text-align: left">close_buffer</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">g</code></td>
+      <td style="text-align: left">refresh_dir</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left">find_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td style="text-align: left">mark_file_by_extension</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">;</code></td>
+      <td style="text-align: left">convert_cr2_files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&amp;</code></td>
+      <td style="text-align: left">narrow_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">v</code></td>
+      <td style="text-align: left">js_preview_toggle</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">,</code></td>
+      <td style="text-align: left">js_preview_scroll_up_line</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">.</code></td>
+      <td style="text-align: left">js_preview_scroll_down_line</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&lt;</code></td>
+      <td style="text-align: left">js_preview_scroll_up</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td style="text-align: left">js_preview_scroll_down</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">1</code></td>
+      <td style="text-align: left">sort_by_name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">2</code></td>
+      <td style="text-align: left">sort_by_type</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">3</code></td>
+      <td style="text-align: left">sort_by_size</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">4</code></td>
+      <td style="text-align: left">sort_by_modified_time</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">5</code></td>
+      <td style="text-align: left">sort_by_created_time</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">6</code></td>
+      <td style="text-align: left">sort_by_access_time</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">!</code></td>
+      <td style="text-align: left">eaf-file-manager-run-command-for-mark-files</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">B</code></td>
+      <td style="text-align: left">eaf-file-manager-byte-compile-file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">z</code></td>
+      <td style="text-align: left">compressed_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Z</code></td>
+      <td style="text-align: left">decompressed_file</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C-s</code></td>
+      <td style="text-align: left">search_file</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name></name></author><category term="emacs" /><summary type="html"><![CDATA[file manager The keybinding of EAF File Manager.]]></summary></entry><entry><title type="html">初识 jekyll</title><link href="//nosomber.github.io/2024/05/10/jekyll/" rel="alternate" type="text/html" title="初识 jekyll" /><published>2024-05-10T00:00:00+08:00</published><updated>2024-05-10T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/10/jekyll</id><content type="html" xml:base="//nosomber.github.io/2024/05/10/jekyll/"><![CDATA[<h1 id="there-is-no-something-special">There is no something special</h1>
 <p>你好， jekyll!</p>
 
 <p><img src="//nosomber.github.io/pics/24May10.png" alt="Rails Demo" /></p>]]></content><author><name></name></author><category term="dias" /><summary type="html"><![CDATA[There is no something special 你好， jekyll!]]></summary></entry><entry><title type="html">makin</title><link href="//nosomber.github.io/2024/05/10/makin/" rel="alternate" type="text/html" title="makin" /><published>2024-05-10T00:00:00+08:00</published><updated>2024-05-10T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/10/makin</id><content type="html" xml:base="//nosomber.github.io/2024/05/10/makin/"><![CDATA[<h1 id="emacs">Emacs</h1>

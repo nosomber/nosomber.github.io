@@ -28,7 +28,8 @@ a {
 }
 
 a:hover {
-    color: #57BF7D;
+    /*color: #57BF7D;*/
+    color: #87288F
 }
 
 .content {
