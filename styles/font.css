@@ -9,11 +9,21 @@
 }
 
 @font-face {
+    font-family: codenewromanFont;
+    src: url("../fonts/codenewroman.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: bradleyFont;
+    src: url("../fonts/bradley.ttf") format("TrueType");
+}
+
+@font-face {
     font-family: palluyFont;
     src: url("../fonts/palluy.otf") format("OpenType")
 }
 
 @font-face {
-    font-family: jinkaiFont;
+    font-family: JinkaiFont;
     src: url("../fonts/jinkai.ttf") format("TrueType");
 }

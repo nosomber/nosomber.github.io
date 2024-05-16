@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: jinkaiFont;
+    font-family: JinkaiFont;
 }
 
 .content-area {
@@ -46,7 +46,7 @@ a {
 }
 
 p {
-    font-family: jinkaiFont;
+    font-family: JinkaiFont;
 }
 
 .title {
@@ -224,4 +224,19 @@ blockquote p {
 
 h1, h2, h3, h4, h5, h6, h7, h8, h9, h10 {
     margin-top: 40px;
+}
+
+code {
+    font-family: codenewromanFont,JinKaiFont;
+}
+.language-plaintext {
+    color: #4962b5;
+}
+
+#end {
+    font-family: bradleyFont;
+    font-weight: bold;
+    text-align: right;
+    position: relative;
+    right: 77px;
 }

@@ -1,14 +1,16 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight, .highlight .w {
-  color: #586e75;
+  color: #586e75 ;
   background-color: #FAFAFA;
 }
 .highlight .err {
   color: #002b36;
 }
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #657b83;
+  /* color: #657b83; */
+  /* color: #666680; */
+  color: #85858e;
 }
 .highlight .cp {
   color: #b58900;
