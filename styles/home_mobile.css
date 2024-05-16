@@ -15,9 +15,9 @@ ul{
 
 body {
     display: flex;
-    background: linear-gradient(rgba(255,255,255,0.7), rgba(110, 111, 127,.1)), url("https://nosomber.github.io/pics/home/meet.jpg");
+    /*background: linear-gradient(rgba(255,255,255,0.7), rgba(110, 111, 127,.1)), url("https://nosomber.github.io/pics/home/meet.jpg");*/
     flex-direction: row;
-    background-size: cover;
+    /*background-size: cover;*/
 }
 
 a {
