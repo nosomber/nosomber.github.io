@@ -172,8 +172,9 @@ blockquote {
 }
 
 blockquote p {
+    font-family: anonymous, JinKaiFont;
     white-space: normal;
-    border-left: 4px solid #EAEAEA;
+    border-left: 4px solid #ede7f2;  /* eaeaea */
     padding: 10px;
     background-color: #F8F8F8;
     margin-top: 40px;

@@ -27,3 +27,8 @@
     font-family: JinkaiFont;
     src: url("../fonts/jinkai.ttf") format("TrueType");
 }
+
+@font-face {
+    font-family: anonymous;
+    src: url("../fonts/anonymous.ttf") format("TrueType");
+}

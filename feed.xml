@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2024-05-17T14:18:03+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">ArchLinux 安装</title><link href="//nosomber.github.io/2024/05/15/archinstall/" rel="alternate" type="text/html" title="ArchLinux 安装" /><published>2024-05-15T00:00:00+08:00</published><updated>2024-05-15T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/15/archinstall</id><content type="html" xml:base="//nosomber.github.io/2024/05/15/archinstall/"><![CDATA[<p>这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章， 也许会写上很长时间… 首先感谢 <a href="https://github.com/manateelazycat/manateelazycat.github.io">Lazycat</a> 的 dotfiles。 Arch Linux 从我第一次安装到现在有快两年的时间了， 在这期间， 我卸载了很多次， 也重装了很多次…</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2024-05-28T09:18:42+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">零散</title><link href="//nosomber.github.io/2024/05/27/secret/" rel="alternate" type="text/html" title="零散" /><published>2024-05-27T00:00:00+08:00</published><updated>2024-05-27T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/27/secret</id><content type="html" xml:base="//nosomber.github.io/2024/05/27/secret/"><![CDATA[<h1 id="落日的信笺培纪的博客">落日的信笺(<a href="https://blog.hpjpw.com/2019/05/01/luori/">培纪的博客</a>)</h1>
+<blockquote>
+  <p>从前的日色变得慢 <br />
+车、 马、 邮件都慢 <br />
+一生只够爱一个人 <br />
+<br />
+从前的锁也好看 <br />
+钥匙精美有样子 <br />
+你锁了 人家就懂了 <br />
+<br />
+——木心《从前慢》</p>
+</blockquote>
+
+<p>沿着夕阳的方向走到江岸边， 看到黄昏隐隐出现在天边， 我不受控制地停了下来， 头微微抬起， 任由那种无法表述的情绪向我侵袭。 往昔彼此相顾而行的影子好似就在眼前， 看着那熟悉的地方， 我心头沉甸甸的， 一时间， 有点不知所措。</p>
+
+<p>我与你相遇在一个美丽的夏季， 你说， 你喜欢看海边的夕阳， 因为那是一种带有相守柔情的浪漫。 一生很长， 唯有挚爱你的人， 才能不离不弃地陪你走到列车的尽头。 而在你相遇的那么多人中， 大多数都是过客。</p>
+
+<p>此时此刻， 我倚靠在护栏上， 慢慢尝试着去记起些什么， 天边的晚霞也越发地红亮。 有你的日子似乎总是很短暂， 那会天黑得快， 时间常常在我没有察觉的时候逝去， 一天结束了， 我与你也要短暂地分开了， 每当这个时候， 我都会在心里默默抱怨时间的毫不留情。 送你回去之后， 我一个人走在夜路上， 看风看树看远方， 一个人的脚步走出了两个人的幸福， 心里满满的都是有你的朝夕回忆。 我会像一个傻子一样走走停停， 停停跑跑， 时而对着路灯傻笑， 又时而在树下跳起来， 摘下一片新鲜的叶子放到鼻子边上轻闻它翠绿的香气。 那断时光里我常常做一些别人无法理解的傻事， 却又总是乐此不疲， 一切有关于你的事， 我都有百分百的精力去做。</p>
+
+<p>我的阳台上载种有一束满天星， 我想等到它花满枝条时将它送到你的身边， 并以此象征我的守护， 第一次， 它未能完成我的心愿， 那个时候是夏季， 暴雨一下就是好几天， 花儿被浸湿地掉了一地， 我只能再等一阵子。 当花儿第二次开齐时， 你我已经到了不同的城市， 千里的大道横在你我之间， 而我们也被迫地去面向新的生活。</p>
+
+<p>时镜过迁， 没有太多的精彩序幕， 到了今天， 已然物是人非， 你不再是曾经那个执著的守望者， 而我也不在原地， 只是我依旧地会想起你。</p>
+
+<p>深夜里， 笔尖不知多少次为了你而划过纸张， 一笔一画都是对你的思念， 密密麻麻的文字记下了我们的回忆， 我将它们一一装在了信封里。 书桌上， 在黄昏时布满了灿黄的阳光， 信封有序地排列着， 不拥不挤。</p>
+
+<p>时间很慢， 离开你的日子里， 再没有另外一个人能让我如此， 那厚重的阴影下， 是我给自己布下的重重锁链。</p>]]></content><author><name></name></author><category term="测试" /><summary type="html"><![CDATA[落日的信笺(培纪的博客) 从前的日色变得慢 车、 马、 邮件都慢 一生只够爱一个人 从前的锁也好看 钥匙精美有样子 你锁了 人家就懂了 ——木心《从前慢》]]></summary></entry><entry><title type="html">ArchLinux 安装</title><link href="//nosomber.github.io/2024/05/15/archinstall/" rel="alternate" type="text/html" title="ArchLinux 安装" /><published>2024-05-15T00:00:00+08:00</published><updated>2024-05-15T00:00:00+08:00</updated><id>//nosomber.github.io/2024/05/15/archinstall</id><content type="html" xml:base="//nosomber.github.io/2024/05/15/archinstall/"><![CDATA[<p>这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章， 也许会写上很长时间… 首先感谢 <a href="https://github.com/manateelazycat/manateelazycat.github.io">Lazycat</a> 的 dotfiles。 Arch Linux 从我第一次安装到现在有快两年的时间了， 在这期间， 我卸载了很多次， 也重装了很多次…</p>
 
 <p>到 <a href="https://archlinux.org/download/">官网</a> 下载镜像文件， 制作启动盘可以使用 <a href="https://rufus.ie/en/">rufus</a> 这个工具。 在安装之前， 记得在你的电脑上划分出一部分的空间用于新系统。 然后根据自己电脑的型号进入 BIOS 选择从 U 盘启动， 然后进入命令行界面。</p>
 
@@ -175,10 +200,14 @@ Reg add HKLM<span class="se">\S</span>YSTEM<span class="se">\C</span>urrentContr
 <span class="c"># linux 里</span>
 timedatectl set-local-rtc 1 <span class="nt">--adjust-system-clock</span>
 </code></pre></div></div>
+
+<p>展示一下我的 Arch
+<img src="//nosomber.github.io/pics/archinstall/neofetch.png" alt="arch" /></p>
+
 <p><strong>参考</strong></p>
 <ul>
   <li>https://archlinuxstudio.github.io/ArchLinuxTutorial/#/</li>
-  <li>https://yaocc.cc/archinstall/</li>
-</ul>
-
-<p>热爱没有终点…</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章， 也许会写上很长时间… 首先感谢 Lazycat 的 dotfiles。 Arch Linux 从我第一次安装到现在有快两年的时间了， 在这期间， 我卸载了很多次， 也重装了很多次…]]></summary></entry></feed>
+  <li>https://yaocc.cc/archinstall/
+8888888888888
+热爱没有终点…</li>
+</ul>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章， 也许会写上很长时间… 首先感谢 Lazycat 的 dotfiles。 Arch Linux 从我第一次安装到现在有快两年的时间了， 在这期间， 我卸载了很多次， 也重装了很多次…]]></summary></entry></feed>
