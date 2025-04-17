@@ -16,10 +16,12 @@ ul{
 body {
     display: flex;
     flex-direction: row;
-    /* background: linear-gradient(rgba(92, 148, 233, 0.7), rgba(57, 67, 88, 0.1)), url("../pics/home/forget-me-not.jpg");
+    /* background: url("../pics/home/flower.jpg"); */
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.5), rgba(200, 200, 255, 0.3)),  url("../pics/home/flower.jpg");
+    /* backdrop-filter: blur(1px);  */
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover; */
+    background-size: cover; 
 }
 
 a {
@@ -45,19 +47,28 @@ a:hover {
     }
 }
 
+
+
+.ul-list {
+    margin-top: 200px;
+}
+
 .post-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-left: 20px;
     margin-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
     /* border-bottom: 1px solid #DDD; */
-    border-bottom: 1px solid #9097a1;
+    border-bottom: 1px solid #acb1be;  /* 下边线 */
 }
 
 .post-title {
     text-decoration: none;
     font-size: 22px;
-    color: #000;
+    color: #333;
 }
 
 .post-date {
@@ -74,6 +85,13 @@ a:hover {
     padding-right: 20px;
     margin-top: 20px;
     margin-bottom: 80px;
+}
+
+.slogan {
+    font-size: 15px;
+    margin-left: auto;  /* 推到最右 */
+    margin-right: 30px;
+    color: #777;
 }
 
 .topbar-mine {
@@ -93,13 +111,6 @@ a:hover {
     font-weight: bold;
 }
 
-.slogan {
-    font-size: 26px;
-    text-align: center;
-    color: #666;
-    margin-bottom: 100px;
-}
-
 .topbar-button a {
     color: #888;
     text-decoration: none;
@@ -109,12 +120,12 @@ a:hover {
     color: #73BC83;
 }
 
+
 .post-info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    margin-left: auto;
+    /* align-items: center;
     /* justify-content: space-between; */
-    justify-content: flex-end;  /* 将子元素沿主轴对齐到右端 */
+     justify-content: flex-end; 
 }
 
 /* .category-area {
