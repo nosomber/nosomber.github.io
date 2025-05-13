@@ -1,0 +1,29 @@
+@font-face {
+    font-family: codenewromanFont;
+    src: url("../fonts/codenewroman.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: bradleyFont;
+    src: url("../fonts/bradley.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: palluyFont;
+    src: url("../fonts/palluy.otf") format("OpenType")
+}
+
+@font-face {
+    font-family: Lxgw;
+    src: url("../fonts/jinkai.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: qf;
+    src: url("../fonts/qingfeng.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: anonymous;
+    src: url("../fonts/AnonymousPro-Regular.ttf") format("TrueType");
+}
