@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>iot笔记</title>
+
+
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/post.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/post_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+  <link rel="stylesheet" href="//nosomber.github.io/theme/highlight.css">
+</head>
+
+<body>
+  <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+
+  <div class="content-area">
+    <div class="title">
+      iot笔记
+    </div>
+    <div class="char-counter">
+      2025-05-14 4535字
+    </div>
+    <div class="content">
+      <p>aliyu代理构建Spring Boot项目：http://start.aliyun.com</p>
+
+<p>idea <code class="language-plaintext highlighter-rouge">sudo pacman -S intellij-idea-ultimate-edition</code></p>
+
+<p>nodejs <code class="language-plaintext highlighter-rouge">yay -S nodejs-lts-jod</code></p>
+
+<p>jdk <code class="language-plaintext highlighter-rouge">yay -S jdk8-openjdk</code></p>
+
+<p>Maven的settings.xml里可以修改仓库，配置说明：https://developer.aliyun.com/mirror/maven</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;settings</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0"</span>
+          <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+          <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/SETTINGS/1.0.0
+          https://maven.apache.org/xsd/settings-1.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;mirrors&gt;</span>
+        <span class="nt">&lt;mirror&gt;</span>
+            <span class="nt">&lt;id&gt;</span>aliyunmaven<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;mirrorOf&gt;</span>*<span class="nt">&lt;/mirrorOf&gt;</span>
+            <span class="nt">&lt;name&gt;</span>阿里云公共仓库<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;url&gt;</span>https://maven.aliyun.com/repository/public<span class="nt">&lt;/url&gt;</span>
+        <span class="nt">&lt;/mirror&gt;</span>
+    <span class="nt">&lt;/mirrors&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</code></pre></div></div>
+
+<p>Emacs 注释快捷键 M-;</p>
+
+<p>pip 安装 python包的时候 无视系统限制 <code class="language-plaintext highlighter-rouge">pip install pyfzf --break-system-packages</code>
+The scripts fonttools, pyftmerge, pyftsubset and ttx are installed in ‘/home/mi/.local/bin’ which is not on PATH.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install fonttools
+ttx Roboto-Regular.ttf
+ttx Roboto-Regular.ttx
+</code></pre></div></div>
+
+<p>MySQL
+初始化数据库，注意随机初始密码  <code class="language-plaintext highlighter-rouge">sudo mysqld --initialize --user=mysql --basedir=/usr --datadir=/var/lib/mysql</code></p>
+<ul>
+  <li>启动服务（自启动） <code class="language-plaintext highlighter-rouge">sudo systemctl enable --now mysqld</code></li>
+  <li>运行安全脚本  <code class="language-plaintext highlighter-rouge">sudo mysql_secure_installation</code></li>
+  <li>创建数据库 <code class="language-plaintext highlighter-rouge">create database xxx</code></li>
+  <li>删除数据库 <code class="language-plaintext highlighter-rouge">drop database xxx</code></li>
+  <li>选择数据库 <code class="language-plaintext highlighter-rouge">use xxx</code></li>
+  <li>查看当前使用的数据库 <code class="language-plaintext highlighter-rouge">select database()</code></li>
+  <li>查看数据库中的表  <code class="language-plaintext highlighter-rouge">show tables</code></li>
+  <li>表的结构 <code class="language-plaintext highlighter-rouge">describe xxx</code></li>
+</ul>
+
+<p>Mycli</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">mycli -u 用户名 -p密码</code></li>
+  <li>执行SQL语句 <code class="language-plaintext highlighter-rouge">mycli -u 用户名 -p 数据库名 &lt; 文件.sql</code></li>
+  <li>显示表结构 <code class="language-plaintext highlighter-rouge">\dt</code></li>
+  <li>
+    <p>查看列信息 <code class="language-plaintext highlighter-rouge">\d 表名</code></p>
+  </li>
+  <li>\q：退出 mycli</li>
+  <li>\h：显示帮助信息</li>
+  <li>\?：显示更多帮助命令</li>
+  <li>\l：列出所有数据库</li>
+  <li>\s：显示当前的 MySQL 连接状态</li>
+  <li>\c：清空当前输入的 SQL 命令</li>
+  <li>\f：设置输出格式（比如 \f csv 输出为 CSV 格式）</li>
+</ul>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">sys_user</span> <span class="p">(</span>
+  <span class="n">user_name</span><span class="p">,</span> <span class="n">nick_name</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="k">type</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span>
+  <span class="n">phonenumber</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">avatar</span><span class="p">,</span> <span class="n">create_by</span><span class="p">,</span> <span class="n">create_time</span><span class="p">,</span>
+  <span class="n">update_by</span><span class="p">,</span> <span class="n">update_time</span><span class="p">,</span> <span class="n">del_flag</span>
+<span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span>
+  <span class="s1">'zhangsan'</span><span class="p">,</span> <span class="s1">'张三'</span><span class="p">,</span> <span class="s1">'123456'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="s1">'zhangsan@example.com'</span><span class="p">,</span>
+  <span class="s1">'13800138000'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="k">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NOW</span><span class="p">(),</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="n">NOW</span><span class="p">(),</span> <span class="mi">0</span>
+<span class="p">);</span>
+</code></pre></div></div>
+<p>id 字段是自增的，不需要手动插入。
+create_time 和 update_time 使用 NOW() 表示当前时间。</p>
+
+<p>在 Java 中，<strong>“封装”</strong> 是一种 面向对象编程（OOP）的基本特性，指的是将数据（字段）和操作这些数据的方法（函数）封装在一个类中，并通过访问控制（如 private / public）来保护数据。</p>
+<ul>
+  <li>将成员变量设为 private，防止外部直接访问。</li>
+  <li>提供 public 的 getter 和 setter 方法，允许有控制地访问或修改属性。</li>
+</ul>
+
+<p><strong>接口（interface）</strong>是一种 抽象类型，用于定义类必须实现的方法，而不涉及具体实现。</p>
+<ul>
+  <li>定义规范：接口只定义方法签名，不实现方法。</li>
+  <li>实现多态：一个类可以实现多个接口（Java 不支持多继承，但支持多接口）。</li>
+  <li>解耦合：调用者只依赖接口，不依赖具体实现类。
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">eat</span><span class="o">();</span>     <span class="c1">// 接口方法默认是 public abstract</span>
+  <span class="kt">void</span> <span class="nf">sleep</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="c1">// 实现接口</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">implements</span> <span class="nc">Animal</span> <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"狗吃骨头"</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sleep</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"狗在睡觉"</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// 使用接口</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Animal</span> <span class="n">dog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">();</span>  <span class="c1">// 接口指向实现类</span>
+      <span class="n">dog</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+      <span class="n">dog</span><span class="o">.</span><span class="na">sleep</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>override method –&gt; code选项里</p>
+
+<p>GET     获取资源（从服务器读取数据）
+POST	提交资源（向服务器发送数据）</p>
+
+<p>Bean 就是被 Spring 管理的 Java 对象，能让我们用得更方便、更自动化</p>
+<ul>
+  <li>Spring 自动创建类的实例</li>
+  <li>自动将其它 Bean 注入进来（例如用 @Autowired）</li>
+  <li>Spring 控制 Bean 的创建、初始化和销毁过程</li>
+</ul>
+
+<p>自己用new创建对象   UserService userService = new UserService();</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Autowired</span>  <span class="c1">// 自动注入（= Spring 自动 new 好了这个对象）</span>
+<span class="kd">private</span> <span class="nc">UserService</span> <span class="n">userService</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>Lombok @Data：生成了 getter、setter、toString、equals、hashCode</p>
+
+<p>查询某个 user_id 对应的所有 role_perms 和 menu_perms</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="k">DISTINCT</span>
+  <span class="n">m</span><span class="p">.</span><span class="n">menu_perms</span>
+<span class="k">FROM</span>
+  <span class="n">user_role</span> <span class="n">ur</span>
+<span class="k">JOIN</span>
+  <span class="k">role</span> <span class="n">r</span> <span class="k">ON</span> <span class="n">ur</span><span class="p">.</span><span class="n">role_id</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">role_id</span>
+<span class="k">JOIN</span>
+  <span class="n">role_menu</span> <span class="n">rm</span> <span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">role_id</span> <span class="o">=</span> <span class="n">rm</span><span class="p">.</span><span class="n">role_id</span>
+<span class="k">JOIN</span>
+  <span class="n">menu</span> <span class="n">m</span> <span class="k">ON</span> <span class="n">rm</span><span class="p">.</span><span class="n">menu_id</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="n">menu_id</span>
+<span class="k">WHERE</span>
+  <span class="n">ur</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">AND</span> <span class="n">r</span><span class="p">.</span><span class="n">role_status</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">AND</span> <span class="n">m</span><span class="p">.</span><span class="n">menu_visible</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>ALTER TABLE menu DROP COLUMN menu_visible;
+show create table xxx</p>
+
+<p>import Sensor from ‘@/views/Sensor.vue’
+import Receive from ‘@/views/Receive.vue’
+{path: ‘/data/receive’, name: ‘Receive’, component: Receive},
+{path: ‘/data/send’, name: ‘Send’, component: Send},</p>
+
+<p>CREATE TABLE  <code class="language-plaintext highlighter-rouge">menu</code> (
+ <code class="language-plaintext highlighter-rouge">menu_id</code> bigint NOT NULL AUTO_INCREMENT COMMENT ‘菜单ID’,                          <br />
+ <code class="language-plaintext highlighter-rouge">menu_name</code> varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT ‘菜单名称’,     <br />
+ <code class="language-plaintext highlighter-rouge">menu_path</code> varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,                  <br />
+<code class="language-plaintext highlighter-rouge">menu_perms</code> varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT ‘权限标识’, 
+PRIMARY KEY (<code class="language-plaintext highlighter-rouge">menu_id</code>)                                                             <br />
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci</p>
+
+<p>CREATE TABLE <code class="language-plaintext highlighter-rouge">role</code> (                                                                 <br />
+<code class="language-plaintext highlighter-rouge">role_id</code> bigint NOT NULL AUTO_INCREMENT COMMENT ‘角色ID’,                         <br />
+ <code class="language-plaintext highlighter-rouge">role_name</code> varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT ‘角色名称’,     <br />
+<code class="language-plaintext highlighter-rouge">role_perms</code> varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT ‘角色权限标识’, 
+<code class="language-plaintext highlighter-rouge">role_status</code> tinyint(1) NOT NULL DEFAULT ‘1’ COMMENT ‘角色状态，0=禁用，1=启用’,   <br />
+PRIMARY KEY (<code class="language-plaintext highlighter-rouge">role_id</code>)                                                             <br />
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci</p>
+
+<p>CREATE TABLE <code class="language-plaintext highlighter-rouge">role_menu</code> (                                                                  <br />
+<code class="language-plaintext highlighter-rouge">menu_id</code> bigint NOT NULL COMMENT ‘菜单ID’,                                              <br />
+ <code class="language-plaintext highlighter-rouge">role_id</code> bigint NOT NULL COMMENT ‘角色ID’,                                               <br />
+PRIMARY KEY (<code class="language-plaintext highlighter-rouge">role_id</code>,<code class="language-plaintext highlighter-rouge">menu_id</code>)                                                         <br />
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=’菜单与角色关联表’</p>
+
+<p>CREATE TABLE <code class="language-plaintext highlighter-rouge">user</code> (                                                                           <code class="language-plaintext highlighter-rouge">user_id</code> int NOT NULL AUTO_INCREMENT COMMENT ‘用户ID，主键自增’,
+<code class="language-plaintext highlighter-rouge">user_name</code> varchar(50) NOT NULL COMMENT ‘用户名’ ,
+<code class="language-plaintext highlighter-rouge">user_status</code> tinyint DEFAULT ‘1’ COMMENT ‘状态，1表示启用，0表示禁用’,
+ <code class="language-plaintext highlighter-rouge">user_scene</code> varchar(100) DEFAULT NULL COMMENT ‘所属场景’,
+<code class="language-plaintext highlighter-rouge">password</code> varchar(100) NOT NULL COMMENT ‘密码’,                                                    PRIMARY KEY(<code class="language-plaintext highlighter-rouge">user_id</code>),                                                                          UNIQUE KEY <code class="language-plaintext highlighter-rouge">user_name</code> (<code class="language-plaintext highlighter-rouge">user_name</code>)) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT=’用户表’</p>
+
+<p>CREATE TABLE <code class="language-plaintext highlighter-rouge">user_role</code> (
+ <code class="language-plaintext highlighter-rouge">user_id</code> int NOT NULL COMMENT ‘用户ID’, 
+ <code class="language-plaintext highlighter-rouge">role_id</code> bigint NOT NULL COMMENT ‘角色ID’,
+ PRIMARY KEY (<code class="language-plaintext highlighter-rouge">user_id</code>,<code class="language-plaintext highlighter-rouge">role_id</code>)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT=’用户与角色关联表’</p>
+
+      <div id="end"> Find more Fun! </div>
+    </div>
+  </div>
+</body>
+
+</html>
