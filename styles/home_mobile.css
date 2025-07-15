@@ -4,7 +4,7 @@ body {
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: anonymous, Lxgw;
+    font-family: Lxgw;
 }
 
 ul{
@@ -15,6 +15,7 @@ ul{
 
 body {
     display: flex;
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     /*background: linear-gradient(rgba(255,255,255,0.7), rgba(110, 111, 127,.1)), url("https://nosomber.github.io/pics/home/meet.jpg");*/
     flex-direction: row;
     /*background-size: cover;*/
@@ -80,12 +81,18 @@ a {
     font-weight: bold;
 }
 
-.slogan {
+/* .slogan {
     font-size: 16px;
     text-align: center;
     color: #B4B4B4;
     margin-top: 80px;
     margin-bottom: 80px;
+} */
+
+@media screen and (max-width: 600px) {
+  .slogan {
+    display: none;
+  }
 }
 
 .topbar-button a {

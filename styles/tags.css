@@ -7,9 +7,9 @@ body {
     color: #333;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
-    font-family: anonymous, Lxgw;
+    font-family: Lxgw;
 }
 
 a {
@@ -51,7 +51,7 @@ a:hover {
     margin-right: 5px;
     display: inline;
     line-height: 30px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
 }
 

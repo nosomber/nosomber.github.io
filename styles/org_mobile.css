@@ -177,6 +177,8 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, h10 {
     background-color: #f2f2f2;
     padding: 7pt;
     font-family: "Iosevkanonymous";
+    font-size: 14px;
+    line-height: 20px;
     overflow: auto;
   }
   pre.src {
@@ -201,7 +203,7 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, h10 {
     right: 77px;
 }
 
- pre.src:hover:before { display: inline; margin-top: 14px; font-size: small; font-family: LXGW;}
+ pre.src:hover:before { display: inline; margin-top: 14px; font-size: small; color: #7345c9af;font-family: LXGW;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
