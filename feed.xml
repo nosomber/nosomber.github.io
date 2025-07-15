@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-07-15T11:46:14+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">To Stefy</title><link href="//nosomber.github.io/2025/06/23/for_stefy/" rel="alternate" type="text/html" title="To Stefy" /><published>2025-06-23T00:00:00+08:00</published><updated>2025-06-23T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/23/for_stefy</id><content type="html" xml:base="//nosomber.github.io/2025/06/23/for_stefy/"><![CDATA[<p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-07-15T16:31:19+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">使用yt-dlp</title><link href="//nosomber.github.io/2025/07/15/use_yt_dlp/" rel="alternate" type="text/html" title="使用yt-dlp" /><published>2025-07-15T00:00:00+08:00</published><updated>2025-07-15T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/15/use_yt_dlp</id><content type="html" xml:base="//nosomber.github.io/2025/07/15/use_yt_dlp/"><![CDATA[<p>
+Mac用户从 <a href="https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#installation">链接</a> 下载程序
+</p>
+<img src="/pics/use_yt_dlp/download.png" alt="mac下载">
+
+<p>
+通过终端找到文件下载的位置
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ls         <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#21015;&#20986;&#24403;&#21069;&#25991;&#20214;&#22841;&#19979;&#30340;&#25991;&#20214;&#21644;&#25991;&#20214;&#22841;</span>
+<span style="color: #4C7A90;">cd</span> xxx     <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#36827;&#20837; xxx &#36825;&#20010;&#25991;&#20214;&#22841;</span>
+
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#24212;&#35813;&#21487;&#20197;&#30475;&#21040;&#26377; yt-dlp_macos &#36825;&#20010;&#25991;&#20214;</span>
+sudo chmod +x yt-dlp_macos   <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#20026;&#36825;&#20010;&#31243;&#24207;&#28155;&#21152;&#21487;&#25191;&#34892;&#26435;&#38480;</span>
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#28982;&#21518;&#23601;&#21487;&#20197;&#36816;&#34892;&#36825;&#20010;&#31243;&#24207;</span>
+</pre>
+</div>
+
+<p>
+由于 Safai 使用的是 Apple 自家的加密机制（Keychain + SQLite），cookie 存储格式不公开。
+所以推荐使用 Google Chrome 来进行下面步骤
+使用 Chrome 打开 youtube 网站后 
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">./yt-dlp --cookies-from-browser chrome <span style="color: #39854C;">"https://example.com/video"</span>
+</pre>
+</div>
+<p>
+这样就可以下载指定链接的视频内容了
+</p>
+<img src="/pics/use_yt_dlp/terminal.png" alt="commands">]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[Mac用户从 链接 下载程序]]></summary></entry><entry><title type="html">日记</title><link href="//nosomber.github.io/2025/07/01/dailynotes/" rel="alternate" type="text/html" title="日记" /><published>2025-07-01T00:00:00+08:00</published><updated>2025-07-01T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/01/dailynotes</id><content type="html" xml:base="//nosomber.github.io/2025/07/01/dailynotes/"><![CDATA[<p>
+我希望可以记录下一天中的心情和有意思的事情，让这些发生过的，留下一些痕迹 ッ
+</p>
+
+<p>
+被老爸叫去剪发，
+</p>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[我希望可以记录下一天中的心情和有意思的事情，让这些发生过的，留下一些痕迹 ッ]]></summary></entry><entry><title type="html">To Stefy</title><link href="//nosomber.github.io/2025/06/23/for_stefy/" rel="alternate" type="text/html" title="To Stefy" /><published>2025-06-23T00:00:00+08:00</published><updated>2025-06-23T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/23/for_stefy</id><content type="html" xml:base="//nosomber.github.io/2025/06/23/for_stefy/"><![CDATA[<p>
 Hello!
 </p>
 
@@ -273,11 +309,66 @@ nmcli dev wifi list
 </p>
 
 <p>
+<b>添加用户</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">useradd -m -G wheel -s /bin/bash newuser
+passwd newuser
+<span style="color: #845A84;">EDITOR</span>=vim visudo    <span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#32534;&#36753; sudoers &#37197;&#32622;&#25991;&#20214;</span>
+
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">%wheel ALL=(ALL:ALL) ALL  &#21435;&#25481;&#36825;&#34892;&#30340;&#27880;&#37322;</span>
+</pre>
+</div>
+
+<p>
+<b>yay</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">vim /etc/pacman.conf   <span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#23614;&#37096;&#28155;&#21152;</span>
+
+[archlinuxcn]
+<span style="color: #845A84;">SigLevel</span> = Never
+<span style="color: #845A84;">Server</span> = https://mirrors.ustc.edu.cn/$<span style="color: #845A84;">repo</span>/$<span style="color: #845A84;">arch</span>
+
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#39034;&#20415;&#24320;&#21551;</span>
+[multilib]
+<span style="color: #845A84;">Include</span> = /etc/pacman.d/mirrorlist
+</pre>
+</div>
+
+<p>
+<b>dwm</b>
+配置来自 <a href="https://yaocc.cc/">cc</a>
+需要安装的依赖 <code>xorg xorg-xinit ttf-joypixels</code>
+</p>
+
+<p>
+<b>emacs</b>
+<a href="https://ftp.gnu.org/gnu/emacs/">ftp server</a> 编译选项 <code>./configure --without-xim --with-tree-sitter</code>
+安装依赖 <code>giflib tree-sitter</code>
+</p>
+
+<p>
+<b>用户免密</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #7c878a;"># </span><span style="color: #7c878a;">sudo&#20813;&#23494; &#21152;&#21040; visudo &#28155;&#21152;&#21040;&#23614;&#37096;</span>
+[&#29992;&#25143;&#21517;] <span style="color: #845A84;">ALL</span>=(ALL:ALL) NOPASSWD: ALL
+
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#29992;&#25143;&#25552;&#26435;</span>
+yay -S polkit
+</pre>
+</div>
+
+<p>
 <b>Caps to Ctl</b>
 </p>
 
 <p>
 使用 <a href="https://github.com/rvaiya/keyd">keyd</a> 这个项目来实现这个功能，README 写得很详细，我就不在这里误导大家了
+另外它还可以为不同软件指定按键映射逻辑，比如 emacs 的单按 shift 映射到 C-\ 方便输入法切换
+需要安装python依赖 <code>python python-xlib</code>
+把用户加到 keyd group <code>usermod -aG keyd &lt;user&gt;</code>
 </p>
 
 <p>
@@ -296,7 +387,7 @@ sudo echo <span style="color: #39854C;">'</span>
 </div>
 
 <p>
-目前我用的是这套方案 <a href="https://github.com/iDvel/rime-ice">雾凇拼音</a> ， fcitx5 的皮肤用的是 <a href="https://github.com/catppuccin/fcitx5">catppuccin</a>，他们为其他软件做的配色我也很喜欢 ^.^
+目前我用的是这套方案 <a href="https://github.com/iDvel/rime-ice">雾凇拼音</a> ，fcitx5 的皮肤用的是 <a href="https://github.com/catppuccin/fcitx5">catppuccin</a>，他们为其他软件做的配色我也很喜欢 ^.^
 </p>
 
 <p>
@@ -402,8 +493,8 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 
 <p>
 展示一下我的 Arch
-![arch](//nosomber.github.io/pics/archinstall/neofetch.png)
 </p>
+<img src="/pics/archinstall/neofetch.png" alt="arch展示">
 
 <p>
 <b>参考</b>
@@ -415,5 +506,4 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 
 <p>
 热爱没有终点&#x2026;
-</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章，也许会写上很长时间&#x2026; 首先感谢 Lazycat 的 dotfiles。Arch Linux 从我第一次安装到现在有快两年的时间了，在这期间，我卸载了很多次，也重装了很多次&#x2026;]]></summary></entry><entry><title type="html">photo</title><link href="//nosomber.github.io/2023/07/07/photo/" rel="alternate" type="text/html" title="photo" /><published>2023-07-07T00:00:00+08:00</published><updated>2023-07-07T00:00:00+08:00</updated><id>//nosomber.github.io/2023/07/07/photo</id><content type="html" xml:base="//nosomber.github.io/2023/07/07/photo/"><![CDATA[<p>展示一下我的 Arch
-<img src="//nosomber.github.io/pics/archinstall/neofetch.png" alt="arch" /></p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[展示一下我的 Arch]]></summary></entry></feed>
+</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章，也许会写上很长时间&#x2026; 首先感谢 Lazycat 的 dotfiles。Arch Linux 从我第一次安装到现在有快两年的时间了，在这期间，我卸载了很多次，也重装了很多次&#x2026;]]></summary></entry></feed>
