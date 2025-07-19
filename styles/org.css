@@ -149,9 +149,29 @@ blockquote {
     margin-left: 2em;
 }
 
-h1, h2, h3, h4, h5, h6, h7, h8, h9, h10 {
-    margin-top: 40px;
+h1, h2, h3, h4, h5, h6{
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
+
+h2 {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+.section-number-1,
+.section-number-2,
+.section-number-3,
+.section-number-4,
+.section-number-5,
+.section-number-6 {
+  display: none;
+}
+
 
 .language-plaintext {
     color: #4962b5;
@@ -164,7 +184,7 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, h10 {
     padding: 8pt;
     font-family: "Iosevkanonymous";
     font-size: 18px;
-    line-height: 21px;
+    line-height: 23px;  /* 代码行距 */
     overflow: auto;
     margin: 0;
   }
@@ -181,6 +201,17 @@ h1, h2, h3, h4, h5, h6, h7, h8, h9, h10 {
     color: #555;
     background-color: #f2f2f299;
   }
+
+
+.todo.TODO, .done.DONE {
+  display: none;
+}
+.red-text {
+  color: rgb(231, 106, 106);
+}
+.green-text {
+  color: rgb(88, 148, 88);
+}
 
   #end {
     font-family: bradleyFont;

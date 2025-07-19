@@ -5,7 +5,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>日记</title>
+<title>aegisub使用</title>
 
 
   <link rel="stylesheet" href="//nosomber.github.io/styles/footer.css">
@@ -58,22 +58,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <div class="content-area">
     <div class="title">
-      日记
+      aegisub使用
     </div>
     <div class="char-counter">
-      2025-07-01 45字
+      2025-07-17 611字
     </div>
     <div class="content">
     
       <p>
-我希望可以记录下一天中的心情和有意思的事情，让这些发生过的，留下一些痕迹 ッ
+<b>使用 ffmpeg 从视频中提取音频</b>
 </p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; MP3&#65288;&#26377;&#25439;&#65289;</span>
+ffmpeg -i input.webm -vn -acodec libmp3lame -q:a 2 output.mp3
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-acodec libmp3lame    &#20351;&#29992; MP3 &#32534;&#30721;&#22120; libmp3lame &#36827;&#34892;&#38899;&#39057;&#32534;&#30721;</span>
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-q:a 2    &#35774;&#32622;&#38899;&#39057;&#36136;&#37327;&#65288;&#36136;&#37327;&#36234;&#20302;&#65292;&#25968;&#23383;&#36234;&#22823;&#65307;&#24120;&#29992;&#33539;&#22260; 0&#8211;9&#65289;2 &#34920;&#31034;&#39640;&#36136;&#37327;&#12289;&#25991;&#20214;&#22823;&#23567;&#36866;&#20013;</span>
 
-<p>
-被老爸叫去剪发，
-</p>
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; WAV&#65288;&#26080;&#25439;&#65289;</span>
+ffmpeg -i input.webm -vn -acodec pcm_s16le output.wav
 
-      <div id="end"> My mood </div>
+</pre>
+</div>
+
+      <div id="end">  </div>
     </div>
 
   </div>

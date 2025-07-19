@@ -16,6 +16,33 @@
   <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
 </head>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  for (let level = 1; level <= 6; level++) {
+    document.querySelectorAll(`h${level}`).forEach(h => {
+      const todo = h.querySelector('.todo.TODO');
+      const done = h.querySelector('.done.DONE');
+      if (todo || done) {
+        const targetClass = todo ? 'red-text' : 'green-text';
+        const nodes = Array.from(h.childNodes);
+        const marker = todo || done;
+        const index = nodes.indexOf(marker);
+        for (let i = index + 1; i < nodes.length; i++) {
+          const node = nodes[i];
+          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+            const span = document.createElement('span');
+            span.className = targetClass;
+            span.textContent = node.textContent;
+            h.replaceChild(span, node);
+            break;
+          }
+        }
+      }
+    });
+  }
+});
+</script>
+
 <body>
   <div class="navigatebar">
     <div class="navigatebar-button navigatebar-mine">
@@ -34,7 +61,7 @@
       使用yt-dlp
     </div>
     <div class="char-counter">
-      2025-07-15 703字
+      2025-07-15 709字
     </div>
     <div class="content">
     
@@ -62,7 +89,7 @@ sudo chmod +x yt-dlp_macos   <span style="color: #7c878a;">#</span><span style="
 使用 Chrome 打开 youtube 网站后 
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">./yt-dlp --cookies-from-browser chrome <span style="color: #39854C;">"https://example.com/video"</span>
+<pre class="src src-shell">./yt-dlp_macos --cookies-from-browser chrome <span style="color: #39854C;">"https://example.com/video"</span>
 </pre>
 </div>
 <p>

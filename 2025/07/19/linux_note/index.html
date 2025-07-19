@@ -5,7 +5,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>日记</title>
+<title>有关linux的笔记</title>
 
 
   <link rel="stylesheet" href="//nosomber.github.io/styles/footer.css">
@@ -58,22 +58,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <div class="content-area">
     <div class="title">
-      日记
+      有关linux的笔记
     </div>
     <div class="char-counter">
-      2025-07-01 45字
+      2025-07-19 174字
     </div>
     <div class="content">
     
-      <p>
-我希望可以记录下一天中的心情和有意思的事情，让这些发生过的，留下一些痕迹 ッ
-</p>
-
+      <div id="outline-container-orgb53b42d" class="outline-2">
+<h2 id="orgb53b42d"><span class="section-number-2">1.</span> 忽略指定包</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-被老爸叫去剪发，
+<code>/etc/pacman.conf</code> 里，有这么一行： #IgnorePkg<br />
 </p>
+</div>
+</div>
+<div id="outline-container-orgd2a52ed" class="outline-2">
+<h2 id="orgd2a52ed"><span class="section-number-2">2.</span> github添加公钥</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+需要 openssh<br />
+生成密钥对 <code>ssh-keygen -t rsa -b 2048 -C "your_email@example.com"</code><br />
+将 <code>\~/.ssh/id_rsa.pub</code> 提交到 github 上<br />
+测试和 github 的连接 <code>ssh -T git@github.com</code><br />
+</p>
+</div>
+</div>
 
-      <div id="end"> My mood </div>
+      <div id="end">  </div>
     </div>
 
   </div>
