@@ -69,13 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
 <h2 id="orga0fbaad"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> There is no tracking information for the current branch. Please specify which branch you want to merge with.</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-这个错误通常出现在你创建了新的分支并推送到远程仓库，但没有设置该分支与远程分支之间的关联，导致 Git 无法知道你想要和哪个远程分支进行合并
+这个错误通常出现在你创建了新的分支并推送到远程仓库，但没有设置该分支与远程分支之间的关联，导致 Git 无法知道你想要和哪个远程分支进行合并<br />
 </p>
 <ul class="org-ul">
-<li>将把本地 main 分支与远程的 origin/main 分支关联起来
-<code>git branch --set-upstream-to=origin/main main</code></li>
-<li>将远程的 main 分支合并到当前分支
-<code>git pull origin main</code></li>
+<li>将把本地 main 分支与远程的 origin/main 分支关联起来<br />
+<code>git branch --set-upstream-to=origin/main main</code><br /></li>
+<li>将远程的 main 分支合并到当前分支<br />
+<code>git pull origin main</code><br /></li>
 </ul>
 </div>
 </div>
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
 <h2 id="org9958627"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> ssh: connect to host github.com port 22: Connection timed out  fatal: Could not read from remote repository.</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-使用 SSH 的话，GitHub 支持通过端口 443 建立 SSH：
-编辑 SSH 配置文件：
+使用 SSH 的话，GitHub 支持通过端口 443 建立 SSH：<br />
+编辑 SSH 配置文件：<br />
 </p>
 <div class="org-src-container">
 <pre class="src src-shell">vim ~/.ssh/config
@@ -111,7 +111,7 @@ git push -u origin main --force
 <h2 id="org24e1f11"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> dial tcp: lookup aur.archlinux.org: no such host</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-无法解析域名 aur.archlinux.org，说明 DNS 查询失败
+无法解析域名 aur.archlinux.org，说明 DNS 查询失败<br />
 </p>
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#32534;&#36753; /etc/resolv.conf</span>
