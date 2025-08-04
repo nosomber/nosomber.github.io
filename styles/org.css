@@ -12,6 +12,44 @@ body {
     font-family: Lxgw;
 }
 
+.toc-container {
+  position: fixed;     /* 固定在页面右边 */
+  top: 100px;          /* 距顶部距离，可根据需要调整 */
+  right: 10px;         /* 距右侧 10px */
+  width: 200px;        /* 设置目录宽度 */
+  max-height: 70vh;    /* 限制高度防止太长，表示 80%*/
+  overflow-y: auto;    /* 超出滚动 */
+  background-color: #f9f9f9; /* 可选的背景色 */
+  padding-top: 7px;
+  border-left: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.toc-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.toc-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.toc-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.toc-container {
+  scrollbar-width: thin;        /* Firefox */
+  scrollbar-color: #ccc transparent;
+}
+
+
+@media (max-width: 1200px) {
+  .toc-container {
+    display: none;
+  }
+}
+
 .content-area {
     box-sizing: border-box;
     background-color: #FFF;
@@ -42,22 +80,28 @@ ol {
 
 a {
     /* color: #57BF7D; */
-    color: #7345c9af;
+    /* color: #7345c9af; */
+    color: #aa7799;
     text-decoration: none;
 }
+
 p {
     font-family: Lxgw;
 }
+
 code {
-    font-family: Iosevkanonymous, Lxgw;
-    color: #4962b5;
+    font-family: Lxgw;
+    /* color: #4962b5; */
+    color: #507090;
 }
+
 .verse {
     /* background-color: #f4f1ff; */
     color: #745996;
     margin: 7px 0px;
     border-radius: 7px;
 }
+
 .title {
     color: #333;
     font-size: 26px;
@@ -80,7 +124,6 @@ p img {
     display: block;
     margin: 0 auto;
 }
-
 
 table {
     border-collapse: collapse;
@@ -152,17 +195,19 @@ blockquote {
 h1, h2, h3, h4, h5, h6{
     margin-top: 30px;
     margin-bottom: 20px;
+    font-weight: 400;
+    color:darkslategray
 }
 
 h2 {
-    font-size: 25px;
-    font-weight: 400;
+    font-size: 27px;
 }
 
 h3 {
-    font-size: 22px;
+    font-size: 24px;
 }
 
+/* 去掉标题前的序号 */
 .section-number-1,
 .section-number-2,
 .section-number-3,
@@ -174,7 +219,7 @@ h3 {
 
 
 .language-plaintext {
-    color: #4962b5;
+    color: #507090;
 }
 
   pre {
@@ -182,8 +227,9 @@ h3 {
     border-radius: 3px;
     background-color: #f2f2f2;
     padding: 8pt;
-    font-family: "Iosevkanonymous";
-    font-size: 18px;
+    padding-bottom: 4pt;
+    font-family: "Lxgw";
+    font-size: 19px;
     line-height: 23px;  /* 代码行距 */
     overflow: auto;
     margin: 0;
@@ -207,10 +253,11 @@ h3 {
   display: none;
 }
 .red-text {
-  color: rgb(231, 106, 106);
+  color:maroon
 }
 .green-text {
-  color: rgb(88, 148, 88);
+  /* color: rgb(88, 148, 88); */
+  color: darkslategray;
 }
 
   #end {
@@ -221,7 +268,7 @@ h3 {
     right: 77px;
 }
 
- pre.src:hover:before { display: inline; margin-top: 14px; font-size: small; color: #7345c9af; font-family: LXGW;}
+ pre.src:hover:before { display: inline; margin-top: 14px; font-size: small; color: #77225599; font-family: LXGW;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }

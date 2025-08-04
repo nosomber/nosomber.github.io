@@ -10,41 +10,15 @@
 
   <link rel="stylesheet" href="//nosomber.github.io/styles/footer.css">
   <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
-  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
-  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/letter.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/letter_mobile.css">
   <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
   <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
 </head>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  for (let level = 1; level <= 6; level++) {
-    document.querySelectorAll(`h${level}`).forEach(h => {
-      const todo = h.querySelector('.todo.TODO');
-      const done = h.querySelector('.done.DONE');
-      if (todo || done) {
-        const targetClass = todo ? 'red-text' : 'green-text';
-        const nodes = Array.from(h.childNodes);
-        const marker = todo || done;
-        const index = nodes.indexOf(marker);
-        for (let i = index + 1; i < nodes.length; i++) {
-          const node = nodes[i];
-          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-            const span = document.createElement('span');
-            span.className = targetClass;
-            span.textContent = node.textContent;
-            h.replaceChild(span, node);
-            break;
-          }
-        }
-      }
-    });
-  }
-});
-</script>
 
 <body>
-  <div class="navigatebar">
+  <!-- <div class="navigatebar">
     <div class="navigatebar-button navigatebar-mine">
         <a href="//nosomber.github.io/index.html">Golosina</a>
     </div>
@@ -55,13 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="//nosomber.github.io/about.html">About</a>
     </div>
 </div>
-
+ -->
   <div class="content-area">
     <div class="title">
       To Stefy
     </div>
     <div class="char-counter">
-      2025-06-23 2127字
+      2025-06-23 3515字
     </div>
     <div class="content">
     
@@ -103,6 +77,31 @@ Sometimes, we don’t fully understand each other’s meaning, and make wrong ju
 
 <p>
 I also want to hear your opinions, welcome to leave me a message~
+</p>
+
+
+<div class="from">
+Stefy
+</div>
+
+<p>
+A veces es necesario hablar de ciertas cosas; evitarlo no ayuda. Gracias por ser como eres, por ser así conmigo, por todo. Las palabras se quedan cortas para expresar lo que significas para mí. Conocerte entre tanta gente fue un regalo. Mereces ser feliz, libre, escribir tu propia historia. Cada persona tiene un libro en blanco y es su propio autor; tú decides qué escribir. Vive la vida al máximo; si algo malo sucede, busca el lado positivo y aprende. Sobre todo, confía en Dios, tenlo presente siempre. No somos dignos de su amor, pero Él siempre estará dispuesto a ayudarnos a superar las tormentas juntos.
+</p>
+
+<p>
+Quiero que seas feliz, que siempre sonrías. Estoy segura de que aún te esperan experiencias maravillosas que Dios ya ha puesto a tu alrededor. Tu felicidad es también la mía.
+</p>
+
+<p>
+Te quiero mucho. Gracias por estar siempre ahí, por guiarme en momentos difíciles. Tus palabras han sido mi fortaleza. Perdóname si siempre he sido yo la que tiene problemas. No soy perfecta, pero tu presencia ha sido muy especial en mi vida.
+</p>
+
+<p>
+Recuerda cuidarte. Encontraremos a las personas correctas en el momento adecuado. No me refiero a una pareja sentimental (aunque es algo natural). Antes de eso, disfrutemos momentos inolvidables, conociéndonos y protegiéndonos a nosotros mismos. Cuando sepamos nuestro valor, nada ni nadie podrá hacernos sentir mal. Entonces podremos vivir un amor sano, un amor hermoso como dicen las escrituras. Te deseo lo mejor y que Dios cuide tu vida y la de tu familia.
+</p>
+
+<p>
+Ahora somos buenos amigos; solo quedan lindos recuerdos del pasado, cuando fuimos más que amigos. Pero, como dije, mereces ser feliz; no hay que preocuparse demasiado.
 </p>
 
       <div id="end"> Love </div>

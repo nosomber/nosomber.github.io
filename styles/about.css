@@ -4,17 +4,15 @@ body {
     padding: 0;
     width: 100%;
     background-color: #FFF;
-    color: #7345c9af;
+    color: #77225599;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     font-family: Lxgw;
-    font-size: large;
 }
 
 
 .about {
+    font-size: 25px;
     box-sizing: border-box;
     background-color: #FFF;
     border-radius: 5px;

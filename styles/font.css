@@ -14,6 +14,26 @@
 }
 
 @font-face {
-    font-family: Iosevkanonymous;
-    src: url("../fonts/Iosevkanonymous-Regular.ttf") format("TrueType");
+    font-family: optima; 
+    src: url("../fonts/optima.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: futura;
+    src: url("../fonts/futura.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: din;
+    src: url("../fonts/din.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: adelle;
+    src: url("../fonts/Adelle-Regular.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: josefin;
+    src: url("../fonts/josefin.ttf") format("TrueType");
 }

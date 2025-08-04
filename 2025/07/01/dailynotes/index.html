@@ -10,41 +10,15 @@
 
   <link rel="stylesheet" href="//nosomber.github.io/styles/footer.css">
   <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
-  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
-  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/letter.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/letter_mobile.css">
   <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
   <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
 </head>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  for (let level = 1; level <= 6; level++) {
-    document.querySelectorAll(`h${level}`).forEach(h => {
-      const todo = h.querySelector('.todo.TODO');
-      const done = h.querySelector('.done.DONE');
-      if (todo || done) {
-        const targetClass = todo ? 'red-text' : 'green-text';
-        const nodes = Array.from(h.childNodes);
-        const marker = todo || done;
-        const index = nodes.indexOf(marker);
-        for (let i = index + 1; i < nodes.length; i++) {
-          const node = nodes[i];
-          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-            const span = document.createElement('span');
-            span.className = targetClass;
-            span.textContent = node.textContent;
-            h.replaceChild(span, node);
-            break;
-          }
-        }
-      }
-    });
-  }
-});
-</script>
 
 <body>
-  <div class="navigatebar">
+  <!-- <div class="navigatebar">
     <div class="navigatebar-button navigatebar-mine">
         <a href="//nosomber.github.io/index.html">Golosina</a>
     </div>
@@ -55,25 +29,67 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="//nosomber.github.io/about.html">About</a>
     </div>
 </div>
-
+ -->
   <div class="content-area">
     <div class="title">
       日记
     </div>
     <div class="char-counter">
-      2025-07-01 45字
+      2025-07-01 57字
     </div>
     <div class="content">
     
-      <p>
-我希望可以记录下一天中的心情和有意思的事情，让这些发生过的，留下一些痕迹 ッ
-</p>
+      <div class="toc-container">
+        
 
+<style>
+ul.toc ul {
+  list-style: none;  /* 去掉小点 */
+  padding-left: 20px;   
+}
+
+ul.toc {
+    padding: 0;
+}
+</style>
+
+
+
+
+
+
+                <ul class="toc">
+                <ul><li><a href="#orgf61b00e"><span class="section-number-2">1.</span> 08-05</a></li><li><a href="#orge9f3d68"><span class="section-number-2">2.</span> 08-05</a></li></ul>
+            </ul>
+      </div>
+        <div id="backtop">
+          <a href="#">⭡</a>
+        </div>
+    
+      <div id="outline-container-orgf61b00e" class="outline-2">
+<h2 id="orgf61b00e"><span class="section-number-2">1.</span> 08-05</h2>
+<div class="outline-text-2" id="text-1">
 <p>
-被老爸叫去剪发，
+djjdji<br />
+sjdis<br />
+jdis<br />
+jsdij<br />
+jdisjd<br />
 </p>
+</div>
+</div>
+<div id="outline-container-orge9f3d68" class="outline-2">
+<h2 id="orge9f3d68"><span class="section-number-2">2.</span> 08-05</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+sjijfd<br />
+sjidjf<br />
+sjfid<br />
+</p>
+</div>
+</div>
 
-      <div id="end"> My mood </div>
+      <div id="end"> leaving some traces of what happened. ッ </div>
     </div>
 
   </div>

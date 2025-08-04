@@ -17,34 +17,36 @@
 </head>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  for (let level = 1; level <= 6; level++) {
-    document.querySelectorAll(`h${level}`).forEach(h => {
-      const todo = h.querySelector('.todo.TODO');
-      const done = h.querySelector('.done.DONE');
-      if (todo || done) {
-        const targetClass = todo ? 'red-text' : 'green-text';
-        const nodes = Array.from(h.childNodes);
-        const marker = todo || done;
-        const index = nodes.indexOf(marker);
-        for (let i = index + 1; i < nodes.length; i++) {
-          const node = nodes[i];
-          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-            const span = document.createElement('span');
-            span.className = targetClass;
-            span.textContent = node.textContent;
-            h.replaceChild(span, node);
-            break;
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
           }
         }
-      }
-    });
-  }
-});
+      });
+    }
+  });
+
 </script>
 
 <body>
-  <div class="navigatebar">
+  <!-- <div class="navigatebar">
     <div class="navigatebar-button navigatebar-mine">
         <a href="//nosomber.github.io/index.html">Golosina</a>
     </div>
@@ -55,18 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="//nosomber.github.io/about.html">About</a>
     </div>
 </div>
-
+ -->
   <div class="content-area">
     <div class="title">
       linux 上遇到的问题
     </div>
     <div class="char-counter">
-      2025-07-19 782字
+      2025-07-19 860字
     </div>
     <div class="content">
     
-      <div id="outline-container-orga0fbaad" class="outline-2">
-<h2 id="orga0fbaad"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> There is no tracking information for the current branch. Please specify which branch you want to merge with.</h2>
+      <div id="outline-container-org244f935" class="outline-2">
+<h2 id="org244f935"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> There is no trackikmng information for the current branch. Please specify which branch you want to merge with.</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 这个错误通常出现在你创建了新的分支并推送到远程仓库，但没有设置该分支与远程分支之间的关联，导致 Git 无法知道你想要和哪个远程分支进行合并<br />
@@ -103,6 +105,9 @@ Host github.com
 <div class="org-src-container">
 <pre class="src src-shell">git remote add origin git@github.com:nosomber/nosomber.github.io.git
 git push -u origin main --force
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">git &#20999;&#25442;&#21040; main &#20998;&#25903;</span>
+git branch -M main
 </pre>
 </div>
 </div>
@@ -114,11 +119,19 @@ git push -u origin main --force
 无法解析域名 aur.archlinux.org，说明 DNS 查询失败<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#32534;&#36753; /etc/resolv.conf</span>
-nameserver 1.1.1.1     <span style="color: #7c878a;"># </span><span style="color: #7c878a;">Cloudflare DNS</span>
-nameserver 8.8.8.8     <span style="color: #7c878a;"># </span><span style="color: #7c878a;">Google DNS</span>
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#32534;&#36753; /etc/resolv.conf</span>
+nameserver 1.1.1.1     <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Cloudflare DNS</span>
+nameserver 8.8.8.8     <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Google DNS</span>
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgc891224" class="outline-2">
+<h2 id="orgc891224"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> 还没有做</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+的事情<br />
+</p>
 </div>
 </div>
 

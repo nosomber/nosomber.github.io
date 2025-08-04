@@ -7,6 +7,16 @@ body {
     font-family: anonymous, Lxgw;
 }
 
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 30%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 ul{
     list-style-type:none;
     margin: 0;
@@ -17,7 +27,7 @@ body {
     display: flex;
     flex-direction: row;
     /* background: url("../pics/home/flower.jpg"); */
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.5), rgba(200, 200, 255, 0.3)),  url("../pics/home/flower.jpg");
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(200, 200, 255, 0.2)),  url("../pics/home/flower.jpg");
     /* backdrop-filter: blur(1px);  */
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -46,8 +56,6 @@ a:hover {
         padding-right: 10%;
     }
 }
-
-
 
 .ul-list {
     margin-top: 200px;
@@ -88,7 +96,7 @@ a:hover {
 }
 
 .slogan {
-    font-size: 15px;
+    font-size: 21px;
     margin-left: auto;  /* 推到最右 */
     margin-right: 30px;
     color: #777;
@@ -104,9 +112,9 @@ a:hover {
 
 .topbar-button {
     margin-left: 0px;
-    margin-right: 20px;
+    margin-right: 32px;
     color: #888;
-    font-size: 20px;
+    font-size: 30px;
     font-family: palluyFont;
     font-weight: bold;
 }
@@ -117,7 +125,7 @@ a:hover {
 }
 
 .topbar-button a:hover {
-    color: #73BC83;
+    color: #8b73bc;
 }
 
 
@@ -128,20 +136,12 @@ a:hover {
      justify-content: flex-end; 
 }
 
-/* .category-area {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex: 1;
-} */
-
 .category {
     /* color: #666; */
     color:#555;
     font-size: 18px;
     height: 16px;
     position: relative;
-    /* background: #DDD; */
     
     margin-right: 5px;
     padding-left: 10px;

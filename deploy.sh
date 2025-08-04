@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-
 jekyll build
 cd _site
 git add -A

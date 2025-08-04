@@ -17,34 +17,36 @@
 </head>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  for (let level = 1; level <= 6; level++) {
-    document.querySelectorAll(`h${level}`).forEach(h => {
-      const todo = h.querySelector('.todo.TODO');
-      const done = h.querySelector('.done.DONE');
-      if (todo || done) {
-        const targetClass = todo ? 'red-text' : 'green-text';
-        const nodes = Array.from(h.childNodes);
-        const marker = todo || done;
-        const index = nodes.indexOf(marker);
-        for (let i = index + 1; i < nodes.length; i++) {
-          const node = nodes[i];
-          if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-            const span = document.createElement('span');
-            span.className = targetClass;
-            span.textContent = node.textContent;
-            h.replaceChild(span, node);
-            break;
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
           }
         }
-      }
-    });
-  }
-});
+      });
+    }
+  });
+
 </script>
 
 <body>
-  <div class="navigatebar">
+  <!-- <div class="navigatebar">
     <div class="navigatebar-button navigatebar-mine">
         <a href="//nosomber.github.io/index.html">Golosina</a>
     </div>
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="//nosomber.github.io/about.html">About</a>
     </div>
 </div>
-
+ -->
   <div class="content-area">
     <div class="title">
       考研
