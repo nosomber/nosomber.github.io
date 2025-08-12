@@ -29,6 +29,12 @@ body {
   }
 }
 
+/* 隐藏目录和回到顶部按钮 */
+.toc-container,
+#backtop {
+  display: none;
+}
+
 ul {
   margin: 0;
   padding: 0;
