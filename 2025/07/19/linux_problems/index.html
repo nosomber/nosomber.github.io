@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>linux 上遇到的问题</title>
+
+
+  <link rel="stylesheet" href="//nosomber.github.io/styles/footer.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      linux 上遇到的问题
+    </div>
+    <div class="char-counter">
+      2025-07-19 860字
+    </div>
+    <div class="content">
+    
+      <div id="outline-container-org244f935" class="outline-2">
+<h2 id="org244f935"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> There is no trackikmng information for the current branch. Please specify which branch you want to merge with.</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+这个错误通常出现在你创建了新的分支并推送到远程仓库，但没有设置该分支与远程分支之间的关联，导致 Git 无法知道你想要和哪个远程分支进行合并<br />
+</p>
+<ul class="org-ul">
+<li>将把本地 main 分支与远程的 origin/main 分支关联起来<br />
+<code>git branch --set-upstream-to=origin/main main</code><br /></li>
+<li>将远程的 main 分支合并到当前分支<br />
+<code>git pull origin main</code><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9958627" class="outline-2">
+<h2 id="org9958627"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> ssh: connect to host github.com port 22: Connection timed out  fatal: Could not read from remote repository.</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+使用 SSH 的话，GitHub 支持通过端口 443 建立 SSH：<br />
+编辑 SSH 配置文件：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">vim ~/.ssh/config
+
+Host github.com
+  HostName ssh.github.com
+  Port 443
+  User git
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org85a315e" class="outline-2">
+<h2 id="org85a315e"><span class="section-number-2">3.</span> <span class="done DONE">DONE</span> github仓库已经有内容了，如果我还想将本地的一个文件夹提交到那个仓库（覆盖）</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-shell">git remote add origin git@github.com:nosomber/nosomber.github.io.git
+git push -u origin main --force
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">git &#20999;&#25442;&#21040; main &#20998;&#25903;</span>
+git branch -M main
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org24e1f11" class="outline-2">
+<h2 id="org24e1f11"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> dial tcp: lookup aur.archlinux.org: no such host</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+无法解析域名 aur.archlinux.org，说明 DNS 查询失败<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#32534;&#36753; /etc/resolv.conf</span>
+nameserver 1.1.1.1     <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Cloudflare DNS</span>
+nameserver 8.8.8.8     <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Google DNS</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc891224" class="outline-2">
+<h2 id="orgc891224"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> 还没有做</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+的事情<br />
+</p>
+</div>
+</div>
+
+      <div id="end">  </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

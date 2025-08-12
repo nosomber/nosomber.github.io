@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-08-12T22:20:39+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">有关linux的笔记</title><link href="//nosomber.github.io/2025/07/19/linux_note/" rel="alternate" type="text/html" title="有关linux的笔记" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_note</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_note/"><![CDATA[<div id="outline-container-orgb53b42d" class="outline-2">
+<h2 id="orgb53b42d"><span class="section-number-2">1.</span> 忽略指定包</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<code>/etc/pacman.conf</code> 里，有这么一行： #IgnorePkg<br />
+</p>
+</div>
+<div id="outline-container-orge9d9368" class="outline-3">
+<h3 id="orge9d9368"><span class="section-number-3">1.1.</span> 二级标题</h3>
+</div>
+</div>
+<div id="outline-container-orgd2a52ed" class="outline-2">
+<h2 id="orgd2a52ed"><span class="section-number-2">2.</span> github添加公钥</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+需要 openssh<br />
+生成密钥对 <code>ssh-keygen -t rsa -b 2048 -C "your_email@example.com"</code><br />
+将 <code>\~/.ssh/id_rsa.pub</code> 提交到 github 上<br />
+测试和 github 的连接 <code>ssh -T git@github.com</code><br />
+</p>
+
+
+<p>
+<br />
+</p>
+</div>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. 忽略指定包 /etc/pacman.conf 里，有这么一行： #IgnorePkg 1.1. 二级标题 2. github添加公钥 需要 openssh 生成密钥对 ssh-keygen -t rsa -b 2048 -C "your_email@example.com" 将 \~/.ssh/id_rsa.pub 提交到 github 上 测试和 github 的连接 ssh -T git@github.com]]></summary></entry><entry><title type="html">linux 上遇到的问题</title><link href="//nosomber.github.io/2025/07/19/linux_problems/" rel="alternate" type="text/html" title="linux 上遇到的问题" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_problems</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_problems/"><![CDATA[<div id="outline-container-org244f935" class="outline-2">
+<h2 id="org244f935"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> There is no trackikmng information for the current branch. Please specify which branch you want to merge with.</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+这个错误通常出现在你创建了新的分支并推送到远程仓库，但没有设置该分支与远程分支之间的关联，导致 Git 无法知道你想要和哪个远程分支进行合并<br />
+</p>
+<ul class="org-ul">
+<li>将把本地 main 分支与远程的 origin/main 分支关联起来<br />
+<code>git branch --set-upstream-to=origin/main main</code><br /></li>
+<li>将远程的 main 分支合并到当前分支<br />
+<code>git pull origin main</code><br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9958627" class="outline-2">
+<h2 id="org9958627"><span class="section-number-2">2.</span> <span class="done DONE">DONE</span> ssh: connect to host github.com port 22: Connection timed out  fatal: Could not read from remote repository.</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+使用 SSH 的话，GitHub 支持通过端口 443 建立 SSH：<br />
+编辑 SSH 配置文件：<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">vim ~/.ssh/config
+
+Host github.com
+  HostName ssh.github.com
+  Port 443
+  User git
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org85a315e" class="outline-2">
+<h2 id="org85a315e"><span class="section-number-2">3.</span> <span class="done DONE">DONE</span> github仓库已经有内容了，如果我还想将本地的一个文件夹提交到那个仓库（覆盖）</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-shell">git remote add origin git@github.com:nosomber/nosomber.github.io.git
+git push -u origin main --force
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">git &#20999;&#25442;&#21040; main &#20998;&#25903;</span>
+git branch -M main
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org24e1f11" class="outline-2">
+<h2 id="org24e1f11"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> dial tcp: lookup aur.archlinux.org: no such host</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+无法解析域名 aur.archlinux.org，说明 DNS 查询失败<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#32534;&#36753; /etc/resolv.conf</span>
+nameserver 1.1.1.1     <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Cloudflare DNS</span>
+nameserver 8.8.8.8     <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Google DNS</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc891224" class="outline-2">
+<h2 id="orgc891224"><span class="section-number-2">5.</span> <span class="todo TODO">TODO</span> 还没有做</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+的事情<br />
+</p>
+</div>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. DONE There is no trackikmng information for the current branch. Please specify which branch you want to merge with. 这个错误通常出现在你创建了新的分支并推送到远程仓库，但没有设置该分支与远程分支之间的关联，导致 Git 无法知道你想要和哪个远程分支进行合并 将把本地 main 分支与远程的 origin/main 分支关联起来 git branch --set-upstream-to=origin/main main 将远程的 main 分支合并到当前分支 git pull origin main 2. DONE ssh: connect to host github.com port 22: Connection timed out fatal: Could not read from remote repository. 使用 SSH 的话，GitHub 支持通过端口 443 建立 SSH： 编辑 SSH 配置文件： vim ~/.ssh/config]]></summary></entry><entry><title type="html">学习记录</title><link href="//nosomber.github.io/2025/07/18/record_life/" rel="alternate" type="text/html" title="学习记录" /><published>2025-07-18T00:00:00+08:00</published><updated>2025-07-18T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/18/record_life</id><content type="html" xml:base="//nosomber.github.io/2025/07/18/record_life/"><![CDATA[<p class="verse">
+马太福音5: 21-30<br />
+<i>论发怒</i><br />
+21“你们听见有吩咐古人的话，说：‘不可杀人’；又说：‘凡杀人的难免受审判。’ 22只是我告诉你们，凡（有古卷在“凡”字下添“无缘无故地”五字）向弟兄动怒的，难免受审判；凡骂弟兄是拉加的，难免公会的审判；凡骂弟兄是魔利的，难免地狱的火。 23所以，你在祭坛上献礼物的时候，若想起弟兄向你怀怨， 24就把礼物留在坛前，先去同弟兄和好，然后来献礼物。 25你同告你的对头还在路上，就赶紧与他和息，恐怕他把你送给审判官，审判官交付衙役，你就下在监里了。 26我实在告诉你，若有一文钱没有还清，你断不能从那里出来。”<br />
+<i>论奸淫</i><br />
+27“你们听见有话说：‘不可奸淫。’ 28只是我告诉你们，凡看见妇女就动淫念的，这人心里已经与她犯奸淫了。 29若是你的右眼叫你跌倒，就剜出来丢掉，宁可失去百体中的一体，不叫全身丢在地狱里。 30若是右手叫你跌倒，就砍下来丢掉，宁可失去百体中的一体，不叫全身下入地狱。”<br />
+</p>
+
+<p>
+律法是规定行为，福音是指向内心
+</p>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[马太福音5: 21-30 论发怒 21“你们听见有吩咐古人的话，说：‘不可杀人’；又说：‘凡杀人的难免受审判。’ 22只是我告诉你们，凡（有古卷在“凡”字下添“无缘无故地”五字）向弟兄动怒的，难免受审判；凡骂弟兄是拉加的，难免公会的审判；凡骂弟兄是魔利的，难免地狱的火。 23所以，你在祭坛上献礼物的时候，若想起弟兄向你怀怨， 24就把礼物留在坛前，先去同弟兄和好，然后来献礼物。 25你同告你的对头还在路上，就赶紧与他和息，恐怕他把你送给审判官，审判官交付衙役，你就下在监里了。 26我实在告诉你，若有一文钱没有还清，你断不能从那里出来。” 论奸淫 27“你们听见有话说：‘不可奸淫。’ 28只是我告诉你们，凡看见妇女就动淫念的，这人心里已经与她犯奸淫了。 29若是你的右眼叫你跌倒，就剜出来丢掉，宁可失去百体中的一体，不叫全身丢在地狱里。 30若是右手叫你跌倒，就砍下来丢掉，宁可失去百体中的一体，不叫全身下入地狱。”]]></summary></entry><entry><title type="html">aegisub使用</title><link href="//nosomber.github.io/2025/07/17/aegisub/" rel="alternate" type="text/html" title="aegisub使用" /><published>2025-07-17T00:00:00+08:00</published><updated>2025-07-17T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/17/aegisub</id><content type="html" xml:base="//nosomber.github.io/2025/07/17/aegisub/"><![CDATA[<p>
+<b>使用 ffmpeg 从视频中提取音频</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; MP3&#65288;&#26377;&#25439;&#65289;</span>
+ffmpeg -i input.webm -vn -acodec libmp3lame -q:a 2 output.mp3
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-acodec libmp3lame    &#20351;&#29992; MP3 &#32534;&#30721;&#22120; libmp3lame &#36827;&#34892;&#38899;&#39057;&#32534;&#30721;</span>
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-q:a 2    &#35774;&#32622;&#38899;&#39057;&#36136;&#37327;&#65288;&#36136;&#37327;&#36234;&#20302;&#65292;&#25968;&#23383;&#36234;&#22823;&#65307;&#24120;&#29992;&#33539;&#22260; 0&#8211;9&#65289;2 &#34920;&#31034;&#39640;&#36136;&#37327;&#12289;&#25991;&#20214;&#22823;&#23567;&#36866;&#20013;</span>
+
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; WAV&#65288;&#26080;&#25439;&#65289;</span>
+ffmpeg -i input.webm -vn -acodec pcm_s16le output.wav
+
+</pre>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[使用 ffmpeg 从视频中提取音频 # &#36716; MP3&#65288;&#26377;&#25439;&#65289; ffmpeg -i input.webm -vn -acodec libmp3lame -q:a 2 output.mp3 # -acodec libmp3lame &#20351;&#29992; MP3 &#32534;&#30721;&#22120; libmp3lame &#36827;&#34892;&#38899;&#39057;&#32534;&#30721; # -q:a 2 &#35774;&#32622;&#38899;&#39057;&#36136;&#37327;&#65288;&#36136;&#37327;&#36234;&#20302;&#65292;&#25968;&#23383;&#36234;&#22823;&#65307;&#24120;&#29992;&#33539;&#22260; 0&#8211;9&#65289;2 &#34920;&#31034;&#39640;&#36136;&#37327;&#12289;&#25991;&#20214;&#22823;&#23567;&#36866;&#20013;]]></summary></entry><entry><title type="html">使用yt-dlp</title><link href="//nosomber.github.io/2025/07/15/use_yt_dlp/" rel="alternate" type="text/html" title="使用yt-dlp" /><published>2025-07-15T00:00:00+08:00</published><updated>2025-07-15T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/15/use_yt_dlp</id><content type="html" xml:base="//nosomber.github.io/2025/07/15/use_yt_dlp/"><![CDATA[<p>
+Mac用户从 <a href="https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#installation">链接</a> 下载程序<br />
+</p>
+<img src="/pics/use_yt_dlp/download.png" alt="mac下载">
+
+<p>
+通过终端找到文件下载的位置<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ls         <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#21015;&#20986;&#24403;&#21069;&#25991;&#20214;&#22841;&#19979;&#30340;&#25991;&#20214;&#21644;&#25991;&#20214;&#22841;</span>
+<span style="color: #4C7A90;">cd</span> xxx     <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#36827;&#20837; xxx &#36825;&#20010;&#25991;&#20214;&#22841;</span>
+
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#24212;&#35813;&#21487;&#20197;&#30475;&#21040;&#26377; yt-dlp_macos &#36825;&#20010;&#25991;&#20214;</span>
+sudo chmod +x yt-dlp_macos   <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#20026;&#36825;&#20010;&#31243;&#24207;&#28155;&#21152;&#21487;&#25191;&#34892;&#26435;&#38480;</span>
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#28982;&#21518;&#23601;&#21487;&#20197;&#36816;&#34892;&#36825;&#20010;&#31243;&#24207;</span>
+</pre>
+</div>
+
+<p>
+由于 Safai 使用的是 Apple 自家的加密机制（Keychain + SQLite），cookie 存储格式不公开。<br />
+所以推荐使用 Google Chrome 来进行下面步骤<br />
+使用 Chrome 打开 youtube 网站后<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">./yt-dlp_macos --cookies-from-browser chrome <span style="color: #39854C;">"https://example.com/video"</span>
+</pre>
+</div>
+<p>
+这样就可以下载指定链接的视频内容了<br />
+</p>
+<img src="/pics/use_yt_dlp/terminal.png" alt="commands"> 
+
+<p>
+通过 <code>-f</code> 或 <code>--format</code> 参数来设置下载视频的质量<br />
+下载720p视频（可以通过组合的方式来下载视频和音频）<br />
+<code>yt-dlp -f 'bestvideo[height&lt;=720]+bestaudio' URL</code><br />
+<code>yt-dlp -F URL</code> 用 <code>-F</code> 选项来查看可以下载的格式和质量有哪些<br />
+下载指定格式为 mp4 m4a 的组合视频<br />
+<code>yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' URL</code><br />
+</p>
+
+<p>
+自定义下载文件名用参数 <code>-o</code> （或 &#x2013;output）实现<br />
+<code>yt-dlp -o "myvideo.%(ext)s" https://example.com/video</code><br />
+<code>%(ext)s</code> 会自动替换成真实的视频格式，比如 mp4、webm<br />
+</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[Mac用户从 链接 下载程序]]></summary></entry><entry><title type="html">python基础</title><link href="//nosomber.github.io/2025/07/02/basic_python/" rel="alternate" type="text/html" title="python基础" /><published>2025-07-02T00:00:00+08:00</published><updated>2025-07-02T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/02/basic_python</id><content type="html" xml:base="//nosomber.github.io/2025/07/02/basic_python/"><![CDATA[<p>
+嵌套函数 区分不同的帧 frame 变量的关系
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #531ab6;">def</span> <span style="color: #721045;">make_adder</span>(n):
+    <span style="color: #531ab6;">def</span> <span style="color: #721045;">adder</span>(k):
+        <span style="color: #531ab6;">return</span> n + k
+    <span style="color: #531ab6;">return</span> adder
+
+adder_three = make_adder(3)
+<span style="color: #8f0075;">print</span>(adder_three(4))
+</pre>
+</div>
+
+<p>
+高阶函数
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #531ab6;">def</span> <span style="color: #721045;">square</span>(x):
+  <span style="color: #531ab6;">return</span> x * x
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">triple</span>(y):
+  <span style="color: #531ab6;">return</span> 3 * y
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">hibrid</span>(f, g):
+  <span style="color: #531ab6;">def</span> <span style="color: #721045;">h</span>(x):
+    <span style="color: #531ab6;">return</span> f(g(x))
+  <span style="color: #531ab6;">return</span> h
+
+compose1 = hibrid(square, triple)
+<span style="color: #8f0075;">print</span>(compose1(4)) <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">square(3x4)</span>
+</pre>
+</div>
+
+<p>
+匿名函数 lambda 正常使用 def 定义出的函数 在一开始的时候就有名字 而 lambda 函数在赋值的时候才有名字
+</p>
+<div class="org-src-container">
+<pre class="src src-python">square = <span style="color: #531ab6;">lambda</span> x: x * x
+<span style="color: #8f0075;">print</span>(square(3))
+</pre>
+</div>
+
+<p>
+柯里化 Currying: Transforming a multi-argument function into a single-argument, higher-order function
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&gt;&gt;&gt; make_adder(2)(3)</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">5</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&gt;&gt;&gt; add(2, 3)</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">5</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">There is a general relationship between these functions</span>
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">curry</span>(f):
+  <span style="color: #531ab6;">def</span> <span style="color: #721045;">g</span>(x):
+    <span style="color: #531ab6;">def</span> <span style="color: #721045;">h</span>(y):
+      <span style="color: #531ab6;">return</span> f(x, y)
+    <span style="color: #531ab6;">return</span> h
+  <span style="color: #531ab6;">return</span> g
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">add</span>(a, b):
+  <span style="color: #531ab6;">return</span> a + b
+
+m = curry(add)
+add_three = m(3)
+<span style="color: #8f0075;">print</span>(add_three(2))
+
+new_curry = <span style="color: #531ab6;">lambda</span> f: <span style="color: #531ab6;">lambda</span> x: <span style="color: #531ab6;">lambda</span> y: f(x, y)
+n = new_curry(add)
+add_four = n(4)
+<span style="color: #8f0075;">print</span>(add_four(3))
+</pre>
+</div>
+
+<p>
+Environment Diagrams with Lambda
+A lambda function's parent is the current frame in which the lambda 
+</p>
+<div class="org-src-container">
+<pre class="src src-python">a = 1
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">f</span>(g):
+  a = 2
+  <span style="color: #531ab6;">return</span> <span style="color: #531ab6;">lambda</span> y: a * g(y)
+<span style="color: #8f0075;">print</span>(f(<span style="color: #531ab6;">lambda</span> y: a + y)(a))
+</pre>
+</div>
+
+<p>
+函数返回 Return Statements
+A return statements is there to complete the evaluation of a call expression
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #531ab6;">def</span> <span style="color: #721045;">search</span>(f):
+  x = 0
+  <span style="color: #531ab6;">while</span> <span style="color: #531ab6;">not</span> f(x):
+    x += 1
+  <span style="color: #531ab6;">return</span> x
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">square</span>(x):
+  <span style="color: #531ab6;">return</span> x * x
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">inverse</span>(f):
+  <span style="color: #531ab6;">return</span> <span style="color: #531ab6;">lambda</span> y: search(<span style="color: #531ab6;">lambda</span> x: f(x) == y)
+
+sqrt = inverse(square)
+<span style="color: #8f0075;">print</span>(sqrt(25))
+</pre>
+</div>
+
+<p>
+控制语句
+evaluation rules for call expression is quite different than conditional statements
+if_(\__, \__, \__) 这样定义的条件语句会将表达式执行后作为参数传给 if_ 在有些情况下会产生错误
+正常情况下的 if 语句， 有些内容是我们不希望执行的 如果使用 if_ 就会造成 不管情况怎样 都会执行的结果
+</p>
+
+<p>
+A <b><b>pair</b></b> consists of two values that are joined together, bundled together in such a way that you can treat them as a unit, as a whole, even though there are two parts.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">pair = [1, 2]
+x, y = pair  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">"unpacking" a list</span>
+<span style="color: #8f0075;">print</span>(x, y)
+
+<span style="color: #531ab6;">from</span> operator <span style="color: #531ab6;">import</span> getitem  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">element selection function</span>
+<span style="color: #8f0075;">print</span>(getitem(pair, 1))
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">rational</span>(n, d):
+  <span style="color: #531ab6;">return</span> [n, d]
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">numer</span>(x):
+  <span style="color: #531ab6;">return</span> x[0]
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">denom</span>(x):
+  <span style="color: #531ab6;">return</span> x[1]
+
+<span style="color: #531ab6;">from</span> fractions <span style="color: #531ab6;">import</span> gcd  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">greatest common divisor</span>
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">rational</span>(n, d):
+  <span style="color: #2a5045; font-style: italic;">"""Constrcut a rational number x that representss n/d."""</span>
+  g = gcd(n, d)
+  <span style="color: #531ab6;">return</span> [n//g, d//g]
+
+</pre>
+</div>
+
+<p>
+The purpose of maintaining abstraction barriers is so that you can change your data representation without having to rewrite you entire program.
+Data abstraction uses selectors and constructors to define behavior
+you can recongize data abstraction by its behavior
+</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[嵌套函数 区分不同的帧 frame 变量的关系 def make_adder(n): def adder(k): return n + k return adder]]></summary></entry><entry><title type="html">日记</title><link href="//nosomber.github.io/2025/07/01/dailynotes/" rel="alternate" type="text/html" title="日记" /><published>2025-07-01T00:00:00+08:00</published><updated>2025-07-01T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/01/dailynotes</id><content type="html" xml:base="//nosomber.github.io/2025/07/01/dailynotes/"><![CDATA[]]></content><author><name></name></author><category term="notes" /></entry><entry><title type="html">To Stefy</title><link href="//nosomber.github.io/2025/06/23/for_stefy/" rel="alternate" type="text/html" title="To Stefy" /><published>2025-06-23T00:00:00+08:00</published><updated>2025-06-23T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/23/for_stefy</id><content type="html" xml:base="//nosomber.github.io/2025/06/23/for_stefy/"><![CDATA[<p>
+Hello!
+</p>
+
+<p>
+Thank you for this opportunity. I would like to share some of my views on our relationship. Yes, people should not live in the past. The Bible also tells us, "Forget what is behind and strive for what is ahead."
+</p>
+
+<p>
+Because I met you four years ago and we were in a relationship in 2023 and 2024, this makes our relationship complicated now. At present, I cannot say the specific relationship between us. But I know that we have been together and separated. There have been many sweet words and many difficult and painful moments. Of course, I remember you said to me, "We will meet and we can go through many difficulties together." Yes, these words have given me a lot of strength in the past. Now, facing the reality, what should we do? Should we stick together or separate?
+</p>
+
+<p>
+I feel that you want to separate from me. At some points, you are more rational than me. But I don't think you are willing to do so. You are afraid of hurting me, right? I can feel your concern for me. I don't want to hurt you either.
+</p>
+
+<p>
+I loved you and I love you now. These two kinds of love are not the same. Thank God, I have been through a lot of things during this period, which allowed me to get closer to Him little by little. I found that the Bible describes love like this, "El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso. No se comporta con rudeza, no es egoísta, no se enoja fácilmente, no guarda rencor. El amor no se deleita en la maldad, sino que se regocija con la verdad. Todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta." This kind of love is a greater love. I hope we can have this kind of love.
+</p>
+
+<p>
+I love you, but this does not mean that we need to establish a clear relationship. Do you agree? There is love between us, but not as a couple. You are my good friend, and I believe this.
+</p>
+
+<p>
+We are two very different people, and there is something about your personality that attracts me. It is a wonderful thing that we can meet, why should we often worry and be sad about the future? As I told you before, I will not leave you. Even if I have to leave, I will tell you in advance. I don’t want you to be afraid.
+</p>
+
+<p>
+What makes me happy is that you can live a life you like, with joy and hope in God in your life. You have the freedom to choose what path you want to take and what kind of people you associate with. This is the same for us.
+</p>
+
+<p>
+Sometimes, we don’t fully understand each other’s meaning, and make wrong judgments, which make ourselves sad&#x2026; There is nothing wrong with us being able to communicate frankly.
+</p>
+
+<p>
+I also want to hear your opinions, welcome to leave me a message~
+</p>
+
+
+<div class="from">
+Stefy
+</div>
+
+<p>
+A veces es necesario hablar de ciertas cosas; evitarlo no ayuda. Gracias por ser como eres, por ser así conmigo, por todo. Las palabras se quedan cortas para expresar lo que significas para mí. Conocerte entre tanta gente fue un regalo. Mereces ser feliz, libre, escribir tu propia historia. Cada persona tiene un libro en blanco y es su propio autor; tú decides qué escribir. Vive la vida al máximo; si algo malo sucede, busca el lado positivo y aprende. Sobre todo, confía en Dios, tenlo presente siempre. No somos dignos de su amor, pero Él siempre estará dispuesto a ayudarnos a superar las tormentas juntos.
+</p>
+
+<p>
+Quiero que seas feliz, que siempre sonrías. Estoy segura de que aún te esperan experiencias maravillosas que Dios ya ha puesto a tu alrededor. Tu felicidad es también la mía.
+</p>
+
+<p>
+Te quiero mucho. Gracias por estar siempre ahí, por guiarme en momentos difíciles. Tus palabras han sido mi fortaleza. Perdóname si siempre he sido yo la que tiene problemas. No soy perfecta, pero tu presencia ha sido muy especial en mi vida.
+</p>
+
+<p>
+Recuerda cuidarte. Encontraremos a las personas correctas en el momento adecuado. No me refiero a una pareja sentimental (aunque es algo natural). Antes de eso, disfrutemos momentos inolvidables, conociéndonos y protegiéndonos a nosotros mismos. Cuando sepamos nuestro valor, nada ni nadie podrá hacernos sentir mal. Entonces podremos vivir un amor sano, un amor hermoso como dicen las escrituras. Te deseo lo mejor y que Dios cuide tu vida y la de tu familia.
+</p>
+
+<p>
+Ahora somos buenos amigos; solo quedan lindos recuerdos del pasado, cuando fuimos más que amigos. Pero, como dije, mereces ser feliz; no hay que preocuparse demasiado.
+</p>]]></content><author><name></name></author><category term="carta" /><summary type="html"><![CDATA[Hello!]]></summary></entry><entry><title type="html">四灵里</title><link href="//nosomber.github.io/2025/06/02/duanwujuhui/" rel="alternate" type="text/html" title="四灵里" /><published>2025-06-02T00:00:00+08:00</published><updated>2025-06-02T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/02/duanwujuhui</id><content type="html" xml:base="//nosomber.github.io/2025/06/02/duanwujuhui/"><![CDATA[<p class="verse">
+‪约翰一书‬4:7-9<br />
+7 亲爱的弟兄啊，我们应当彼此相爱，因为爱是从　神来的。凡有爱心的，都是由　神而生，并且认识　神。 8 没有爱心的，就不认识　神，因为　神就是爱。 9 　神差他独生子到世间来，使我们藉着他得生，　神爱我们的心在此就显明了。<br />
+</p>
+<p>
+在神里面才有真正的爱，因为神就是爱，不藉着神，人得不到真正的爱。人失去了神的爱，总是在生活中关注自己的爱，用自己理解的方式去爱别人，常常会给自己和别人带来伤害和痛苦。人不够包容，心中时常有骄傲，不理解自己的爱为什么没有得到回音，我明明这么爱她，她为什么一点反应都没有？这样会让爱变得微小，变得更加难以表达。
+</p>
+
+<p>
+神让我们看到的是「无条件」的爱
+</p>
+<p class="verse">
+罗马书 5:8<br />
+惟有基督在我们还作罪人的时候为我们死，神的爱就在此向我们显明了。<br />
+</p>
+<p>
+祂爱我们，不是想从这里得到什么，祂希望我们变好，盼望我们从罪里面得到释放。这是一种不好理解的心情，但是神就是这样的谦卑柔和。
+</p>
+<p class="verse">
+马太福音 5:44<br />
+只是我告诉你们，要爱你们的仇敌，为那逼迫你们的祷告。<br />
+</p>
+
+<p>
+爱是双向的，接受神的爱，回应祂的爱。和神建立垂直的关系，活在神爱的世界里面。
+</p>]]></content><author><name></name></author><summary type="html"><![CDATA[‪约翰一书‬4:7-9 7 亲爱的弟兄啊，我们应当彼此相爱，因为爱是从　神来的。凡有爱心的，都是由　神而生，并且认识　神。 8 没有爱心的，就不认识　神，因为　神就是爱。 9 　神差他独生子到世间来，使我们藉着他得生，　神爱我们的心在此就显明了。 在神里面才有真正的爱，因为神就是爱，不藉着神，人得不到真正的爱。人失去了神的爱，总是在生活中关注自己的爱，用自己理解的方式去爱别人，常常会给自己和别人带来伤害和痛苦。人不够包容，心中时常有骄傲，不理解自己的爱为什么没有得到回音，我明明这么爱她，她为什么一点反应都没有？这样会让爱变得微小，变得更加难以表达。]]></summary></entry><entry><title type="html">考研</title><link href="//nosomber.github.io/2025/04/17/Postgraduate_Entrance_Examination/" rel="alternate" type="text/html" title="考研" /><published>2025-04-17T00:00:00+08:00</published><updated>2025-04-17T00:00:00+08:00</updated><id>//nosomber.github.io/2025/04/17/Postgraduate_Entrance_Examination</id><content type="html" xml:base="//nosomber.github.io/2025/04/17/Postgraduate_Entrance_Examination/"><![CDATA[<p>
+四月十号下午的四点十六分，又一次打开手机，看到北建大发来的录取通知，犹豫了两秒钟，点了接受的按钮，回头将这个消息告诉了还在刮石膏的父亲，父亲笑了。上次看到这样的笑容还是在十二天前，那个有阳光的午后。
+</p>
+
+<p>
+考完试之后，我没想过今年能考上研究生。每一门科目都没有把握，只能说，我没有浪费考场上的时间，我在考场上争分夺秒，试图掩盖基础知识的分崩离析。二月二十四号上午十点出来的成绩直接击垮了我，294分，和我填报志愿时预估的330分相差甚多，但比我心里预测的要好一点，十分钟后，我接受了这个结果，便不再把他放在心上。那时没有直接的压力临到我，没有想做的事情，也没有任何动力，除了家长在我耳旁的叮嘱外，我彻底放飞自己，享受着在家里生活的舒适，每天需要操心的事情就是怎样玩才能更开心，陷入无端的空虚和自我麻痹当中，考研的事情仿佛离我十万八千里。
+</p>
+
+<p>
+时间在一点又一点的流逝，我察觉得到，却无能为力，那时天气还冷，三月初下起了一场雪，很短，也很美好。越过三月中旬，油菜花开得正艳，我喜欢带着相机和手动镜头出去看花和拍照，这是那段时间沉迷在游戏里的另一种消遣。三月十九号，我得知我的分数在北邮里排名第七，一整个下午我都很开心，不学习是最好的庆祝和放松的方式。在别人的眼中十拿九稳的事情，我竟也用此来忽悠自己。时间来到二十四号，这天出了复试名单，复试时间是在六天后，我开始复习，找各样的学习视频，翻看各样的攻略，几乎所有的准备工作我都做了，除了学习。就这样，我花了三天时间绞尽脑汁写出了一份不堪入目的简历，在那天，一个昏暗，刮着大风的下午，我带着母亲期许的眼神离开了家乡，乘上去往北京的火车，那是个无法安然入睡的夜晚，周围的嘈杂，陌生的环境，和许多次的火车经历一样。于是，在一个寒冷的早晨，地铁开始运营之前，火车到达了终点。
+</p>
+
+<p>
+来接我的是我的父亲，也许是因为棉袄，他看起来比两个月前魁梧，我坐上他的电瓶车，他接过我手中的袋子，三分钟里，没有太多的言语，情绪弥漫在空气中，不过风很大。两天后的清晨，三十号，我们也是骑着电瓶车，向着旧宫地铁站方向。我穿着在老家买的衣服，三月末的北京，比我想的要冷，去旧宫的路程，也比我们想的要远。好在一切都很顺利，只是时间不紧不慢，一直在向前。
+</p>
+
+<p>
+在去沙河的路上，我们没有太多的言语，翻阅着手中的文档，窗外的事物在后退，列车向北开。北邮的校区离地铁站还有一段距离，那段路，在现在的印象中似乎没有好看的风景，树木还没发芽，没有花朵，也没有笑声。人群中，我看到了校门，此时十点多，我犹豫要不要进去，看了下周围，没有休息的地方，我爸建议我现在就去，沉默片刻，我离开人群，多次回头。
+</p>
+
+<p>
+校园很深，走了很久才看到建筑物，不确定指定的那栋楼在哪里，在大致的方向找了一个椅子坐下，太阳照在我的脸上，很不舒服。来的人越来越多，我的位置有点尴尬，不知道该干什么，又看了一会英语自我介绍后，起身离开了椅子，在校园里随处转转。经过图书馆，食堂，宿舍楼，又从后面绕了一圈，在一个人比较少的地方坐来了。看了会小红书，继续背自我介绍，这时候是十一点左右，人依旧很少，紧张不言而喻，没有把握，只是在等时间，等待下午一点的到来。
+</p>
+
+<p>
+终于到了饭点，可以起身前往食堂了，迷迷糊糊地走到其中一个食堂的门前，随便点了一份餐，扒拉了两口，离开了食堂，北邮给我的感觉是很陌生，不像是我心心念念的那个北邮。吃完饭已经快12点了，我走到等待进场面试的那个房间里，人很多，我也坐下在那里做最后的准备，依旧是背英语的自我介绍。学长叫到我的名字的时候，我拿起书包里的资料和他一起走向二楼，我记得当时我很冷，在面试房间门口坐着发抖，走廊很深，可以看到模糊的尽头，我看看了手中的简历，心中充满紧张。再过五分钟就该到我了，不知道该怎么面对，不敢相信自己走到北邮的校园和这样去参加复试，我依旧微微颤抖，想法陷入空洞。
+</p>
+
+<p>
+毫无征兆地房间的门从里面被打开了，条件反射般的迅速地站了起来，该轮到我了，我心中默默对自己说。奇怪的是，教室里阳光明亮，老师语气很好，紧张也消失了。经过短暂的思考，略带慌张地回答老师的问题，等到专业课问题环节的时候，我全线崩溃，仅用的那点知识根本不够用，老师对我很失望，逐渐不耐烦，终于熬到规定时间，他们叫断了我的回答，我起身离开，拧动把手，走了出去。
+</p>
+
+<p>
+跨上书包走出教学楼，脚步飞快，我想快点见到我爸，想快点离开这个地方，想结束这些天来的担心。这场面试最让我伤心的就是出校门的时候看到父亲在门口面带微笑的脸庞，他向我挥手，满怀期待的，我向他走去，面带苦笑。好笑的是，虽然整个过程已经很可以说明一切了，我还是抱有很大的幻想，期待奇迹的发生，期待可以看到录取名单上有我的名字。与其说渴望被北邮录取，不如说想得到一种解脱，对过去一年的交代和随后几个月暗藏的焦虑。过去的这几个小时里，不知道父亲在校门口做些什么，他甚至没有去吃饭，在等待和盼望，看到他的儿子出现在校门口的时候，他的盼望得着了，很开心很想知道发生了些什么。一路上我和父亲聊了很多，事无巨细地向他叙述，我们一起盼望着出成绩的那天。下午的北京，没有早晨那么冷，父亲的电瓶车，也不像早晨那般沉重，在回家的路上，跑得飞快。
+</p>
+
+<p>
+晚上，范叔请我们去吃鹅块，大人们喝了一点酒，聊得很开心。第二天我去看望我奶奶，是中午到达的。下午一块去逛了机场公园，去接我小弟，晚上我爸也来了，大家一起吃晚餐。四月一号，愚人节，没想到在这一天出了排名，坐在床边，偶然地刷新了一次网页，看到拟录取名单，心头一紧，时间静止了三秒钟，点开链接，找到我的名字，当时的我没法接受这个结果，不敢告诉奶奶，那时是上午10点钟。
+</p>
+
+<p>
+我陷入巨大的绝望当中，心心恋恋的奇迹没有发生，比起没有考上北邮，更为未来的选择而担心，我不知道该怎么办。漫长的上午，隔着窗户，外面是静止的天空。我又开始想，如果录取名单上有我的名字，现在我会非常地开心，赶快和亲戚朋友分享这个消息，并享受来自他们的祝福和自我满足。再一次又一次的刷新当中，这样的想象变得很滑稽，我不是一个空想主义者，因为当时的我很痛苦。
+</p>
+
+<p>
+也许奶奶注意到我的异常，我变得很沉默，和昨天相比。我怀着巨大的悲伤，吃下午饭，当我再一次走到阳台的时候，再也控制不住，情绪要爆发出来，我决定离开，离开周围人的关心。奶奶不同意，她坚决不让我走，也许害怕我去做傻事，她安慰我，可是这些温柔的话像一把又一把的利剑，一起向我刺来。泪水终于模糊我的视线，离开的愿望变得如此强烈，我是一个很软弱的人，在面对别人关心的时候。奶奶一路追我到了车站，她还在挽留我，可是我知道，我留下来事情不会好转，我当时只是想逃脱，每一个关心的眼神。
+</p>]]></content><author><name></name></author><category term="随笔" /><summary type="html"><![CDATA[四月十号下午的四点十六分，又一次打开手机，看到北建大发来的录取通知，犹豫了两秒钟，点了接受的按钮，回头将这个消息告诉了还在刮石膏的父亲，父亲笑了。上次看到这样的笑容还是在十二天前，那个有阳光的午后。]]></summary></entry></feed>

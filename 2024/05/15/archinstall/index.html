@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ArchLinux</title>
+
+
+  <link rel="stylesheet" href="//nosomber.github.io/styles/footer.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      ArchLinux
+    </div>
+    <div class="char-counter">
+      2024-05-15 8602字
+    </div>
+    <div class="content">
+    
+    <div class="toc-container">
+      
+
+<style>
+ul.toc ul {
+  list-style: none;  /* 去掉小点 */
+  padding-left: 20px;   
+}
+
+ul.toc {
+    padding: 0;
+}
+</style>
+
+
+
+
+
+
+                <ul class="toc">
+                <ul><li><a href="#org5d5d9ae"><span class="section-number-2">1.</span> 安装</a></li><li><a href="#org1aebfc8"><span class="section-number-2">2.</span> 配置</a><ul><li><a href="#orgbfffb95"><span class="section-number-3">2.1.</span> 添加用户</a></li><li><a href="#org7adcc59"><span class="section-number-3">2.2.</span> yay</a></li><li><a href="#org9bad950"><span class="section-number-3">2.3.</span> dwm</a></li><li><a href="#org3d2f147"><span class="section-number-3">2.4.</span> emacs</a></li><li><a href="#org2f86cde"><span class="section-number-3">2.5.</span> 配色</a></li><li><a href="#orgbe734aa"><span class="section-number-3">2.6.</span> 用户免密</a></li><li><a href="#orgd500851"><span class="section-number-3">2.7.</span> Caps to Ctl</a></li><li><a href="#org1ccac81"><span class="section-number-3">2.8.</span> 中文输入法</a></li><li><a href="#orgcde1639"><span class="section-number-3">2.9.</span> 蓝牙耳机</a></li><li><a href="#orgbc9c64c"><span class="section-number-3">2.10.</span> grub 引导项里添加 Windows</a></li><li><a href="#orgaee2905"><span class="section-number-3">2.11.</span> 亮度，音量调节</a></li><li><a href="#org8ba0702"><span class="section-number-3">2.12.</span> 和 Windows 时间不同</a></li></ul></li><li><a href="#org623cf1c"><span class="section-number-2">3.</span> 参考</a></li></ul>
+            </ul>
+    </div>
+        <div id="backtop">
+          <a href="#">⭡</a>
+        </div>
+    
+      <p>
+这是将原本的博客从 hugo 迁到 jekyll 后的第一篇正式的文章，也许会写上很长时间&#x2026; 首先感谢 <a href="https://github.com/manateelazycat/manateelazycat.github.io">Lazycat</a> 的 dotfiles。Arch Linux 从我第一次安装到现在有快两年的时间了，在这期间，我卸载了很多次，也重装了很多次&#x2026;<br />
+</p>
+<div id="outline-container-org5d5d9ae" class="outline-2">
+<h2 id="org5d5d9ae"><span class="section-number-2">1.</span> 安装</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+到 <a href="https://archlinux.org/download/">官网</a> 下载镜像文件，制作启动盘可以使用 <a href="https://rufus.ie/en/">rufus</a> 这个工具。在安装之前，记得在你的电脑上划分出一部分的空间用于新系统。然后根据自己电脑的型号进入 BIOS 选择从 U 盘启动，然后进入命令行界面。<br />
+</p>
+
+<p>
+字体太小的话 <code>setfont ter-122b</code> 扩大字体。 另外，需要强调的是，Arch 的安装需要在有网络的环境下，使用有线网线的小伙伴们不用额外的配置，其他的需要用 iwctl 这个工具连接一下 WI-FI。<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">iwctl                                    <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#29992;&#36825;&#20010;&#24037;&#20855;&#37197;&#32622;</span>
+device list                              <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21015;&#20986;&#35774;&#22791;&#21517;&#65292; &#27604;&#22914;&#26080;&#32447;&#32593;&#21345;&#30475;&#21040;&#21483; wlan0</span>
+station wlan0 scan                       <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#25195;&#25551;&#32593;&#32476;</span>
+station wlan0 get-networks               <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21015;&#20986;&#32593;&#32476; &#27604;&#22914;&#24819;&#36830;&#25509; YOUR-WIRELESS-NAME &#36825;&#20010;&#26080;&#32447;&#32593;&#32476; </span>
+station wlan0 connect YOUR-WIRELESS-NAME <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#36827;&#34892;&#36830;&#25509; &#36755;&#20837;&#23494;&#30721;&#21363;&#21487;</span>
+<span style="color: #531ab6;">exit</span>
+</pre>
+</div>
+
+<p>
+<b>硬盘分区</b> 分为以下三个区<br />
+</p>
+<ul class="org-ul">
+<li>boot(efi)                  不小于 550M<br /></li>
+<li>swap(swap)                 如果不清楚用途的话可以先不配置<br /></li>
+<li>root(linux filesystem)     随意大小<br /></li>
+</ul>
+
+<p>
+括号里的是分区类型。用 <code>fdisk -l</code> 命令找到要分区磁盘的路径，后用 <code>cfdisk xxx</code> 可视化分区。紧接着，格式化，将下面的磁盘路径换成你自己的<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mkfs.fat -F32 /dev/xxx   <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#26684;&#24335;&#21270; boot &#20998;&#21306;</span>
+mkfs.ext4 /dev/xxx       <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#26684;&#24335;&#21270; root/home &#20998;&#21306;</span>
+
+<span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#36825;&#26159;&#26684;&#24335;&#21270;&#21644;&#24320;&#21551;&#20132;&#25442;&#20998;&#21306;&#30340;</span>
+mkswap /dev/xxx
+swapon /dev/xxx
+</pre>
+</div>
+
+<p>
+<b>挂载</b> 需要注意的是，先挂载 root 目录，再在根目录里创建一个用于挂载 efi 分区的文件夹，这里我就创建一个叫 boot 的文件夹。用 xxx 指代盘符号<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mount xxx  /mnt                    <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#25346;&#36733;&#26681;&#30446;&#24405;</span>
+mkdir /mnt/boot                    <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21019;&#24314; boot &#30446;&#24405;&#65288;&#22312;&#26681;&#30446;&#24405;&#19979;&#65289;</span>
+mount xxx /mnt/boot                <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#25346;&#36733; boot &#20998;&#21306;</span>
+</pre>
+</div>
+<p>
+用包管理器之前，先添加中国源，编辑 <code>/etc/pacman.d/mirrorlist</code><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #005e8b;">Server</span> = https://mirrors.ustc.edu.cn/archlinux/$<span style="color: #005e8b;">repo</span>/os/$<span style="color: #005e8b;">arch</span>           <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#20013;&#31185;&#22823;</span>
+<span style="color: #005e8b;">Server</span> = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$<span style="color: #005e8b;">repo</span>/os/$<span style="color: #005e8b;">arch</span>  <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#28165;&#21326; </span>
+</pre>
+</div>
+<p>
+安装需要的包<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pacman -Sy archlinux-keyring       <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21487;&#35299;&#20915;&#35777;&#20070;&#38382;&#39064;</span>
+pacstrap /mnt base base-devel linux linux-headers linux-firmware vim networkmanager
+</pre>
+</div>
+<p>
+<b>vim 是终端下编辑器，networkmanager 用于管理网络</b><br />
+</p>
+
+<p>
+生成 fstab 文件，用来定义磁盘分区<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</pre>
+</div>
+<p>
+<code>arch-chroot /mnt</code> 切换出母体，进入本体<br />
+</p>
+
+<p>
+现在我们比较关心时区，主机名&#x2026; 等本地化设置。<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime    <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#20351;&#29992;&#19978;&#28023;&#26102;&#21306;</span>
+hwclock --systohc                                          <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#23558;&#24403;&#21069; UTC &#26102;&#38388;&#20889;&#20837;&#30828;&#20214;&#26102;&#38388;</span>
+</pre>
+</div>
+<p>
+编辑 <code>/etc/locale.gen</code> 去掉以下行的注释<br />
+</p>
+<ul class="org-ul">
+<li>en_US.UTF-8<br /></li>
+<li>zh_CN.UTF-8<br /></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">locale-gen                                      <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#29983;&#25104; locale</span>
+<span style="color: #8f0075;">echo</span> <span style="color: #3548cf;">'LANG=en_US.UTF-8'</span>  &gt; /etc/locale.conf     <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#23558;&#31995;&#32479;&#35821;&#35328;&#35774;&#20026;&#33521;&#25991;</span>
+</pre>
+</div>
+<p>
+编辑 <code>/etc/hostname</code> ，设置你的主机名<br />
+</p>
+
+<p>
+编辑 <code>/etc/hosts</code> 文件<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">127.0.0.1   localhost
+::1         localhost
+127.0.1.1  &#65288;&#21018;&#25165;&#35774;&#32622;&#30340;&#20027;&#26426;&#21517;&#65289;
+</pre>
+</div>
+
+<p>
+<code>passwd root</code> 设置 root 管理员密码<br />
+</p>
+
+<p>
+制作 Grub 引导<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">pacman -S grub efibootmgr amd-ucode                      <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#22914;&#26524;&#26159; intel &#23601;&#35013; intel-ucode</span>
+mkdir /boot/grub
+grub-install --target=x86_64-efi --efi-directory=/boot   <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#36825;&#37324;&#30340; /boot &#19981;&#21807;&#19968;&#65292;&#20381;&#25454;&#19978;&#38754;&#20320;&#23558; efi &#20998;&#21306;&#25346;&#22312;&#20102;&#21738;&#20010;&#25991;&#20214;&#22841;&#37324; </span>
+grub-mkconfig &gt; /boot/grub/grub.cfg
+</pre>
+</div>
+
+<p>
+完成<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #531ab6;">exit</span>                <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#36864;&#22238;&#23433;&#35013;&#29615;&#22659;</span>
+umount -R  /mnt     <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21368;&#36733;&#26032;&#20998;&#21306;</span>
+reboot              <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#37325;&#21551;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1aebfc8" class="outline-2">
+<h2 id="org1aebfc8"><span class="section-number-2">2.</span> 配置</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+重启进入新系统的时候仍然是黑通通的一片，首先咱们还是先联网，记得我们在装软件包的时候有一个 NetWorkManager 吗？ 对！现在就用他来管理网络（有线网络仍然可以忽略）更多命令可参见这篇 <a href="https://zhuanlan.zhihu.com/p/565455268?utm_id=0">知乎</a><br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">sudo systemctl enable --now NetworkManager                                <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#24320;&#21551;&#26381;&#21153;</span>
+nmcli radio wifi on                                                       <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#25171;&#24320; Wi-Fi</span>
+sudo nmcli dev wifi connect network-ssid password <span style="color: #3548cf;">"network-password"</span>      <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#25351;&#26126; ssid &#21644;&#20320;&#30340;&#23494;&#30721;</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#19968;&#33324; ssid &#23601;&#26159;&#20320;&#30340; Wi-Fi &#30340;&#21517;&#31216;&#65292; &#20063;&#21487;&#20197;&#36890;&#36807;&#19979;&#38754;&#21629;&#20196;&#26597;&#35810;</span>
+nmcli dev wifi list
+</pre>
+</div>
+
+<p>
+此时字体仍然很小，用包管理器获取 <code>terminus-font</code> 这个包。执行 <code>setfont ter-u22b</code> 生效。顺带一提，在 <code>/etc/vconsole.conf</code> 里加上 <code>FONT=ter-u22b</code> 可以固化配置<br />
+</p>
+
+<hr />
+<p>
+关于桌面环境的事情我不在这里多说，我投向了 dwm 的怀抱，不喜欢平铺桌面的小伙伴们可以拐向 KDE or Gnome。下面谈一些优化<br />
+</p>
+</div>
+<div id="outline-container-orgbfffb95" class="outline-3">
+<h3 id="orgbfffb95"><span class="section-number-3">2.1.</span> 添加用户</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-shell">useradd -m -G wheel -s /bin/bash newuser
+passwd newuser
+<span style="color: #005e8b;">EDITOR</span>=vim visudo    <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#32534;&#36753; sudoers &#37197;&#32622;&#25991;&#20214;</span>
+
+<span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">%wheel ALL=(ALL:ALL) ALL  &#21435;&#25481;&#36825;&#34892;&#30340;&#27880;&#37322;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7adcc59" class="outline-3">
+<h3 id="org7adcc59"><span class="section-number-3">2.2.</span> yay</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-shell">vim /etc/pacman.conf   <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#23614;&#37096;&#28155;&#21152;</span>
+
+[archlinuxcn]
+<span style="color: #005e8b;">SigLevel</span> = Never
+<span style="color: #005e8b;">Server</span> = https://mirrors.ustc.edu.cn/$<span style="color: #005e8b;">repo</span>/$<span style="color: #005e8b;">arch</span>
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#39034;&#20415;&#24320;&#21551;</span>
+[multilib]
+<span style="color: #005e8b;">Include</span> = /etc/pacman.d/mirrorlist
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9bad950" class="outline-3">
+<h3 id="org9bad950"><span class="section-number-3">2.3.</span> dwm</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+配置来自 <a href="https://yaocc.cc/">cc</a><br />
+需要安装的依赖 <code>xorg xorg-xinit ttf-joypixels</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org3d2f147" class="outline-3">
+<h3 id="org3d2f147"><span class="section-number-3">2.4.</span> emacs</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+<a href="https://ftp.gnu.org/gnu/emacs/">ftp server</a> 编译选项 <code>./configure --without-xim --with-tree-sitter</code><br />
+安装依赖 <code>giflib tree-sitter</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org2f86cde" class="outline-3">
+<h3 id="org2f86cde"><span class="section-number-3">2.5.</span> 配色</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li><a href="https://github.com/catppuccin/cursors">光标</a><br />
+放在 <code>/.local/share/icons/</code><br />
+编辑 <code>/.Xresources</code>  <code>Xcursor.theme: catppuccin-latte-red-cursors</code><br />
+执行 <code>xrdb -merge ~/.Xresources</code> 或放在 <code>/.xinitrc</code> 自动执行<br /></li>
+<li><a href="https://github.com/catppuccin/rofi">rofi</a><br />
+下载好看的主题和 <code>catppuccin-default.rasi</code> 到 <code>/.config/rofi/</code><br />
+再将默认配置上面指定的主题取消注释<br />
+新建 <code>config.rasi</code> 加上 <code>@theme "catppuccin-default"</code><br />
+列表显示个数：listview{} 里设置 lines: 7;<br />
+窗口大小：window{} 设置 width: px/%;<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbe734aa" class="outline-3">
+<h3 id="orgbe734aa"><span class="section-number-3">2.6.</span> 用户免密</h3>
+<div class="outline-text-3" id="text-2-6">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">sudo&#20813;&#23494; &#21152;&#21040; visudo &#28155;&#21152;&#21040;&#23614;&#37096;</span>
+[&#29992;&#25143;&#21517;] <span style="color: #005e8b;">ALL</span>=(ALL:ALL) NOPASSWD: ALL
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#29992;&#25143;&#25552;&#26435;</span>
+yay -S polkit
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd500851" class="outline-3">
+<h3 id="orgd500851"><span class="section-number-3">2.7.</span> Caps to Ctl</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+使用 <a href="https://github.com/rvaiya/keyd">keyd</a> 这个项目来实现这个功能，README 写得很详细，我就不在这里误导大家了<br />
+另外它还可以为不同软件指定按键映射逻辑，比如 emacs 的单按 shift 映射到 C-\ 方便输入法切换<br />
+需要安装python依赖 <code>python python-xlib</code><br />
+把用户加到 keyd group <code>usermod -aG keyd &lt;user&gt;</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-org1ccac81" class="outline-3">
+<h3 id="org1ccac81"><span class="section-number-3">2.8.</span> 中文输入法</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+推荐 Rime<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#23433;&#35013;</span>
+sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-config-qt fcitx5-material-color fcitx5-im fcitx5-rime
+sudo echo <span style="color: #3548cf;">'</span>
+<span style="color: #3548cf;">GTK_IM_MODULE=fcitx</span>
+<span style="color: #3548cf;">QT_IM_MODULE=fcitx</span>
+<span style="color: #3548cf;">XMODIFIERS=@im=fcitx</span>
+<span style="color: #3548cf;">SDL_IM_MODULE=fcitx</span>
+<span style="color: #3548cf;">GLFW_IM_MODULE=ibus'</span> &gt;&gt; /etc/environment
+</pre>
+</div>
+
+<p>
+目前我用的是这套方案 <a href="https://github.com/iDvel/rime-ice">雾凇拼音</a> ，fcitx5 的皮肤用的是 <a href="https://github.com/catppuccin/fcitx5">catppuccin</a>，他们为其他软件做的配色我也很喜欢 ^.^<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgcde1639" class="outline-3">
+<h3 id="orgcde1639"><span class="section-number-3">2.9.</span> 蓝牙耳机</h3>
+<div class="outline-text-3" id="text-2-9">
+<div class="org-src-container">
+<pre class="src src-shell">yay -S bluez bluez-utils pulseaudio pulseaudio-bluetooth  <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">pulseaudio&#26159;&#38899;&#39057;&#25903;&#25345;</span>
+
+<span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21551;&#29992;&#34013;&#29273;&#26381;&#21153;</span>
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+
+bluetoothctl
+power on
+agent on
+default-agent
+scan on
+
+pair XX:XX:XX:XX:XX:XX
+connect XX:XX:XX:XX:XX:XX
+trust XX:XX:XX:XX:XX:XX
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Failed to connect: org.bluez.Error.Failed br-connection-profile-unavailable</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&#34920;&#31034;&#34013;&#29273;&#32819;&#26426;&#25903;&#25345;&#30340; &#36830;&#25509; profile&#65288;&#37197;&#32622;&#25991;&#20214;&#65289;&#19981;&#21487;&#29992;&#65292;&#21487;&#33021;&#26159;&#22240;&#20026;&#31995;&#32479;&#27809;&#26377;&#27491;&#30830;&#37197;&#32622;&#34013;&#29273;&#38899;&#39057;&#25903;&#25345;&#32452;&#20214;&#12290;</span>
+pulseaudio -k
+pulseaudio --start
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbc9c64c" class="outline-3">
+<h3 id="orgbc9c64c"><span class="section-number-3">2.10.</span> grub 引导项里添加 Windows</h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+<code>blkid xxx</code> 查看 UUID（并记住），xxx 指的是磁盘路径（windows 的 efi 分区，一般是 100M 的那个），不记得了可以用 <code>fdisk -l</code> 查看。在 <code>/etc/grub.d/40_custom</code> 里添加以下内容（注意将 UUID 换成自己的，第一行单引号里的名称可以随意替换）<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">menuentry <span style="color: #3548cf;">'Win'</span> {
+    insmod part_gpt
+    insmod fat
+    insmod chain
+    search --fs-uuid --no-floppy --set=root EAD2-8212
+    chainloader (${<span style="color: #005e8b;">root</span>})/EFI/Microsoft/Boot/bootmgfw.efi
+}
+</pre>
+</div>
+
+<p>
+再执行一下这个命令 <code>grub-mkconfig &gt; /boot/grub/grub.cfg</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgaee2905" class="outline-3">
+<h3 id="orgaee2905"><span class="section-number-3">2.11.</span> 亮度，音量调节</h3>
+<div class="outline-text-3" id="text-2-11">
+<p>
+裸的 arch 按音量调节键是不会起作用的，所以就要自己写脚本，然后将其绑定到键盘对应的按键上。先说音量。（如果你打算安装桌面环境，可忽略）<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">!/bin/</span><span style="color: #531ab6;">sh</span>
+
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">volume.sh &lt;raise|lower|mute&gt;  &#23545;&#24212;&#30528; &#22686;&#22823;&#65292;&#20943;&#23567;&#65292;&#38745;&#38899;</span>
+
+<span style="color: #005e8b;">step</span>=2   <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#19968;&#27425;&#35843;&#33410;&#30340;&#27493;&#38271;</span>
+<span style="color: #005e8b;">max</span>=99   <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#21487;&#20197;&#35774;&#32622;&#26368;&#22823;&#20540;&#65288;&#19981;&#35774;&#30340;&#35805;&#21487;&#20197;&#39129;&#21040;&#20004;&#30334;&#22810;&#12290;&#12290;&#12290;&#65289;</span>
+
+<span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#30475;&#30475;&#24403;&#21069;&#30340;&#38899;&#37327;</span>
+<span style="color: #531ab6;">function</span> <span style="color: #721045;">get_current_volume</span>() {
+  pactl get-sink-volume @DEFAULT_SINK@ | awk -F <span style="color: #3548cf;">'/'</span> <span style="color: #3548cf;">'{print $2}'</span> | grep -o <span style="color: #3548cf;">'[0-9]\+'</span>
+}
+
+<span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#26159;&#21542;&#22788;&#20110;&#38745;&#38899;&#29366;&#24577;</span>
+<span style="color: #005e8b;">mute_or_not</span>=<span style="color: #8f0075;">`pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}'`</span>
+
+<span style="color: #531ab6;">if</span> [ $<span style="color: #005e8b;">1</span> == <span style="color: #3548cf;">"raise"</span> ]; <span style="color: #531ab6;">then</span>
+    <span style="color: #531ab6;">if</span> [ <span style="color: #8f0075;">`get_current_volume`</span> -lt ${<span style="color: #005e8b;">max</span>} ]; <span style="color: #531ab6;">then</span>       <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#38899;&#37327;&#20302;&#20110;&#26368;&#22823;&#20540;&#26102;&#65292;&#32487;&#32493;</span>
+        <span style="color: #531ab6;">if</span> [ $<span style="color: #005e8b;">mute_or_not</span> == <span style="color: #3548cf;">"yes"</span> ]; <span style="color: #531ab6;">then</span>               <span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">&#22914;&#26524;&#26159;&#38745;&#38899;&#65292;&#20808;&#20851;&#38381;&#38745;&#38899;&#65292;&#20877;&#22686;&#22823;</span>
+            pactl set-sink-mute @DEFAULT_SINK@ toggle
+        <span style="color: #531ab6;">fi</span>
+        pactl set-sink-volume @DEFAULT_SINK@ <span style="color: #3548cf;">"+${step}%"</span>
+    <span style="color: #531ab6;">fi</span>
+<span style="color: #531ab6;">elif</span> [ $<span style="color: #005e8b;">1</span> == <span style="color: #3548cf;">"lower"</span> ]; <span style="color: #531ab6;">then</span>
+    <span style="color: #531ab6;">if</span> [ $<span style="color: #005e8b;">mute_or_not</span> == <span style="color: #3548cf;">"yes"</span> ]; <span style="color: #531ab6;">then</span> 
+        pactl set-sink-mute @DEFAULT_SINK@ toggle
+    <span style="color: #531ab6;">fi</span>
+    pactl set-sink-volume @DEFAULT_SINK@ <span style="color: #3548cf;">"-${step}%"</span>
+
+<span style="color: #531ab6;">elif</span> [ $<span style="color: #005e8b;">1</span> == <span style="color: #3548cf;">"mute"</span> ]; <span style="color: #531ab6;">then</span>
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+<span style="color: #531ab6;">else</span>
+    <span style="color: #8f0075;">echo</span> <span style="color: #3548cf;">"Unrecognized parameter: ${1}"</span>
+    <span style="color: #8f0075;">echo</span> <span style="color: #3548cf;">"Usage should be: volume.sh &lt;raise|lower|mute&gt;"</span>
+<span style="color: #531ab6;">fi</span>
+</pre>
+</div>
+
+<p>
+亮度就比较简单了，亮度值记录在 <code>/sys/class/backlight/amdgpu_bl1/brightness</code> 这个文件里，可以通过一个脚本按照一定的步长修改这个值，以增加为例<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;">#</span><span style="color: #705757; font-style: italic;">!/bin/</span><span style="color: #531ab6;">sh</span>
+<span style="color: #005e8b;">bl_device</span>=/sys/class/backlight/amdgpu_bl1/brightness
+<span style="color: #8f0075;">echo</span> $(($(cat $<span style="color: #005e8b;">bl_device</span>)+2)) | sudo tee $<span style="color: #005e8b;">bl_device</span>
+</pre>
+</div>
+
+<p>
+按键绑定用 <code>xbindkeys</code> 这个工具，在家目录下，新建一个叫 <code>.xbinkeysrc</code> 这个文件，用法就是，一行写命令，一行写按键。 例如<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #3548cf;">"~/scripts/sys/volume.sh raise"</span>
+XF86AudioRaiseVolume
+</pre>
+</div>
+<p>
+按键的名称可以用 <code>xev</code> 这个小工具获取。最后，执行一下 <code>xbindkeys</code> 这个命令激活。也可以将它写入 <code>.xinitrc</code> 里，省得每次都手动激活<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org8ba0702" class="outline-3">
+<h3 id="org8ba0702"><span class="section-number-3">2.12.</span> 和 Windows 时间不同</h3>
+<div class="outline-text-3" id="text-2-12">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">Windows &#37324;</span>
+Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">linux &#37324;</span>
+timedatectl set-local-rtc 1 --adjust-system-clock
+</pre>
+</div>
+
+<p>
+展示一下我的 Arch<br />
+</p>
+<img src="/pics/archinstall/neofetch.png" alt="arch展示">
+</div>
+</div>
+</div>
+<div id="outline-container-org623cf1c" class="outline-2">
+<h2 id="org623cf1c"><span class="section-number-2">3.</span> 参考</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li><a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/">https://archlinuxstudio.github.io/ArchLinuxTutorial/#/</a><br /></li>
+<li><a href="https://yaocc.cc/archinstall/">https://yaocc.cc/archinstall/</a><br /></li>
+</ul>
+
+<p>
+热爱没有终点&#x2026;<br />
+</p>
+</div>
+</div>
+
+      <div id="end"> Good Luck! </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
