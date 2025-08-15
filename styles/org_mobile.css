@@ -10,7 +10,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: anonymous, Lxgw;
+  font-family: josefin, Lxgw;
 }
 
 .content-area {
@@ -59,78 +59,78 @@ a:hover {
 }
 
 p {
-    font-family: Lxgw;
+  font-family: Lxgw;
 }
 
 code {
-    font-family: Lxgw;
-    /* color: #4962b5; */
-    color: #507090;
+  font-family: Lxgw;
+  /* color: #4962b5; */
+  color: #507090;
 }
 
 .verse {
-    color: #745996;
-    margin: 7px 0px;
-    border-radius: 7px;
+  color: #745996;
+  margin: 7px 0px;
+  border-radius: 7px;
 }
 
 .title {
-    color: #333;
-    font-size: 26px;
-    margin-bottom: 10px;
-    text-align: center;
-    line-height: 40px;
+  color: #333;
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 40px;
 }
 
 img {
-    max-width: 100%;
-    border-radius: 5px;
+  max-width: 100%;
+  border-radius: 5px;
 }
 
 p img {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #AAA;
-    width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #AAA;
+  width: 100%;
 }
 
 #archives {
-    position: fixed;
-    right: 100px;
-    top: 100px;
+  position: fixed;
+  right: 100px;
+  top: 100px;
 }
 
 .char-counter {
-    display: flex;
-    justify-content: center;
-    color: #AAA;
-    font-size: 13px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  color: #AAA;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 blockquote {
-    margin: 0;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6{
-    margin-top: 30px;
-    margin-bottom: 20px;
-    font-weight: 400;
-    color:darkslategray
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color:darkslategray
 }
 
 h2 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 h3 {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 h4 {
@@ -191,14 +191,6 @@ pre.src span {
 .green-text {
   /* color: rgb(88, 148, 88); */
   color: darkslategray;
-}
-
-#end {
-  font-family: bradleyFont;
-  font-weight: bold;
-  text-align: right;
-  position: relative;
-  right: 50px;
 }
 
  pre.src:hover:before { display: inline; margin-top: 14px; font-size: small; color: #337799; font-family: josefin;}

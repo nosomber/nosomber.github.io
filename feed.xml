@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-08-15T12:39:24+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">有关linux的笔记</title><link href="//nosomber.github.io/2025/07/19/linux_note/" rel="alternate" type="text/html" title="有关linux的笔记" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_note</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_note/"><![CDATA[<div id="outline-container-orgb53b42d" class="outline-2">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-08-15T13:35:27+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">有关linux的笔记</title><link href="//nosomber.github.io/2025/07/19/linux_note/" rel="alternate" type="text/html" title="有关linux的笔记" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_note</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_note/"><![CDATA[<div id="outline-container-orgb53b42d" class="outline-2">
 <h2 id="orgb53b42d"><span class="section-number-2">1.</span> 忽略指定包</h2>
 <div class="outline-text-2" id="text-1">
 <p>
@@ -17,11 +17,6 @@
 生成密钥对 <code>ssh-keygen -t rsa -b 2048 -C "your_email@example.com"</code><br />
 将 <code>\~/.ssh/id_rsa.pub</code> 提交到 github 上<br />
 测试和 github 的连接 <code>ssh -T git@github.com</code><br />
-</p>
-
-
-<p>
-<br />
 </p>
 </div>
 </div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. 忽略指定包 /etc/pacman.conf 里，有这么一行： #IgnorePkg 1.1. 二级标题 2. github添加公钥 需要 openssh 生成密钥对 ssh-keygen -t rsa -b 2048 -C "your_email@example.com" 将 \~/.ssh/id_rsa.pub 提交到 github 上 测试和 github 的连接 ssh -T git@github.com]]></summary></entry><entry><title type="html">linux 上遇到的问题</title><link href="//nosomber.github.io/2025/07/19/linux_problems/" rel="alternate" type="text/html" title="linux 上遇到的问题" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_problems</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_problems/"><![CDATA[<div id="outline-container-org244f935" class="outline-2">
@@ -346,12 +341,9 @@ Sometimes, we don’t fully understand each other’s meaning, and make wrong ju
 <p>
 I also want to hear your opinions, welcome to leave me a message~
 </p>
-
-
-<div class="from">
-Stefy
-</div>
-
+<div id="outline-container-org66b78a8" class="outline-2">
+<h2 id="org66b78a8"><span class="section-number-2">1.</span> Stefy</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 A veces es necesario hablar de ciertas cosas; evitarlo no ayuda. Gracias por ser como eres, por ser así conmigo, por todo. Las palabras se quedan cortas para expresar lo que significas para mí. Conocerte entre tanta gente fue un regalo. Mereces ser feliz, libre, escribir tu propia historia. Cada persona tiene un libro en blanco y es su propio autor; tú decides qué escribir. Vive la vida al máximo; si algo malo sucede, busca el lado positivo y aprende. Sobre todo, confía en Dios, tenlo presente siempre. No somos dignos de su amor, pero Él siempre estará dispuesto a ayudarnos a superar las tormentas juntos.
 </p>
@@ -370,7 +362,9 @@ Recuerda cuidarte. Encontraremos a las personas correctas en el momento adecuado
 
 <p>
 Ahora somos buenos amigos; solo quedan lindos recuerdos del pasado, cuando fuimos más que amigos. Pero, como dije, mereces ser feliz; no hay que preocuparse demasiado.
-</p>]]></content><author><name></name></author><category term="carta" /><summary type="html"><![CDATA[Hello!]]></summary></entry><entry><title type="html">四灵里</title><link href="//nosomber.github.io/2025/06/02/duanwujuhui/" rel="alternate" type="text/html" title="四灵里" /><published>2025-06-02T00:00:00+08:00</published><updated>2025-06-02T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/02/duanwujuhui</id><content type="html" xml:base="//nosomber.github.io/2025/06/02/duanwujuhui/"><![CDATA[<p class="verse">
+</p>
+</div>
+</div>]]></content><author><name></name></author><category term="carta" /><summary type="html"><![CDATA[Hello!]]></summary></entry><entry><title type="html">四灵里</title><link href="//nosomber.github.io/2025/06/02/duanwujuhui/" rel="alternate" type="text/html" title="四灵里" /><published>2025-06-02T00:00:00+08:00</published><updated>2025-06-02T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/02/duanwujuhui</id><content type="html" xml:base="//nosomber.github.io/2025/06/02/duanwujuhui/"><![CDATA[<p class="verse">
 ‪约翰一书‬4:7-9<br />
 7 亲爱的弟兄啊，我们应当彼此相爱，因为爱是从　神来的。凡有爱心的，都是由　神而生，并且认识　神。 8 没有爱心的，就不认识　神，因为　神就是爱。 9 　神差他独生子到世间来，使我们藉着他得生，　神爱我们的心在此就显明了。<br />
 </p>

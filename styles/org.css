@@ -12,20 +12,6 @@ body {
     font-family: josefin, Lxgw;
 }
 
-.toc-container {
-  position: fixed;     /* 固定在页面右边 */
-  top: 100px;          /* 距顶部距离，可根据需要调整 */
-  right: 10px;         /* 距右侧 10px */
-  width: 200px;        /* 设置目录宽度 */
-  max-height: 70vh;    /* 限制高度防止太长，表示 80%*/
-  overflow-y: auto;    /* 超出滚动 */
-  background-color: #f9f9f9; /* 可选的背景色 */
-  padding-top: 7px;
-  border-left: 1px solid #ddd;
-  font-size: 16px;
-}
-
-
 .content-area {
   box-sizing: border-box;
   background-color: #FFF;
@@ -36,31 +22,6 @@ body {
   padding-bottom: 40px;
   padding-left: 40px;
   padding-right: 40px;
-}
-
-.toc-container::-webkit-scrollbar {
-  width: 6px;
-}
-
-.toc-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.toc-container::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
-}
-
-.toc-container {
-  scrollbar-width: thin;        /* Firefox */
-  scrollbar-color: #ccc transparent;
-}
-
-
-@media (max-width: 1200px) {
-  .toc-container {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -228,14 +189,6 @@ pre.src span {
 .green-text {
   /* color: rgb(88, 148, 88); */
   color: darkslategray;
-}
-
-  #end {
-    font-family: bradleyFont;
-    font-weight: bold;
-    text-align: right;
-    position: relative;
-    right: 77px;
 }
 
  pre.src:hover:before { display: inline; margin-top: 14px; font-size: small; color: #337799; font-family: josefin;}
