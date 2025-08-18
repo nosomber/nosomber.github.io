@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>python基础</title>
+
+  
+  <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      python基础
+    </div>
+    <div class="char-counter">
+      2025-07-02 1990字
+    </div>
+
+    <div class="content">
+  
+  <p>
+嵌套函数 区分不同的帧 frame 变量的关系
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #531ab6;">def</span> <span style="color: #721045;">make_adder</span>(n):
+    <span style="color: #531ab6;">def</span> <span style="color: #721045;">adder</span>(k):
+        <span style="color: #531ab6;">return</span> n + k
+    <span style="color: #531ab6;">return</span> adder
+
+adder_three = make_adder(3)
+<span style="color: #8f0075;">print</span>(adder_three(4))
+</pre>
+</div>
+
+<p>
+高阶函数
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #531ab6;">def</span> <span style="color: #721045;">square</span>(x):
+  <span style="color: #531ab6;">return</span> x * x
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">triple</span>(y):
+  <span style="color: #531ab6;">return</span> 3 * y
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">hibrid</span>(f, g):
+  <span style="color: #531ab6;">def</span> <span style="color: #721045;">h</span>(x):
+    <span style="color: #531ab6;">return</span> f(g(x))
+  <span style="color: #531ab6;">return</span> h
+
+compose1 = hibrid(square, triple)
+<span style="color: #8f0075;">print</span>(compose1(4)) <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">square(3x4)</span>
+</pre>
+</div>
+
+<p>
+匿名函数 lambda 正常使用 def 定义出的函数 在一开始的时候就有名字 而 lambda 函数在赋值的时候才有名字
+</p>
+<div class="org-src-container">
+<pre class="src src-python">square = <span style="color: #531ab6;">lambda</span> x: x * x
+<span style="color: #8f0075;">print</span>(square(3))
+</pre>
+</div>
+
+<p>
+柯里化 Currying: Transforming a multi-argument function into a single-argument, higher-order function
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&gt;&gt;&gt; make_adder(2)(3)</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">5</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">&gt;&gt;&gt; add(2, 3)</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">5</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">There is a general relationship between these functions</span>
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">curry</span>(f):
+  <span style="color: #531ab6;">def</span> <span style="color: #721045;">g</span>(x):
+    <span style="color: #531ab6;">def</span> <span style="color: #721045;">h</span>(y):
+      <span style="color: #531ab6;">return</span> f(x, y)
+    <span style="color: #531ab6;">return</span> h
+  <span style="color: #531ab6;">return</span> g
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">add</span>(a, b):
+  <span style="color: #531ab6;">return</span> a + b
+
+m = curry(add)
+add_three = m(3)
+<span style="color: #8f0075;">print</span>(add_three(2))
+
+new_curry = <span style="color: #531ab6;">lambda</span> f: <span style="color: #531ab6;">lambda</span> x: <span style="color: #531ab6;">lambda</span> y: f(x, y)
+n = new_curry(add)
+add_four = n(4)
+<span style="color: #8f0075;">print</span>(add_four(3))
+</pre>
+</div>
+
+<p>
+Environment Diagrams with Lambda
+A lambda function's parent is the current frame in which the lambda 
+</p>
+<div class="org-src-container">
+<pre class="src src-python">a = 1
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">f</span>(g):
+  a = 2
+  <span style="color: #531ab6;">return</span> <span style="color: #531ab6;">lambda</span> y: a * g(y)
+<span style="color: #8f0075;">print</span>(f(<span style="color: #531ab6;">lambda</span> y: a + y)(a))
+</pre>
+</div>
+
+<p>
+函数返回 Return Statements
+A return statements is there to complete the evaluation of a call expression
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #531ab6;">def</span> <span style="color: #721045;">search</span>(f):
+  x = 0
+  <span style="color: #531ab6;">while</span> <span style="color: #531ab6;">not</span> f(x):
+    x += 1
+  <span style="color: #531ab6;">return</span> x
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">square</span>(x):
+  <span style="color: #531ab6;">return</span> x * x
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">inverse</span>(f):
+  <span style="color: #531ab6;">return</span> <span style="color: #531ab6;">lambda</span> y: search(<span style="color: #531ab6;">lambda</span> x: f(x) == y)
+
+sqrt = inverse(square)
+<span style="color: #8f0075;">print</span>(sqrt(25))
+</pre>
+</div>
+
+<p>
+控制语句
+evaluation rules for call expression is quite different than conditional statements
+if_(\__, \__, \__) 这样定义的条件语句会将表达式执行后作为参数传给 if_ 在有些情况下会产生错误
+正常情况下的 if 语句， 有些内容是我们不希望执行的 如果使用 if_ 就会造成 不管情况怎样 都会执行的结果
+</p>
+
+<p>
+A <b><b>pair</b></b> consists of two values that are joined together, bundled together in such a way that you can treat them as a unit, as a whole, even though there are two parts.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">pair = [1, 2]
+x, y = pair  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">"unpacking" a list</span>
+<span style="color: #8f0075;">print</span>(x, y)
+
+<span style="color: #531ab6;">from</span> operator <span style="color: #531ab6;">import</span> getitem  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">element selection function</span>
+<span style="color: #8f0075;">print</span>(getitem(pair, 1))
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">rational</span>(n, d):
+  <span style="color: #531ab6;">return</span> [n, d]
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">numer</span>(x):
+  <span style="color: #531ab6;">return</span> x[0]
+
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">denom</span>(x):
+  <span style="color: #531ab6;">return</span> x[1]
+
+<span style="color: #531ab6;">from</span> fractions <span style="color: #531ab6;">import</span> gcd  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">greatest common divisor</span>
+<span style="color: #531ab6;">def</span> <span style="color: #721045;">rational</span>(n, d):
+  <span style="color: #2a5045; font-style: italic;">"""Constrcut a rational number x that representss n/d."""</span>
+  g = gcd(n, d)
+  <span style="color: #531ab6;">return</span> [n//g, d//g]
+
+</pre>
+</div>
+
+<p>
+The purpose of maintaining abstraction barriers is so that you can change your data representation without having to rewrite you entire program.
+Data abstraction uses selectors and constructors to define behavior
+you can recongize data abstraction by its behavior
+</p>
+
+</div>
+
+    <div id="end">  </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+/* end font */
+@font-face {
+    font-family: bradleyFont;
+    src: url("../fonts/bradley.ttf") format("TrueType");
+}
+
+/* home 页面跳转的字体 */
+@font-face {
+    font-family: palluyFont;
+    src: url("../fonts/palluy.otf") format("OpenType")
+}
+
+@font-face {
+    font-family: Lxgw;
+    src: url("../fonts/jinkai.ttf") format("TrueType");
+}
+
+/* letter font */
+@font-face {
+    font-family: josefin;
+    src: url("../fonts/josefin.ttf") format("TrueType");
+}
+
+@font-face {
+    font-family: futura;
+    src: url("../fonts/futura.otf") format("OpenType");
+}
+

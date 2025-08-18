@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>学习记录</title>
+
+  
+  <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      学习记录
+    </div>
+    <div class="char-counter">
+      2025-07-18 413字
+    </div>
+
+    <div class="content">
+  
+  <p class="verse">
+马太福音5: 21-30<br />
+<i>论发怒</i><br />
+21“你们听见有吩咐古人的话，说：‘不可杀人’；又说：‘凡杀人的难免受审判。’ 22只是我告诉你们，凡（有古卷在“凡”字下添“无缘无故地”五字）向弟兄动怒的，难免受审判；凡骂弟兄是拉加的，难免公会的审判；凡骂弟兄是魔利的，难免地狱的火。 23所以，你在祭坛上献礼物的时候，若想起弟兄向你怀怨， 24就把礼物留在坛前，先去同弟兄和好，然后来献礼物。 25你同告你的对头还在路上，就赶紧与他和息，恐怕他把你送给审判官，审判官交付衙役，你就下在监里了。 26我实在告诉你，若有一文钱没有还清，你断不能从那里出来。”<br />
+<i>论奸淫</i><br />
+27“你们听见有话说：‘不可奸淫。’ 28只是我告诉你们，凡看见妇女就动淫念的，这人心里已经与她犯奸淫了。 29若是你的右眼叫你跌倒，就剜出来丢掉，宁可失去百体中的一体，不叫全身丢在地狱里。 30若是右手叫你跌倒，就砍下来丢掉，宁可失去百体中的一体，不叫全身下入地狱。”<br />
+</p>
+
+<p>
+律法是规定行为，福音是指向内心
+</p>
+
+</div>
+
+    <div id="end">  </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

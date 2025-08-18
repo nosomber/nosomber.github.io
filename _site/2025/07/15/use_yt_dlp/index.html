@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>使用yt-dlp</title>
+
+  
+  <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      使用yt-dlp
+    </div>
+    <div class="char-counter">
+      2025-07-15 1022字
+    </div>
+
+    <div class="content">
+  
+  <p>
+Mac用户从 <a href="https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#installation">链接</a> 下载程序<br />
+</p>
+<img src="/pics/use_yt_dlp/download.png" alt="mac下载">
+
+<p>
+通过终端找到文件下载的位置<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">ls         <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#21015;&#20986;&#24403;&#21069;&#25991;&#20214;&#22841;&#19979;&#30340;&#25991;&#20214;&#21644;&#25991;&#20214;&#22841;</span>
+<span style="color: #4C7A90;">cd</span> xxx     <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#36827;&#20837; xxx &#36825;&#20010;&#25991;&#20214;&#22841;</span>
+
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#24212;&#35813;&#21487;&#20197;&#30475;&#21040;&#26377; yt-dlp_macos &#36825;&#20010;&#25991;&#20214;</span>
+sudo chmod +x yt-dlp_macos   <span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#20026;&#36825;&#20010;&#31243;&#24207;&#28155;&#21152;&#21487;&#25191;&#34892;&#26435;&#38480;</span>
+<span style="color: #7c878a;">#</span><span style="color: #7c878a;">&#28982;&#21518;&#23601;&#21487;&#20197;&#36816;&#34892;&#36825;&#20010;&#31243;&#24207;</span>
+</pre>
+</div>
+
+<p>
+由于 Safai 使用的是 Apple 自家的加密机制（Keychain + SQLite），cookie 存储格式不公开。<br />
+所以推荐使用 Google Chrome 来进行下面步骤<br />
+使用 Chrome 打开 youtube 网站后<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">./yt-dlp_macos --cookies-from-browser chrome <span style="color: #39854C;">"https://example.com/video"</span>
+</pre>
+</div>
+<p>
+这样就可以下载指定链接的视频内容了<br />
+</p>
+<img src="/pics/use_yt_dlp/terminal.png" alt="commands"> 
+
+<p>
+通过 <code>-f</code> 或 <code>--format</code> 参数来设置下载视频的质量<br />
+下载720p视频（可以通过组合的方式来下载视频和音频）<br />
+<code>yt-dlp -f 'bestvideo[height&lt;=720]+bestaudio' URL</code><br />
+<code>yt-dlp -F URL</code> 用 <code>-F</code> 选项来查看可以下载的格式和质量有哪些<br />
+下载指定格式为 mp4 m4a 的组合视频<br />
+<code>yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' URL</code><br />
+</p>
+
+<p>
+自定义下载文件名用参数 <code>-o</code> （或 &#x2013;output）实现<br />
+<code>yt-dlp -o "myvideo.%(ext)s" https://example.com/video</code><br />
+<code>%(ext)s</code> 会自动替换成真实的视频格式，比如 mp4、webm<br />
+</p>
+
+</div>
+
+    <div id="end">  </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

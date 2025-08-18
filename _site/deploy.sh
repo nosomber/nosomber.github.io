@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+jekyll build
+cd _site
+git add -A
+msg="`date`"
+if [ $# -eq 1 ]
+then msg="$1"
+fi
+
+git commit -m "$msg"
+git push
+cd ../

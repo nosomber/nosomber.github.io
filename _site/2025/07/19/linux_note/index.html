@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>有关linux的笔记</title>
+
+  
+  <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      有关linux的笔记
+    </div>
+    <div class="char-counter">
+      2025-07-19 182字
+    </div>
+
+    <div class="content">
+  
+    <div class="toc-container">
+      
+
+<style>
+ul.toc ul {
+  list-style: none;  /* 去掉小点 */
+  padding-left: 20px;   
+}
+
+ul.toc {
+    padding: 0;
+}
+</style>
+
+
+
+
+
+
+                <ul class="toc">
+                <ul><li><a href="#orgb53b42d"><span class="section-number-2">1.</span> 忽略指定包</a><ul><li><a href="#orge9d9368"><span class="section-number-3">1.1.</span> 二级标题</a></li></ul></li><li><a href="#orgd2a52ed"><span class="section-number-2">2.</span> github添加公钥</a></li></ul>
+            </ul>
+    </div>
+    <div id="backtop">
+      <a href="#">⭡</a>
+    </div>
+  
+  <div id="outline-container-orgb53b42d" class="outline-2">
+<h2 id="orgb53b42d"><span class="section-number-2">1.</span> 忽略指定包</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<code>/etc/pacman.conf</code> 里，有这么一行： #IgnorePkg<br />
+</p>
+</div>
+<div id="outline-container-orge9d9368" class="outline-3">
+<h3 id="orge9d9368"><span class="section-number-3">1.1.</span> 二级标题</h3>
+</div>
+</div>
+<div id="outline-container-orgd2a52ed" class="outline-2">
+<h2 id="orgd2a52ed"><span class="section-number-2">2.</span> github添加公钥</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+需要 openssh<br />
+生成密钥对 <code>ssh-keygen -t rsa -b 2048 -C "your_email@example.com"</code><br />
+将 <code>\~/.ssh/id_rsa.pub</code> 提交到 github 上<br />
+测试和 github 的连接 <code>ssh -T git@github.com</code><br />
+</p>
+</div>
+</div>
+
+</div>
+
+    <div id="end">  </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

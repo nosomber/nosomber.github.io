@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>aegisub使用</title>
+
+  
+  <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+  });
+
+</script>
+
+<body>
+  <!-- <div class="navigatebar">
+    <div class="navigatebar-button navigatebar-mine">
+        <a href="//nosomber.github.io/index.html">Golosina</a>
+    </div>
+    <div class="navigatebar-button">
+        <a href="//nosomber.github.io/tags.html">Tags</a>
+    </div>
+    <div class="navigatebar-button navigatebar-about">
+        <a href="//nosomber.github.io/about.html">About</a>
+    </div>
+</div>
+ -->
+  <div class="content-area">
+    <div class="title">
+      aegisub使用
+    </div>
+    <div class="char-counter">
+      2025-07-17 611字
+    </div>
+
+    <div class="content">
+  
+  <p>
+<b>使用 ffmpeg 从视频中提取音频</b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; MP3&#65288;&#26377;&#25439;&#65289;</span>
+ffmpeg -i input.webm -vn -acodec libmp3lame -q:a 2 output.mp3
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-acodec libmp3lame    &#20351;&#29992; MP3 &#32534;&#30721;&#22120; libmp3lame &#36827;&#34892;&#38899;&#39057;&#32534;&#30721;</span>
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-q:a 2    &#35774;&#32622;&#38899;&#39057;&#36136;&#37327;&#65288;&#36136;&#37327;&#36234;&#20302;&#65292;&#25968;&#23383;&#36234;&#22823;&#65307;&#24120;&#29992;&#33539;&#22260; 0&#8211;9&#65289;2 &#34920;&#31034;&#39640;&#36136;&#37327;&#12289;&#25991;&#20214;&#22823;&#23567;&#36866;&#20013;</span>
+
+<span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; WAV&#65288;&#26080;&#25439;&#65289;</span>
+ffmpeg -i input.webm -vn -acodec pcm_s16le output.wav
+
+</pre>
+</div>
+
+</div>
+
+    <div id="end">  </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
