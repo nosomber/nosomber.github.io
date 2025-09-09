@@ -5,7 +5,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>aegisub使用</title>
+<title>使用nmcli连接WPA2 802.1X的无线网</title>
 
   
   <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
@@ -46,41 +46,54 @@
 </script>
 
 <body>
-  <!-- <div class="navigatebar">
-    <div class="navigatebar-button navigatebar-mine">
-        <a href="//nosomber.github.io/index.html">Golosina</a>
-    </div>
-    <div class="navigatebar-button">
-        <a href="//nosomber.github.io/tags.html">Tags</a>
-    </div>
-    <div class="navigatebar-button navigatebar-about">
-        <a href="//nosomber.github.io/about.html">About</a>
-    </div>
-</div>
- -->
+  <div class="return_to_home">
+    <a href="//nosomber.github.io/index.html">Golosina</a>
+  </div>
+
   <div class="content-area">
     <div class="title">
-      aegisub使用
+      使用nmcli连接WPA2 802.1X的无线网
     </div>
     <div class="char-counter">
-      2025-07-17 611字
+      2025-09-09 422字
     </div>
 
     <div class="content">
   
   <p>
-<b>使用 ffmpeg 从视频中提取音频</b>
+连接需要用户名和密码的Wi-Fi，<a href="https://zh.wikipedia.org/wiki/IEEE_802.1X">IEEE 802.1x</a><br />
+使用nmcli当作普通的只需要密码的来连接时会报错 <code>Failed to determine AP security information</code><br />
+新建一个连接名称 NAME<br />
+</p>
+<ul class="org-ul">
+<li><code>nmcli device status</code> 确定无线网卡名称 DEVICE<br /></li>
+<li><code>nmcli device wifi list</code> 扫描Wi-Fi，确定 SSID<br /></li>
+</ul>
+
+<p>
+下面是格式，大写的位置需要替换成自己的<br />
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; MP3&#65288;&#26377;&#25439;&#65289;</span>
-ffmpeg -i input.webm -vn -acodec libmp3lame -q:a 2 output.mp3
-<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-acodec libmp3lame    &#20351;&#29992; MP3 &#32534;&#30721;&#22120; libmp3lame &#36827;&#34892;&#38899;&#39057;&#32534;&#30721;</span>
-<span style="color: #7c878a;"># </span><span style="color: #7c878a;">-q:a 2    &#35774;&#32622;&#38899;&#39057;&#36136;&#37327;&#65288;&#36136;&#37327;&#36234;&#20302;&#65292;&#25968;&#23383;&#36234;&#22823;&#65307;&#24120;&#29992;&#33539;&#22260; 0&#8211;9&#65289;2 &#34920;&#31034;&#39640;&#36136;&#37327;&#12289;&#25991;&#20214;&#22823;&#23567;&#36866;&#20013;</span>
-
-<span style="color: #7c878a;"># </span><span style="color: #7c878a;">&#36716; WAV&#65288;&#26080;&#25439;&#65289;</span>
-ffmpeg -i input.webm -vn -acodec pcm_s16le output.wav
-
+<pre class="src src-bash">nmcli connection add type wifi con-name NAME ifname DEVICE ssid SSID <span style="color: #3548cf;">\</span>
+    -- wifi-sec.key-mgmt wpa-eap <span style="color: #3548cf;">\</span>
+    802-1x.eap ttls <span style="color: #3548cf;">\</span>
+    802-1x.phase2-auth mschapv2 <span style="color: #3548cf;">\</span>
+    802-1x.identity USERNAME <span style="color: #3548cf;">\</span>
+    802-1x.password PASSWORD
 </pre>
+</div>
+
+<p>
+然后就可以连接 NAME 这个别名<br />
+<code>nmcli con up NAME</code><br />
+</p>
+<div id="outline-container-orge3f2539" class="outline-2">
+<h2 id="orge3f2539"><span class="section-number-2">1.</span> 参考</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://es2q.com/blog/2020/12/04/nmcli-WPA2-802-1X/">nmcli连接WPA2 802.1X的无线网（用户名+密码）</a> <br />
+</p>
+</div>
 </div>
 
 </div>

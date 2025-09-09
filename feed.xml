@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-08-22T06:35:52+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">信心的祖先</title><link href="//nosomber.github.io/2025/08/22/ancestor-of-faith/" rel="alternate" type="text/html" title="信心的祖先" /><published>2025-08-22T00:00:00+08:00</published><updated>2025-08-22T00:00:00+08:00</updated><id>//nosomber.github.io/2025/08/22/ancestor-of-faith</id><content type="html" xml:base="//nosomber.github.io/2025/08/22/ancestor-of-faith/"><![CDATA[<div id="outline-container-org6d45dd2" class="outline-2">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-09-09T17:43:38+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">使用nmcli连接WPA2 802.1X的无线网</title><link href="//nosomber.github.io/2025/09/09/campus_network/" rel="alternate" type="text/html" title="使用nmcli连接WPA2 802.1X的无线网" /><published>2025-09-09T00:00:00+08:00</published><updated>2025-09-09T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/09/campus_network</id><content type="html" xml:base="//nosomber.github.io/2025/09/09/campus_network/"><![CDATA[<p>
+连接需要用户名和密码的Wi-Fi，<a href="https://zh.wikipedia.org/wiki/IEEE_802.1X">IEEE 802.1x</a><br />
+使用nmcli当作普通的只需要密码的来连接时会报错 <code>Failed to determine AP security information</code><br />
+新建一个连接名称 NAME<br />
+</p>
+<ul class="org-ul">
+<li><code>nmcli device status</code> 确定无线网卡名称 DEVICE<br /></li>
+<li><code>nmcli device wifi list</code> 扫描Wi-Fi，确定 SSID<br /></li>
+</ul>
+
+<p>
+下面是格式，大写的位置需要替换成自己的<br />
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">nmcli connection add type wifi con-name NAME ifname DEVICE ssid SSID <span style="color: #3548cf;">\</span>
+    -- wifi-sec.key-mgmt wpa-eap <span style="color: #3548cf;">\</span>
+    802-1x.eap ttls <span style="color: #3548cf;">\</span>
+    802-1x.phase2-auth mschapv2 <span style="color: #3548cf;">\</span>
+    802-1x.identity USERNAME <span style="color: #3548cf;">\</span>
+    802-1x.password PASSWORD
+</pre>
+</div>
+
+<p>
+然后就可以连接 NAME 这个别名<br />
+<code>nmcli con up NAME</code><br />
+</p>
+<div id="outline-container-orge3f2539" class="outline-2">
+<h2 id="orge3f2539"><span class="section-number-2">1.</span> 参考</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://es2q.com/blog/2020/12/04/nmcli-WPA2-802-1X/">nmcli连接WPA2 802.1X的无线网（用户名+密码）</a> <br />
+</p>
+</div>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[连接需要用户名和密码的Wi-Fi，IEEE 802.1x 使用nmcli当作普通的只需要密码的来连接时会报错 Failed to determine AP security information 新建一个连接名称 NAME nmcli device status 确定无线网卡名称 DEVICE nmcli device wifi list 扫描Wi-Fi，确定 SSID]]></summary></entry><entry><title type="html">信心的祖先</title><link href="//nosomber.github.io/2025/08/22/ancestor-of-faith/" rel="alternate" type="text/html" title="信心的祖先" /><published>2025-08-22T00:00:00+08:00</published><updated>2025-08-22T00:00:00+08:00</updated><id>//nosomber.github.io/2025/08/22/ancestor-of-faith</id><content type="html" xml:base="//nosomber.github.io/2025/08/22/ancestor-of-faith/"><![CDATA[<div id="outline-container-org6d45dd2" class="outline-2">
 <h2 id="org6d45dd2"><span class="section-number-2">1.</span> 亚伯拉罕</h2>
 <div class="outline-text-2" id="text-1">
 <p>
@@ -664,9 +698,30 @@ x, y = pair  <span style="color: #705757; font-style: italic;"># </span><span st
 The purpose of maintaining abstraction barriers is so that you can change your data representation without having to rewrite you entire program.
 Data abstraction uses selectors and constructors to define behavior
 you can recongize data abstraction by its behavior
-</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[嵌套函数 区分不同的帧 frame 变量的关系 def make_adder(n): def adder(k): return n + k return adder]]></summary></entry><entry><title type="html">日记</title><link href="//nosomber.github.io/2025/07/01/dailynotes/" rel="alternate" type="text/html" title="日记" /><published>2025-07-01T00:00:00+08:00</published><updated>2025-07-01T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/01/dailynotes</id><content type="html" xml:base="//nosomber.github.io/2025/07/01/dailynotes/"><![CDATA[<div id="outline-container-orge5ca992" class="outline-2">
-<h2 id="orge5ca992"><span class="section-number-2">1.</span> 08-18</h2>
+</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[嵌套函数 区分不同的帧 frame 变量的关系 def make_adder(n): def adder(k): return n + k return adder]]></summary></entry><entry><title type="html">日记</title><link href="//nosomber.github.io/2025/07/01/dailynotes/" rel="alternate" type="text/html" title="日记" /><published>2025-07-01T00:00:00+08:00</published><updated>2025-07-01T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/01/dailynotes</id><content type="html" xml:base="//nosomber.github.io/2025/07/01/dailynotes/"><![CDATA[<div id="outline-container-org8fb9d07" class="outline-2">
+<h2 id="org8fb9d07"><span class="section-number-2">1.</span> 09-01</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+Hi,晚上好。拖了这么久没有回复，其实是不知道该怎么说。所以很冷漠地回答了你。挺抱歉的。感觉是你心中火热的信心没有在我这里点燃。我想是我的问题吧，最近的生活有点远离话语，但是我感觉神的恩典没有离开我。祂在保守着我。可是我心里面有软弱，感觉很难去回应祂的爱。有些难以克服的方面吧。没有做到单单望着神，太多时候顾虑到自己和别人的感受。<br />
+关于你提到的我从言达会转到福青那里去，我想了挺久，这可能涉及到在信仰生命里长进的问题。离开旧的很难，进入新的也很难。还有我有没有这样的信心去走服侍的道路，可能我接触比较多的都是全职服侍的肢体，真的感觉你们的信心很大，也感觉这样做对我真的很难。感觉这不是我喜欢做的事情。但做的时候，发现也不是排斥。<br />
+我目前不想很火热地生活，这是我心里面的声音。但感觉又有另外一个声音告诉我这样的机会不是很多，需要把握地住。<br />
+这几周的周天，我没有去和弟兄姐妹们一起聚会，除了现实的原因外，其实我心里面是不想去的，不知道为什么，也许是不熟悉，也许是尴尬，也许是其他的原因。<br />
+这些都是我非常主观的看法，也是我最近想的。可能想法有些奇怪，不过还是想和你说说，不然就更奇怪了，哈哈。<br />
+希望你们在传福音的时候多得神预备的羊羔。会为这个祷告。加油！<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org16079cf" class="outline-2">
+<h2 id="org16079cf"><span class="section-number-2">2.</span> 08-28</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+我们的内心如何得到释放，可以展开去讲。讲到水深之处，见证活水。妇人承认自己心里的干渴，承认雅各井里的水不能够解决心里的干渴，很想要得到活水。丈夫是什么，是自己所爱，所依靠的对象。不只是身体上的丈夫。从那里得到满足喜乐的对象。得到活水，是爱的关系重新建立的过程。在我们认识耶稣基督之前，我们心里面往往有自己所爱所依靠的。耶稣对撒玛利亚妇人说，把你的丈夫叫来。我们往往依靠了不能够真正帮助我们的对象。往往自己信道了很久，也参与了很多，可是生命没有得到真正的改变，往往是自己里面优先顺序没有得到改变。人犯罪后的反应往往是否认，不愿意去承认。耶稣很有智慧地回答妇人的回答。耶稣说，是的，你并没有，现在你有的，不是你真正的丈夫，他不能够满足你内心的需要。对孩子说话，语气上要温柔，态度上要坚定。一个人里面真的有各种各样的东西，耶稣对她说，你有五个丈夫。那样奸淫的罪一定要断掉。有时候要坚决地砍掉一些东西，这样的东西不能够模棱两可。有些需要调整优先顺序。用爱和真理去教导一个人。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orge5ca992" class="outline-2">
+<h2 id="orge5ca992"><span class="section-number-2">3.</span> 08-18</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 罪从四面八方而来，我得不到爱，也不想寻求爱。在死亡的边缘徘徊，仿佛一切都变了样，为什么我的世界不能存在一点的包容。我知道，我实在是一个罪人，要不正在犯罪，要不就在途中，毫无希望，我的盼望在哪里呢？我又在向谁述说这些痛苦呢？我真的害怕，被一圈又一圈成长的圈套束缚在狭小的屋子里。原本的希望破碎，我又该怪谁呢？没有谁比我自己更加可恶，既然我故意行恶，就要受这妄为当得的报应。<br />
 周围还是没有人可以理解我，别人不知道我的难处，只会旁敲侧击，我像一个瓶子，随时要爆炸的感觉，原本可以打开的瓶盖变得奇怪。<br />
@@ -674,72 +729,10 @@ you can recongize data abstraction by its behavior
 </div>
 </div>
 <div id="outline-container-org82536b2" class="outline-2">
-<h2 id="org82536b2"><span class="section-number-2">2.</span> 08-16</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="org82536b2"><span class="section-number-2">4.</span> 08-16</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 不知道什么样的原因，今天成为了第一篇日记。那就趁着感觉还在，随意写一点东西。最近看了《德州巴黎》，错过了很多次观看的机会，这次两小时四十分钟给看完了，感觉真的很好，有当年看《赎罪》的感觉。我被上个世纪八十年代美国的自然风景和都市面貌震惊住了。其实是故事的情节，虽然有些牵强，有点维斯安德斯的巧合，但背后还是有那样的深意。夫妻之间的关系，我觉得结局是好的，有一种命运的归属感那样。女主角第一次出场的样子很绝，电影也是以此作为封面的。这样确实可以抓住人的眼球，但我也因此误解了德州巴黎这部剧很久。我想看第二遍，不知道什么时候可以做到。<br />
 </p>
 </div>
-</div>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[1. 08-18 罪从四面八方而来，我得不到爱，也不想寻求爱。在死亡的边缘徘徊，仿佛一切都变了样，为什么我的世界不能存在一点的包容。我知道，我实在是一个罪人，要不正在犯罪，要不就在途中，毫无希望，我的盼望在哪里呢？我又在向谁述说这些痛苦呢？我真的害怕，被一圈又一圈成长的圈套束缚在狭小的屋子里。原本的希望破碎，我又该怪谁呢？没有谁比我自己更加可恶，既然我故意行恶，就要受这妄为当得的报应。 周围还是没有人可以理解我，别人不知道我的难处，只会旁敲侧击，我像一个瓶子，随时要爆炸的感觉，原本可以打开的瓶盖变得奇怪。 2. 08-16 不知道什么样的原因，今天成为了第一篇日记。那就趁着感觉还在，随意写一点东西。最近看了《德州巴黎》，错过了很多次观看的机会，这次两小时四十分钟给看完了，感觉真的很好，有当年看《赎罪》的感觉。我被上个世纪八十年代美国的自然风景和都市面貌震惊住了。其实是故事的情节，虽然有些牵强，有点维斯安德斯的巧合，但背后还是有那样的深意。夫妻之间的关系，我觉得结局是好的，有一种命运的归属感那样。女主角第一次出场的样子很绝，电影也是以此作为封面的。这样确实可以抓住人的眼球，但我也因此误解了德州巴黎这部剧很久。我想看第二遍，不知道什么时候可以做到。]]></summary></entry><entry><title type="html">To Stefy</title><link href="//nosomber.github.io/2025/06/23/for_stefy/" rel="alternate" type="text/html" title="To Stefy" /><published>2025-06-23T00:00:00+08:00</published><updated>2025-06-23T00:00:00+08:00</updated><id>//nosomber.github.io/2025/06/23/for_stefy</id><content type="html" xml:base="//nosomber.github.io/2025/06/23/for_stefy/"><![CDATA[<p>
-Hello!
-</p>
-
-<p>
-Thank you for this opportunity. I would like to share some of my views on our relationship. Yes, people should not live in the past. The Bible also tells us, "Forget what is behind and strive for what is ahead."
-</p>
-
-<p>
-Because I met you four years ago and we were in a relationship in 2023 and 2024, this makes our relationship complicated now. At present, I cannot say the specific relationship between us. But I know that we have been together and separated. There have been many sweet words and many difficult and painful moments. Of course, I remember you said to me, "We will meet and we can go through many difficulties together." Yes, these words have given me a lot of strength in the past. Now, facing the reality, what should we do? Should we stick together or separate?
-</p>
-
-<p>
-I feel that you want to separate from me. At some points, you are more rational than me. But I don't think you are willing to do so. You are afraid of hurting me, right? I can feel your concern for me. I don't want to hurt you either.
-</p>
-
-<p>
-I loved you and I love you now. These two kinds of love are not the same. Thank God, I have been through a lot of things during this period, which allowed me to get closer to Him little by little. I found that the Bible describes love like this, "El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso. No se comporta con rudeza, no es egoísta, no se enoja fácilmente, no guarda rencor. El amor no se deleita en la maldad, sino que se regocija con la verdad. Todo lo disculpa, todo lo cree, todo lo espera, todo lo soporta." This kind of love is a greater love. I hope we can have this kind of love.
-</p>
-
-<p>
-I love you, but this does not mean that we need to establish a clear relationship. Do you agree? There is love between us, but not as a couple. You are my good friend, and I believe this.
-</p>
-
-<p>
-We are two very different people, and there is something about your personality that attracts me. It is a wonderful thing that we can meet, why should we often worry and be sad about the future? As I told you before, I will not leave you. Even if I have to leave, I will tell you in advance. I don’t want you to be afraid.
-</p>
-
-<p>
-What makes me happy is that you can live a life you like, with joy and hope in God in your life. You have the freedom to choose what path you want to take and what kind of people you associate with. This is the same for us.
-</p>
-
-<p>
-Sometimes, we don’t fully understand each other’s meaning, and make wrong judgments, which make ourselves sad&#x2026; There is nothing wrong with us being able to communicate frankly.
-</p>
-
-<p>
-I also want to hear your opinions, welcome to leave me a message~
-</p>
-<div id="outline-container-org66b78a8" class="outline-2">
-<h2 id="org66b78a8"><span class="section-number-2">1.</span> Stefy</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-A veces es necesario hablar de ciertas cosas; evitarlo no ayuda. Gracias por ser como eres, por ser así conmigo, por todo. Las palabras se quedan cortas para expresar lo que significas para mí. Conocerte entre tanta gente fue un regalo. Mereces ser feliz, libre, escribir tu propia historia. Cada persona tiene un libro en blanco y es su propio autor; tú decides qué escribir. Vive la vida al máximo; si algo malo sucede, busca el lado positivo y aprende. Sobre todo, confía en Dios, tenlo presente siempre. No somos dignos de su amor, pero Él siempre estará dispuesto a ayudarnos a superar las tormentas juntos.
-</p>
-
-<p>
-Quiero que seas feliz, que siempre sonrías. Estoy segura de que aún te esperan experiencias maravillosas que Dios ya ha puesto a tu alrededor. Tu felicidad es también la mía.
-</p>
-
-<p>
-Te quiero mucho. Gracias por estar siempre ahí, por guiarme en momentos difíciles. Tus palabras han sido mi fortaleza. Perdóname si siempre he sido yo la que tiene problemas. No soy perfecta, pero tu presencia ha sido muy especial en mi vida.
-</p>
-
-<p>
-Recuerda cuidarte. Encontraremos a las personas correctas en el momento adecuado. No me refiero a una pareja sentimental (aunque es algo natural). Antes de eso, disfrutemos momentos inolvidables, conociéndonos y protegiéndonos a nosotros mismos. Cuando sepamos nuestro valor, nada ni nadie podrá hacernos sentir mal. Entonces podremos vivir un amor sano, un amor hermoso como dicen las escrituras. Te deseo lo mejor y que Dios cuide tu vida y la de tu familia.
-</p>
-
-<p>
-Ahora somos buenos amigos; solo quedan lindos recuerdos del pasado, cuando fuimos más que amigos. Pero, como dije, mereces ser feliz; no hay que preocuparse demasiado.
-</p>
-</div>
-</div>]]></content><author><name></name></author><category term="carta" /><summary type="html"><![CDATA[Hello!]]></summary></entry></feed>
+</div>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[1. 09-01 Hi,晚上好。拖了这么久没有回复，其实是不知道该怎么说。所以很冷漠地回答了你。挺抱歉的。感觉是你心中火热的信心没有在我这里点燃。我想是我的问题吧，最近的生活有点远离话语，但是我感觉神的恩典没有离开我。祂在保守着我。可是我心里面有软弱，感觉很难去回应祂的爱。有些难以克服的方面吧。没有做到单单望着神，太多时候顾虑到自己和别人的感受。 关于你提到的我从言达会转到福青那里去，我想了挺久，这可能涉及到在信仰生命里长进的问题。离开旧的很难，进入新的也很难。还有我有没有这样的信心去走服侍的道路，可能我接触比较多的都是全职服侍的肢体，真的感觉你们的信心很大，也感觉这样做对我真的很难。感觉这不是我喜欢做的事情。但做的时候，发现也不是排斥。 我目前不想很火热地生活，这是我心里面的声音。但感觉又有另外一个声音告诉我这样的机会不是很多，需要把握地住。 这几周的周天，我没有去和弟兄姐妹们一起聚会，除了现实的原因外，其实我心里面是不想去的，不知道为什么，也许是不熟悉，也许是尴尬，也许是其他的原因。 这些都是我非常主观的看法，也是我最近想的。可能想法有些奇怪，不过还是想和你说说，不然就更奇怪了，哈哈。 希望你们在传福音的时候多得神预备的羊羔。会为这个祷告。加油！ 2. 08-28 我们的内心如何得到释放，可以展开去讲。讲到水深之处，见证活水。妇人承认自己心里的干渴，承认雅各井里的水不能够解决心里的干渴，很想要得到活水。丈夫是什么，是自己所爱，所依靠的对象。不只是身体上的丈夫。从那里得到满足喜乐的对象。得到活水，是爱的关系重新建立的过程。在我们认识耶稣基督之前，我们心里面往往有自己所爱所依靠的。耶稣对撒玛利亚妇人说，把你的丈夫叫来。我们往往依靠了不能够真正帮助我们的对象。往往自己信道了很久，也参与了很多，可是生命没有得到真正的改变，往往是自己里面优先顺序没有得到改变。人犯罪后的反应往往是否认，不愿意去承认。耶稣很有智慧地回答妇人的回答。耶稣说，是的，你并没有，现在你有的，不是你真正的丈夫，他不能够满足你内心的需要。对孩子说话，语气上要温柔，态度上要坚定。一个人里面真的有各种各样的东西，耶稣对她说，你有五个丈夫。那样奸淫的罪一定要断掉。有时候要坚决地砍掉一些东西，这样的东西不能够模棱两可。有些需要调整优先顺序。用爱和真理去教导一个人。 3. 08-18 罪从四面八方而来，我得不到爱，也不想寻求爱。在死亡的边缘徘徊，仿佛一切都变了样，为什么我的世界不能存在一点的包容。我知道，我实在是一个罪人，要不正在犯罪，要不就在途中，毫无希望，我的盼望在哪里呢？我又在向谁述说这些痛苦呢？我真的害怕，被一圈又一圈成长的圈套束缚在狭小的屋子里。原本的希望破碎，我又该怪谁呢？没有谁比我自己更加可恶，既然我故意行恶，就要受这妄为当得的报应。 周围还是没有人可以理解我，别人不知道我的难处，只会旁敲侧击，我像一个瓶子，随时要爆炸的感觉，原本可以打开的瓶盖变得奇怪。 4. 08-16 不知道什么样的原因，今天成为了第一篇日记。那就趁着感觉还在，随意写一点东西。最近看了《德州巴黎》，错过了很多次观看的机会，这次两小时四十分钟给看完了，感觉真的很好，有当年看《赎罪》的感觉。我被上个世纪八十年代美国的自然风景和都市面貌震惊住了。其实是故事的情节，虽然有些牵强，有点维斯安德斯的巧合，但背后还是有那样的深意。夫妻之间的关系，我觉得结局是好的，有一种命运的归属感那样。女主角第一次出场的样子很绝，电影也是以此作为封面的。这样确实可以抓住人的眼球，但我也因此误解了德州巴黎这部剧很久。我想看第二遍，不知道什么时候可以做到。]]></summary></entry></feed>

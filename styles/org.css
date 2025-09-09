@@ -30,6 +30,15 @@ body {
   }
 }
 
+.return_to_home {
+  position: absolute;
+  left: 50px;
+  top: 20px;
+  font-family: palluyFont;
+  font-size: 25px;
+}
+
+
 ul {
   margin: 0;
   padding: 0;
