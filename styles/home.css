@@ -17,7 +17,7 @@ body {
     display: flex;
     flex-direction: row;
     /* background: url("../pics/home/flower.jpg"); */
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(200, 200, 255, 0.2)),  url("../pics/home/flower.jpg");
+    /* background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(200, 200, 255, 0.2)),  url("../pics/home/flower.jpg"); */
     /* backdrop-filter: blur(1px);  */
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -61,7 +61,8 @@ a:hover {
     padding-top: 20px;
     padding-bottom: 20px;
     /* border-bottom: 1px solid #DDD; */
-    border-bottom: 1px solid #acb1be;  /* 下边线 */
+    border-bottom: 1px solid #d3d6dd;  /* 下边线 */
+    /* #acb1be */
 }
 
 .post-title {
