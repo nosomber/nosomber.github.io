@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-10-09T14:17:54+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">ac记录</title><link href="//nosomber.github.io/2025/09/18/ac_notes/" rel="alternate" type="text/html" title="ac记录" /><published>2025-09-18T00:00:00+08:00</published><updated>2025-09-18T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/18/ac_notes</id><content type="html" xml:base="//nosomber.github.io/2025/09/18/ac_notes/"><![CDATA[<div id="outline-container-orgd22f7eb" class="outline-2">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="//nosomber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="//nosomber.github.io/" rel="alternate" type="text/html" /><updated>2025-10-17T10:50:36+08:00</updated><id>//nosomber.github.io/feed.xml</id><entry><title type="html">personal</title><link href="//nosomber.github.io/2025/10/17/personal_notice_note/" rel="alternate" type="text/html" title="personal" /><published>2025-10-17T00:00:00+08:00</published><updated>2025-10-17T00:00:00+08:00</updated><id>//nosomber.github.io/2025/10/17/personal_notice_note</id><content type="html" xml:base="//nosomber.github.io/2025/10/17/personal_notice_note/"><![CDATA[<div id="outline-container-org1aa0d70" class="outline-2">
+<h2 id="org1aa0d70"><span class="section-number-2">1.</span> 10-17</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://www.bilibili.com/video/BV1rW4y1N7ZU/">求导过程（nashi）</a><br />
+</p>
+
+<p>
+<a href="https://www.bilibili.com/video/BV1DH4y1N7it/">计算图 retain_graph</a><br />
+</p>
+
+<p>
+<a href="https://www.bilibili.com/video/BV1gMC9YJEiX/">自动微分计算图 DAG</a><br />
+</p>
+</div>
+</div>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[1. 10-17 求导过程（nashi）]]></summary></entry><entry><title type="html">ac记录</title><link href="//nosomber.github.io/2025/09/18/ac_notes/" rel="alternate" type="text/html" title="ac记录" /><published>2025-09-18T00:00:00+08:00</published><updated>2025-09-18T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/18/ac_notes</id><content type="html" xml:base="//nosomber.github.io/2025/09/18/ac_notes/"><![CDATA[<div id="outline-container-orgd22f7eb" class="outline-2">
 <h2 id="orgd22f7eb"><span class="section-number-2">1.</span> one</h2>
 <div class="outline-text-2" id="text-1">
 </div>
@@ -26,9 +41,67 @@ python里面的交换变量的值不用临时变量 多重赋值 (tuple unpackin
 </p>
 </div>
 </div>
-</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. one 1.1. 快排 python里面的交换变量的值不用临时变量 多重赋值 (tuple unpacking) 特性 先整体计算右边，生成一个元组 (q[j], q[i])， 再整体解包到左边，所以不会出现覆盖问题。 q[i], q[j] = q[j], q[i]]]></summary></entry><entry><title type="html">路上的光</title><link href="//nosomber.github.io/2025/09/10/faith_hope_love/" rel="alternate" type="text/html" title="路上的光" /><published>2025-09-10T00:00:00+08:00</published><updated>2025-09-10T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/10/faith_hope_love</id><content type="html" xml:base="//nosomber.github.io/2025/09/10/faith_hope_love/"><![CDATA[<div id="outline-container-org7168ab8" class="outline-2">
-<h2 id="org7168ab8"><span class="section-number-2">1.</span> 信心的祖先</h2>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. one 1.1. 快排 python里面的交换变量的值不用临时变量 多重赋值 (tuple unpacking) 特性 先整体计算右边，生成一个元组 (q[j], q[i])， 再整体解包到左边，所以不会出现覆盖问题。 q[i], q[j] = q[j], q[i]]]></summary></entry><entry><title type="html">Journey of Faith</title><link href="//nosomber.github.io/2025/09/10/Journey_of_Faith/" rel="alternate" type="text/html" title="Journey of Faith" /><published>2025-09-10T00:00:00+08:00</published><updated>2025-09-10T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/10/Journey_of_Faith</id><content type="html" xml:base="//nosomber.github.io/2025/09/10/Journey_of_Faith/"><![CDATA[<div id="outline-container-org29c64a5" class="outline-2">
+<h2 id="org29c64a5"><span class="section-number-2">1.</span> 是要在他身上显出神的作为</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+约翰福音 9:1-5<br />
+1 耶稣过去的时候，看见一个人生来是瞎眼的。2 门徒问耶稣说：“拉比，这人生来是瞎眼的，是谁犯了罪？是这人呢？是他父母呢？”3 耶稣回答说：“也不是这人犯了罪，也不是他父母犯了罪，是要在他身上显出　神的作为来。4 趁着白日，我们必须做那差我来者的工；黑夜将到，就没有人能做工了。5 我在世上的时候，是世上的光。”<br />
+</p>
+
+<p>
+罪和罚的关系，犹太人有这样的想法，“生来是瞎眼的，是父母的罪还是他的罪？”<br />
+</p>
+
+<p>
+生下瞎眼的人，是因为什么呢？ 耶稣现在教给门徒的是，“不是这人犯了罪，也不是他父母犯了罪，是要在他身上显出　神” 耶稣对于悲剧的原因的解释不是以一种悲观的角度。<br />
+</p>
+
+<p>
+犹太人通过过去来看今天，耶稣给我们看到的是不一样的，“从未来看自己”<br />
+</p>
+
+<p>
+主给我们打开了不一样的视角，带着盼望的视角，来看待现在的自己<br />
+</p>
+
+<p>
+神的极大的爱来包容我们，称我们为义人。 罗马书五章，唱了得胜的凯歌之后，我们里面还有要去克服的。要知道有之后的过程。保罗的告白在罗马书七章里面，“我里面真的是苦啊”<br />
+</p>
+
+<p>
+在我的里面有两种声音<br />
+</p>
+
+<p>
+里面有高兴的，有难过的，但靠着自己没有办法去得胜。自己不知道该怎样走正确的道路，要知道有圣灵的帮助。要知道不只是有高兴的时候<br />
+</p>
+
+<p>
+在神的话语的里面，更深地去明白，神告诉我们要怎样去做。我们的眼光被这个世界影响，想法变得奇怪，把丑陋当作美丽。<br />
+</p>
+
+<p>
+可以定罪我们的用爱包容了这一切，我们还为什么还被过去所缠绕呢。会有罪恶感，会感到难过，但是主用惊人的爱的眼光看待了生下瞎眼的人。<br />
+</p>
+
+<p>
+在律法之下不能得着真正的自由；不要被过去所束缚住；神不拿过去来定我们的罪，用福音的视角来看待我们。<br />
+</p>
+
+<p>
+信心是把看不见的未来，拿到现在来看；用神给我们崭新的视角去看待自己，看待别人<br />
+</p>
+
+<p>
+感想：<br />
+我常常会像犹太人一样去看待一个人，对他的看法停留在过去，不能够去饶恕，带着有色眼睛去看待人。耶稣在这里是用饶恕的眼光，从未来去看待我们&#x2013;犯了很多罪的人。如果焦点只停在罪上面的话，是很难去改变的，就会很律法性地对待一个人。耶稣让我们看待的是用饶恕的眼光，相信他会改变的心情。从积极的角度去看待罪的问题。通过耶稣，可以除去身上缠累的罪，在祂的爱里面更好地成长。祈求神给我这样不定罪的眼光，看待自己和别人。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-org6b327a0" class="outline-2">
+<h2 id="org6b327a0"><span class="section-number-2">2.</span> 信心的祖先</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 <b>亚伯拉罕</b><br />
 神在呼召亚伯拉罕的时候，还没有告诉他该去到什么地方。神让亚伯拉罕撇下，也会让他得着祝福。当我们走信心的道路的时候，神会告诉我们去撇下一些东西，为我们打开更大的世界。如果我们抓住现在的事情不放手，神是很难给我们更好的。亚伯拉罕带着信心，顺服了神的指引。他抓住了神的应许。<br />
@@ -88,9 +161,9 @@ python里面的交换变量的值不用临时变量 多重赋值 (tuple unpackin
 </p>
 </div>
 </div>
-<div id="outline-container-org7a65b14" class="outline-2">
-<h2 id="org7a65b14"><span class="section-number-2">2.</span> 罗马书 第八章</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org44e88e6" class="outline-2">
+<h2 id="org44e88e6"><span class="section-number-2">3.</span> 罗马书 第八章</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 看罗马书前面的章节，是有些绝望的样子，但是第八章里面有很多的鼓励，和对信主的人的安慰。八章，保罗强调圣灵，我们是在圣灵的保守之下。<br />
 得救之后的生活是在圣灵里面的生活，看的话，我们不是一个走信仰的道路，而是圣灵与我们同行。“在基督耶稣里面的就不定罪了”这给我们很大的安慰，我们在生活当中还是经常犯罪，但是，这句话给我们很大的希望和安慰。因为我们的主，用祂的生命，代赎了我们所有的罪，而且圣灵与我们同在，给我们战胜罪的力量。<br />
@@ -173,9 +246,9 @@ Hi Farah 老师，下午好！ 刚刚听了罗马书第八章，有一些感想�
 </p>
 </div>
 </div>
-<div id="outline-container-org9a6df91" class="outline-2">
-<h2 id="org9a6df91"><span class="section-number-2">3.</span> 罗马书 第四章</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org4abaa5b" class="outline-2">
+<h2 id="org4abaa5b"><span class="section-number-2">4.</span> 罗马书 第四章</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 罗马书是使徒保罗得到圣灵的光照将基督教信仰中的核心和真理给展现出来。像属灵的兵器库那样，我们好好学的时候可以从里面找到各样的兵器，去打那美好的属灵的征战。<br />
 </p>
@@ -382,9 +455,9 @@ Hi Farah 老师，下午好！ 刚刚听了罗马书第八章，有一些感想�
 </p>
 </div>
 </div>
-<div id="outline-container-org6456f3f" class="outline-2">
-<h2 id="org6456f3f"><span class="section-number-2">4.</span> 2025年端午节</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgd052492" class="outline-2">
+<h2 id="orgd052492"><span class="section-number-2">5.</span> 2025年端午节</h2>
+<div class="outline-text-2" id="text-5">
 <p class="verse">
 ‪约翰一书‬4:7-9<br />
 7 亲爱的弟兄啊，我们应当彼此相爱，因为爱是从　神来的。凡有爱心的，都是由　神而生，并且认识　神。 8 没有爱心的，就不认识　神，因为　神就是爱。 9 　神差他独生子到世间来，使我们藉着他得生，　神爱我们的心在此就显明了。<br />
@@ -412,7 +485,7 @@ Hi Farah 老师，下午好！ 刚刚听了罗马书第八章，有一些感想�
 爱是双向的，接受神的爱，回应祂的爱。和神建立垂直的关系，活在神爱的世界里面。<br />
 </p>
 </div>
-</div>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[1. 信心的祖先 亚伯拉罕 神在呼召亚伯拉罕的时候，还没有告诉他该去到什么地方。神让亚伯拉罕撇下，也会让他得着祝福。当我们走信心的道路的时候，神会告诉我们去撇下一些东西，为我们打开更大的世界。如果我们抓住现在的事情不放手，神是很难给我们更好的。亚伯拉罕带着信心，顺服了神的指引。他抓住了神的应许。 希伯来书 11:8 8 亚伯拉罕因着信，蒙召的时候就遵命出去，往将来要得为业的地方去；出去的时候，还不知往哪里去。 不是只看那看得见的，当我们凭着信心，相信那不能够相信的神的计划的时候，信心就在此成全了。]]></summary></entry><entry><title type="html">使用nmcli连接WPA2 802.1X的无线网</title><link href="//nosomber.github.io/2025/09/09/campus_network/" rel="alternate" type="text/html" title="使用nmcli连接WPA2 802.1X的无线网" /><published>2025-09-09T00:00:00+08:00</published><updated>2025-09-09T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/09/campus_network</id><content type="html" xml:base="//nosomber.github.io/2025/09/09/campus_network/"><![CDATA[<p>
+</div>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[1. 是要在他身上显出神的作为 约翰福音 9:1-5 1 耶稣过去的时候，看见一个人生来是瞎眼的。2 门徒问耶稣说：“拉比，这人生来是瞎眼的，是谁犯了罪？是这人呢？是他父母呢？”3 耶稣回答说：“也不是这人犯了罪，也不是他父母犯了罪，是要在他身上显出　神的作为来。4 趁着白日，我们必须做那差我来者的工；黑夜将到，就没有人能做工了。5 我在世上的时候，是世上的光。”]]></summary></entry><entry><title type="html">使用nmcli连接WPA2 802.1X的无线网</title><link href="//nosomber.github.io/2025/09/09/campus_network/" rel="alternate" type="text/html" title="使用nmcli连接WPA2 802.1X的无线网" /><published>2025-09-09T00:00:00+08:00</published><updated>2025-09-09T00:00:00+08:00</updated><id>//nosomber.github.io/2025/09/09/campus_network</id><content type="html" xml:base="//nosomber.github.io/2025/09/09/campus_network/"><![CDATA[<p>
 连接需要用户名和密码的Wi-Fi，<a href="https://zh.wikipedia.org/wiki/IEEE_802.1X">IEEE 802.1x</a><br />
 使用nmcli当作普通的只需要密码的来连接时会报错 <code>Failed to determine AP security information</code><br />
 新建一个连接名称 NAME<br />
@@ -467,7 +540,17 @@ Hi Farah 老师，下午好！ 刚刚听了罗马书第八章，有一些感想�
 测试和 github 的连接 <code>ssh -T git@github.com</code><br />
 </p>
 </div>
-</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. 忽略指定包 /etc/pacman.conf 里，有这么一行： #IgnorePkg 1.1. 二级标题 2. github添加公钥 需要 openssh 生成密钥对 ssh-keygen -t rsa -b 2048 -C "your_email@example.com" 将 \~/.ssh/id_rsa.pub 提交到 github 上 测试和 github 的连接 ssh -T git@github.com]]></summary></entry><entry><title type="html">linux 上遇到的问题</title><link href="//nosomber.github.io/2025/07/19/linux_problems/" rel="alternate" type="text/html" title="linux 上遇到的问题" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_problems</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_problems/"><![CDATA[<div id="outline-container-org244f935" class="outline-2">
+</div>
+<div id="outline-container-org1ecfe7b" class="outline-2">
+<h2 id="org1ecfe7b"><span class="section-number-2">3.</span> 查询本机 ip 地址</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-bash">ip a  <span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">or "ip addr show"</span>
+<span style="color: #705757; font-style: italic;"># </span><span style="color: #705757; font-style: italic;">inet &#21518;&#38754;&#30340;&#23601;&#26159; ip &#22320;&#22336;</span>
+</pre>
+</div>
+</div>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. 忽略指定包 /etc/pacman.conf 里，有这么一行： #IgnorePkg 1.1. 二级标题 2. github添加公钥 需要 openssh 生成密钥对 ssh-keygen -t rsa -b 2048 -C "your_email@example.com" 将 \~/.ssh/id_rsa.pub 提交到 github 上 测试和 github 的连接 ssh -T git@github.com 3. 查询本机 ip 地址 ip a # or "ip addr show" # inet &#21518;&#38754;&#30340;&#23601;&#26159; ip &#22320;&#22336;]]></summary></entry><entry><title type="html">linux 上遇到的问题</title><link href="//nosomber.github.io/2025/07/19/linux_problems/" rel="alternate" type="text/html" title="linux 上遇到的问题" /><published>2025-07-19T00:00:00+08:00</published><updated>2025-07-19T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/19/linux_problems</id><content type="html" xml:base="//nosomber.github.io/2025/07/19/linux_problems/"><![CDATA[<div id="outline-container-org244f935" class="outline-2">
 <h2 id="org244f935"><span class="section-number-2">1.</span> <span class="done DONE">DONE</span> There is no trackikmng information for the current branch. Please specify which branch you want to merge with.</h2>
 <div class="outline-text-2" id="text-1">
 <p>
@@ -538,9 +621,18 @@ nameserver 8.8.8.8     <span style="color: #705757; font-style: italic;"># </spa
 </p>
 </div>
 </div>
-<div id="outline-container-orgd69fcb9" class="outline-2">
-<h2 id="orgd69fcb9"><span class="section-number-2">6.</span> <span class="done DONE">DONE</span> windows和linux双系统蓝牙设备</h2>
+<div id="outline-container-orgc81e8e5" class="outline-2">
+<h2 id="orgc81e8e5"><span class="section-number-2">6.</span> <span class="done DONE">DONE</span> Failed to connect: org.bluez.Error.Failed br-connection-page-timeout</h2>
 <div class="outline-text-2" id="text-6">
+<p>
+连接超时，尝试重启蓝牙服务<br />
+<code>sudo systemctl restart bluetooth</code><br />
+</p>
+</div>
+</div>
+<div id="outline-container-orgd69fcb9" class="outline-2">
+<h2 id="orgd69fcb9"><span class="section-number-2">7.</span> <span class="done DONE">DONE</span> windows和linux双系统蓝牙设备</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 蓝牙配对密钥（link key） 在 Windows 和 Linux 之间没有同步，耳机记住了其中一个系统里的密钥，但和本系统里面的不一样。需要先 忘记设备，重新连接<br />
 </p>
@@ -555,8 +647,8 @@ connect xxx
 </div>
 </div>
 <div id="outline-container-orgc891224" class="outline-2">
-<h2 id="orgc891224"><span class="section-number-2">7.</span> <span class="todo TODO">TODO</span> 还没有做</h2>
-<div class="outline-text-2" id="text-7">
+<h2 id="orgc891224"><span class="section-number-2">8.</span> <span class="todo TODO">TODO</span> 还没有做</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 的事情<br />
 </p>
@@ -629,7 +721,33 @@ sudo chmod +x yt-dlp_macos   <span style="color: #7c878a;">#</span><span style="
 自定义下载文件名用参数 <code>-o</code> （或 &#x2013;output）实现<br />
 <code>yt-dlp -o "myvideo.%(ext)s" https://example.com/video</code><br />
 <code>%(ext)s</code> 会自动替换成真实的视频格式，比如 mp4、webm<br />
-</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[Mac用户从 链接 下载程序]]></summary></entry><entry><title type="html">python基础</title><link href="//nosomber.github.io/2025/07/02/basic_python/" rel="alternate" type="text/html" title="python基础" /><published>2025-07-02T00:00:00+08:00</published><updated>2025-07-02T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/02/basic_python</id><content type="html" xml:base="//nosomber.github.io/2025/07/02/basic_python/"><![CDATA[<p>
+</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[Mac用户从 链接 下载程序]]></summary></entry><entry><title type="html">python基础</title><link href="//nosomber.github.io/2025/07/02/basic_python/" rel="alternate" type="text/html" title="python基础" /><published>2025-07-02T00:00:00+08:00</published><updated>2025-07-02T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/02/basic_python</id><content type="html" xml:base="//nosomber.github.io/2025/07/02/basic_python/"><![CDATA[<div id="outline-container-org9c42c04" class="outline-2">
+<h2 id="org9c42c04"><span class="section-number-2">1.</span> Skill</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org82a3cda" class="outline-3">
+<h3 id="org82a3cda"><span class="section-number-3">1.1.</span> 查看 torch 的版本</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><code>pip show torch</code></li>
+<li><code>conda list torch</code></li>
+<li><code>import torch  print(torch.__version__)</code></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6a6d0e5" class="outline-3">
+<h3 id="org6a6d0e5"><span class="section-number-3">1.2.</span> torch 是否支持 cpu</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<code>python -c "import torch; print(torch.version.cuda)"</code>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3b5f5f9" class="outline-2">
+<h2 id="org3b5f5f9"><span class="section-number-2">2.</span> Syntax</h2>
+<div class="outline-text-2" id="text-2">
+<p>
 嵌套函数 区分不同的帧 frame 变量的关系
 </p>
 <div class="org-src-container">
@@ -778,57 +896,6 @@ x, y = pair  <span style="color: #705757; font-style: italic;"># </span><span st
 The purpose of maintaining abstraction barriers is so that you can change your data representation without having to rewrite you entire program.
 Data abstraction uses selectors and constructors to define behavior
 you can recongize data abstraction by its behavior
-</p>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[嵌套函数 区分不同的帧 frame 变量的关系 def make_adder(n): def adder(k): return n + k return adder]]></summary></entry><entry><title type="html">日记</title><link href="//nosomber.github.io/2025/07/01/dailynotes/" rel="alternate" type="text/html" title="日记" /><published>2025-07-01T00:00:00+08:00</published><updated>2025-07-01T00:00:00+08:00</updated><id>//nosomber.github.io/2025/07/01/dailynotes</id><content type="html" xml:base="//nosomber.github.io/2025/07/01/dailynotes/"><![CDATA[<div id="outline-container-orgfd0e7a8" class="outline-2">
-<h2 id="orgfd0e7a8"><span class="section-number-2">1.</span> 09-18</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-不知从何时起，我停止了写东西和记录，也许是在今年春天，或者夏天。思绪在空空的回忆中飘荡，没有声音，也看不见形状。人是活在当下的吗，人在不断追逐着什么？这过去的半年里，我不觉得过得糟糕，我有很多的喜乐，不是从我习以为常的生活中来的，也不是我臆想出来的，而是我白白领受的。让我失望的是我无休止的欲望，一次又一次，某个时刻我真的已经放弃了，但第二天我睁开眼睛，看见新的一天，是他没有放弃我，他将希望赐给我，那巨大的安慰支撑着我活过来，我心中满了平安。我多想永远拥有那时的喜乐，过去我活在自我当中，我在思考人生的道理，和别人交往的智慧，如今我知道从自己来的都是虚空。<br />
-</p>
-
-<p>
-还有不长的时间，树木会发出新芽，和去年春天看到的一样。还是在老地方，望着不远处的楼房和熙熙攘攘的人群，想起了去年冬天，那个没有雪花飘落的季节。我在努力融入过去三年多的学校生活，也许，我不属于这里，可是，眼睛没有欺骗我，不过，自己隐藏在角落。和朋友聊天的时候，发现我好像被遗忘包围了。短暂的愉悦之后，麻木占据了我，疲劳使我厌倦，成为一种解脱。<br />
-</p>
-
-<p>
-天气变得冷了起来，湿气翻腾，雨水在堆积，春天隐藏在雾的另一端。<br />
 </p>
 </div>
-</div>
-<div id="outline-container-org8fb9d07" class="outline-2">
-<h2 id="org8fb9d07"><span class="section-number-2">2.</span> 09-01</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Hi,晚上好。拖了这么久没有回复，其实是不知道该怎么说。所以很冷漠地回答了你。挺抱歉的。感觉是你心中火热的信心没有在我这里点燃。我想是我的问题吧，最近的生活有点远离话语，但是我感觉神的恩典没有离开我。祂在保守着我。可是我心里面有软弱，感觉很难去回应祂的爱。有些难以克服的方面吧。没有做到单单望着神，太多时候顾虑到自己和别人的感受。<br />
-关于你提到的我从言达会转到福青那里去，我想了挺久，这可能涉及到在信仰生命里长进的问题。离开旧的很难，进入新的也很难。还有我有没有这样的信心去走服侍的道路，可能我接触比较多的都是全职服侍的肢体，真的感觉你们的信心很大，也感觉这样做对我真的很难。感觉这不是我喜欢做的事情。但做的时候，发现也不是排斥。<br />
-我目前不想很火热地生活，这是我心里面的声音。但感觉又有另外一个声音告诉我这样的机会不是很多，需要把握地住。<br />
-这几周的周天，我没有去和弟兄姐妹们一起聚会，除了现实的原因外，其实我心里面是不想去的，不知道为什么，也许是不熟悉，也许是尴尬，也许是其他的原因。<br />
-这些都是我非常主观的看法，也是我最近想的。可能想法有些奇怪，不过还是想和你说说，不然就更奇怪了，哈哈。<br />
-希望你们在传福音的时候多得神预备的羊羔。会为这个祷告。加油！<br />
-</p>
-</div>
-</div>
-<div id="outline-container-org16079cf" class="outline-2">
-<h2 id="org16079cf"><span class="section-number-2">3.</span> 08-28</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-我们的内心如何得到释放，可以展开去讲。讲到水深之处，见证活水。妇人承认自己心里的干渴，承认雅各井里的水不能够解决心里的干渴，很想要得到活水。丈夫是什么，是自己所爱，所依靠的对象。不只是身体上的丈夫。从那里得到满足喜乐的对象。得到活水，是爱的关系重新建立的过程。在我们认识耶稣基督之前，我们心里面往往有自己所爱所依靠的。耶稣对撒玛利亚妇人说，把你的丈夫叫来。我们往往依靠了不能够真正帮助我们的对象。往往自己信道了很久，也参与了很多，可是生命没有得到真正的改变，往往是自己里面优先顺序没有得到改变。人犯罪后的反应往往是否认，不愿意去承认。耶稣很有智慧地回答妇人的回答。耶稣说，是的，你并没有，现在你有的，不是你真正的丈夫，他不能够满足你内心的需要。对孩子说话，语气上要温柔，态度上要坚定。一个人里面真的有各种各样的东西，耶稣对她说，你有五个丈夫。那样奸淫的罪一定要断掉。有时候要坚决地砍掉一些东西，这样的东西不能够模棱两可。有些需要调整优先顺序。用爱和真理去教导一个人。<br />
-</p>
-</div>
-</div>
-<div id="outline-container-orge5ca992" class="outline-2">
-<h2 id="orge5ca992"><span class="section-number-2">4.</span> 08-18</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-罪从四面八方而来，我得不到爱，也不想寻求爱。在死亡的边缘徘徊，仿佛一切都变了样，为什么我的世界不能存在一点的包容。我知道，我实在是一个罪人，要不正在犯罪，要不就在途中，毫无希望，我的盼望在哪里呢？我又在向谁述说这些痛苦呢？我真的害怕，被一圈又一圈成长的圈套束缚在狭小的屋子里。原本的希望破碎，我又该怪谁呢？没有谁比我自己更加可恶，既然我故意行恶，就要受这妄为当得的报应。<br />
-周围还是没有人可以理解我，别人不知道我的难处，只会旁敲侧击，我像一个瓶子，随时要爆炸的感觉，原本可以打开的瓶盖变得奇怪。<br />
-</p>
-</div>
-</div>
-<div id="outline-container-org82536b2" class="outline-2">
-<h2 id="org82536b2"><span class="section-number-2">5.</span> 08-16</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-不知道什么样的原因，今天成为了第一篇日记。那就趁着感觉还在，随意写一点东西。最近看了《德州巴黎》，错过了很多次观看的机会，这次两小时四十分钟给看完了，感觉真的很好，有当年看《赎罪》的感觉。我被上个世纪八十年代美国的自然风景和都市面貌震惊住了。其实是故事的情节，虽然有些牵强，有点维斯安德斯的巧合，但背后还是有那样的深意。夫妻之间的关系，我觉得结局是好的，有一种命运的归属感那样。女主角第一次出场的样子很绝，电影也是以此作为封面的。这样确实可以抓住人的眼球，但我也因此误解了德州巴黎这部剧很久。我想看第二遍，不知道什么时候可以做到。<br />
-</p>
-</div>
-</div>]]></content><author><name></name></author><category term="notes" /><summary type="html"><![CDATA[1. 09-18 不知从何时起，我停止了写东西和记录，也许是在今年春天，或者夏天。思绪在空空的回忆中飘荡，没有声音，也看不见形状。人是活在当下的吗，人在不断追逐着什么？这过去的半年里，我不觉得过得糟糕，我有很多的喜乐，不是从我习以为常的生活中来的，也不是我臆想出来的，而是我白白领受的。让我失望的是我无休止的欲望，一次又一次，某个时刻我真的已经放弃了，但第二天我睁开眼睛，看见新的一天，是他没有放弃我，他将希望赐给我，那巨大的安慰支撑着我活过来，我心中满了平安。我多想永远拥有那时的喜乐，过去我活在自我当中，我在思考人生的道理，和别人交往的智慧，如今我知道从自己来的都是虚空。]]></summary></entry></feed>
+</div>]]></content><author><name></name></author><category term="el" /><summary type="html"><![CDATA[1. Skill 1.1. 查看 torch 的版本 pip show torch conda list torch import torch print(torch.__version__) 1.2. torch 是否支持 cpu python -c "import torch; print(torch.version.cuda)" 2. Syntax 嵌套函数 区分不同的帧 frame 变量的关系 def make_adder(n): def adder(k): return n + k return adder]]></summary></entry></feed>
