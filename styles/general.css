@@ -128,21 +128,27 @@
   border-radius: 5px; /* 确保内部图片同样呈现 5px 圆角 */
 }
 
-/* 左右控制按钮 */
+/* 左右控制按钮：极简弱化重构 */
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
+  background: transparent; /* 剥离默认的半透明黑色背景 */
+  color: rgba(160, 160, 160, 0.4); /* 替换为低饱和度、低透明度的中性灰 */
   border: none;
-  padding: 10px 14px; /* 稍微缩小按钮体积以匹配整体的缩小 */
+  padding: 20px 10px; /* 纵向拉长隐形触控区，防止移动端误触或按空 */
   cursor: pointer;
-  font-size: 18px;
-  transition: background 0.3s;
+  font-size: 22px; 
+  transition: all 0.5s ease; /* 延长过渡动画时间，使渐变更加柔和 */
   z-index: 10;
 }
 
-.slider-btn:hover { background: rgba(0, 0, 0, 0.8); }
+/* 交互唤醒状态 */
+.slider-btn:hover { 
+  color: rgba(255, 255, 255, 0.95); /* 悬浮时图标提亮 */
+  background: rgba(0, 0, 0, 0.2); /* 悬浮时浮现极淡的背景框 */
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4); /* 注入文本阴影，防止按钮在纯白图片上隐形 */
+}
+
 .slider-btn.prev { left: 0; border-radius: 0 5px 5px 0; }
 .slider-btn.next { right: 0; border-radius: 5px 0 0 5px; }

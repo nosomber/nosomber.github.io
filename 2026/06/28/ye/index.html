@@ -17,8 +17,8 @@
 </head>
 
 <script>
-  // 适配 todo 效果
   document.addEventListener("DOMContentLoaded", () => {
+    // 1. TODO 标签渲染适配（维持原有处理逻辑）
     for (let level = 1; level <= 6; level++) {
       document.querySelectorAll(`h${level}`).forEach(h => {
         const todo = h.querySelector('.todo.TODO');
@@ -42,24 +42,44 @@
       });
     }
 
+    // 2. 图片滑块交互层（新增动态显隐控制）
     document.querySelectorAll('.img-slider-container').forEach(container => {
       const slider = container.querySelector('.img-slider');
       const btnPrev = container.querySelector('.slider-btn.prev');
       const btnNext = container.querySelector('.slider-btn.next');
 
       if (slider && btnPrev && btnNext) {
+        // 核心状态测算函数
+        const checkEdges = () => {
+          // 设定 2px 容差区间，规避不同设备像素比造成的浮点数精度偏差
+          const isStart = slider.scrollLeft <= 2;
+          const isEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 2;
+
+          // 操作 DOM 层干预可见度与触控响应
+          btnPrev.style.opacity = isStart ? '0' : '1';
+          btnPrev.style.pointerEvents = isStart ? 'none' : 'auto';
+
+          btnNext.style.opacity = isEnd ? '0' : '1';
+          btnNext.style.pointerEvents = isEnd ? 'none' : 'auto';
+        };
+
+        // 事件监听矩阵
+        slider.addEventListener('scroll', checkEdges);
+        window.addEventListener('resize', checkEdges);
+
+        // 按钮驱动逻辑
         btnPrev.addEventListener('click', () => {
-          // 向左滑动一个容器宽度的距离
           slider.scrollBy({ left: -slider.clientWidth, behavior: 'smooth' });
         });
         btnNext.addEventListener('click', () => {
-          // 向右滑动一个容器宽度的距离
           slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
         });
+
+        // 推迟 150 毫秒执行初始侦测，旨在等待内部图像资源占据实际尺寸
+        setTimeout(checkEdges, 150);
       }
     });
   });
-
 </script>
 
 <body>
@@ -80,11 +100,6 @@
   <p>
 我和你相遇的时间是在26年的冬末，刚好也是农历的春节。<br />
 </p>
-
-
-
-
-<img src="/pics/ye/1.png" alt="1"> 
 
 <div class="img-slider-container">
   <button class="slider-btn prev">&#10094;</button>
