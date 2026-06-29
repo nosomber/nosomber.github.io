@@ -122,7 +122,16 @@ table {
 }
 
 blockquote {
-    margin: 0;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+    border-left: 4px solid rgba(255, 213, 79, 0.8);
+}
+
+blockquote p {
+    display: inline;
+    /* 核心视觉魔法：上半部分透明，下半部分黄色半透明，形成半高亮的荧光笔效果 */
+    background: linear-gradient(transparent 40%, rgba(255, 235, 59, 0.45) 40%);
+    line-height: 1.8; /* 稍微拉大行高防止高亮色块重叠 */
 }
 
 h1, h2, h3, h4, h5, h6{
