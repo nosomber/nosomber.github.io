@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>与也</title>
+
+  
+  <link rel="stylesheet" href="//nosomber.github.io/styles/general.css">
+  <link rel="stylesheet" href="//nosomber.github.io/styles/font.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/org.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/org_mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 600px)" href="//nosomber.github.io/styles/navigatebar.css">
+  <link rel="stylesheet" media="screen and (max-width: 600px)" href="//nosomber.github.io/styles/navigatebar_mobile.css">
+</head>
+
+<script>
+  // 适配 todo 效果
+  document.addEventListener("DOMContentLoaded", () => {
+    for (let level = 1; level <= 6; level++) {
+      document.querySelectorAll(`h${level}`).forEach(h => {
+        const todo = h.querySelector('.todo.TODO');
+        const done = h.querySelector('.done.DONE');
+        if (todo || done) {
+          const targetClass = todo ? 'red-text' : 'green-text';
+          const nodes = Array.from(h.childNodes);
+          const marker = todo || done;
+          const index = nodes.indexOf(marker);
+          for (let i = index + 1; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              const span = document.createElement('span');
+              span.className = targetClass;
+              span.textContent = node.textContent;
+              h.replaceChild(span, node);
+              break;
+            }
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll('.img-slider-container').forEach(container => {
+      const slider = container.querySelector('.img-slider');
+      const btnPrev = container.querySelector('.slider-btn.prev');
+      const btnNext = container.querySelector('.slider-btn.next');
+
+      if (slider && btnPrev && btnNext) {
+        btnPrev.addEventListener('click', () => {
+          // 向左滑动一个容器宽度的距离
+          slider.scrollBy({ left: -slider.clientWidth, behavior: 'smooth' });
+        });
+        btnNext.addEventListener('click', () => {
+          // 向右滑动一个容器宽度的距离
+          slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+        });
+      }
+    });
+  });
+
+</script>
+
+<body>
+  <div class="return_to_home">
+    <a href="//nosomber.github.io/index.html">Golosina</a>
+  </div>
+
+  <div class="content-area">
+    <div class="title">
+      与也
+    </div>
+    <div class="char-counter">
+      2026-06-28 43字
+    </div>
+
+    <div class="content">
+  
+  <p>
+我和你相遇的时间是在26年的冬末，刚好也是农历的春节。<br />
+</p>
+
+
+
+
+<img src="/pics/ye/1.png" alt="1"> 
+
+<div class="img-slider-container">
+  <button class="slider-btn prev">&#10094;</button>
+  
+  <div class="img-slider">
+    
+    
+      <img src="/pics/ye/1.png" alt="gallery image">
+    
+      <img src="/pics/ye/2.png" alt="gallery image">
+    
+      <img src="/pics/ye/3.png" alt="gallery image">
+    
+  </div>
+  
+  <button class="slider-btn next">&#10095;</button>
+</div>
+
+</div>
+
+    <div id="end"> LOVE is with YOU </div>
+    </div>
+
+  </div>
+</body>
+</html>
